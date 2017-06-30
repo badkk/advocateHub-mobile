@@ -1,5 +1,4 @@
 .content-panel {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    overflow: auto;
+    padding: 10px;
 }

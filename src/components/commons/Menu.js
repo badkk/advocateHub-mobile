@@ -47,8 +47,9 @@ export default class Menu extends Component {
         this.state.history.push(path);*/
     }
     render() {
+        const height = window.screen.height * 0.08;
         return (
-            <Paper zDepth={1}>
+            <Paper zDepth={1} style={{maxHeight:height}}>
                 <BottomNavigation selectedIndex={this.state.selectedIndex} className="menu-box" >
                     <BottomNavigationItem
                         label={Strings.menuItem1}

@@ -28,8 +28,9 @@ class AdvocateInfoBar extends Component{
                 <MenuItem>Facebook</MenuItem>
             </IconMenu>
         );
+        const height = window.screen.height * 0.12;
         return (
-            <Paper>
+            <Paper style={{maxHeight: height}}>
                 <ListItem
                     primaryText="Zikun Fan"
                     secondaryText="Node.js, .NET, React"
@@ -44,8 +45,9 @@ class AdvocateInfoBar extends Component{
 class Content extends Component {
     render() {
         const content = Markdown.art1;
+        const maxHeight = window.screen.height * 0.8;
         return (
-            <div className="content-panel">
+            <div className="content-panel" style={{maxHeight:maxHeight}}>
                 <ReactMarkdown source={content} />
             </div>);
     }
