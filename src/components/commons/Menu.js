@@ -6,7 +6,7 @@ import '../../styles/Menu.css'
 import Strings from '../../res/values/string'
 
 const articleIcon = <FontIcon className="material-icons">assignment</FontIcon>;
-const relatedIcon = <FontIcon className="material-icons">explore</FontIcon>;
+const relatedIcon = <FontIcon className="material-icons">cloud</FontIcon>;
 const advocateIcon = <FontIcon className="material-icons">person</FontIcon>;
 const moreIcon = <FontIcon className="material-icons">subject</FontIcon>;
 

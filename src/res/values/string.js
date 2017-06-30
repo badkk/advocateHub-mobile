@@ -8,10 +8,10 @@ export default {
     labsName: "©2017 Microsoft",
 
     /*Server Info*/
-    serverAddr: "",
+    serverAddr: "http://localhost:8088",
     /*Home Page*/
     menuItem1: "Articles",
-    menuItem2: "Explore",
-    menuItem3: "Advocates",
+    menuItem2: "Azure",
+    menuItem3: "Meetings",
     menuItem4: "More"
 }

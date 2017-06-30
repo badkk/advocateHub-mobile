@@ -17,6 +17,7 @@ function checkStatus(response) {
 }
 
 function parseJSON(response) {
+    console.log(response);
     return response.json()
 }
 export default function (url, config) {
