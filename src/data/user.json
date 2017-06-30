@@ -1,0 +1,9 @@
+{
+  "id": "123456789",
+  "username": "Zikun",
+  "password": "1234567",
+  "avatar": "./imgs/avatar.jpg",
+  "githubAccount": "zikunvan@gmail.com",
+  "twitterAccount": "john.jackooooooo@gmail.com",
+  "aspect": "node.js, .NET, react"
+}
