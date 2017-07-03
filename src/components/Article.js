@@ -4,14 +4,31 @@ import get from '../restful/Get'
 import {Paper, Avatar, ListItem, IconMenu, MenuItem, IconButton, FontIcon} from 'material-ui/';
 import {cyan500} from 'material-ui/styles/colors';
 import '../styles/Articles.css'
-import Markdown from '../res/md'
+import 'github-markdown-css'
+import MarkdownContent from '../res/md'
 
-var ReactMarkdown = require('react-markdown');
+const ReactMarkdown = require('react-markdown');
 /**
  * Created by t-zikfan on 2017/6/30.
  * Article page
  */
+const addPerson = <FontIcon className="material-icons">person_add</FontIcon>;
+
 class AdvocateInfoBar extends Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            open: false
+        }
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+    }
+    handleMenuClick(e, item) {
+        const itemName = item.key === '0' ? "Twitter" : item.key === '1' ? "Github" : "Facebook";
+        console.log(itemName);
+        this.setState({
+            open: true
+        })
+    }
     render() {
         const iconButtonElement = (
             <IconButton
@@ -22,19 +39,19 @@ class AdvocateInfoBar extends Component{
             </IconButton>
         );
         const rightIconMenu = (
-            <IconMenu iconButtonElement={iconButtonElement}>
-                <MenuItem>Twitter</MenuItem>
-                <MenuItem>Github</MenuItem>
-                <MenuItem>Facebook</MenuItem>
+            <IconMenu iconButtonElement={iconButtonElement}  onItemTouchTap={this.handleMenuClick}>
+                <MenuItem rightIcon={addPerson} key={0}>Twitter</MenuItem>
+                <MenuItem rightIcon={addPerson} key={1}>Github</MenuItem>
+                <MenuItem rightIcon={addPerson} key={2}>Facebook</MenuItem>
             </IconMenu>
         );
         const height = window.screen.height * 0.12;
         return (
             <Paper style={{maxHeight: height}}>
                 <ListItem
-                    primaryText="Zikun Fan"
+                    primaryText="John Papa"
                     secondaryText="Node.js, .NET, React"
-                    leftAvatar={<Avatar src="avatar.jpg" />}
+                    leftAvatar={<Avatar src="johnpapa.png" />}
                     rightIconButton={rightIconMenu}
                     style={{width:"100%"}}
                 />
@@ -44,11 +61,11 @@ class AdvocateInfoBar extends Component{
 }
 class Content extends Component {
     render() {
-        const content = Markdown.art1;
+        const content = MarkdownContent.art1;
         const maxHeight = window.screen.height * 0.8;
         return (
             <div className="content-panel" style={{maxHeight:maxHeight}}>
-                <ReactMarkdown source={content} />
+                <ReactMarkdown className="markdown-body" source={content} softBreak="br" sourcePos={true}/>
             </div>);
     }
 }
