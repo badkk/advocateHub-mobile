@@ -56,6 +56,7 @@ class MeetingContent extends Component {
     };
     render() {
         const maxHeight = window.screen.height * 0.7;
+        const panelHeight = maxHeight - 30;
         return (
             <div style={{maxHeight: maxHeight}}>
                 <Paper zDepth={2}>
@@ -71,14 +72,15 @@ class MeetingContent extends Component {
                 </Paper>
                 <SwipeableViews
                     index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}>
-                    <div>
+                    onChangeIndex={this.handleChange}
+                    style={{height: panelHeight}}>
+                    <div className="content-content">
                         Content
                     </div>
-                    <div>
+                    <div className="content-content">
                         Content
                     </div>
-                    <div>
+                    <div className="content-content">
                         Content
                     </div>
                 </SwipeableViews>
@@ -98,7 +100,7 @@ export default class Meeting extends Component {
             <div>
                 <MeetingInfoPage />
                 <MeetingContent />
-                <Menu history={ this.state.history } state={2}/>
+                <Menu history={ this.state.history } state={0}/>
             </div>
         );
     }

@@ -30,3 +30,9 @@ hr {
 .content-taps > div > button > div > div {
     height: 30px!important;
 }
+.content-content {
+    font-size: large;
+    font-style: oblique;
+    color: grey;
+    display: flex;
+}

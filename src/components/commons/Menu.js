@@ -37,7 +37,7 @@ export default class Menu extends Component {
                 path = '/azure';
                 break;
             case 2:
-                path = '/meetings';
+                path = '/advocate';
                 break;
             case 3:
                 path = '/more';
@@ -52,9 +52,10 @@ export default class Menu extends Component {
         return (
             <Paper zDepth={1} style={{maxHeight:height}}>
                 <BottomNavigation selectedIndex={this.state.selectedIndex} className="menu-box" >
+
                     <BottomNavigationItem
-                        label={Strings.menuItem1}
-                        icon={articleIcon}
+                        label={Strings.menuItem3}
+                        icon={advocateIcon}
                         onTouchTap={() => this.handleSelect(0)}
                     />
                     <BottomNavigationItem
@@ -63,8 +64,8 @@ export default class Menu extends Component {
                         onTouchTap={() => this.handleSelect(1)}
                     />
                     <BottomNavigationItem
-                        label={Strings.menuItem3}
-                        icon={advocateIcon}
+                        label={Strings.menuItem1}
+                        icon={articleIcon}
                         onTouchTap={() => this.handleSelect(2)}
                     />
                     <BottomNavigationItem

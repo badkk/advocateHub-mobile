@@ -95,7 +95,7 @@ export default class Article extends Component {
             <div>
                 <AdvocateInfoBar />
                 <Content/>
-                <Menu history={ this.state.history } state={0}/>
+                <Menu history={ this.state.history } state={2}/>
             </div>);
     }
 }

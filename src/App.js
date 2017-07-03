@@ -17,9 +17,9 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Route exact path="/" component={Article}/>
+                    <Route exact path="/" component={Meeting}/>
                     <Route path="/azure" component={AzureInfo}/>
-                    <Route path="/meetings" component={Meeting}/>
+                    <Route path="/advocate" component={Article}/>
                     <Route path="/more" component={More}/>
                 </div>
             </Router>

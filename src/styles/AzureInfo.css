@@ -1,0 +1,16 @@
+.st0{fill:#F05125;}
+.st1{fill:#7FBB42;}
+.st2{fill:#FDB813;}
+.st3{fill:#32A0DA;}
+.app-header {
+    display: flex;
+    align-items: center;
+    background-color: #424242!important;
+}
+.icon {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.azure-content {
+    padding: 10px;
+}
