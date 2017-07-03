@@ -8,7 +8,7 @@ export default {
     labsName: "©2017 Microsoft",
 
     /*Server Info*/
-    serverAddr: "http://localhost:8088",
+    serverAddr: "http://localhost:13888",
     /*Home Page*/
     menuItem1: "Articles",
     menuItem2: "Azure",

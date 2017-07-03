@@ -30,7 +30,8 @@ export default function (url, config) {
         raw: false,
         credentials: 'include',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         }
     });
     return fetch(Strings.serverAddr + url, config)
