@@ -5,6 +5,9 @@ import {
 } from 'react-router-dom'
 import './App.css';
 import Article from './components/Article'
+import AzureInfo from './components/AzureInfo'
+import Meeting from './components/Meeting'
+import More from './components/More'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Phone touch action
 injectTapEventPlugin();
@@ -15,9 +18,9 @@ class App extends Component {
             <Router>
                 <div>
                     <Route exact path="/" component={Article}/>
-                    <Route path="/explore" component={Article}/>
-                    <Route path="/advocates" component={Article}/>
-                    <Route path="/more" component={Article}/>
+                    <Route path="/azure" component={AzureInfo}/>
+                    <Route path="/meetings" component={Meeting}/>
+                    <Route path="/more" component={More}/>
                 </div>
             </Router>
         );

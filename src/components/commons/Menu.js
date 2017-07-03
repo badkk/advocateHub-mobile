@@ -14,6 +14,7 @@ const moreIcon = <FontIcon className="material-icons">subject</FontIcon>;
  * Footer menu for all pages
  * Created by t-zikfan on 2017/6/30.
  */
+//menu height = 8%
 export default class Menu extends Component {
     constructor(props) {
         super(props);
@@ -27,24 +28,24 @@ export default class Menu extends Component {
         this.setState({
             selectedIndex: idx
         });
-        /*let path = '/';
+        let path = '/';
         switch (idx) {
             case 0 :
                 path = '/';
                 break;
             case 1:
-                path = '/explore';
+                path = '/azure';
                 break;
             case 2:
-                path = 'advocates';
+                path = '/meetings';
                 break;
             case 3:
-                path = 'more';
+                path = '/more';
                 break;
             default:
                 path = '/';
         }
-        this.state.history.push(path);*/
+        this.state.history.push(path);
     }
     render() {
         const height = window.screen.height * 0.08;
