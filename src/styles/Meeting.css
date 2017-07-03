@@ -1,0 +1,32 @@
+hr {
+    border-top: #9e9e9e;
+    width: 90%;
+}
+.meeting-content-panel {
+    margin-top: 5px;
+    height: 20px!important;
+    font-size: 10px!important;
+}
+.meeting-speaker-panel {
+    display: flex!important;
+    align-items: center;
+}
+.meeting-speaker-panel > div > div > img {
+    top: 8px!important;
+}
+.meeting-speaker-panel > div {
+    display: flex;
+    flex-direction: column;
+}
+.content-taps {
+}
+.content-taps > div {
+    background-color: #424242!important;
+}
+.content-taps > div > button {
+    font-size: 9px!important;
+    max-height: 30px!important;
+}
+.content-taps > div > button > div > div {
+    height: 30px!important;
+}
