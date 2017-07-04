@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Menu from './commons/Menu'
 import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia} from 'material-ui'
 import "../styles/AzureInfo.css"
-import dotnet from '../res/imgs/dotnet.png'
 import _ from 'underscore'
 import get from '../restful/Get'
 /**
@@ -12,31 +11,40 @@ import get from '../restful/Get'
 class AzureContent extends Component {
     constructor(props) {
         super(props);
-        this.handleCardActions = this.handleCardActions.bind(this);
+        this.handleCardTouchTap = this.handleCardTouchTap.bind(this);
         this.state = {
             data: this.props.data
-        }
+        };
     }
-    handleCardActions(e) {
-
+    componentWillReceiveProps(nextPros) {
+        this.setState({
+            data: nextPros.data
+        });
+    }
+    handleCardTouchTap(linkAddr) {
+        window.location = linkAddr;
     }
     render() {
         const maxHeight = window.screen.height * 0.78;
-        //const cardContent = _.map(this.state.data);
+        const cardContent = _.map(this.state.data, (data) => {
+            return (
+            <Card className="azure-content-card-style">
+                <CardHeader
+                    title={data['title']}
+                    subtitle={data['subtitle']}
+                    actAsExpander={true}/>
+                <CardMedia>
+                    <img src={data['imgurl']} alt="" />
+                </CardMedia>
+                <CardActions>
+                    <FlatButton label="Learn More" primary={true} onTouchTap={() => this.handleCardTouchTap(data['link'])}/>
+                </CardActions>
+            </Card>
+            );
+        });
         return (
-            <div style={{maxHeight: maxHeight}} className="azure-content">
-                <Card>
-                    <CardHeader
-                        title="Azure for .NET developers"
-                        subtitle="5-Minute Quickstarts"
-                        actAsExpander={true}/>
-                    <CardMedia>
-                        <img src={dotnet} alt="" />
-                    </CardMedia>
-                    <CardActions>
-                        <FlatButton label="Learn More" primary={true}/>
-                    </CardActions>
-                </Card>
+            <div className="azure-content" style={{maxHeight: maxHeight}}>
+                {cardContent}
             </div>
         );
     }
@@ -55,7 +63,7 @@ export default class AzureInfo extends Component {
         this.init();
     }
     init() {
-        get('/azure/info').then(res => {
+        get('/azure/infos').then(res => {
             this.setState({
                 data: res['data']
             })

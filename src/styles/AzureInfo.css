@@ -13,4 +13,10 @@
 }
 .azure-content {
     padding: 10px;
+    display: block;
+    overflow: auto;
+}
+.azure-content-card-style {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
