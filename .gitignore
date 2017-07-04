@@ -20,4 +20,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.idea/*
+.yarnclean
+.idea/advocateHub-Mobile.iml
+.idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/watcherTasks.xml
+.idea/workspace.xml
