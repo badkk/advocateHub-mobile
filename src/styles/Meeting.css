@@ -8,7 +8,6 @@ hr {
     font-size: 10px!important;
 }
 .meeting-speaker-panel {
-    display: flex!important;
     align-items: center;
 }
 .meeting-speaker-panel > div > div > img {
@@ -17,6 +16,10 @@ hr {
 .meeting-speaker-panel > div {
     display: flex;
     flex-direction: column;
+}
+.meeting-speaker-panel > div > div > svg {
+    top: 0!important;
+
 }
 .meeting-app-bar {
     align-items: center;

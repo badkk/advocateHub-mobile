@@ -24,7 +24,6 @@ export default class ContentTap extends Component {
         });
     };
     render() {
-        console.log(this.state.tabNames);
         const tabs = _.map(this.state.tabNames, (tabName, idx) => {
             return <Tab label={tabName} value={idx} />
         });

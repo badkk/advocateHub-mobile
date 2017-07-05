@@ -11,8 +11,10 @@
     "react-dom": "^15.6.1",
     "react-markdown": "^2.5.0",
     "react-router-dom": "^4.1.1",
+    "react-slick": "^0.14.11",
     "react-swipeable-views": "^0.12.3",
     "react-tap-event-plugin": "^2.0.1",
+    "slick-carousel": "^1.6.0",
     "underscore": "^1.8.3",
     "whatwg-fetch": "^2.0.3"
   },

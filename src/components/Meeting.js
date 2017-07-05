@@ -1,19 +1,18 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
 import {ListItem, Avatar,
-    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List} from 'material-ui'
+    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List, FlatButton} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
-
 import {
     blue300,
     grey100,
-    cyan500,
     white,
     grey500
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
-import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare } from 'material-ui/svg-icons';
+import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare,  NavigationChevronRight} from 'material-ui/svg-icons';
 import ContentTap from './commons/ContentTap'
+import IntroduceContent from './IntroduceContent'
 /**
  * Created by t-zikfan on 2017/7/3.
  * Meeting information page
@@ -24,42 +23,36 @@ class MeetingInfoPage extends Component {
     }
     render() {
         const meetingInfoMaxHeight = window.screen.height * 0.1;
+        const infoButton = <NavigationChevronRight/>
         return (
             <div>
                 <ListItem
-                    primaryText="Microsoft Developer Meeting"
-                    secondaryText="2017-07-01 09:00pm @ Seattle"
-                    leftAvatar={<Avatar color={blue300} backgroundColor={grey100}>MS</Avatar>}
+                    primaryText="Microsoft Azure"
+                    secondaryText="Using Azure deploying Angular.js"
+                    leftAvatar={<Avatar src="AzureLogo.jpg" style={{borderRadius: 0}}/>}
+                    rightIcon={infoButton}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
                 />
                 <hr/>
                 <ListItem
                     primaryText="Speaker : John Papa"
-                    secondaryText="Subject : Deploying react to Azure"
+                    secondaryText="Subject : Deploying Angular to Azure"
                     leftAvatar={<Avatar src="johnpapa.png"/>}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
                     innerDivStyle={{paddingTop: '8px'}}
+                    rightIcon={infoButton}
                     className="meeting-speaker-panel"/>
             </div>
         );
 
     }
 }
-class IntroductionContent extends Component {
-    render() {
-       return (
-           <div>
-
-           </div>
-       );
-    }
-}
 class MeetingContent extends Component {
     render() {
-        const maxHeight = window.screen.height * 0.72 - 55;
+        const maxHeight = window.screen.height * 0.7 - 55;
         const panelHeight = maxHeight - 45;
         const tabNames = ['Introduce', 'Notes', 'About'];
-        const contents = [<div>Content1</div>, <div>Content2</div>, <div>Content3</div>];
+        const contents = [<IntroduceContent/>, <div>Content2</div>, <div>Content3</div>];
         return (
             <div style={{maxHeight: maxHeight}}>
                 <ContentTap tabNames={tabNames} contents={contents} panelHeight={panelHeight}/>
