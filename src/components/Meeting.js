@@ -1,15 +1,19 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {Paper, ListItem, Avatar, Tabs, Tab, FontIcon} from 'material-ui'
+import {Paper, ListItem, Avatar, Tabs, Tab, FontIcon, AppBar,
+    IconButton, List,
+    FloatingActionButton, Divider, RaisedButton, Subheader} from 'material-ui'
 import SwipeableViews from 'react-swipeable-views';
-
+import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
     blue300,
     grey100,
     cyan500,
-    grey600
+    white,
+    grey500
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
+import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare } from 'material-ui/svg-icons';
 
 /**
  * Created by t-zikfan on 2017/7/3.
@@ -42,6 +46,15 @@ class MeetingInfoPage extends Component {
 
     }
 }
+class IntroductionContent extends Component {
+    render() {
+       return (
+           <div>
+
+           </div>
+       );
+    }
+}
 class MeetingContent extends Component {
     constructor(props){
         super(props);
@@ -55,21 +68,20 @@ class MeetingContent extends Component {
         });
     };
     render() {
-        const maxHeight = window.screen.height * 0.7;
-        const panelHeight = maxHeight - 30;
+        const maxHeight = window.screen.height * 0.72 - 55;
+        const panelHeight = maxHeight - 45;
         return (
             <div style={{maxHeight: maxHeight}}>
-                <Paper zDepth={2}>
-                    <Tabs
-                        onChange={this.handleChange}
-                        value={this.state.slideIndex}
-                        className='content-taps'
-                        inkBarStyle={{backgroundColor: cyan500}}>
-                        <Tab label="Introduction" value={0} />
-                        <Tab label="Notes" value={1} />
-                        <Tab label="About" value={2} />
-                    </Tabs>
-                </Paper>
+                <Tabs
+                    onChange={this.handleChange}
+                    value={this.state.slideIndex}
+                    className='content-taps'
+                    inkBarStyle={{backgroundColor: cyan500}}>
+                    <Tab label="Introduce" value={0} />
+                    <Tab label="Notes" value={1} />
+                    <Tab label="About" value={2} />
+                </Tabs>
+                <hr style={{margin:0, width:'100%'}}/>
                 <SwipeableViews
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleChange}
@@ -93,14 +105,45 @@ export default class Meeting extends Component {
         super(props);
         this.state = {
             history: this.props.history,
+            isOpen: false
         }
     }
+    handleShareButtonClick = (e) => {
+        this.setState({
+            isOpen: true
+        })
+    };
     render() {
+        const backIcon = <IconButton><FontIcon className="material-icons" color={white}>keyboard_arrow_left</FontIcon></IconButton>;
+        const shareIcon = <IconButton onTouchTap={this.handleShareButtonClick}>
+            <FontIcon className="material-icons" color={white}>more_vert</FontIcon></IconButton>;
+        /* Bottom shared sheet */
+        const sharedBottomSheet = <div>
+            <BottomSheet
+                action={
+                    <FloatingActionButton>
+                        <SocialShare/>
+                    </FloatingActionButton>
+                }
+                onRequestClose={() => this.setState({isOpen: false})}
+                open={this.state.isOpen}>
+                <h4 style={{color: grey500, marginLeft: '25px'}}>Share this meeting</h4>
+                <Divider inset/>
+                <List>
+                    <ListItem primaryText="Facebook" leftIcon={<MapsPlace/>}/>
+                    <ListItem primaryText="Twitter" leftIcon={<MapsLocalPhone/>}/>
+                    <ListItem primaryText="Google+" leftIcon={<DeviceAccessTime/>}/>
+                </List>
+            </BottomSheet>
+        </div>;
         return (
             <div>
+                <AppBar title="Meeting Detail" iconElementLeft={backIcon} iconElementRight={shareIcon}
+                        className="meeting-app-bar"/>
                 <MeetingInfoPage />
                 <MeetingContent />
                 <Menu history={ this.state.history } state={0}/>
+                {sharedBottomSheet}
             </div>
         );
     }

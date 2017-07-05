@@ -19,7 +19,7 @@ class AdvocateInfoBar extends Component{
         super(props);
         this.state={
             open: false
-        }
+        };
         this.handleMenuClick = this.handleMenuClick.bind(this);
     }
     handleMenuClick(e, item) {
