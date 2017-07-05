@@ -62,7 +62,7 @@ class AdvocateInfoBar extends Component{
 class Content extends Component {
     render() {
         const content = MarkdownContent.art1;
-        const maxHeight = window.screen.height * 0.8;
+        const maxHeight = window.screen.height * 0.88;
         return (
             <div className="content-panel" style={{maxHeight:maxHeight}}>
                 <ReactMarkdown className="markdown-body" source={content} softBreak="br" sourcePos={true}/>
@@ -95,7 +95,6 @@ export default class Article extends Component {
             <div>
                 <AdvocateInfoBar />
                 <Content/>
-                <Menu history={ this.state.history } state={2}/>
             </div>);
     }
 }

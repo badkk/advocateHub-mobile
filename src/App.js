@@ -7,6 +7,7 @@ import './App.css';
 import Article from './components/Article'
 import AzureInfo from './components/AzureInfo'
 import Meeting from './components/Meeting'
+import Advocate from './components/AdvocateInfo'
 import More from './components/More'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Phone touch action
@@ -19,7 +20,8 @@ class App extends Component {
                 <div>
                     <Route exact path="/" component={Meeting}/>
                     <Route path="/azure" component={AzureInfo}/>
-                    <Route path="/advocate" component={Article}/>
+                    <Route path="/advocate" component={Advocate}/>
+                    <Route path="/article" component={Article}/>
                     <Route path="/more" component={More}/>
                 </div>
             </Router>

@@ -10,7 +10,7 @@ export default {
     /*Server Info*/
     serverAddr: "http://localhost:13888",
     /*Home Page*/
-    menuItem1: "Articles",
+    menuItem1: "Advocate",
     menuItem2: "Azure",
     menuItem3: "Meetings",
     menuItem4: "More"

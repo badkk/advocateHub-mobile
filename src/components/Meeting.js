@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {Paper, ListItem, Avatar, Tabs, Tab, FontIcon} from 'material-ui'
-import SwipeableViews from 'react-swipeable-views';
-
+import {Paper, ListItem, Avatar, FontIcon} from 'material-ui'
+import ContentTap from './commons/ContentTap'
 import {
     blue300,
     grey100,
-    cyan500,
-    grey600
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
 
@@ -45,45 +42,14 @@ class MeetingInfoPage extends Component {
 class MeetingContent extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            slideIndex: 0,
-        };
     }
-    handleChange = (value) => {
-        this.setState({
-            slideIndex: value,
-        });
-    };
     render() {
         const maxHeight = window.screen.height * 0.7;
-        const panelHeight = maxHeight - 30;
+        const tabNames = ['Introduction', 'Notes', 'About'];
+        const contents = [<div>Content1</div>, <div>Content2</div>, <div>Content3</div>]
         return (
             <div style={{maxHeight: maxHeight}}>
-                <Paper zDepth={2}>
-                    <Tabs
-                        onChange={this.handleChange}
-                        value={this.state.slideIndex}
-                        className='content-taps'
-                        inkBarStyle={{backgroundColor: cyan500}}>
-                        <Tab label="Introduction" value={0} />
-                        <Tab label="Notes" value={1} />
-                        <Tab label="About" value={2} />
-                    </Tabs>
-                </Paper>
-                <SwipeableViews
-                    index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}
-                    style={{height: panelHeight}}>
-                    <div className="content-content">
-                        Content
-                    </div>
-                    <div className="content-content">
-                        Content
-                    </div>
-                    <div className="content-content">
-                        Content
-                    </div>
-                </SwipeableViews>
+                <ContentTap tabNames={tabNames} contents={contents}/>
             </div>
         );
     }

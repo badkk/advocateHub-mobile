@@ -55,7 +55,7 @@ export default class Menu extends Component {
 
                     <BottomNavigationItem
                         label={Strings.menuItem3}
-                        icon={advocateIcon}
+                        icon={articleIcon}
                         onTouchTap={() => this.handleSelect(0)}
                     />
                     <BottomNavigationItem
@@ -65,7 +65,7 @@ export default class Menu extends Component {
                     />
                     <BottomNavigationItem
                         label={Strings.menuItem1}
-                        icon={articleIcon}
+                        icon={advocateIcon}
                         onTouchTap={() => this.handleSelect(2)}
                     />
                     <BottomNavigationItem

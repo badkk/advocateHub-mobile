@@ -18,18 +18,6 @@ hr {
     display: flex;
     flex-direction: column;
 }
-.content-taps {
-}
-.content-taps > div {
-    background-color: #424242!important;
-}
-.content-taps > div > button {
-    font-size: 9px!important;
-    max-height: 30px!important;
-}
-.content-taps > div > button > div > div {
-    height: 30px!important;
-}
 .content-content {
     font-size: large;
     font-style: oblique;
