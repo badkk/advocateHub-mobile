@@ -14,7 +14,8 @@ export default class ContentTap extends Component {
         this.state = {
             tabNames : this.props.tabNames,
             slideIndex: 0,
-            contents: this.props.contents
+            contents: this.props.contents,
+            panelHeight: this.props.panelHeight
         }
     }
     handleChange = (value) => {
@@ -26,21 +27,21 @@ export default class ContentTap extends Component {
         console.log(this.state.tabNames);
         const tabs = _.map(this.state.tabNames, (tabName, idx) => {
             return <Tab label={tabName} value={idx} />
-        })
+        });
         return (
             <div>
-                <Paper zDepth={2}>
-                    <Tabs
-                        onChange={this.handleChange}
-                        value={this.state.slideIndex}
-                        className='content-taps'
-                        inkBarStyle={{backgroundColor: cyan500}}>
-                        {tabs}
-                    </Tabs>
-                </Paper>
+                <Tabs
+                    onChange={this.handleChange}
+                    value={this.state.slideIndex}
+                    className='content-taps'
+                    inkBarStyle={{backgroundColor: cyan500}}>
+                    {tabs}
+                </Tabs>
+                <hr style={{margin:0, width:'100%'}}/>
                 <SwipeableViews
                     index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}>
+                    onChangeIndex={this.handleChange}
+                    style={{height: this.state.panelHeight}}>
                     {this.state.contents}
                 </SwipeableViews>
             </div>

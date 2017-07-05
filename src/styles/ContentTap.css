@@ -1,12 +1,20 @@
 .content-taps {
 }
 .content-taps > div {
-    background-color: #424242!important;
+    background-color: white!important;
 }
 .content-taps > div > button {
-    font-size: 9px!important;
-    max-height: 30px!important;
+    font-size: 12px!important;
+    max-height: 45px!important;
+    color: #00bcd4!important;
+    font-weight: bold!important;
 }
 .content-taps > div > button > div > div {
-    height: 30px!important;
+    height: 45px!important;
+}
+.content-content {
+    font-size: large;
+    font-style: oblique;
+    color: grey;
+    display: flex;
 }

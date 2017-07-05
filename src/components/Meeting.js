@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {Paper, ListItem, Avatar, Tabs, Tab, FontIcon, AppBar,
-    IconButton, List,
-    FloatingActionButton, Divider, RaisedButton, Subheader} from 'material-ui'
-import SwipeableViews from 'react-swipeable-views';
+import {ListItem, Avatar,
+    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
+
 import {
     blue300,
     grey100,
@@ -14,7 +13,7 @@ import {
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
 import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare } from 'material-ui/svg-icons';
-
+import ContentTap from './commons/ContentTap'
 /**
  * Created by t-zikfan on 2017/7/3.
  * Meeting information page
@@ -56,46 +55,14 @@ class IntroductionContent extends Component {
     }
 }
 class MeetingContent extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            slideIndex: 0,
-        };
-    }
-    handleChange = (value) => {
-        this.setState({
-            slideIndex: value,
-        });
-    };
     render() {
         const maxHeight = window.screen.height * 0.72 - 55;
         const panelHeight = maxHeight - 45;
+        const tabNames = ['Introduce', 'Notes', 'About'];
+        const contents = [<div>Content1</div>, <div>Content2</div>, <div>Content3</div>];
         return (
             <div style={{maxHeight: maxHeight}}>
-                <Tabs
-                    onChange={this.handleChange}
-                    value={this.state.slideIndex}
-                    className='content-taps'
-                    inkBarStyle={{backgroundColor: cyan500}}>
-                    <Tab label="Introduce" value={0} />
-                    <Tab label="Notes" value={1} />
-                    <Tab label="About" value={2} />
-                </Tabs>
-                <hr style={{margin:0, width:'100%'}}/>
-                <SwipeableViews
-                    index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}
-                    style={{height: panelHeight}}>
-                    <div className="content-content">
-                        Content
-                    </div>
-                    <div className="content-content">
-                        Content
-                    </div>
-                    <div className="content-content">
-                        Content
-                    </div>
-                </SwipeableViews>
+                <ContentTap tabNames={tabNames} contents={contents} panelHeight={panelHeight}/>
             </div>
         );
     }
