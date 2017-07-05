@@ -23,7 +23,4 @@ yarn-error.log*
 .yarnclean
 .idea/advocateHub-Mobile.iml
 .idea/jsLibraryMappings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/watcherTasks.xml
-.idea/workspace.xml
+.idea/*

@@ -18,9 +18,36 @@ hr {
     display: flex;
     flex-direction: column;
 }
+.content-taps {
+}
+.content-taps > div {
+    background-color: white!important;
+}
+.content-taps > div > button {
+    font-size: 12px!important;
+    max-height: 45px!important;
+    color: #00bcd4!important;
+    font-weight: bold!important;
+}
+.content-taps > div > button > div > div {
+    height: 45px!important;
+}
 .content-content {
     font-size: large;
     font-style: oblique;
     color: grey;
     display: flex;
+}
+.meeting-app-bar {
+    align-items: center;
+    padding-right: 30px!important;
+    height: 55px!important;
+}
+.meeting-app-bar > div {
+    margin-top: 5px!important;
+}
+.meeting-app-bar > h1 {
+    font-size: 16px!important;
+    font-weight: bold!important;
+    padding-top: 3px!important;
 }
