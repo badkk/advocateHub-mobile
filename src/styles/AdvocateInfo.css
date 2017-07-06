@@ -1,3 +1,15 @@
-.iframe-panel {
-    width: 100%;
+.follow-button {
+    min-width: 50px!important;
+    width: 80px!important;
+    margin-right: 12px!important;
+    margin-top: 12px!important;
+}
+.follow-button > button {
+    height: 25px !important;
+    line-height: 25px !important;
+}
+.follow-button > button > div > div > span {
+    font-size: 10px!important;
+    font-weight: 600!important;
+    padding: 0!important;
 }
