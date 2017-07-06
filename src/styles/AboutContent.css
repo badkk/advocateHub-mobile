@@ -1,0 +1,4 @@
+.video-screen {
+    width: calc(100% - 32px)!important;
+    padding: 0 16px 0 16px;
+}
