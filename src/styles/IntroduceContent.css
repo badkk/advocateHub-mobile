@@ -2,9 +2,9 @@
     overflow: auto;
 }
 .introduce-carousel-panel {
-    width: 100%;
-    min-height: 0;
-    min-width: 0;
+    width: calc(100% - 32px)!important;
+    min-width: calc(100% - 32px)!important;
+    padding: 0 16px 0 16px;
 }
 .introduce-carousel-text-panel {
     position: absolute;
@@ -13,4 +13,7 @@
     color: white;
     width: 100%;
     padding: 10px;
+}
+.card-header > div {
+    padding-right: 0!important;
 }
