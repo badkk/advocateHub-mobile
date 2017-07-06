@@ -4,8 +4,6 @@ import {ListItem, Avatar,
     FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List, FlatButton} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
-    blue300,
-    grey100,
     white,
     grey500
 } from 'material-ui/styles/colors';
@@ -13,6 +11,8 @@ import '../styles/Meeting.css'
 import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare,  NavigationChevronRight} from 'material-ui/svg-icons';
 import ContentTap from './commons/ContentTap'
 import IntroduceContent from './IntroduceContent'
+import AboutContent from './AboutContent'
+import NotesContent from './NotesContent'
 /**
  * Created by t-zikfan on 2017/7/3.
  * Meeting information page
@@ -20,10 +20,19 @@ import IntroduceContent from './IntroduceContent'
 class MeetingInfoPage extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            history: props.history
+        }
     }
+    handleAzureTouchTap = () => {
+      window.location = "https://docs.microsoft.com/en-us/dotnet/azure/?view=azure-dotnet"
+    };
+    handleAdvocateTouchTap = () => {
+        this.state.history.push('/advocate')
+    };
     render() {
         const meetingInfoMaxHeight = window.screen.height * 0.1;
-        const infoButton = <NavigationChevronRight/>
+        const infoButton = <NavigationChevronRight/>;
         return (
             <div>
                 <ListItem
@@ -32,8 +41,9 @@ class MeetingInfoPage extends Component {
                     leftAvatar={<Avatar src="AzureLogo.jpg" style={{borderRadius: 0}}/>}
                     rightIcon={infoButton}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
+                    onTouchTap={this.handleAzureTouchTap}
                 />
-                <hr/>
+                <hr style={{ width:'90%'}}/>
                 <ListItem
                     primaryText="Speaker : John Papa"
                     secondaryText="Subject : Deploying Angular to Azure"
@@ -41,7 +51,8 @@ class MeetingInfoPage extends Component {
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
                     innerDivStyle={{paddingTop: '8px'}}
                     rightIcon={infoButton}
-                    className="meeting-speaker-panel"/>
+                    className="meeting-speaker-panel"
+                    onTouchTap={this.handleAdvocateTouchTap}/>
             </div>
         );
 
@@ -52,7 +63,7 @@ class MeetingContent extends Component {
         const maxHeight = window.screen.height * 0.7 - 55;
         const panelHeight = maxHeight - 45;
         const tabNames = ['Introduce', 'Notes', 'About'];
-        const contents = [<IntroduceContent/>, <div>Content2</div>, <div>Content3</div>];
+        const contents = [<IntroduceContent maxHeight={panelHeight}/>, <NotesContent maxHeight={panelHeight}/>, <AboutContent maxHeight={panelHeight}/>];
         return (
             <div style={{maxHeight: maxHeight}}>
                 <ContentTap tabNames={tabNames} contents={contents} panelHeight={panelHeight}/>
@@ -100,7 +111,7 @@ export default class Meeting extends Component {
             <div>
                 <AppBar title="Meeting Detail" iconElementLeft={backIcon} iconElementRight={shareIcon}
                         className="meeting-app-bar"/>
-                <MeetingInfoPage />
+                <MeetingInfoPage history={this.state.history}/>
                 <MeetingContent />
                 <Menu history={ this.state.history } state={0}/>
                 {sharedBottomSheet}
