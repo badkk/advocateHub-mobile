@@ -5,7 +5,6 @@
 .app-header {
     display: flex;
     align-items: center;
-    background-color: #424242!important;
 }
 .icon {
     margin-left: 10px;
