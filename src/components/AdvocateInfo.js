@@ -27,7 +27,7 @@ class AdvocateInfoBar extends Component{
         this.handleFbFollow = this.handleFbFollow.bind(this);
         this.handleGhFollow = this.handleGhFollow.bind(this);
         this.handleTtFollow = this.handleTtFollow.bind(this);
-        this.unfollowedCountDecrease = this.unfollowedCountDecrease.bind(this);
+        this.unfollowedCountChange = this.unfollowedCountChange.bind(this);
     }
     handleMenuClick(e, item) {
         const itemName = item.key === '0' ? "Twitter" : item.key === '1' ? "Github" : "Facebook";
@@ -43,25 +43,25 @@ class AdvocateInfoBar extends Component{
     }
     handleFbFollow() {
         this.setState({
-            followedFb: true
+            followedFb: !this.state.followedFb
         });
-        this.unfollowedCountDecrease();
+        this.unfollowedCountChange(this.state.followedFb);
     }
     handleTtFollow() {
         this.setState({
-            followedTt: true
+            followedTt: !this.state.followedTt
         });
-        this.unfollowedCountDecrease();
+        this.unfollowedCountChange(this.state.followedTt);
     }
     handleGhFollow() {
         this.setState({
-            followedGh: true
+            followedGh: !this.state.followedGh
         });
-        this.unfollowedCountDecrease();
+        this.unfollowedCountChange(this.state.followedGh);
     }
-    unfollowedCountDecrease()  {
+    unfollowedCountChange(flag)  {
       this.setState({
-          unFollowedCount: -- this.state.unFollowedCount
+          unFollowedCount: flag ? ++ this.state.unFollowedCount : -- this.state.unFollowedCount
       })
     }
     render() {
