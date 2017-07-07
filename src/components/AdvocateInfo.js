@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {Paper, IconButton, FontIcon, MenuItem, IconMenu, Avatar, ListItem, AppBar, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
+import {Paper, IconButton, FontIcon, MenuItem, IconMenu, Avatar, ListItem, Badge, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
 import {cyan500} from 'material-ui/styles/colors';
 import "../styles/AdvocateInfo.css"
 import { BottomSheet } from 'material-ui-bottom-sheet';
-import { SocialPersonAdd } from 'material-ui/svg-icons'
-import {grey500} from 'material-ui/styles/colors'
+import { SocialPersonAdd, ContentAddCircle, ActionCheckCircle } from 'material-ui/svg-icons'
+import {grey500, green500} from 'material-ui/styles/colors'
 
 /**
  * Created by lucas on 2017/7/4.
@@ -16,10 +16,18 @@ class AdvocateInfoBar extends Component{
         super(props);
         this.state={
             open: false,
-            isOpen: false
+            isOpen: false,
+            followedFb: false,
+            followedTt: false,
+            followedGh: false,
+            unFollowedCount: 3
         };
         this.handleMenuClick = this.handleMenuClick.bind(this);
         this.handleBSPopout = this.handleBSPopout.bind(this);
+        this.handleFbFollow = this.handleFbFollow.bind(this);
+        this.handleGhFollow = this.handleGhFollow.bind(this);
+        this.handleTtFollow = this.handleTtFollow.bind(this);
+        this.unfollowedCountDecrease = this.unfollowedCountDecrease.bind(this);
     }
     handleMenuClick(e, item) {
         const itemName = item.key === '0' ? "Twitter" : item.key === '1' ? "Github" : "Facebook";
@@ -33,20 +41,48 @@ class AdvocateInfoBar extends Component{
             isOpen: true
         })
     }
-
+    handleFbFollow() {
+        this.setState({
+            followedFb: true
+        });
+        this.unfollowedCountDecrease();
+    }
+    handleTtFollow() {
+        this.setState({
+            followedTt: true
+        });
+        this.unfollowedCountDecrease();
+    }
+    handleGhFollow() {
+        this.setState({
+            followedGh: true
+        });
+        this.unfollowedCountDecrease();
+    }
+    unfollowedCountDecrease()  {
+      this.setState({
+          unFollowedCount: -- this.state.unFollowedCount
+      })
+    }
     render() {
         const iconButtonElement = (
-            <RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={this.handleBSPopout}/>
+            <Badge
+                badgeContent={this.state.unFollowedCount}
+                secondary={true}
+                badgeStyle={{display: this.state.unFollowedCount <= 0 ? 'none' : 'flex', zIndex: 1}}
+                style={{padding: 0}}>
+                <RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={this.handleBSPopout}/>
+            </Badge>
         );
-        const rightIconMenu = (
-            <IconMenu iconButtonElement={iconButtonElement}  onItemTouchTap={this.handleMenuClick}>
-                <MenuItem rightIcon={<SocialPersonAdd/>} key={0}>Twitter</MenuItem>
-                <MenuItem rightIcon={<SocialPersonAdd/>} key={1}>Github</MenuItem>
-                <MenuItem rightIcon={<SocialPersonAdd/>} key={2}>Facebook</MenuItem>
-            </IconMenu>
-        );
+        const GithubIcon = <FontIcon className="fa fa-github"/>;
+        const TwitterIcon = <FontIcon className="fa fa-twitter"/>;
+        const FacebookIcon = <FontIcon className="fa fa-facebook-square"/>;
         const height = window.screen.height * 0.12;
         /* Bottom shared sheet */
+        const followFbIcon = this.state.followedFb ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
+        const followTtIcon = this.state.followedTt ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
+        const followGhIcon = this.state.followedGh ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
+
         const sharedBottomSheet = <div>
             <BottomSheet
                 action={
@@ -56,12 +92,21 @@ class AdvocateInfoBar extends Component{
                 }
                 onRequestClose={() => this.setState({isOpen: false})}
                 open={this.state.isOpen}>
-                <h4 style={{color: grey500, marginLeft: '25px'}}>Share this meeting</h4>
+                <h4 style={{color: grey500, marginLeft: '25px'}}>Follow me on these channel</h4>
                 <Divider inset/>
                 <List>
-                    <ListItem primaryText="Facebook" leftIcon={<SocialPersonAdd/>}/>
-                    <ListItem primaryText="Twitter" leftIcon={<SocialPersonAdd/>}/>
-                    <ListItem primaryText="Google+" leftIcon={<SocialPersonAdd/>}/>
+                    <ListItem primaryText="Facebook"
+                              secondaryText="Followers: 29,1552"
+                              leftIcon={FacebookIcon}
+                              rightIconButton={<IconButton onTouchTap={this.handleFbFollow}>{followFbIcon}</IconButton>}/>
+                    <ListItem primaryText="Twitter"
+                              secondaryText="Followers: 59,8578"
+                              leftIcon={TwitterIcon}
+                              rightIconButton={<IconButton onTouchTap={this.handleTtFollow}>{followTtIcon}</IconButton>}/>
+                    <ListItem primaryText="Github"
+                              secondaryText="Followers: 7,258"
+                              leftIcon={GithubIcon}
+                              rightIconButton={<IconButton onTouchTap={this.handleGhFollow}>{followGhIcon}</IconButton>}/>
                 </List>
             </BottomSheet>
         </div>;
