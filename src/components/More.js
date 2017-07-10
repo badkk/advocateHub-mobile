@@ -6,7 +6,7 @@ import Menu from './commons/Menu'
  * More page
  */
 
-
+const minContentHeight = window.screen.height * 0.92;
 export default class More extends Component {
     constructor(props) {
         super(props);
@@ -17,8 +17,10 @@ export default class More extends Component {
     render() {
         return (
             <div>
-                <Menu history={ this.state.history } state={3}/>
+                <div style={{minHeight: minContentHeight}}/>
+                    <Menu history={ this.state.history } state={3}/>
             </div>
         );
     }
+
 }
