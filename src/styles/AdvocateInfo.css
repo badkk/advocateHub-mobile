@@ -1,3 +1,7 @@
+.advocate-info-app-bar {
+    position: sticky!important;
+    top:0;
+}
 .follow-button {
     min-width: 50px!important;
     width: 80px!important;

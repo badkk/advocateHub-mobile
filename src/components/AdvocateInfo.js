@@ -110,7 +110,7 @@ class AdvocateInfoBar extends Component{
             </BottomSheet>
         </div>;
         return (
-            <Paper style={{maxHeight: height}}>
+            <Paper style={{maxHeight: height}} className="advocate-info-app-bar">
 
                 <ListItem
                     primaryText="John Papa"
