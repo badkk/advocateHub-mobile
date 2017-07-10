@@ -49,9 +49,8 @@ export default class Menu extends Component {
     }
     render() {
         const height = window.screen.height * 0.08;
-        const zIdx = (typeof this.props.zIdx) === undefined ? 1 : this.props.zIdx;
         return (
-            <Paper zDepth={1} style={{maxHeight:height, zIndex: zIdx}} className="menu-box" >
+            <Paper zDepth={1} style={{maxHeight:height}} className="menu-box" >
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
 
                     <BottomNavigationItem

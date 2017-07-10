@@ -10,30 +10,30 @@ import {grey500, green500} from 'material-ui/styles/colors'
  * Created by lucas on 2017/7/4.
  * Advocate Info Page
  */
-class AdvocateInfoBar extends Component{
+export default class AdvocateInfo extends Component {
     constructor(props) {
         super(props);
-        this.state={
-            open: false,
+        this.state = {
+            history: this.props.history,
+            loaderRunning: true,
             isOpen: false,
             followedFb: false,
             followedTt: false,
             followedGh: false,
             unFollowedCount: 3
         };
-        this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.handleiFrameLoaded = this.handleiFrameLoaded.bind(this);
         this.handleBSPopout = this.handleBSPopout.bind(this);
         this.handleFbFollow = this.handleFbFollow.bind(this);
         this.handleGhFollow = this.handleGhFollow.bind(this);
         this.handleTtFollow = this.handleTtFollow.bind(this);
         this.unfollowedCountChange = this.unfollowedCountChange.bind(this);
     }
-    handleMenuClick(e, item) {
-        const itemName = item.key === '0' ? "Twitter" : item.key === '1' ? "Github" : "Facebook";
-        console.log(itemName);
+
+    handleiFrameLoaded() {
         this.setState({
-            open: true
-        })
+            loaderRunning: false
+        });
     }
     handleBSPopout() {
         this.setState({
@@ -59,30 +59,24 @@ class AdvocateInfoBar extends Component{
         this.unfollowedCountChange(this.state.followedGh);
     }
     unfollowedCountChange(flag)  {
-      this.setState({
-          unFollowedCount: flag ? ++ this.state.unFollowedCount : -- this.state.unFollowedCount
-      })
+        this.setState({
+            unFollowedCount: flag ? ++ this.state.unFollowedCount : -- this.state.unFollowedCount
+        })
     }
     render() {
-        const iconButtonElement = (
-            <Badge
-                badgeContent={this.state.unFollowedCount}
-                secondary={true}
-                badgeStyle={{display: this.state.unFollowedCount <= 0 ? 'none' : 'flex', zIndex: 1}}
-                style={{padding: 0}}>
-                <RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={this.handleBSPopout}/>
-            </Badge>
-        );
+        const iFramePanelHeight = window.screen.height * 0.8;
+        const appBarHeight = window.screen.height * 0.12;
         const GithubIcon = <FontIcon className="fa fa-github"/>;
         const TwitterIcon = <FontIcon className="fa fa-twitter"/>;
         const FacebookIcon = <FontIcon className="fa fa-facebook-square"/>;
-        const height = window.screen.height * 0.12;
         /* Bottom shared sheet */
-        const followFbIcon = this.state.followedFb ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
-        const followTtIcon = this.state.followedTt ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
-        const followGhIcon = this.state.followedGh ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
-
-        const sharedBottomSheet =
+        const followFbIcon = this.state.followedFb ? <ActionCheckCircle color={green500}/> :
+            <ContentAddCircle color={grey500}/>;
+        const followTtIcon = this.state.followedTt ? <ActionCheckCircle color={green500}/> :
+            <ContentAddCircle color={grey500}/>;
+        const followGhIcon = this.state.followedGh ? <ActionCheckCircle color={green500}/> :
+            <ContentAddCircle color={grey500}/>;
+        const bottomSheetPanel = (
             <BottomSheet
                 action={
                     <FloatingActionButton>
@@ -97,19 +91,31 @@ class AdvocateInfoBar extends Component{
                     <ListItem primaryText="Facebook"
                               secondaryText="Followers: 29,1552"
                               leftIcon={FacebookIcon}
-                              rightIconButton={<IconButton onTouchTap={this.handleFbFollow}>{followFbIcon}</IconButton>}/>
+                              rightIconButton={<IconButton
+                                  onTouchTap={this.handleFbFollow}>{followFbIcon}</IconButton>}/>
                     <ListItem primaryText="Twitter"
                               secondaryText="Followers: 59,8578"
                               leftIcon={TwitterIcon}
-                              rightIconButton={<IconButton onTouchTap={this.handleTtFollow}>{followTtIcon}</IconButton>}/>
+                              rightIconButton={<IconButton
+                                  onTouchTap={this.handleTtFollow}>{followTtIcon}</IconButton>}/>
                     <ListItem primaryText="Github"
                               secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}
-                              rightIconButton={<IconButton onTouchTap={this.handleGhFollow}>{followGhIcon}</IconButton>}/>
+                              rightIconButton={<IconButton
+                                  onTouchTap={this.handleGhFollow}>{followGhIcon}</IconButton>}/>
                 </List>
-            </BottomSheet>;
-        return (
-            <Paper style={{maxHeight: height}} className="advocate-info-app-bar">
+            </BottomSheet>);
+        const iconButtonElement = (
+            <Badge
+                badgeContent={this.state.unFollowedCount}
+                secondary={true}
+                badgeStyle={{display: this.state.unFollowedCount <= 0 ? 'none' : 'flex', zIndex: 1}}
+                style={{padding: 0}}>
+                <RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={this.handleBSPopout}/>
+            </Badge>
+        );
+        const infoBar =  (
+            <Paper style={{maxHeight: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
                     primaryText="John Papa"
                     secondaryText="Node.js, .NET, React"
@@ -117,33 +123,15 @@ class AdvocateInfoBar extends Component{
                     rightIconButton={iconButtonElement}
                     style={{width:"100%"}}
                 />
-                {sharedBottomSheet}
             </Paper>
         );
-    }
-}
-export default class AdvocateInfo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            history: this.props.history,
-            loaderRunning: true
-        };
-        this.handleiFrameLoaded = this.handleiFrameLoaded.bind(this);
-    }
-    handleiFrameLoaded() {
-        this.setState({
-            loaderRunning: false
-        });
-    }
-    render() {
-        const iFramePanelHeight = window.screen.height * 0.8;
         return (
             <div>
-                <AdvocateInfoBar />
+                {infoBar}
                 <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loaderRunning ? "inline-block" : "none"}}/>
                 <iframe src="https://johnpapa.net/" height={iFramePanelHeight} width='100%' frameBorder="0" onLoad={this.handleiFrameLoaded}/>
-                <Menu history={ this.state.history} state={2} zIdx={-1}/>
+                <Menu history={ this.state.history} state={2}/>
+                {bottomSheetPanel}
             </div>
         );
     }
