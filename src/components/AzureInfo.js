@@ -10,7 +10,7 @@ import get from '../restful/Get'
  */
 /*Height Compatible Infos*/
 const appMaxHeight = window.screen.height * 0.1;
-const contentMaxHeight = window.screen.height * 0.78;
+const contentMaxHeight = window.screen.height * 0.82;
 
 class AzureContent extends Component {
     constructor(props) {
@@ -46,7 +46,7 @@ class AzureContent extends Component {
             );
         });
         return (
-            <div className="azure-content" style={{maxHeight: contentMaxHeight}}>
+            <div className="azure-content">
                 {cardContent}
             </div>
         );
@@ -97,7 +97,7 @@ export default class AzureInfo extends Component {
                         onTitleTouchTap={this.handleAppBarTouched}
                         style={{maxHeight: appMaxHeight}}
                 />
-                <div>
+                <div style={{minHeight: contentMaxHeight}}>
                     <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}/>
                     <AzureContent data={this.state.data}/>
                 </div>

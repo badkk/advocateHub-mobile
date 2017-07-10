@@ -60,13 +60,11 @@ class MeetingInfoPage extends Component {
 }
 class MeetingContent extends Component {
     render() {
-        const maxHeight = window.screen.height * 0.7 - 55;
-        const panelHeight = maxHeight - 45;
         const tabNames = ['Introduce', 'Notes', 'About'];
-        const contents = [<IntroduceContent maxHeight={panelHeight}/>, <NotesContent maxHeight={panelHeight}/>, <AboutContent maxHeight={panelHeight}/>];
+        const contents = [<IntroduceContent/>, <NotesContent/>, <AboutContent/>];
         return (
-            <div style={{maxHeight: maxHeight}}>
-                <ContentTap tabNames={tabNames} contents={contents} panelHeight={panelHeight}/>
+            <div>
+                <ContentTap tabNames={tabNames} contents={contents}/>
             </div>
         );
     }
@@ -109,9 +107,11 @@ export default class Meeting extends Component {
         </div>;
         return (
             <div>
+
                 <AppBar title="Meeting Detail" iconElementLeft={backIcon} iconElementRight={shareIcon}
                         className="meeting-app-bar"/>
                 <MeetingInfoPage history={this.state.history}/>
+
                 <MeetingContent />
                 <Menu history={ this.state.history } state={0}/>
                 {sharedBottomSheet}

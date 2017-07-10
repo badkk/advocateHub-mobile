@@ -25,6 +25,8 @@ hr {
     align-items: center;
     padding-right: 30px!important;
     height: 55px!important;
+    position: sticky!important;
+    top:0;
 }
 .meeting-app-bar > div {
     margin-top: 5px!important;

@@ -45,7 +45,7 @@ export default class IntroduceContent extends Component {
         );
         /*  */
         return (
-            <div style={{maxHeight: this.props.maxHeight}}>
+            <div>
                 <Card>
                     <CardHeader
                         title="Deploying Angular to Azure"

@@ -15,7 +15,6 @@ export default class ContentTap extends Component {
             tabNames : this.props.tabNames,
             slideIndex: 0,
             contents: this.props.contents,
-            panelHeight: this.props.panelHeight
         }
     }
     handleChange = (value) => {
@@ -39,8 +38,7 @@ export default class ContentTap extends Component {
                 <hr style={{margin:0, width:'100%'}}/>
                 <SwipeableViews
                     index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}
-                    style={{height: this.state.panelHeight}}>
+                    onChangeIndex={this.handleChange}>
                     {this.state.contents}
                 </SwipeableViews>
             </div>

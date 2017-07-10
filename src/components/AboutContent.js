@@ -15,7 +15,7 @@ export default class AboutContent extends Component {
         //resize the video screen to 16:9
         const height = window.screen.width * 9 / 16;
         return (
-        <div style={{maxHeight: this.props.maxHeight}}>
+        <div>
             <Card>
                 <CardHeader
                     title="Talk Video"

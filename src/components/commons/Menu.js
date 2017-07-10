@@ -50,8 +50,8 @@ export default class Menu extends Component {
     render() {
         const height = window.screen.height * 0.08;
         return (
-            <Paper zDepth={1} style={{maxHeight:height}}>
-                <BottomNavigation selectedIndex={this.state.selectedIndex} className="menu-box" >
+            <Paper zDepth={1} style={{maxHeight:height}} className="menu-box" >
+                <BottomNavigation selectedIndex={this.state.selectedIndex}>
 
                     <BottomNavigationItem
                         label={Strings.menuItem3}

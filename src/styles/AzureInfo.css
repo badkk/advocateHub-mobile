@@ -5,6 +5,8 @@
 .app-header {
     display: flex;
     align-items: center;
+    position: sticky!important;
+    top:0;
 }
 .icon {
     margin-left: 10px;
