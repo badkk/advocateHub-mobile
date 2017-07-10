@@ -20,7 +20,7 @@ export default class IntroduceContent extends Component {
             speed: 500,
             slidesToShow: 1,
             slidesToScroll: 1,
-            autoplay: true
+            autoplay: true,
         };
         const imgs = ['poster1.jpg', 'poster2.jpg', 'poster3.jpg'];
         const content = _.map(imgs, (img, idx) => {
@@ -45,7 +45,7 @@ export default class IntroduceContent extends Component {
         );
         /*  */
         return (
-            <div>
+            <div style={{height:'100%'}}>
                 <Card>
                     <CardHeader
                         title="Deploying Angular to Azure"
@@ -57,7 +57,6 @@ export default class IntroduceContent extends Component {
                         {carouselContent}
                     </CardMedia>
                     <CardTitle title="Quick learn" subtitle=""/>
-                    <hr style={{marginLeft:'16px'}}/>
                     <CardText>
                         The Angular CLI makes it easy to build a production ready Angular app. The next step is getting that app up and in the cloud. This is where a CI process helps take that code from Github, build it properly, and the deploy it to Azure. I outlined the detailed steps below if you want to try this for yourself.
                     </CardText>
