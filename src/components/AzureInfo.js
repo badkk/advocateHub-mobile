@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia} from 'material-ui'
+import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress} from 'material-ui'
 import "../styles/AzureInfo.css"
 import _ from 'underscore'
 import get from '../restful/Get'
@@ -8,6 +8,10 @@ import get from '../restful/Get'
  * Created by t-zikfan on 2017/7/3.
  * The Azure Information Page
  */
+/*Height Compatible Infos*/
+const appMaxHeight = window.screen.height * 0.1;
+const contentMaxHeight = window.screen.height * 0.78;
+
 class AzureContent extends Component {
     constructor(props) {
         super(props);
@@ -25,7 +29,6 @@ class AzureContent extends Component {
         window.location = linkAddr;
     }
     render() {
-        const maxHeight = window.screen.height * 0.78;
         const cardContent = _.map(this.state.data, (data) => {
             return (
             <Card className="azure-content-card-style">
@@ -43,7 +46,7 @@ class AzureContent extends Component {
             );
         });
         return (
-            <div className="azure-content" style={{maxHeight: maxHeight}}>
+            <div className="azure-content" style={{maxHeight: contentMaxHeight}}>
                 {cardContent}
             </div>
         );
@@ -54,7 +57,8 @@ export default class AzureInfo extends Component {
         super(props);
         this.state = {
             history: this.props.history,
-            data: []
+            data: [],
+            loadRuning: true
         };
         this.handleAppBarTouched = this.handleAppBarTouched.bind(this);
         this.init = this.init.bind(this);
@@ -65,7 +69,8 @@ export default class AzureInfo extends Component {
     init() {
         get('/azure/infos').then(res => {
             this.setState({
-                data: res['data']
+                data: res['data'],
+                loadRuning: false
             })
         })
     }
@@ -82,7 +87,6 @@ export default class AzureInfo extends Component {
                 <path className="st3" d="M0 34h30v30H0z"/>
             </SvgIcon>
         );
-        const maxHeight = window.screen.height * 0.1;
         return (
             <div>
                 <AppBar title="Learn about Azure"
@@ -91,9 +95,12 @@ export default class AzureInfo extends Component {
                         className='app-header'
                         onLeftIconButtonTouchTap={this.handleAppBarTouched}
                         onTitleTouchTap={this.handleAppBarTouched}
-                        style={{maxHeight:maxHeight}}
+                        style={{maxHeight: appMaxHeight}}
                 />
-                <AzureContent data={this.state.data}/>
+                <div>
+                    <CircularProgress thickness={3} style={{position: 'absolute', margin:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}/>
+                    <AzureContent data={this.state.data}/>
+                </div>
                 <Menu history={ this.state.history } state={1}/>
             </div>
         );

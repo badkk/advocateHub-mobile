@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {Paper, IconButton, FontIcon, MenuItem, IconMenu, Avatar, ListItem, Badge, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
-import {cyan500} from 'material-ui/styles/colors';
+import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, Badge, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
 import "../styles/AdvocateInfo.css"
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import { SocialPersonAdd, ContentAddCircle, ActionCheckCircle } from 'material-ui/svg-icons'
@@ -129,18 +128,23 @@ export default class AdvocateInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            history: this.props.history
-        }
+            history: this.props.history,
+            loaderRunning: true
+        };
+        this.handleiFrameLoaded = this.handleiFrameLoaded.bind(this);
     }
-    handleBack = () => {
-        this.state.history.goBack();
-    };
+    handleiFrameLoaded() {
+        this.setState({
+            loaderRunning: false
+        });
+    }
     render() {
         const iFramePanelHeight = window.screen.height * 0.8;
         return (
             <div>
                 <AdvocateInfoBar />
-                <iframe src="https://johnpapa.net/" height={iFramePanelHeight} width='100%' frameBorder="0"/>
+                <CircularProgress thickness={3} style={{position: 'absolute', margin:'45%', display: this.state.loaderRunning ? "inline-block" : "none"}}/>
+                <iframe src="https://johnpapa.net/" style={{maxHeight: iFramePanelHeight, overflow: 'auto'}} height={iFramePanelHeight} width='100%' frameBorder="0" onLoad={this.handleiFrameLoaded}/>
                 <Menu history={ this.state.history} state={2}/>
             </div>
         );
