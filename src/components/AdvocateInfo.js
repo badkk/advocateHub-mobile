@@ -82,7 +82,7 @@ class AdvocateInfoBar extends Component{
         const followTtIcon = this.state.followedTt ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
         const followGhIcon = this.state.followedGh ? <ActionCheckCircle color={green500}/> : <ContentAddCircle color={grey500}/>;
 
-        const sharedBottomSheet = <div>
+        const sharedBottomSheet =
             <BottomSheet
                 action={
                     <FloatingActionButton>
@@ -107,11 +107,9 @@ class AdvocateInfoBar extends Component{
                               leftIcon={GithubIcon}
                               rightIconButton={<IconButton onTouchTap={this.handleGhFollow}>{followGhIcon}</IconButton>}/>
                 </List>
-            </BottomSheet>
-        </div>;
+            </BottomSheet>;
         return (
             <Paper style={{maxHeight: height}} className="advocate-info-app-bar">
-
                 <ListItem
                     primaryText="John Papa"
                     secondaryText="Node.js, .NET, React"
@@ -145,7 +143,7 @@ export default class AdvocateInfo extends Component {
                 <AdvocateInfoBar />
                 <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loaderRunning ? "inline-block" : "none"}}/>
                 <iframe src="https://johnpapa.net/" height={iFramePanelHeight} width='100%' frameBorder="0" onLoad={this.handleiFrameLoaded}/>
-                <Menu history={ this.state.history} state={2}/>
+                <Menu history={ this.state.history} state={2} zIdx={-1}/>
             </div>
         );
     }
