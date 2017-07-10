@@ -24,3 +24,4 @@ yarn-error.log*
 .idea/advocateHub-Mobile.iml
 .idea/jsLibraryMappings.xml
 .idea/*
+build/*
