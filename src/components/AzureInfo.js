@@ -98,7 +98,7 @@ export default class AzureInfo extends Component {
                         style={{maxHeight: appMaxHeight}}
                 />
                 <div>
-                    <CircularProgress thickness={3} style={{position: 'absolute', margin:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}/>
+                    <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}/>
                     <AzureContent data={this.state.data}/>
                 </div>
                 <Menu history={ this.state.history } state={1}/>

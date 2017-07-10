@@ -143,7 +143,7 @@ export default class AdvocateInfo extends Component {
         return (
             <div>
                 <AdvocateInfoBar />
-                <CircularProgress thickness={3} style={{position: 'absolute', margin:'45%', display: this.state.loaderRunning ? "inline-block" : "none"}}/>
+                <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loaderRunning ? "inline-block" : "none"}}/>
                 <iframe src="https://johnpapa.net/" style={{maxHeight: iFramePanelHeight, overflow: 'auto'}} height={iFramePanelHeight} width='100%' frameBorder="0" onLoad={this.handleiFrameLoaded}/>
                 <Menu history={ this.state.history} state={2}/>
             </div>
