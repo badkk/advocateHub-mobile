@@ -21,3 +21,17 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.free-account-button {
+    width:100%!important;
+    position: sticky!important;
+    top: 0;
+    z-index: 9999;
+}
+.free-account-button > button {
+    background-color: #8BC34A!important;
+
+}
+.free-account-button > button > div > div > span {
+    text-transform: inherit!important;
+    font-size: 18px!important;
+}

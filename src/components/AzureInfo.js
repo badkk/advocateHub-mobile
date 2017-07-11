@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress} from 'material-ui'
+import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton} from 'material-ui'
 import "../styles/AzureInfo.css"
 import _ from 'underscore'
 import get from '../restful/Get'
@@ -9,8 +9,8 @@ import get from '../restful/Get'
  * The Azure Information Page
  */
 /*Height Compatible Infos*/
-const appMaxHeight = window.screen.height * 0.1;
-const contentMaxHeight = window.screen.height * 0.82;
+const appMaxHeight = window.screen.height * 0.08;
+const contentMaxHeight = window.screen.height * 0.84;
 
 class AzureContent extends Component {
     constructor(props) {
@@ -61,6 +61,7 @@ export default class AzureInfo extends Component {
             loadRuning: true
         };
         this.handleAppBarTouched = this.handleAppBarTouched.bind(this);
+        this.handleTryButtonTouched = this.handleTryButtonTouched.bind(this);
         this.init = this.init.bind(this);
     }
     componentDidMount() {
@@ -75,7 +76,10 @@ export default class AzureInfo extends Component {
         })
     }
     handleAppBarTouched() {
-        window.location = 'https://azure.microsoft.com/en-us/';
+        window.location = "https://azure.microsoft.com/en-us/";
+    }
+    handleTryButtonTouched() {
+        window.location = "https://azure.microsoft.com/en-us/free/?v=17.15";
     }
     render() {
         //ms logo
@@ -97,7 +101,7 @@ export default class AzureInfo extends Component {
                     title="Learn about Azure"
                     titleStyle={{fontSize:'18px'}}
                     iconElementLeft={<LogoIcon/>}
-                    className='app-header'
+                    className="app-header"
                     onLeftIconButtonTouchTap={this.handleAppBarTouched}
                     onTitleTouchTap={this.handleAppBarTouched}
                     style={{maxHeight: appMaxHeight}}
@@ -106,6 +110,13 @@ export default class AzureInfo extends Component {
                     <CircularProgress
                         thickness={3}
                         style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
+                    />
+                    <RaisedButton
+                        label="Try free account"
+                        primary={true}
+                        className="free-account-button"
+                        style={{height: appMaxHeight}}
+                        onTouchTap={this.handleTryButtonTouched}
                     />
                     <AzureContent data={this.state.data}/>
                 </div>
