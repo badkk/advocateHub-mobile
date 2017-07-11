@@ -7,8 +7,8 @@
     align-items: center;
     position: -webkit-sticky!important;
     position: sticky!important;
-    top:0!important;
-    z-index: 400!important;
+    top:0;
+    z-index: 500!important;
 }
 .icon {
     margin-left: 10px;
@@ -27,7 +27,7 @@
     width: 100%!important;
     position: -webkit-sticky!important;
     position: sticky!important;
-    top: 0!important;
+    top: 0;
     z-index: 500!important;
 }
 .free-account-button > button {

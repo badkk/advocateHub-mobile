@@ -97,6 +97,14 @@ export default class AzureInfo extends Component {
         );
         return (
             <div>
+
+                <RaisedButton
+                    label="Try free account"
+                    primary={true}
+                    className="free-account-button"
+                    style={{height: appMaxHeight}}
+                    onTouchTap={this.handleTryButtonTouched}
+                />
                 <AppBar
                     title="Learn about Azure"
                     titleStyle={{fontSize:'18px'}}
@@ -105,13 +113,6 @@ export default class AzureInfo extends Component {
                     onLeftIconButtonTouchTap={this.handleAppBarTouched}
                     onTitleTouchTap={this.handleAppBarTouched}
                     style={{maxHeight: appMaxHeight}}
-                />
-                <RaisedButton
-                    label="Try free account"
-                    primary={true}
-                    className="free-account-button"
-                    style={{height: appMaxHeight}}
-                    onTouchTap={this.handleTryButtonTouched}
                 />
                 <div style={{minHeight: contentMaxHeight}}>
                     <CircularProgress
