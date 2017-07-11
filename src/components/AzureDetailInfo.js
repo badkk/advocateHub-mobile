@@ -12,11 +12,9 @@ export default class AzureDetailInfo extends Component {
             history: this.props.history,
             azureLink : this.props.history.location.state.link
         };
+        this.handleBack = this.handleBack.bind(this);
     }
-    componentDidMount() {
-        hackiFrame();
-    }
-    handleBack = () => {
+    handleBack() {
       this.state.history.goBack();
     };
     render() {

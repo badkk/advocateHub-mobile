@@ -6,7 +6,7 @@ const ReactMarkdown = require('react-markdown');
 /**
  * Created by t-zikfan on 2017/7/6.
  */
-
+//will add state...
 export default class NotesContent extends Component {
     render() {
         const content = MarkdownContent.art1;

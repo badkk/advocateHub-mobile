@@ -32,13 +32,15 @@ export default class ContentTap extends Component {
                     onChange={this.handleChange}
                     value={this.state.slideIndex}
                     className='content-taps'
-                    inkBarStyle={{backgroundColor: cyan500}}>
+                    inkBarStyle={{backgroundColor: cyan500}}
+                >
                     {tabs}
                 </Tabs>
                 <hr style={{margin:0, width:'100%'}}/>
                 <SwipeableViews
                     index={this.state.slideIndex}
-                    onChangeIndex={this.handleChange}>
+                    onChangeIndex={this.handleChange}
+                >
                     {this.state.contents}
                 </SwipeableViews>
             </div>

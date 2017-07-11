@@ -61,7 +61,11 @@ export default class IntroduceContent extends Component {
                         The Angular CLI makes it easy to build a production ready Angular app. The next step is getting that app up and in the cloud. This is where a CI process helps take that code from Github, build it properly, and the deploy it to Azure. I outlined the detailed steps below if you want to try this for yourself.
                     </CardText>
                     <CardActions>
-                        <FlatButton primary={true} label="Learn more" onTouchTap={this.handleLearnMoreClick}/>
+                        <FlatButton
+                            primary={true}
+                            label="Learn more"
+                            onTouchTap={this.handleLearnMoreClick}
+                        />
                     </CardActions>
                 </Card>
 

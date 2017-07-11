@@ -80,7 +80,11 @@ export default class AzureInfo extends Component {
     render() {
         //ms logo
         const LogoIcon =  (props) => (
-            <SvgIcon {...props} viewBox="0 0 64 64" className="icon">
+            <SvgIcon
+                {...props}
+                viewBox="0 0 64 64"
+                className="icon"
+            >
                 <path className="st0" d="M0 0h30v30H0z"/>
                 <path className="st1" d="M34 0h30v30H34z"/>
                 <path className="st2" d="M34 34h30v30H34z"/>
@@ -89,16 +93,20 @@ export default class AzureInfo extends Component {
         );
         return (
             <div>
-                <AppBar title="Learn about Azure"
-                        titleStyle={{fontSize:'18px'}}
-                        iconElementLeft={<LogoIcon/>}
-                        className='app-header'
-                        onLeftIconButtonTouchTap={this.handleAppBarTouched}
-                        onTitleTouchTap={this.handleAppBarTouched}
-                        style={{maxHeight: appMaxHeight}}
+                <AppBar
+                    title="Learn about Azure"
+                    titleStyle={{fontSize:'18px'}}
+                    iconElementLeft={<LogoIcon/>}
+                    className='app-header'
+                    onLeftIconButtonTouchTap={this.handleAppBarTouched}
+                    onTitleTouchTap={this.handleAppBarTouched}
+                    style={{maxHeight: appMaxHeight}}
                 />
                 <div style={{minHeight: contentMaxHeight}}>
-                    <CircularProgress thickness={3} style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}/>
+                    <CircularProgress
+                        thickness={3}
+                        style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
+                    />
                     <AzureContent data={this.state.data}/>
                 </div>
                 <Menu history={ this.state.history } state={1}/>
