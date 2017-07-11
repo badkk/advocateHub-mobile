@@ -9,9 +9,6 @@ import {
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
 import {
-    DeviceAccessTime,
-    MapsLocalPhone,
-    MapsPlace,
     SocialShare,
     NavigationChevronRight,
     HardwareKeyboardArrowLeft,
@@ -83,9 +80,10 @@ export default class Meeting extends Component {
         this.state = {
             history: this.props.history,
             isOpen: false
-        }
+        };
+        this.handleShareButtonClick = this.handleShareButtonClick.bind(this);
     }
-    handleShareButtonClick = (e) => {
+    handleShareButtonClick(e) {
         this.setState({
             isOpen: true
         })

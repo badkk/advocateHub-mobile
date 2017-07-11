@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardMedia, CardText, CardTitle, CardActions, FlatButton} from 'material-ui'
+import {Card, CardHeader, CardMedia, CardTitle, CardActions, FlatButton} from 'material-ui'
 import '../styles/AboutContent.css'
 
 /**

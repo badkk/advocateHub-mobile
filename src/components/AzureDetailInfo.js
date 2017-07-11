@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {AppBar} from 'material-ui'
 import {NavigationArrowBack} from 'material-ui/svg-icons'
-import hackiFrame from '../utils/hackiFrame'
 /**
  * Created by t-zikfan on 2017/7/6.
  */

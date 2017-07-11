@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Tabs, Tab, Paper} from 'material-ui'
+import {Tabs, Tab} from 'material-ui'
 import { cyan500 } from 'material-ui/styles/colors';
 import SwipeableViews from 'react-swipeable-views';
 import '../../styles/ContentTap.css'
