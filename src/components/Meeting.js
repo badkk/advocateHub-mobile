@@ -29,7 +29,7 @@ class MeetingInfoPage extends Component {
         }
     }
     handleAzureTouchTap = () => {
-      window.location = "https://docs.microsoft.com/en-us/dotnet/azure/?view=azure-dotnet"
+      this.state.history.push('/azure')
     };
     handleAdvocateTouchTap = () => {
         this.state.history.push('/advocate')
@@ -41,7 +41,7 @@ class MeetingInfoPage extends Component {
             <div>
                 <ListItem
                     primaryText="Microsoft Azure"
-                    secondaryText="Using Azure deploying Angular.js"
+                    secondaryText="Learn more about Microsoft Azure"
                     leftAvatar={<Avatar src="AzureLogo.jpg" style={{borderRadius: 0}}/>}
                     rightIcon={infoButton}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
