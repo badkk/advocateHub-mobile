@@ -1,14 +1,21 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
 import {ListItem, Avatar,
-    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List, FlatButton} from 'material-ui'
+    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
     white,
     grey500
 } from 'material-ui/styles/colors';
 import '../styles/Meeting.css'
-import { DeviceAccessTime, MapsLocalPhone, MapsPlace, SocialShare,  NavigationChevronRight} from 'material-ui/svg-icons';
+import {
+    DeviceAccessTime,
+    MapsLocalPhone,
+    MapsPlace,
+    SocialShare,
+    NavigationChevronRight,
+    HardwareKeyboardArrowLeft,
+    NavigationMoreVert} from 'material-ui/svg-icons';
 import ContentTap from './commons/ContentTap'
 import IntroduceContent from './IntroduceContent'
 import AboutContent from './AboutContent'
@@ -58,6 +65,7 @@ class MeetingInfoPage extends Component {
 
     }
 }
+//future will add state component
 class MeetingContent extends Component {
     render() {
         const tabNames = ['Introduce', 'Notes', 'About'];
@@ -83,9 +91,17 @@ export default class Meeting extends Component {
         })
     };
     render() {
-        const backIcon = <IconButton><FontIcon className="material-icons" color={white}>keyboard_arrow_left</FontIcon></IconButton>;
-        const shareIcon = <IconButton onTouchTap={this.handleShareButtonClick}>
-            <FontIcon className="material-icons" color={white}>more_vert</FontIcon></IconButton>;
+        //icons
+        const backIcon = <IconButton><HardwareKeyboardArrowLeft color={white}/></IconButton>;
+        const shareIcon =
+            <IconButton
+                onTouchTap={this.handleShareButtonClick}
+            >
+                <NavigationMoreVert color={white}/>
+            </IconButton>;
+        const facebookIcon = <FontIcon className="fa fa-facebook-official"/>;
+        const twitterIcon = <FontIcon className="fa fa-twitter"/>;
+        const googlePlusIcon = <FontIcon className="fa fa-google-plus"/>;
         /* Bottom shared sheet */
         const sharedBottomSheet = <div>
             <BottomSheet
@@ -95,23 +111,27 @@ export default class Meeting extends Component {
                     </FloatingActionButton>
                 }
                 onRequestClose={() => this.setState({isOpen: false})}
-                open={this.state.isOpen}>
+                open={this.state.isOpen}
+            >
                 <h4 style={{color: grey500, marginLeft: '25px'}}>Share this meeting</h4>
                 <Divider inset/>
                 <List>
-                    <ListItem primaryText="Facebook" leftIcon={<MapsPlace/>}/>
-                    <ListItem primaryText="Twitter" leftIcon={<MapsLocalPhone/>}/>
-                    <ListItem primaryText="Google+" leftIcon={<DeviceAccessTime/>}/>
+                    <ListItem primaryText="Facebook" leftIcon={facebookIcon}/>
+                    <ListItem primaryText="Twitter" leftIcon={twitterIcon}/>
+                    <ListItem primaryText="Google+" leftIcon={googlePlusIcon}/>
                 </List>
             </BottomSheet>
         </div>;
         return (
             <div>
 
-                <AppBar title="Meeting Detail" iconElementLeft={backIcon} iconElementRight={shareIcon}
-                        className="meeting-app-bar"/>
+                <AppBar
+                    title="Meeting Detail"
+                    iconElementLeft={backIcon}
+                    iconElementRight={shareIcon}
+                    className="meeting-app-bar"
+                />
                 <MeetingInfoPage history={this.state.history}/>
-
                 <MeetingContent />
                 <Menu history={ this.state.history } state={0}/>
                 {sharedBottomSheet}
