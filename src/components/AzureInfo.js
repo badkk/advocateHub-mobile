@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
-import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton} from 'material-ui'
+import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import "../styles/AzureInfo.css"
 import _ from 'underscore'
 import get from '../restful/Get'
@@ -97,14 +97,6 @@ export default class AzureInfo extends Component {
         );
         return (
             <div>
-
-                <RaisedButton
-                    label="Try free account"
-                    primary={true}
-                    className="free-account-button"
-                    style={{height: appMaxHeight}}
-                    onTouchTap={this.handleTryButtonTouched}
-                />
                 <AppBar
                     title="Learn about Azure"
                     titleStyle={{fontSize:'18px'}}
@@ -114,6 +106,15 @@ export default class AzureInfo extends Component {
                     onTitleTouchTap={this.handleAppBarTouched}
                     style={{maxHeight: appMaxHeight}}
                 />
+                <Paper className="app-header">
+                    <RaisedButton
+                        label="Try free account"
+                        primary={true}
+                        className="free-account-button"
+                        style={{height: appMaxHeight}}
+                        onTouchTap={this.handleTryButtonTouched}
+                    />
+                </Paper>
                 <div style={{minHeight: contentMaxHeight}}>
                     <CircularProgress
                         thickness={3}
