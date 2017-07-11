@@ -5,8 +5,10 @@
 .app-header {
     display: flex;
     align-items: center;
+    position: -webkit-sticky!important;
     position: sticky!important;
-    top:0;
+    top:0!important;
+    z-index: 400!important;
 }
 .icon {
     margin-left: 10px;
@@ -23,9 +25,10 @@
 }
 .free-account-button {
     width: 100%!important;
+    position: -webkit-sticky!important;
     position: sticky!important;
     top: 0!important;
-    z-index: 9999!important;
+    z-index: 500!important;
 }
 .free-account-button > button {
     background-color: #8BC34A!important;
