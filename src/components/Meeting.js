@@ -65,8 +65,9 @@ class MeetingInfoPage extends Component {
 //future will add state component
 class MeetingContent extends Component {
     render() {
+        const maxPanelHeight = window.screen.height * 0.72 - 100;
         const tabNames = ['Introduce', 'Notes', 'About'];
-        const contents = [<IntroduceContent/>, <NotesContent/>, <AboutContent/>];
+        const contents = [<IntroduceContent maxHeight={maxPanelHeight} />, <NotesContent maxHeight={maxPanelHeight} />, <AboutContent maxHeight={maxPanelHeight} />];
         return (
             <div>
                 <ContentTap tabNames={tabNames} contents={contents}/>

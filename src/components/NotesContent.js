@@ -11,7 +11,7 @@ export default class NotesContent extends Component {
     render() {
         const content = MarkdownContent.art1;
         return (
-            <div className="content-panel">
+            <div className="content-panel" style={{maxHeight: this.props.maxHeight}}>
                 <ReactMarkdown className="markdown-body" source={content} softBreak="br" sourcePos={true}/>
             </div>);
     }
