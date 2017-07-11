@@ -28,9 +28,8 @@ export default class IntroduceContent extends Component {
                 <div>
                     <img src={img} style={{height: {imgHeight}}}/>
                     <div className='introduce-carousel-text-panel'>
-                        <span style={{margin:0, fontSize: '18px', fontWeight: 'bold'}}>Deploying Angular to Azure {idx}</span>
+                        <span style={{margin:0, fontSize: '15px', fontWeight: 'bold'}}>Deploying Angular to Azure {idx}</span>
                         <br/>
-                        <span>Content about Slide {idx}</span>
                     </div>
                 </div>
             );

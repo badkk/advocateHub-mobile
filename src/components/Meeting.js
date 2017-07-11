@@ -126,7 +126,6 @@ export default class Meeting extends Component {
         </div>;
         return (
             <div>
-
                 <AppBar
                     title="Meeting Detail"
                     iconElementLeft={backIcon}
