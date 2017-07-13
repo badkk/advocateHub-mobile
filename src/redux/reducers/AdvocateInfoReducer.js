@@ -15,6 +15,9 @@ const initialStates = {
 function handleUnfollowCount(flag, count) {
     return flag ? -- count : ++ count;
 }
+function facebookLoginAction () {
+
+}
 export default (state=initialStates, action) => {
     const followFbStatus = state.followedFb;
     const followGhStatus = state.followedGh;

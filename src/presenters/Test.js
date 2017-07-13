@@ -5,14 +5,35 @@ import {connect} from 'react-redux'
  * test react redux
  */
 //presenter
+/*global FB*/
 class Test extends Component {
+    componentDidMount() {
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '689977874520550',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            let js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'))
+    }
+    myFacebookLogin= () => {
+        FB.login(function(){}, {scope: 'publish_actions'});
+    };
     render() {
-        const {value, onIncreaseClick} = this.props;
-        console.log(value);
         return (
             <div>
-                <span>{value}</span>
-                <button onClick={onIncreaseClick}>Add</button>
+                <input/>
+                <button onClick={this.myFacebookLogin}>facebook login</button>
             </div>
         );
     }
@@ -23,14 +44,8 @@ const increaseAction = {
   type: 'increase'
 };
 //reducer
-export function counter(state = {count: 0}, action) {
-    const count = state.count;
-    switch(action.type) {
-        case 'increase':
-            return { count: count + 1 };
-        default:
-            return state
-    }
+export function CounterReducer(state = {count: 0}, action) {
+    return state;
 }
 //binding
 function mapStateToProps(state) {
