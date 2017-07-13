@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui'
 import { cyan500 } from 'material-ui/styles/colors';
 import SwipeableViews from 'react-swipeable-views';
-import '../../styles/ContentTap.css'
+import '../styles/ContentTap.css'
 import _ from 'underscore'
 /**
  * Created by lucas on 2017/7/4.

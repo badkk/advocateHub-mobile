@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Menu from './commons/Menu'
+import Menu from './Menu'
 import {ListItem, Avatar,
     FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
@@ -13,7 +13,7 @@ import {
     NavigationChevronRight,
     HardwareKeyboardArrowLeft,
     NavigationMoreVert} from 'material-ui/svg-icons';
-import ContentTap from './commons/ContentTap'
+import ContentTap from './ContentTap'
 import IntroduceContent from './IntroduceContent'
 import AboutContent from './AboutContent'
 import NotesContent from './NotesContent'

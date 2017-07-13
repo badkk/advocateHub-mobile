@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Menu from './commons/Menu'
+import Menu from './Menu'
 import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import "../styles/AzureInfo.css"
 import _ from 'underscore'

@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
-import '../../styles/Menu.css'
-import Strings from '../../res/values/string'
+import '../styles/Menu.css'
+import Strings from '../res/values/string'
 
 const articleIcon = <FontIcon className="material-icons">assignment</FontIcon>;
 const relatedIcon = <FontIcon className="material-icons">cloud</FontIcon>;
