@@ -14,16 +14,8 @@ const iFramePanelHeight = window.screen.height * 0.8;
 const appBarHeight = window.screen.height * 0.12;
 class InfoBar extends Component {
     render() {
-        const {unFollowCount, handleBtmSheetOpen} = this.props;
-        const followedIconButton = (
-            <Badge
-                badgeContent={unFollowCount}
-                secondary={true}
-                badgeStyle={{display: unFollowCount <= 0 ? 'none' : 'flex', zIndex: 1}}
-                style={{padding: 0}}>
-                <RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>
-            </Badge>
-        );
+        const {handleBtmSheetOpen} = this.props;
+        const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
         return (
             <Paper style={{maxHeight: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
@@ -39,15 +31,31 @@ class InfoBar extends Component {
 }
 class SocialMediaBtmSheet extends Component {
     render() {
-        const { isOpen, followedFb, followedTt, followedGh, handleFbFollow, handleGhFollow, handleTtFollow, handleBtmSheetClose} = this.props;
+        const {
+            isOpen,
+            followedTt,
+            followedGh,
+            handleFbFollow,
+            handleGhFollow,
+            handleTtFollow,
+            handleBtmSheetClose,
+            facebookHomePage
+        } = this.props;
         /* Bottom shared sheet */
         //icons
         const GithubIcon = <FontIcon className="fa fa-github"/>;
         const TwitterIcon = <FontIcon className="fa fa-twitter"/>;
         const FacebookIcon = <FontIcon className="fa fa-facebook-square"/>;
+        //facebookHref
+        const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
         //followedButton
-        const followFbIcon = followedFb ? <ActionCheckCircle color={green500}/> :
-            <ContentAddCircle color={grey500}/>;
+        const followFbIcon = <iframe src={facebookHref}
+                                     width="auto"
+                                     height="30"
+                                     scrolling="no"
+                                     frameBorder="0"
+                                     className="follow-facebook-button"
+                                     allowTransparency="true"/>;
         const followTtIcon = followedTt ? <ActionCheckCircle color={green500}/> :
             <ContentAddCircle color={grey500}/>;
         const followGhIcon =  followedGh ? <ActionCheckCircle color={green500}/> :
@@ -107,7 +115,7 @@ export default class AdvocateInfoPresenter extends Component {
     render() {
         return (
             <div>
-                <InfoBar unFollowCount={this.props.unFollowedCount} handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
+                <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage/>
                 <Menu history={ this.props.history} state={2}/>
                 <SocialMediaBtmSheet
@@ -119,6 +127,7 @@ export default class AdvocateInfoPresenter extends Component {
                     handleFbFollow={this.props.handleFbFollow}
                     handleTtFollow={this.props.handleTtFollow}
                     handleGhFollow={this.props.handleGhFollow}
+                    facebookHomePage={this.props.facebookHomePage}
                 />
             </div>
         );

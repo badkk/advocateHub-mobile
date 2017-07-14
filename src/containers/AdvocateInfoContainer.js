@@ -9,12 +9,12 @@ import AdvocateInfoPresenter from '../presenters/AdvocateInfoPresenter'
 //binding
 function mapStateToProps(state) {
     return {
-        unFollowedCount: state.advocateInfoReducer.unFollowedCount,
         loading: state.advocateInfoReducer.loading,
         isOpen: state.advocateInfoReducer.isOpen,
         followedFb: state.advocateInfoReducer.followedFb,
         followedTt: state.advocateInfoReducer.followedTt,
         followedGh: state.advocateInfoReducer.followedGh,
+        facebookHomePage: state.advocateInfoReducer.facebookHomePage
     }
 }
 
@@ -22,9 +22,9 @@ function mapDispatchToProps(dispatch) {
     return {
         handleBtmSheetOpen: () => dispatch(openBSAction),
         handleBtmSheetClose: () => dispatch(closeBSAction),
-        handleFbFollow: () => dispatch(followFbAction),
         handleTtFollow: () => dispatch(followTtAction),
-        handleGhFollow: () => dispatch(followGhAction)
+        handleGhFollow: () => dispatch(followGhAction),
+        handleFbFollow: () => dispatch(followFbAction)
     }
 }
 

@@ -2,6 +2,9 @@
     position: sticky!important;
     top:0;
 }
+.follow-facebook-button {
+    margin-left: -90px!important;
+}
 .follow-button {
     min-width: 50px!important;
     width: 80px!important;
