@@ -32,7 +32,7 @@ class MeetingInfoPage extends Component {
       this.state.history.push('/azure')
     };
     handleAdvocateTouchTap = () => {
-        this.state.history.push('/advocate')
+        this.state.history.push('/advocate/johnpapa')
     };
     render() {
         const meetingInfoMaxHeight = window.screen.height * 0.1;

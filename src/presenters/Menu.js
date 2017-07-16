@@ -15,6 +15,7 @@ const moreIcon = <FontIcon className="material-icons">subject</FontIcon>;
  * Created by t-zikfan on 2017/6/30.
  */
 //menu height = 8%
+const height = window.screen.height * 0.08;
 export default class Menu extends Component {
     constructor(props) {
         super(props);
@@ -48,11 +49,9 @@ export default class Menu extends Component {
         this.state.history.push(path);
     }
     render() {
-        const height = window.screen.height * 0.08;
         return (
             <Paper zDepth={1} style={{maxHeight:height}} className="menu-box" >
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
-
                     <BottomNavigationItem
                         label={Strings.menuItem3}
                         icon={articleIcon}

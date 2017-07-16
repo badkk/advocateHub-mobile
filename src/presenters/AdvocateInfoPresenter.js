@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Menu from './Menu'
-import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, Badge, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
+import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
 import "../styles/AdvocateInfo.css"
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import { SocialPersonAdd, ContentAddCircle, ActionCheckCircle } from 'material-ui/svg-icons'
@@ -10,7 +10,7 @@ import {grey500, green500} from 'material-ui/styles/colors'
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
-const iFramePanelHeight = window.screen.height * 0.8;
+const iFramePanelHeight = window.screen.height * 0.88;
 const appBarHeight = window.screen.height * 0.12;
 class InfoBar extends Component {
     render() {
@@ -21,7 +21,7 @@ class InfoBar extends Component {
                 <ListItem
                     primaryText="John Papa"
                     secondaryText="Node.js, .NET, React"
-                    leftAvatar={<Avatar src="johnpapa.png" />}
+                    leftAvatar={<Avatar src="../johnpapa.png" />}
                     rightIconButton={followedIconButton}
                     style={{width:"100%"}}
                 />
@@ -123,7 +123,7 @@ export default class AdvocateInfoPresenter extends Component {
         return (
             <div>
                 <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
-                <PersonalPage/>
+                <PersonalPage />
                 <Menu history={ this.props.history} state={2}/>
                 <SocialMediaBtmSheet
                     isOpen={this.props.isOpen}

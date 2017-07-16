@@ -9,6 +9,7 @@ import Article from './presenters/Article'
 import AzureInfo from './presenters/AzureInfo'
 import Meeting from './presenters/Meeting'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
+import HomePresenter from './presenters/HomePresenter'
 import More from './presenters/More'
 import AzureDetailInfo from './presenters/AzureDetailInfo'
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -37,7 +38,10 @@ class App extends Component {
                             <Route path="/azure/detail" component={AzureDetailInfo}/>
                             <Route path="/azure" component={AzureInfo}/>
                         </Switch>
-                        <Route path="/advocate" component={AdvocateInfoContainer}/>
+                        <Switch>
+                            <Route path="/advocate/:ids" component={AdvocateInfoContainer}/>
+                            <Route path="/advocate" component={HomePresenter}/>
+                        </Switch>
                         <Route path="/article" component={Article}/>
                         <Route path="/more" component={More}/>
                         <Route path="/test" component={TestContainer}/>
