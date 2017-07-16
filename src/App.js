@@ -13,14 +13,18 @@ import More from './presenters/More'
 import AzureDetailInfo from './presenters/AzureDetailInfo'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
 import {TestContainer, counter} from './presenters/Test'
 import rootReducer from './redux/reducers/RootReducer'
 
 // Phone touch action
 injectTapEventPlugin();
 //reduce global store
-const store = createStore(rootReducer);
+const store = createStore(
+    rootReducer,
+    applyMiddleware(thunk)
+);
 
 class App extends Component {
     render() {

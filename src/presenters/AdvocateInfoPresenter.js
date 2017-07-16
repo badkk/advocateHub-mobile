@@ -35,6 +35,7 @@ class SocialMediaBtmSheet extends Component {
             isOpen,
             followedTt,
             followedGh,
+            twitterName,
             handleFbFollow,
             handleGhFollow,
             handleTtFollow,
@@ -60,6 +61,9 @@ class SocialMediaBtmSheet extends Component {
             <ContentAddCircle color={grey500}/>;
         const followGhIcon =  followedGh ? <ActionCheckCircle color={green500}/> :
             <ContentAddCircle color={grey500}/>;
+        const followTtHandler = () => {
+            handleTtFollow(followedTt, twitterName);
+        }
         return (
             <BottomSheet
                 action={
@@ -80,8 +84,8 @@ class SocialMediaBtmSheet extends Component {
                     <ListItem primaryText="Twitter"
                               secondaryText="Followers: 59,8578"
                               leftIcon={TwitterIcon}
-                              rightIconButton={<IconButton
-                                  onTouchTap={handleTtFollow}>{followTtIcon}</IconButton>}/>
+                              rightIconButton={
+                                  <IconButton onTouchTap={followTtHandler}>{followTtIcon}</IconButton>}/>
                     <ListItem primaryText="Github"
                               secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}
@@ -112,6 +116,9 @@ class PersonalPage extends Component {
     }
 }
 export default class AdvocateInfoPresenter extends Component {
+    componentDidMount() {
+        //this.props.initial(this.props.twitterName);
+    }
     render() {
         return (
             <div>
@@ -128,6 +135,7 @@ export default class AdvocateInfoPresenter extends Component {
                     handleTtFollow={this.props.handleTtFollow}
                     handleGhFollow={this.props.handleGhFollow}
                     facebookHomePage={this.props.facebookHomePage}
+                    twitterName={this.props.twitterName}
                 />
             </div>
         );
