@@ -1,0 +1,26 @@
+.home-app-header {
+    display: flex;
+    align-items: center;
+    position: sticky!important;
+    top: 0;
+}
+.home-activity-shows {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    line-height: 200px;
+}
+.top-advocates-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+.top-advocates-title {
+    font-size: 20px;
+    margin: 0;
+    color: grey;
+    padding: 10px;
+}
