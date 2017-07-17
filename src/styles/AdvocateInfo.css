@@ -8,7 +8,11 @@
     justify-content: flex-end!important;
     z-index: 9999!important;
 }
-
+.twitter-follow-button-div {
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+}
 .follow-button {
     min-width: 50px!important;
     width: 80px!important;

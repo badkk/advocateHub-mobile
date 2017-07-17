@@ -26,7 +26,8 @@ export const followFbAction = {
 export function followTtActionCreator(followStatus, twitterName) {
     console.log(followStatus, twitterName);
     return dispatch => {
-        initTwitter(dispatch);
+        //lookUpTwitterRelationship(twitterName, dispatch);
+        //continue;
     }
 }
 export const followGhAction = {
@@ -119,7 +120,7 @@ function lookUpTwitterRelationshipCallback(reply) {
         status = true;
     }
     return {
-        type: INITIAL,
+        type: FOLLOW_TT,
         followedTt: status
     }
 }

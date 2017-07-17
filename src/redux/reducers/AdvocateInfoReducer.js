@@ -11,7 +11,7 @@ const initialStates = {
     followedFb: false,
     followedGh: false,
     facebookHomePage: 'https://www.facebook.com/papajohns/',
-    twitterPage: 'https://twitter.com/John_Papa',
+    twitterName: 'John_Papa',
     followedTt: false,
 
 };

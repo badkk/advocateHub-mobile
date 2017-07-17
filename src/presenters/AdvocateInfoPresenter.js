@@ -35,7 +35,7 @@ class SocialMediaBtmSheet extends Component {
             isOpen,
             followedTt,
             followedGh,
-            twitterPage,
+            twitterName,
             handleFbFollow,
             handleGhFollow,
             handleTtFollow,
@@ -49,6 +49,8 @@ class SocialMediaBtmSheet extends Component {
         const FacebookIcon = <FontIcon className="fa fa-facebook-square"/>;
         //facebookHref
         const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
+        //twitterHref
+        const twitterHref = "https://platform.twitter.com/widgets/follow_button.html?screen_name=" + twitterName + "&show_screen_name=false&show_count=false&size=l";
         //followedButton
         const followFbIcon = <iframe src={facebookHref}
                                      title="Follow me"
@@ -57,14 +59,20 @@ class SocialMediaBtmSheet extends Component {
                                      scrolling="no"
                                      frameBorder="0"
                                      allowTransparency="true"/>;
-        const followTtIcon = followedTt ? <ActionCheckCircle color={green500}/> :
-            <div>
-                <a className="twitter-follow-button"
-                   href={twitterPage}
-                   data-size="large"
-                   data-show-count="false"
-                   data-show-screen-name="false">Follow</a>
-            </div>;
+        const displayCheck = followedTt ? "block" : "none";
+        const followTtIcon = (
+            <div className="twitter-follow-button-div">
+                <iframe src={twitterHref}
+                     title="Twitter Following Button"
+                     width="80%"
+                     height="30"
+                     scrolling="no"
+                     frameBorder="0"
+                     allowTransparency="true"/>
+                <ActionCheckCircle color="#4CAF50" style={{display: displayCheck}}/>
+            </div>
+        );
+
         const followGhIcon = followedGh ? <ActionCheckCircle color={green500}/> :
             <ContentAddCircle color={grey500}/>;
         return (
@@ -145,7 +153,7 @@ export default class AdvocateInfoPresenter extends Component {
                     handleTtFollow={this.props.handleTtFollow}
                     handleGhFollow={this.props.handleGhFollow}
                     facebookHomePage={this.props.facebookHomePage}
-                    twitterPage={this.props.twitterPage}
+                    twitterName={this.props.twitterName}
                 />
             </div>
         );
