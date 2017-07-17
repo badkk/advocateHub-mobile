@@ -60,10 +60,10 @@ class SocialMediaBtmSheet extends Component {
         const followTtIcon = followedTt ? <ActionCheckCircle color={green500}/> :
             <div>
                 <a className="twitter-follow-button"
-               href={twitterPage}
-               data-size="large"
-               data-show-count="false"
-               data-show-screen-name="false">Follow</a>
+                   href={twitterPage}
+                   data-size="large"
+                   data-show-count="false"
+                   data-show-screen-name="false">Follow</a>
             </div>;
         const followGhIcon = followedGh ? <ActionCheckCircle color={green500}/> :
             <ContentAddCircle color={grey500}/>;
