@@ -52,11 +52,10 @@ class SocialMediaBtmSheet extends Component {
         //followedButton
         const followFbIcon = <iframe src={facebookHref}
                                      title="Follow me"
-                                     width="auto"
+                                     width="100%"
                                      height="30"
                                      scrolling="no"
                                      frameBorder="0"
-                                     className="follow-facebook-button"
                                      allowTransparency="true"/>;
         const followTtIcon = followedTt ? <ActionCheckCircle color={green500}/> :
             <div>
@@ -84,12 +83,18 @@ class SocialMediaBtmSheet extends Component {
                               secondaryText="Followers: 29,1552"
                               leftIcon={FacebookIcon}
                               rightIconButton={
-                                  <IconButton onTouchTap={handleFbFollow}>{followFbIcon}</IconButton>}/>
+                                  <IconButton
+                                      onTouchTap={handleFbFollow}
+                                      className="advocate-follow-button"
+                                  >{followFbIcon}</IconButton>}/>
                     <ListItem primaryText="Twitter"
                               secondaryText="Followers: 59,8578"
                               leftIcon={TwitterIcon}
                               rightIconButton={
-                                  <IconButton onTouchTap={handleTtFollow}>{followTtIcon}</IconButton>}/>
+                                  <IconButton
+                                      onTouchTap={handleTtFollow}
+                                      className="advocate-follow-button"
+                                  >{followTtIcon}</IconButton>}/>
                     <ListItem primaryText="Github"
                               secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}

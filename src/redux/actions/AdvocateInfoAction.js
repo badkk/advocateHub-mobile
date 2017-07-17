@@ -88,9 +88,9 @@ function initTwitter(dispatch) {
     } else {
         handleTwitterUnfollowEvent(twitterName, dispatch);
     }*/
-    window.twttr.ready(
-        window.twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
-    );
+    window.twttr.ready(function (twttr) {
+        twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
+    });
 }
 function lookUpTwitterRelationshipCallback(reply) {
     console.log(reply);

@@ -2,12 +2,10 @@
     position: sticky!important;
     top:0;
 }
-.follow-facebook-button {
-    margin-left: -90px!important;
-    z-index: 9999;
-}
-.twitter-follow-button {
-    margin-left: -90px!important;
+.advocate-follow-button {
+    display: flex!important;
+    width:140px!important;
+    justify-content: flex-end!important;
     z-index: 9999;
 }
 
