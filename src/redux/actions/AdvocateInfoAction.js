@@ -38,7 +38,7 @@ export function initialActionCreator() {
         lookUpTwitterRelationship(twitterName, dispatch)
     }*/
     return dispatch => {
-        initTwitter(dispatch);
+        initPage(dispatch);
     }
 }
 function handleTwitterFollowed(res) {
@@ -48,7 +48,7 @@ function handleTwitterFollowed(res) {
         followedTt: true
     });
 }
-function initTwitter(dispatch) {
+function initPage(dispatch) {
     /*cb.setConsumerKey("O1p1W7B2UZC4fy16gb4QiLb4K", "GKE8IQVGCOveOQsZxS3dse4dm0wqY7l4ui05OPczMPHD3hO3zC");
     // gets a request token
     //let oauth_token = localStorage.getItem("oauth_token");
@@ -89,6 +89,7 @@ function initTwitter(dispatch) {
     } else {
         handleTwitterUnfollowEvent(twitterName, dispatch);
     }*/
+    //init twitter js
     window.twttr = (function(d, s, id) {
         let js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
@@ -108,6 +109,13 @@ function initTwitter(dispatch) {
     window.twttr.ready(function (twttr) {
         twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
     })
+    //init github js
+    const script = document.createElement("script");
+
+    script.src = "https://buttons.github.io/buttons.js";
+    script.async = true;
+
+    document.body.appendChild(script);
 }
 function lookUpTwitterRelationshipCallback(reply) {
     console.log(reply);
@@ -141,7 +149,6 @@ function handleTwitterUnfollowEventCallback(reply) {
     }
 }
 function lookUpTwitterRelationship(twitterName, dispatch) {
-    initTwitter();
     return cb.__call(
         "friendships/lookup",
         {

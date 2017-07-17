@@ -1,3 +1,6 @@
+.home-background-div {
+    background-color: #F5F5F5;
+}
 .home-app-header {
     display: flex;
     align-items: center;
@@ -36,12 +39,23 @@
 .top-advocates-panel {
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
     padding: 10px;
+    overflow-x: scroll!important;
 }
 .top-advocates-title {
     font-size: 16px;
     margin: 0;
     color: grey;
     padding: 10px;
+}
+.home-advocates-list {
+    margin-top: 10px;
+}
+.home-aspects-subheader {
+    display: flex!important;
+    align-items: center;
+}
+.home-aspects-subheader > button > div > span {
+    font-size: 12px!important;
+    text-transform: capitalize!important;
 }

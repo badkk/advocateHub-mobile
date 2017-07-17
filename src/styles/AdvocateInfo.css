@@ -4,7 +4,7 @@
 }
 .advocate-follow-button {
     display: flex!important;
-    width:140px!important;
+    width: 160px!important;
     justify-content: flex-start!important;
     z-index: 9999!important;
 }
