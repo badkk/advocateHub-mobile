@@ -126,7 +126,7 @@ class PersonalPage extends Component {
     }
 }
 export default class AdvocateInfoPresenter extends Component {
-    componentDidMount() {
+    componentWillUpdate() {
         this.props.initial();
     }
     render() {
