@@ -35,7 +35,7 @@ class SocialMediaBtmSheet extends Component {
             isOpen,
             followedTt,
             followedGh,
-            twitterName,
+            twitterPage,
             handleFbFollow,
             handleGhFollow,
             handleTtFollow,
@@ -59,12 +59,15 @@ class SocialMediaBtmSheet extends Component {
                                      className="follow-facebook-button"
                                      allowTransparency="true"/>;
         const followTtIcon = followedTt ? <ActionCheckCircle color={green500}/> :
+            <div>
+                <a className="twitter-follow-button"
+               href={twitterPage}
+               data-size="large"
+               data-show-count="false"
+               data-show-screen-name="false">Follow</a>
+            </div>;
+        const followGhIcon = followedGh ? <ActionCheckCircle color={green500}/> :
             <ContentAddCircle color={grey500}/>;
-        const followGhIcon =  followedGh ? <ActionCheckCircle color={green500}/> :
-            <ContentAddCircle color={grey500}/>;
-        const followTtHandler = () => {
-            handleTtFollow(followedTt, twitterName);
-        };
         return (
             <BottomSheet
                 action={
@@ -80,13 +83,13 @@ class SocialMediaBtmSheet extends Component {
                     <ListItem primaryText="Facebook"
                               secondaryText="Followers: 29,1552"
                               leftIcon={FacebookIcon}
-                              rightIconButton={<IconButton
-                                  onTouchTap={handleFbFollow}>{followFbIcon}</IconButton>}/>
+                              rightIconButton={
+                                  <IconButton onTouchTap={handleFbFollow}>{followFbIcon}</IconButton>}/>
                     <ListItem primaryText="Twitter"
                               secondaryText="Followers: 59,8578"
                               leftIcon={TwitterIcon}
                               rightIconButton={
-                                  <IconButton onTouchTap={followTtHandler}>{followTtIcon}</IconButton>}/>
+                                  <IconButton onTouchTap={handleTtFollow}>{followTtIcon}</IconButton>}/>
                     <ListItem primaryText="Github"
                               secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}
@@ -119,7 +122,7 @@ class PersonalPage extends Component {
 }
 export default class AdvocateInfoPresenter extends Component {
     componentDidMount() {
-        //this.props.initial(this.props.twitterName);
+        this.props.initial();
     }
     render() {
         return (
@@ -137,7 +140,7 @@ export default class AdvocateInfoPresenter extends Component {
                     handleTtFollow={this.props.handleTtFollow}
                     handleGhFollow={this.props.handleGhFollow}
                     facebookHomePage={this.props.facebookHomePage}
-                    twitterName={this.props.twitterName}
+                    twitterPage={this.props.twitterPage}
                 />
             </div>
         );

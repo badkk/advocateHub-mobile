@@ -25,27 +25,72 @@ export const followFbAction = {
 };
 export function followTtActionCreator(followStatus, twitterName) {
     console.log(followStatus, twitterName);
-    if (followStatus === true) {
-        return dispatch => {
-            handleTwitterUnfollowEvent(twitterName, dispatch);
-        }
-    } else {
-        return dispatch=> {
-            handleTwitterFollowEvent(twitterName, dispatch)
-        }
+    return dispatch => {
+        initTwitter(dispatch);
     }
-};
+}
 export const followGhAction = {
     type: FOLLOW_GH
 };
-export function initialActionCreator(twitterName) {
-    return dispatch=> {
+export function initialActionCreator() {
+    /*return dispatch=> {
         lookUpTwitterRelationship(twitterName, dispatch)
+    }*/
+    return dispatch => {
+        initTwitter(dispatch);
     }
 }
-function initTwitter() {
-    cb.setConsumerKey("rUSunMlRwYz5pqNtDpFMpyGiD", "KjRuDPBqZQyu9ojO9tMrjclGDZrx8XJIRyffvxPgOZ4u6w1VgF");
-    cb.setToken("1284688014-ltPL0wlZHMQTGPDaokYGV2GfhjtqRYtdz4Beckb", "LTQq1J3hStlkx6CJEEsDaaBNrbAdeGLLJTTVH5fqaKs6L");
+function handleTwitterFollowed(res) {
+    console.log(res);
+    return ({
+        type: INITIAL,
+        followedTt: true
+    });
+}
+function initTwitter(dispatch) {
+    /*cb.setConsumerKey("O1p1W7B2UZC4fy16gb4QiLb4K", "GKE8IQVGCOveOQsZxS3dse4dm0wqY7l4ui05OPczMPHD3hO3zC");
+    // gets a request token
+    //let oauth_token = localStorage.getItem("oauth_token");
+    //let oauth_token_secret = localStorage.getItem("oauth_token_secret");
+    //if (oauth_token && oauth_token_secret) {
+    //    cb.setToken(oauth_token, oauth_token_secret);
+    //} else {
+    cb.__call(
+        "oauth/requestToken",
+        {
+            oauth_callback: "oob"
+        },
+        function (reply, rate, err) {
+            if (err) {
+                console.log("error response or timeout exceeded" + err.error);
+            }
+            if (reply) {
+                // store the authenticated token, which may be different from the request token (!)
+                console.log(reply);
+                if (reply.oauth_callback_confirmed) {
+                    cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                    cb.__call(
+                        "oauth_authenticate",
+                        {},
+                        function (auth_url) {
+                            window.codebird_auth = window.open(auth_url);
+                            localStorage.setItem("oauth_token", reply.oauth_token);
+                            localStorage.setItem("oauth_token_secret", reply.oauth_token_secret);
+                        }
+                    );
+                }
+            }
+        }
+    );*/
+    //}
+    /*if (isFollow) {
+        handleTwitterFollowEvent(twitterName, dispatch);
+    } else {
+        handleTwitterUnfollowEvent(twitterName, dispatch);
+    }*/
+    window.twttr.ready(
+        window.twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
+    );
 }
 function lookUpTwitterRelationshipCallback(reply) {
     console.log(reply);
@@ -64,13 +109,7 @@ function lookUpTwitterRelationshipCallback(reply) {
 }
 function handleTwitterFollowEventCallback(reply) {
     console.log(reply);
-    let status = false;
-    if (typeof reply !== 'undefined') {
-        //success
-        status = true;
-    } else {
-        status = false;
-    }
+    let status = typeof reply !== 'undefined' && typeof reply.errors === 'undefined';
     return {
         type: FOLLOW_TT,
         success: status
@@ -78,13 +117,7 @@ function handleTwitterFollowEventCallback(reply) {
 }
 function handleTwitterUnfollowEventCallback(reply) {
     console.log(reply);
-    let status = false;
-    if (typeof reply !== 'undefined') {
-        //success
-        status = false;
-    } else {
-        status = true;
-    }
+    let status = typeof reply === 'undefined' && typeof reply.errors === 'undefined';
     return {
         type: UNFOLLOW_TT,
         success: status
@@ -102,7 +135,6 @@ function lookUpTwitterRelationship(twitterName, dispatch) {
 }
 function handleTwitterFollowEvent(twitterName, dispatch) {
     //initial twitter account seetings
-    initTwitter();
     cb.__call(
         "friendships/create",
         {
@@ -113,7 +145,6 @@ function handleTwitterFollowEvent(twitterName, dispatch) {
 }
 function handleTwitterUnfollowEvent(twitterName, dispatch) {
     //initial twitter account seetings
-    initTwitter();
     cb.__call(
         "friendships/destroy",
         {
