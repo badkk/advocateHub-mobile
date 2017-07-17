@@ -51,6 +51,7 @@ class SocialMediaBtmSheet extends Component {
         const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
         //followedButton
         const followFbIcon = <iframe src={facebookHref}
+                                     title="Follow me"
                                      width="auto"
                                      height="30"
                                      scrolling="no"
@@ -63,7 +64,7 @@ class SocialMediaBtmSheet extends Component {
             <ContentAddCircle color={grey500}/>;
         const followTtHandler = () => {
             handleTtFollow(followedTt, twitterName);
-        }
+        };
         return (
             <BottomSheet
                 action={
@@ -106,6 +107,7 @@ class PersonalPage extends Component {
                     style={{position: 'absolute', padding:'45%', display: loading ? "inline-block" : "none"}}
                 />
                 <iframe src="https://johnpapa.net/"
+                        title="John papa's homepage"
                         height={iFramePanelHeight}
                         width='100%'
                         frameBorder="0"

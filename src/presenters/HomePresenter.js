@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
 import SearchBar from 'material-ui-search-bar'
-import { Paper, SvgIcon, Avatar, Divider} from 'material-ui'
+import { Paper, SvgIcon, Divider} from 'material-ui'
 import Slider from 'react-slick'
 import Menu from './Menu'
+import BtmTextAvatar from './BtmTextAvatar'
 import '../styles/Home.css'
 /**
  * Created by lucas on 2017/7/16.
  * The Home page
  */
-const appBarHeight = window.screen.height * 0.12;
-const bodyHeight = window.screen.height * 0.88;
+const appBarHeight = window.screen.height * 0.1;
+const bodyHeight = window.screen.height * 0.82;
 export default class HomePresenter extends Component{
     render() {
         //ms logo
@@ -18,7 +19,7 @@ export default class HomePresenter extends Component{
                 {...props}
                 viewBox="0 0 64 64"
                 className="icon"
-                style={{height: '35px', width: '35px', marginRight: 0}}
+                style={{height: '30px', width: '30px', marginRight: 0}}
             >
                 <path className="st0" d="M0 0h30v30H0z"/>
                 <path className="st1" d="M34 0h30v30H34z"/>
@@ -37,10 +38,10 @@ export default class HomePresenter extends Component{
             autoplay: true,
         };
         const content = [
-            <div className="home-activity-shows" style={{backgroundColor: '#EC407A'}}>content1</div>,
-            <div className="home-activity-shows" style={{backgroundColor: '#3F51B5'}}>content2</div>,
-            <div className="home-activity-shows" style={{backgroundColor: '#8BC34A'}}>content3</div>
-        ]
+            <div className="home-activity-shows" style={{backgroundColor: '#EC407A'}}>Azure Info1</div>,
+            <div className="home-activity-shows" style={{backgroundColor: '#3F51B5'}}>Azure Info2</div>,
+            <div className="home-activity-shows" style={{backgroundColor: '#8BC34A'}}>Azure Info3</div>
+        ];
         const carouselContent = (
             <div>
                 <Slider {...settings}>
@@ -49,27 +50,23 @@ export default class HomePresenter extends Component{
             </div>
         );
         const topAdvocates = [
-            <Avatar size={45}>JP</Avatar>,
-            <Avatar size={45}>JZ</Avatar>,
-            <Avatar size={45}>LX</Avatar>,
-            <Avatar size={45}>JM</Avatar>,
-            <Avatar size={45}>MM</Avatar>
-        ]
+            <BtmTextAvatar title="John Papa" src="johnpapa.png" touchFunc={() => {this.props.history.push('/advocate/johnpapa')}}/>,
+            <BtmTextAvatar title="Mary Mama"/>,
+            <BtmTextAvatar title="Linda Xu"/>,
+            <BtmTextAvatar title="Christine Zhao"/>,
+            <BtmTextAvatar title="Hou Yi"/>
+        ];
         return (
             <div>
-                <Paper zDepth={0} style={{maxHeight: appBarHeight}} className="home-app-header">
+                <Paper zDepth={0} style={{height: appBarHeight}} className="home-app-header">
                     <LogoIcon />
                     <SearchBar
                         hintText="Search advocate"
                         onChange={() => console.log('onChange')}
                         onRequestSearch={() => console.log('onRequestSearch')}
-                        style={{
-                            margin: '10px',
-                            width: '90%',
-                        }}
                     />
                 </Paper>
-                <div style={{height: bodyHeight}}>
+                <div style={{height: bodyHeight, overflowY: 'auto'}}>
                     <div> {carouselContent} </div>
                     <Paper>
                         <p className="top-advocates-title">Top Advocates</p>
@@ -78,7 +75,10 @@ export default class HomePresenter extends Component{
                             {topAdvocates}
                         </div>
                     </Paper>
+                    <div>
+                    </div>
                 </div>
+
                 <Menu history={ this.props.history} state={2}/>
             </div>
         );
