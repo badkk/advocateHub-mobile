@@ -13,6 +13,7 @@ const initialStates = {
     facebookHomePage: 'https://www.facebook.com/papajohns/',
     twitterName: 'John_Papa',
     followedTt: false,
+    githubName: 'https://github.com/johnpapa'
 
 };
 

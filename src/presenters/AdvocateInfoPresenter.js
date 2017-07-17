@@ -40,7 +40,8 @@ class SocialMediaBtmSheet extends Component {
             handleGhFollow,
             handleTtFollow,
             handleBtmSheetClose,
-            facebookHomePage
+            facebookHomePage,
+            githubName
         } = this.props;
         /* Bottom shared sheet */
         //icons
@@ -59,7 +60,7 @@ class SocialMediaBtmSheet extends Component {
                                      scrolling="no"
                                      frameBorder="0"
                                      allowTransparency="true"/>;
-        const displayCheck = followedTt ? "block" : "none";
+        const displayTwitterCheck = followedTt ? "block" : "none";
         const followTtIcon = (
             <div className="twitter-follow-button-div">
                 <iframe src={twitterHref}
@@ -69,12 +70,20 @@ class SocialMediaBtmSheet extends Component {
                      scrolling="no"
                      frameBorder="0"
                      allowTransparency="true"/>
-                <ActionCheckCircle color="#4CAF50" style={{display: displayCheck}}/>
+                <ActionCheckCircle color={green500} style={{display: displayTwitterCheck}}/>
             </div>
         );
-
-        const followGhIcon = followedGh ? <ActionCheckCircle color={green500}/> :
-            <ContentAddCircle color={grey500}/>;
+        const displayGithubCheck = followedGh ? "block" : "none";
+        const followGhIcon =
+            <div className="github-follow-button-div" onTouchTap={handleGhFollow}>
+                <a className="github-button"
+                   href={githubName}
+                   onClick={handleGhFollow}
+                   data-size="large"
+                   data-show-count="true"
+                   aria-label="Follow on GitHub">Follow</a>
+                <ActionCheckCircle color={green500} style={{display: displayGithubCheck}}/>
+            </div>;
         return (
             <BottomSheet
                 action={
@@ -106,8 +115,11 @@ class SocialMediaBtmSheet extends Component {
                     <ListItem primaryText="Github"
                               secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}
-                              rightIconButton={<IconButton
-                                  onTouchTap={handleGhFollow}>{followGhIcon}</IconButton>}/>
+                              rightIconButton={
+                                  <IconButton
+                                      className="advocate-follow-button"
+                                      onTouchTap={handleGhFollow}
+                                  >{followGhIcon}</IconButton>}/>
                 </List>
             </BottomSheet>
         );
@@ -154,6 +166,7 @@ export default class AdvocateInfoPresenter extends Component {
                     handleGhFollow={this.props.handleGhFollow}
                     facebookHomePage={this.props.facebookHomePage}
                     twitterName={this.props.twitterName}
+                    githubName={this.props.githubName}
                 />
             </div>
         );

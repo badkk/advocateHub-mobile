@@ -5,13 +5,19 @@
 .advocate-follow-button {
     display: flex!important;
     width:140px!important;
-    justify-content: flex-end!important;
+    justify-content: flex-start!important;
     z-index: 9999!important;
 }
 .twitter-follow-button-div {
     display: flex!important;
     align-items: center;
-    justify-content: center;
+}
+.github-follow-button-div {
+    display: flex!important;
+    align-items: center;
+}
+.github-follow-button-div > iframe {
+    margin-right: 16px!important;
 }
 .follow-button {
     min-width: 50px!important;
