@@ -154,7 +154,7 @@ export default class HomePresenter extends Component{
                             {topAdvocates}
                         </div>
                     </Paper>
-                    <Paper zDepth={0} className="home-advocates-list">
+                    <div className="home-advocates-list">
                         <p className="top-advocates-title">Aspects Advocates</p>
                         <Divider />
                         {_.map(lists, (list) => {
@@ -165,7 +165,7 @@ export default class HomePresenter extends Component{
                                 </div>
                             );
                         })}
-                    </Paper>
+                    </div>
                 </div>
                 <Menu history={ this.props.history} state={2}/>
             </div>
