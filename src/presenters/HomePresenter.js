@@ -145,7 +145,7 @@ export default class HomePresenter extends Component{
                         onRequestSearch={() => console.log('onRequestSearch')}
                     />
                 </Paper>
-                <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
+                <div style={{height: bodyHeight, maxHeight: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
                     <div> {carouselContent} </div>
                     <Paper zDepth={0}>
                         <p className="top-advocates-title">Top Advocates</p>
