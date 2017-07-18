@@ -55,7 +55,6 @@
 .home-aspects-subheader {
     display: flex!important;
     align-items: center;
-
 }
 .home-aspects-subheader > button > div > span {
     font-size: 12px!important;
