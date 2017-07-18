@@ -167,7 +167,7 @@ export default class HomePresenter extends Component{
                         })}
                     </Paper>
                 </div>
-                <Menu history={ this.props.history} state={2}/>
+                <Menu style={{zIndex: '999999'}} history={ this.props.history} state={2}/>
             </div>
         );
     }
