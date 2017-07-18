@@ -15,6 +15,7 @@ export default class ContentTap extends Component {
             tabNames : this.props.tabNames,
             slideIndex: 0,
             contents: this.props.contents,
+            swipeable: (typeof this.props.swipeable === 'undefined') || this.props.swipeable
         }
     }
     handleChange = (value) => {
@@ -26,6 +27,7 @@ export default class ContentTap extends Component {
         const tabs = _.map(this.state.tabNames, (tabName, idx) => {
             return <Tab label={tabName} value={idx} />
         });
+        console.log(this.state.swipeable);
         return (
             <div>
                 <Tabs
@@ -40,6 +42,7 @@ export default class ContentTap extends Component {
                 <SwipeableViews
                     index={this.state.slideIndex}
                     onChangeIndex={this.handleChange}
+                    disabled={!this.state.swipeable}
                 >
                     {this.state.contents}
                 </SwipeableViews>

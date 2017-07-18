@@ -2,12 +2,13 @@
 }
 .content-taps > div {
     background-color: white!important;
+    position: sticky!important;
 }
 .content-taps > div > button {
     font-size: 12px!important;
     max-height: 45px!important;
     color: #00bcd4!important;
-    font-weight: bold!important;
+    font-weight: 600!important;
 }
 .content-taps > div > button > div > div {
     height: 45px!important;

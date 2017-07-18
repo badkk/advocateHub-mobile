@@ -8,12 +8,13 @@ import '../styles/Home.css'
 import { red500 } from 'material-ui/styles/colors'
 import { SocialWhatshot } from 'material-ui/svg-icons'
 import * as _ from "underscore";
+import ContentTap from "./ContentTap";
 /**
  * Created by lucas on 2017/7/16.
  * The Home page
  */
-const appBarHeight = window.screen.height * 0.22;
-const bodyHeight = window.screen.height * 0.70;
+const appBarHeight = 140;
+const bodyHeight = window.screen.height * 0.8;
 export default class HomePresenter extends Component{
     render() {
         //ms logo
@@ -135,6 +136,32 @@ export default class HomePresenter extends Component{
                 />
             </List>
         ];
+        const tabNames = ['Advocates', 'Meetings', 'About'];
+        const contents = [
+            <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
+                <div> {carouselContent} </div>
+                <Paper zDepth={0}>
+                    <p className="top-advocates-title">Top Advocates</p>
+                    <Divider insert={true}/>
+                    <div className="top-advocates-panel">
+                        {topAdvocates}
+                    </div>
+                </Paper>
+                <div className="home-advocates-list">
+                    <p className="top-advocates-title">Aspects Advocates</p>
+                    <Divider />
+                    {_.map(lists, (list) => {
+                        return (
+                            <div>
+                                {list}
+                                <Divider inset={true}/>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>,
+            <div />,
+            <div/>];
         return (
             <div className="home-background-div">
                 <Paper zDepth={0} style={{height: appBarHeight}} className="home-app-header">
@@ -146,34 +173,13 @@ export default class HomePresenter extends Component{
                         </div>
                     </div>
                     <SearchBar
-                        hintText="Search advocate or techs"
+                        hintText="Search advocate or meeting"
                         onChange={() => console.log('onChange')}
                         onRequestSearch={() => console.log('onRequestSearch')}
                     />
                 </Paper>
-                <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
-                    <div> {carouselContent} </div>
-                    <Paper zDepth={0}>
-                        <p className="top-advocates-title">Top Advocates</p>
-                        <Divider />
-                        <div className="top-advocates-panel">
-                            {topAdvocates}
-                        </div>
-                    </Paper>
-                    <div className="home-advocates-list">
-                        <p className="top-advocates-title">Aspects Advocates</p>
-                        <Divider />
-                        {_.map(lists, (list) => {
-                            return (
-                                <div>
-                                    {list}
-                                    <Divider inset={true}/>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-                <Menu history={ this.props.history} state={2}/>
+                <ContentTap tabNames={tabNames} contents={contents} swipeable={false}/>
+               {/* <Menu history={ this.props.history} state={2}/>*/}
             </div>
         );
     }
