@@ -17,7 +17,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
-import {TestContainer, counter} from './presenters/Test'
+import {TestContainer} from './presenters/Test'
 import rootReducer from './redux/reducers/RootReducer'
 
 // Phone touch action
@@ -35,7 +35,7 @@ class App extends Component {
                 <Router>
                     <div>
                         <Route exact path="/" component={Meeting}/>
-                        <Router path="/meetings" component={MeetingsPresenter}/>
+                        <Route path="/meetings" component={MeetingsPresenter}/>
                         <Switch>
                             <Route path="/azure/detail" component={AzureDetailInfo}/>
                             <Route path="/azure" component={AzureInfo}/>

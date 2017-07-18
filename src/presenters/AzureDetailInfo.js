@@ -28,7 +28,7 @@ export default class AzureDetailInfo extends Component {
                         onLeftIconButtonTouchTap={this.handleBack}
                         style={{maxHeight:appHeight}}
                 />
-                <iframe src={this.state.azureLink} width='100%' height={panelHeight} frameBorder={0}/>
+                <iframe title="Azure Details" src={this.state.azureLink} width='100%' height={panelHeight} frameBorder={0}/>
             </div>
         );
     }

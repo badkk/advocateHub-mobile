@@ -32,7 +32,7 @@ export default class Menu extends Component {
         let path = '/';
         switch (idx) {
             case 0 :
-                path = '/';
+                path = '/meetings';
                 break;
             case 1:
                 path = '/azure';

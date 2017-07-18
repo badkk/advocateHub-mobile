@@ -12,8 +12,8 @@ import * as _ from "underscore";
  * Created by lucas on 2017/7/16.
  * The Home page
  */
-const appBarHeight = window.screen.height * 0.1;
-const bodyHeight = window.screen.height * 0.82;
+const appBarHeight = window.screen.height * 0.22;
+const bodyHeight = window.screen.height * 0.70;
 export default class HomePresenter extends Component{
     render() {
         //ms logo
@@ -22,7 +22,7 @@ export default class HomePresenter extends Component{
                 {...props}
                 viewBox="0 0 64 64"
                 className="icon"
-                style={{height: '30px', width: '30px', marginRight: 0}}
+                style={{height: '35px', width: '35px', marginLeft: 0}}
             >
                 <path className="st0" d="M0 0h30v30H0z"/>
                 <path className="st1" d="M34 0h30v30H34z"/>
@@ -138,7 +138,13 @@ export default class HomePresenter extends Component{
         return (
             <div className="home-background-div">
                 <Paper zDepth={0} style={{height: appBarHeight}} className="home-app-header">
-                    <LogoIcon />
+                    <div className="home-logo-div">
+                        <LogoIcon />
+                        <div>
+                            <p className="home-title">Advocate Hub</p>
+                            <p className="home-subtitle">Find the coolest tech stuff here</p>
+                        </div>
+                    </div>
                     <SearchBar
                         hintText="Search advocate or techs"
                         onChange={() => console.log('onChange')}

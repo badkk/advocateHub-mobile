@@ -3,10 +3,27 @@
 }
 .home-app-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
     position: sticky!important;
     top: 0;
     z-index: 9999;
+    justify-content: center;
+}
+.home-logo-div {
+    display: flex!important;
+    align-items: center;
+}
+.home-title {
+    font-size: 20px!important;
+    font-weight: bold;
+    color: #03A9F4!important;
+    margin: 0 0 0 5px;
+}
+.home-subtitle {
+    margin: 0 0 0 5px;
+    font-size: 13px!important;
+    color: lightslategrey;
 }
 /* search bar outter div */
 .home-app-header > div {

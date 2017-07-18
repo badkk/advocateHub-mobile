@@ -1,5 +1,5 @@
 const Codebird = require("codebird");
-let cb = new Codebird;
+let cb = new Codebird();
 
 /**
  * Created by t-zikfan on 2017/7/13.
@@ -108,7 +108,7 @@ function initPage(dispatch) {
     }(document, "script", "twitter-wjs"));
     window.twttr.ready(function (twttr) {
         twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
-    })
+    });
     //init github js
     const script = document.createElement("script");
 

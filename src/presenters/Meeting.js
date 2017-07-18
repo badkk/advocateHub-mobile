@@ -86,15 +86,19 @@ export default class Meeting extends Component {
             isOpen: false
         };
         this.handleShareButtonClick = this.handleShareButtonClick.bind(this);
+        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     }
     handleShareButtonClick(e) {
         this.setState({
             isOpen: true
         })
     };
+    handleBackButtonClick() {
+        this.state.history.push('/meetings')
+    }
     render() {
         //icons
-        const backIcon = <IconButton><HardwareKeyboardArrowLeft color={white}/></IconButton>;
+        const backIcon = <IconButton onTouchTap={this.handleBackButtonClick}><HardwareKeyboardArrowLeft color={white}/></IconButton>;
         const shareIcon =
             <IconButton
                 onTouchTap={this.handleShareButtonClick}

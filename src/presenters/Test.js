@@ -70,7 +70,7 @@ class Test extends Component {
                 }
             });*/
 
-        let cb = new Codebird;
+        let cb = new Codebird();
         cb.setConsumerKey("rUSunMlRwYz5pqNtDpFMpyGiD", "KjRuDPBqZQyu9ojO9tMrjclGDZrx8XJIRyffvxPgOZ4u6w1VgF");
         cb.setToken("1284688014-ltPL0wlZHMQTGPDaokYGV2GfhjtqRYtdz4Beckb", "LTQq1J3hStlkx6CJEEsDaaBNrbAdeGLLJTTVH5fqaKs6L");
         cb.__call(
