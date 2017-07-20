@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Card, CardHeader, CardMedia, CardTitle, CardActions, FlatButton} from 'material-ui'
-import '../styles/AboutContent.css'
+import '../../styles/AboutContent.css'
 
 /**
  * Created by t-zikfan on 2017/7/6.

@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
 import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
-import "../styles/AdvocateInfo.css"
 import { BottomSheet } from 'material-ui-bottom-sheet';
-import { SocialPersonAdd, ContentAddCircle, ActionCheckCircle } from 'material-ui/svg-icons'
+import { SocialPersonAdd, ActionCheckCircle } from 'material-ui/svg-icons'
 import {grey500, green500} from 'material-ui/styles/colors'
+import "../styles/AdvocateInfo.css"
 
 /**
  * Created by lucas on 2017/7/4.

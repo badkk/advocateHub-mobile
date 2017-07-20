@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Menu from './commons/Menu'
 import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
-import "../styles/AzureInfo.css"
 import _ from 'underscore'
+import "../styles/AzureInfo.css"
 import get from '../restful/Get'
 /**
  * Created by t-zikfan on 2017/7/3.

@@ -13,10 +13,10 @@ import {
     HardwareKeyboardArrowLeft,
     NavigationMoreVert} from 'material-ui/svg-icons';
 import SwipeableViews from 'react-swipeable-views';
-import ContentTap from './commons/AHTab'
-import IntroduceContent from './IntroduceContent'
-import AboutContent from './AboutContent'
-import NotesContent from './NotesContent'
+import AHTab from './commons/AHTab'
+import IntroduceContent from './meetingdetail/IntroduceContent'
+import AboutContent from './meetingdetail/AboutContent'
+import NotesContent from './meetingdetail/NotesContent'
 import '../styles/Meeting.css'
 /**
  * Created by t-zikfan on 2017/7/3.
@@ -91,7 +91,7 @@ class MeetingContent extends Component {
         ];
         return (
             <div>
-                <ContentTap tabs={tabs} tabChangeHandler={this.handleTabClick} slideIdx={this.state.slideIdx}/>
+                <AHTab tabs={tabs} tabChangeHandler={this.handleTabClick} slideIdx={this.state.slideIdx}/>
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}

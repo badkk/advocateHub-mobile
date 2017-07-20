@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Slider from 'react-slick'
 import _ from 'underscore'
-import '../styles/IntroduceContent.css'
-import {Card, CardHeader, CardMedia, CardText, CardTitle, CardActions, FlatButton} from 'material-ui'
+import '../../styles/IntroduceContent.css'
+import {Card, CardHeader, CardMedia, CardText, CardActions, FlatButton} from 'material-ui'
 /**
  * Created by t-zikfan on 2017/7/5.
  * Meeting page Introduction Content Page
