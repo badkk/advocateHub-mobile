@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Menu from './Menu'
+import Menu from './commons/Menu'
 
 /**
  * Created by t-zikfan on 2017/7/3.

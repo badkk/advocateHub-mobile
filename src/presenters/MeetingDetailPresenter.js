@@ -1,22 +1,23 @@
 import React, {Component} from 'react'
-import Menu from './Menu'
+import Menu from './commons/Menu'
 import {ListItem, Avatar,
-    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List} from 'material-ui'
+    FloatingActionButton, AppBar, IconButton, FontIcon, Divider, List, Tab} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
     white,
     grey500
 } from 'material-ui/styles/colors';
-import '../styles/Meeting.css'
 import {
     SocialShare,
     NavigationChevronRight,
     HardwareKeyboardArrowLeft,
     NavigationMoreVert} from 'material-ui/svg-icons';
-import ContentTap from './ContentTap'
+import SwipeableViews from 'react-swipeable-views';
+import ContentTap from './commons/AHTab'
 import IntroduceContent from './IntroduceContent'
 import AboutContent from './AboutContent'
 import NotesContent from './NotesContent'
+import '../styles/Meeting.css'
 /**
  * Created by t-zikfan on 2017/7/3.
  * Meeting information page
@@ -29,7 +30,7 @@ class MeetingInfoPage extends Component {
         }
     }
     handleAzureTouchTap = () => {
-      this.state.history.push('/azure')
+      this.state.history.push('/product/azure')
     };
     handleAdvocateTouchTap = () => {
         this.state.history.push('/advocate/johnpapa')
@@ -40,9 +41,9 @@ class MeetingInfoPage extends Component {
         return (
             <div>
                 <ListItem
-                    primaryText="Microsoft Azure"
-                    secondaryText="Learn more about Microsoft Azure"
-                    leftAvatar={<Avatar src="AzureLogo.jpg" style={{borderRadius: 0}}/>}
+                    primaryText="Quick start"
+                    secondaryText="More on Microsoft Azure"
+                    leftAvatar={<Avatar src="../AzureLogo.jpg" style={{borderRadius: 0}}/>}
                     rightIcon={infoButton}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
                     onTouchTap={this.handleAzureTouchTap}
@@ -51,7 +52,7 @@ class MeetingInfoPage extends Component {
                 <ListItem
                     primaryText="Speaker : John Papa"
                     secondaryText="Subject : Deploying Angular to Azure"
-                    leftAvatar={<Avatar src="johnpapa.png"/>}
+                    leftAvatar={<Avatar src="../johnpapa.png"/>}
                     style={{width:"100%", maxHeight: meetingInfoMaxHeight}}
                     innerDivStyle={{paddingTop: '8px'}}
                     rightIcon={infoButton}
@@ -64,21 +65,44 @@ class MeetingInfoPage extends Component {
 }
 //future will add state component
 class MeetingContent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            slideIdx: 0
+        };
+        this.handleTabClick = this.handleTabClick.bind(this);
+    }
+    handleTabClick(value) {
+        this.setState({
+            slideIdx: value
+        });
+    }
     render() {
         const maxPanelHeight = window.screen.height * 0.72 - 100;
-        const tabNames = ['Introduce', 'Notes', 'About'];
+        const tabs = [
+            <Tab label='Introduce' value={0} />,
+            <Tab label='Notes' value={1} />,
+            <Tab label='About' value={2} />
+        ];
         const contents = [
             <IntroduceContent maxHeight={maxPanelHeight} />,
             <NotesContent maxHeight={maxPanelHeight} />,
-            <AboutContent maxHeight={maxPanelHeight} />];
+            <AboutContent maxHeight={maxPanelHeight} />
+        ];
         return (
             <div>
-                <ContentTap tabNames={tabNames} contents={contents}/>
+                <ContentTap tabs={tabs} tabChangeHandler={this.handleTabClick} slideIdx={this.state.slideIdx}/>
+                <SwipeableViews
+                    index={this.state.slideIdx}
+                    onChangeIndex={this.handleTabClick}
+                >
+                    { contents }
+                </SwipeableViews>
             </div>
         );
     }
 }
-export default class Meeting extends Component {
+export default class MeetingDetailPresenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -138,7 +162,7 @@ export default class Meeting extends Component {
                 />
                 <MeetingInfoPage history={this.state.history}/>
                 <MeetingContent />
-                <Menu history={ this.state.history } state={0}/>
+                <Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />
                 {sharedBottomSheet}
             </div>
         );

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {openBSAction, closeBSAction, followGhAction, followFbAction, followTtActionCreator, initialActionCreator} from '../redux/actions/AdvocateInfoAction'
-import AdvocateInfoPresenter from '../presenters/AdvocateInfoPresenter'
+import AdvocateInfoPresenter from '../presenters/AdvocateDetailPresenter'
 /**
  * Created by t-zikfan on 2017/7/13.
  * Advocate Home Page Info Container

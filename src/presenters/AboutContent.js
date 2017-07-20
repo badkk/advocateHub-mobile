@@ -20,7 +20,7 @@ export default class AboutContent extends Component {
                 <CardHeader
                     title="Talk Video"
                     subtitle="Uploaded at 14:23 Thu 7/6/2017"
-                    titleStyle={{fontSize:'20px', fontWeight:'bold', marginBottom:'10px'}}
+                    titleStyle={{fontSize:'20px', marginBottom:'10px'}}
                     className="card-header"
                 />
                 <CardMedia className="video-screen">

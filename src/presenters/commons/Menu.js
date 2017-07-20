@@ -1,14 +1,9 @@
 import React, {Component} from 'react';
-import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
+import { ActionAssessment, ActionAlarmOn, SocialPerson } from 'material-ui/svg-icons'
 import Paper from 'material-ui/Paper';
-import '../styles/Menu.css'
-import Strings from '../res/values/string'
-
-const articleIcon = <FontIcon className="material-icons">assignment</FontIcon>;
-const relatedIcon = <FontIcon className="material-icons">cloud</FontIcon>;
-const advocateIcon = <FontIcon className="material-icons">person</FontIcon>;
-const moreIcon = <FontIcon className="material-icons">subject</FontIcon>;
+import '../../styles/Menu.css'
+import Strings from '../../res/values/string'
 
 /**
  * Footer menu for all pages
@@ -23,6 +18,8 @@ export default class Menu extends Component {
         this.state = {
             history: this.props.history,
             selectedIndex: this.props.state,
+            userId: this.props.userId,
+            meetingId: this.props.meetingId
         };
     }
     handleSelect(idx) {
@@ -32,16 +29,13 @@ export default class Menu extends Component {
         let path = '/';
         switch (idx) {
             case 0 :
-                path = '/meetings';
+                path = '/meeting/' + this.state.meetingId;
                 break;
             case 1:
-                path = '/azure';
+                path = '/product/' + this.state.meetingId;
                 break;
             case 2:
-                path = '/advocate';
-                break;
-            case 3:
-                path = '/more';
+                path = '/advocate/' + this.state.userId;
                 break;
             default:
                 path = '/';
@@ -54,23 +48,18 @@ export default class Menu extends Component {
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
                     <BottomNavigationItem
                         label={Strings.menuItem3}
-                        icon={articleIcon}
+                        icon={<ActionAssessment/>}
                         onTouchTap={() => this.handleSelect(0)}
                     />
                     <BottomNavigationItem
                         label={Strings.menuItem2}
-                        icon={relatedIcon}
+                        icon={<ActionAlarmOn />}
                         onTouchTap={() => this.handleSelect(1)}
                     />
                     <BottomNavigationItem
                         label={Strings.menuItem1}
-                        icon={advocateIcon}
+                        icon={<SocialPerson />}
                         onTouchTap={() => this.handleSelect(2)}
-                    />
-                    <BottomNavigationItem
-                        label={Strings.menuItem4}
-                        icon={moreIcon}
-                        onTouchTap={() => this.handleSelect(3)}
                     />
                 </BottomNavigation>
             </Paper>);

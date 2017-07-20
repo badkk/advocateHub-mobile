@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Menu from './Menu'
+import Menu from './commons/Menu'
 import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
 import "../styles/AdvocateInfo.css"
 import { BottomSheet } from 'material-ui-bottom-sheet';
@@ -154,7 +154,7 @@ export default class AdvocateInfoPresenter extends Component {
             <div>
                 <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage />
-                <Menu history={ this.props.history} state={2}/>
+                <Menu history={ this.props.history} state={2} meetingId="johnpapa_123" userId="johnpapa" />
                 <SocialMediaBtmSheet
                     isOpen={this.props.isOpen}
                     handleBtmSheetClose={this.props.handleBtmSheetClose}

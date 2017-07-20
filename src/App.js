@@ -5,14 +5,10 @@ import {
     Switch
 } from 'react-router-dom'
 import './App.css';
-import Article from './presenters/Article'
-import AzureInfo from './presenters/AzureInfo'
-import Meeting from './presenters/Meeting'
+import QuickStartPresenter from './presenters/QuickStartPresenter'
+import MeetingDetailPresenter from './presenters/MeetingDetailPresenter'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
 import HomePresenter from './presenters/HomePresenter'
-import MeetingsPresenter from './presenters/MeetingsPresenter'
-import More from './presenters/More'
-import AzureDetailInfo from './presenters/AzureDetailInfo'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
@@ -34,19 +30,16 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <div>
-                        <Route exact path="/" component={Meeting}/>
-                        <Route path="/meetings" component={MeetingsPresenter}/>
                         <Switch>
-                            <Route path="/azure/detail" component={AzureDetailInfo}/>
-                            <Route path="/azure" component={AzureInfo}/>
+                            <Route exact path="/" component={HomePresenter}/>
+                            <Route exact path="/:tag" component={HomePresenter}/>
+                            {/* detail page */}
+                            <Route path="/meeting/:id" component={MeetingDetailPresenter}/>
+                            <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
+                            <Route path="/product/:id" component={QuickStartPresenter}/>
+                            {/*<Route path="/article" component={Article}/>*/}
+                            <Route path="/test" component={TestContainer}/>
                         </Switch>
-                        <Switch>
-                            <Route path="/advocate/:ids" component={AdvocateInfoContainer}/>
-                            <Route path="/advocate" component={HomePresenter}/>
-                        </Switch>
-                        <Route path="/article" component={Article}/>
-                        <Route path="/more" component={More}/>
-                        <Route path="/test" component={TestContainer}/>
                     </div>
                 </Router>
             </Provider>

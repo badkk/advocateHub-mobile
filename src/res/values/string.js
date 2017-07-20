@@ -10,8 +10,7 @@ export default {
     /*Server Info*/
     serverAddr: "http://40.83.190.18:13888",
     /*Home Page*/
-    menuItem1: "Advocate",
-    menuItem2: "Azure",
-    menuItem3: "Meetings",
-    menuItem4: "More"
+    menuItem1: "Speaker",
+    menuItem2: "QuickStart",
+    menuItem3: "Meeting",
 }

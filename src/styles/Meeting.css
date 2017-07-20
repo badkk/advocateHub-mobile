@@ -33,6 +33,6 @@ hr {
 }
 .meeting-app-bar > h1 {
     font-size: 16px!important;
-    font-weight: bold!important;
+    font-weight: normal!important;
     padding-top: 3px!important;
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Paper, SvgIcon} from 'material-ui'
 import SearchBar from 'material-ui-search-bar'
-import Menu from './Menu'
+import Menu from './commons/Menu'
 import '../styles/Meetings.css'
 /**
  * Created by lucas on 2017/7/18.

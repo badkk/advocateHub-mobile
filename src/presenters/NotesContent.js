@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import 'github-markdown-css'
 import MarkdownContent from '../res/md'
+import '../styles/NotesContent.css'
 
 const ReactMarkdown = require('react-markdown');
 /**

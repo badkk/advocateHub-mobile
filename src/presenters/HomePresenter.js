@@ -1,20 +1,55 @@
 import React, {Component} from 'react'
 import SearchBar from 'material-ui-search-bar'
-import { Paper, SvgIcon, Divider, ListItem, List, Subheader, Avatar, FlatButton} from 'material-ui'
+import { Paper, SvgIcon, Divider, ListItem, List, Subheader, Avatar, FlatButton, Tab} from 'material-ui'
 import Slider from 'react-slick'
-import Menu from './Menu'
-import BtmTextAvatar from './BtmTextAvatar'
+import SwipeableViews from 'react-swipeable-views';
+import BtmTextAvatar from './commons/BtmTextAvatar'
 import '../styles/Home.css'
 import { red500 } from 'material-ui/styles/colors'
 import { SocialWhatshot } from 'material-ui/svg-icons'
 import * as _ from "underscore";
-import ContentTap from "./ContentTap";
+import ContentTap from "./commons/AHTab";
 /**
  * Created by lucas on 2017/7/16.
  * The Home page
  */
 const appBarHeight = 140;
 const bodyHeight = window.screen.height * 0.8;
+class TabContent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            slideIdx: this.props.index
+        };
+    this.handleTabClick = this.handleTabClick.bind(this);
+    }
+    handleTabClick(value) {
+        this.setState({
+            slideIdx: value
+        });
+    }
+
+    render() {
+        const { contents } = this.props;
+        const tabs = [
+            <Tab label='Advocates' value={0} />,
+            <Tab label='Meetings' value={1} />,
+            <Tab label='About' value={2} />
+        ];
+        return (
+        <div>
+            <ContentTap tabs={tabs} tabChangeHandler={this.handleTabClick} slideIdx={this.state.slideIdx}/>
+            <SwipeableViews
+                index={this.state.slideIdx}
+                onChangeIndex={this.handleTabClick}
+                disabled={true}
+            >
+                { contents }
+            </SwipeableViews>
+        </div>
+        );
+    }
+}
 export default class HomePresenter extends Component{
     render() {
         //ms logo
@@ -136,7 +171,6 @@ export default class HomePresenter extends Component{
                 />
             </List>
         ];
-        const tabNames = ['Advocates', 'Meetings', 'About'];
         const contents = [
             <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
                 <div> {carouselContent} </div>
@@ -162,6 +196,23 @@ export default class HomePresenter extends Component{
             </div>,
             <div />,
             <div/>];
+        //url dealings
+        console.log(this.props.match.params);
+        const tag = this.props.match.params.tag;
+        let idx = 0;
+        switch (tag) {
+            case 'advocates':
+                idx = 0;
+                break;
+            case 'meetings':
+                idx = 1;
+                break;
+            case 'about' :
+                idx = 2;
+                break;
+            default:
+                //using advocate
+        }
         return (
             <div className="home-background-div">
                 <Paper zDepth={0} style={{height: appBarHeight}} className="home-app-header">
@@ -178,7 +229,7 @@ export default class HomePresenter extends Component{
                         onRequestSearch={() => console.log('onRequestSearch')}
                     />
                 </Paper>
-                <ContentTap tabNames={tabNames} contents={contents} swipeable={false}/>
+                <TabContent contents={contents} index={idx}/>
                {/* <Menu history={ this.props.history} state={2}/>*/}
             </div>
         );

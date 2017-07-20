@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Menu from './Menu'
+import Menu from './commons/Menu'
 import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import "../styles/AzureInfo.css"
 import _ from 'underscore'
@@ -37,7 +37,7 @@ class AzureContent extends Component {
                     subtitle={data['subtitle']}
                     actAsExpander={true}/>
                 <CardMedia>
-                    <img src={data['imgurl']} alt="" />
+                    <img src={"../" + data['imgurl']} alt="" />
                 </CardMedia>
                 <CardActions>
                     <FlatButton label="Learn More" primary={true} onTouchTap={() => this.handleCardTouchTap(data['link'])}/>
@@ -52,7 +52,7 @@ class AzureContent extends Component {
         );
     }
 }
-export default class AzureInfo extends Component {
+export default class QuickStartPresenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -122,7 +122,7 @@ export default class AzureInfo extends Component {
                     />
                     <AzureContent data={this.state.data}/>
                 </div>
-                <Menu history={ this.state.history } state={1}/>
+                <Menu history={ this.state.history } state={1} meetingId="johnpapa_123" userId="johnpapa" />
             </div>
         );
     }

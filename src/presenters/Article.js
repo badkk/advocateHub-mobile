@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import get from '../restful/Get'
 import {Paper, Avatar, ListItem, IconMenu, MenuItem, IconButton, FontIcon} from 'material-ui/';
 import {cyan500} from 'material-ui/styles/colors';
-import '../styles/Articles.css'
+import '../styles/NotesContent.css'
 import 'github-markdown-css'
 import MarkdownContent from '../res/md'
 import {SocialPersonAdd} from 'material-ui/svg-icons'
