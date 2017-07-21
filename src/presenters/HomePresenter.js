@@ -31,7 +31,6 @@ class TabContent extends Component {
         const tabs = [
             <Tab label='Advocates' value={0} />,
             <Tab label='Meetings' value={1} />,
-            <Tab label='About' value={2} />
         ];
         return (
         <div>
@@ -56,8 +55,7 @@ export default class HomePresenter extends Component{
         //ms logo
         const contents = [
             <HomeAdvocateInfoPresenter bodyHeight={bodyHeight} history={this.props.history}/>,
-            <div />,
-            <div/>];
+            <div />];
         //url dealings
         console.log(this.props.match.params);
         const tag = this.props.match.params.tag;
@@ -68,9 +66,6 @@ export default class HomePresenter extends Component{
                 break;
             case 'meetings':
                 idx = 1;
-                break;
-            case 'about' :
-                idx = 2;
                 break;
             default:
                 //using advocate
