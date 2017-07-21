@@ -39,7 +39,7 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
     ];
     const lists = [
         <List>
-            <div className="home-aspects-subheader">
+            <div className="home-subheader">
                 <Subheader inset={true}>Javascript</Subheader>
                 <FlatButton label="more" primary={true}/>
             </div>
@@ -68,7 +68,7 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
             />
         </List>,
         <List>
-            <div className="home-aspects-subheader">
+            <div className="home-subheader">
                 <Subheader inset={true}>Python</Subheader>
                 <FlatButton label="more" primary={true}/>
             </div>
@@ -90,7 +90,7 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
             />
         </List>,
         <List>
-            <div className="home-aspects-subheader">
+            <div className="home-subheader">
                 <Subheader inset={true}>.NET</Subheader>
                 <FlatButton label="more" primary={true}/>
             </div>
@@ -116,14 +116,14 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
         <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
             <div> {carouselContent} </div>
             <Paper zDepth={0}>
-                <p className="top-advocates-title">Top Advocates</p>
-                <Divider insert={true}/>
+                <p className="home-mainheader">Top Advocates</p>
+                <Divider/>
                 <div className="top-advocates-panel">
                     {topAdvocates}
                 </div>
             </Paper>
             <div className="home-advocates-list">
-                <p className="top-advocates-title">Aspects Advocates</p>
+                <p className="home-mainheader">Aspects Advocates</p>
                 <Divider />
                 {_.map(lists, (list) => {
                     return (

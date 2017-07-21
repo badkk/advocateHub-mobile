@@ -24,27 +24,21 @@ const store = createStore(
     applyMiddleware(thunk)
 );
 
-class App extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Router>
-                    <div>
-                        <Switch>
-                            <Route exact path="/" component={HomePresenter}/>
-                            <Route exact path="/:tag" component={HomePresenter}/>
-                            {/* detail page */}
-                            <Route path="/meeting/:id" component={MeetingDetailPresenter}/>
-                            <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
-                            <Route path="/product/:id" component={QuickStartPresenter}/>
-                            {/*<Route path="/article" component={Article}/>*/}
-                            <Route path="/test" component={TestContainer}/>
-                        </Switch>
-                    </div>
-                </Router>
-            </Provider>
-        );
-    }
+export default function App() {
+    return (
+        <Provider store={store}>
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={HomePresenter}/>
+                    <Route exact path="/:tag" component={HomePresenter}/>
+                    {/* detail page */}
+                    <Route path="/meeting/:id" component={MeetingDetailPresenter}/>
+                    <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
+                    <Route path="/product/:id" component={QuickStartPresenter}/>
+                    {/*<Route path="/article" component={Article}/>*/}
+                    <Route path="/test" component={TestContainer}/>
+                </Switch>
+            </Router>
+        </Provider>
+    );
 }
-
-export default App;

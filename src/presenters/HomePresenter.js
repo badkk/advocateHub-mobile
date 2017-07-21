@@ -5,6 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import '../styles/Home.css'
 import AHTab from "./commons/AHTab";
 import HomeAdvocateInfoPresenter from './home/HomeAdvocateInfoPresenter'
+import HomeMeetingInfoPresenter from './home/HomeMeetingInfoPresenter'
 import MSLogo from './commons/MSLogo'
 /**
  * Created by lucas on 2017/7/16.
@@ -18,7 +19,7 @@ class TabContent extends Component {
         this.state = {
             slideIdx: this.props.index
         };
-    this.handleTabClick = this.handleTabClick.bind(this);
+        this.handleTabClick = this.handleTabClick.bind(this);
     }
     handleTabClick(value) {
         this.setState({
@@ -43,6 +44,7 @@ class TabContent extends Component {
                 index={this.state.slideIdx}
                 onChangeIndex={this.handleTabClick}
                 disabled={true}
+                animateHeight={true}
             >
                 { contents }
             </SwipeableViews>
@@ -54,8 +56,9 @@ export default class HomePresenter extends Component{
     render() {
         //ms logo
         const contents = [
-            <HomeAdvocateInfoPresenter bodyHeight={bodyHeight} history={this.props.history}/>,
-            <div />];
+            <HomeAdvocateInfoPresenter key={0} bodyHeight={bodyHeight} history={this.props.history}/>,
+            <HomeMeetingInfoPresenter  key={1} bodyHeight={bodyHeight} history={this.props.history}/>
+        ];
         //url dealings
         console.log(this.props.match.params);
         const tag = this.props.match.params.tag;

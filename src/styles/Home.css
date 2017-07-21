@@ -44,6 +44,7 @@
     padding-right: 12px!important;
     height: 40px!important;
 }
+/* advocate page */
 .home-activity-shows {
     height: 170px;
     width: 100%;
@@ -59,7 +60,7 @@
     padding: 10px;
     overflow-x: scroll!important;
 }
-.top-advocates-title {
+.home-mainheader {
     font-size: 16px;
     margin: 0;
     color: grey;
@@ -69,11 +70,26 @@
     margin-top: 10px;
     background-color: white;
 }
-.home-aspects-subheader {
+.home-subheader {
     display: flex!important;
     align-items: center;
 }
-.home-aspects-subheader > button > div > span {
+.home-subheader > button > div > span {
     font-size: 12px!important;
     text-transform: capitalize!important;
+}
+/* meeting page */
+.meetings-location-panel {
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+.meetings-location-panel-title {
+    font-size: 12px;
+    font-style: italic;
+}
+.meeting-local-panel {
+    background-color: white;
+    height: 150px;
+    margin-top: 10px;
 }
