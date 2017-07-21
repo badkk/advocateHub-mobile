@@ -9,8 +9,8 @@ import Strings from '../../res/values/string'
  * Footer menu for all pages
  * Created by t-zikfan on 2017/6/30.
  */
-//menu height = 8%
-const height = window.screen.height * 0.08;
+//menu menuHeight = 8%
+export const menuHeight = 56;
 export default class Menu extends Component {
     constructor(props) {
         super(props);
@@ -44,7 +44,7 @@ export default class Menu extends Component {
     }
     render() {
         return (
-            <Paper zDepth={1} style={{maxHeight:height}} className="menu-box" >
+            <Paper zDepth={1} style={{height: menuHeight}} className="menu-box" >
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
                     <BottomNavigationItem
                         label={Strings.menuItem3}

@@ -1,7 +1,5 @@
 .content-panel {
-    overflow: auto;
     padding: 10px;
-    height: 100%;
 }
 img {
     width: 100%

@@ -5,6 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import '../styles/Home.css'
 import AHTab from "./commons/AHTab";
 import HomeAdvocateInfoPresenter from './home/HomeAdvocateInfoPresenter'
+import MSLogo from './commons/MSLogo'
 /**
  * Created by lucas on 2017/7/16.
  * The Home page.
@@ -34,7 +35,11 @@ class TabContent extends Component {
         ];
         return (
         <div>
-            <AHTab tabs={tabs} tabChangeHandler={this.handleTabClick} slideIdx={this.state.slideIdx}/>
+            <AHTab tabs={tabs}
+                   tabChangeHandler={this.handleTabClick}
+                   slideIdx={this.state.slideIdx}
+                   stickyHeight={appBarHeight}
+            />
             <SwipeableViews
                 index={this.state.slideIdx}
                 onChangeIndex={this.handleTabClick}
@@ -49,20 +54,6 @@ class TabContent extends Component {
 export default class HomePresenter extends Component{
     render() {
         //ms logo
-        const LogoIcon =  (props) => (
-            <SvgIcon
-                {...props}
-                viewBox="0 0 64 64"
-                className="icon"
-                style={{height: '35px', width: '35px', marginLeft: 0}}
-            >
-                <path className="st0" d="M0 0h30v30H0z"/>
-                <path className="st1" d="M34 0h30v30H34z"/>
-                <path className="st2" d="M34 34h30v30H34z"/>
-                <path className="st3" d="M0 34h30v30H0z"/>
-            </SvgIcon>
-        );
-
         const contents = [
             <HomeAdvocateInfoPresenter bodyHeight={bodyHeight} history={this.props.history}/>,
             <div />,
@@ -86,9 +77,9 @@ export default class HomePresenter extends Component{
         }
         return (
             <div className="home-background-div">
-                <Paper zDepth={0} style={{height: appBarHeight}} className="home-app-header">
+                <div style={{height: appBarHeight}} className="home-app-header">
                     <div className="home-logo-div">
-                        <LogoIcon />
+                        <MSLogo size="35"/>
                         <div>
                             <p className="home-title">Advocate Hub</p>
                             <p className="home-subtitle">Find the coolest tech stuff here</p>
@@ -99,7 +90,7 @@ export default class HomePresenter extends Component{
                         onChange={() => console.log('onChange')}
                         onRequestSearch={() => console.log('onRequestSearch')}
                     />
-                </Paper>
+                </div>
                 <TabContent contents={contents} index={idx}/>
                {/* <Menu history={ this.props.history} state={2}/>*/}
             </div>

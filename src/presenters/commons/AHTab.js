@@ -6,13 +6,14 @@ import '../../styles/ContentTap.css'
  * Created by lucas on 2017/7/4.
  * General Content Tap used in the whole App
  */
-//Taps height is 45px
-export default function AHTab({tabs, tabChangeHandler, slideIdx}) {
+//Taps menuHeight is 45px
+export const tabMenuHeight = 45;
+export default function AHTab({tabs, tabChangeHandler, slideIdx, stickyHeight}) {
     /*const tabs = _.map(this.state.tabNames, (tabName, idx) => {
         return <Tab label={tabName} value={idx} />
     });*/
     return (
-        <div>
+        <div style={{position: 'sticky', top: stickyHeight, zIndex: 100}}>
             <Tabs
                 onChange={tabChangeHandler}
                 value={slideIdx}
@@ -22,13 +23,6 @@ export default function AHTab({tabs, tabChangeHandler, slideIdx}) {
                 {tabs}
             </Tabs>
             <hr style={{margin:0, width:'100%'}}/>
-           {/* <SwipeableViews
-                index={this.state.slideIndex}
-                onChangeIndex={this.handleChange}
-                disabled={!this.state.swipeable}
-            >
-                {this.state.contents}
-            </SwipeableViews>*/}
         </div>
     );
 

@@ -1,0 +1,22 @@
+.bar-panel {
+    position: sticky!important;
+    top: 0;
+    z-index: 400;
+    background-color: white;
+}
+.bar-panel > hr {
+    margin: 0!important;
+}
+.bar-paper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px!important;
+}
+.logo-panel {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px;
+}

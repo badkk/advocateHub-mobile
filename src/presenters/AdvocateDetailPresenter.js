@@ -1,23 +1,25 @@
 import React, {Component} from 'react'
-import Menu from './commons/Menu'
-import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider} from 'material-ui'
+import Menu, {menuHeight} from './commons/Menu'
+import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider, AppBar} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import { SocialPersonAdd, ActionCheckCircle } from 'material-ui/svg-icons'
 import {grey500, green500} from 'material-ui/styles/colors'
+import HomeBar, {homeBarHeight} from './commons/HomeBar'
+
 import "../styles/AdvocateInfo.css"
 
 /**
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
-const iFramePanelHeight = window.screen.height * 0.88;
-const appBarHeight = window.screen.height * 0.12;
+const appBarHeight = 70;
+const iFramePanelHeight = window.screen.height - menuHeight - homeBarHeight - appBarHeight;
 class InfoBar extends Component {
     render() {
         const {handleBtmSheetOpen} = this.props;
         const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
         return (
-            <Paper style={{maxHeight: appBarHeight}} className="advocate-info-app-bar">
+            <Paper style={{height: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
                     primaryText="John Papa"
                     secondaryText="Node.js, .NET, React"
@@ -152,9 +154,10 @@ export default class AdvocateInfoPresenter extends Component {
     render() {
         return (
             <div>
+                <HomeBar history={this.props.history}/>
                 <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage />
-                <Menu history={ this.props.history} state={2} meetingId="johnpapa_123" userId="johnpapa" />
+                <Menu history={this.props.history} state={2} meetingId="johnpapa_123" userId="johnpapa" />
                 <SocialMediaBtmSheet
                     isOpen={this.props.isOpen}
                     handleBtmSheetClose={this.props.handleBtmSheetClose}

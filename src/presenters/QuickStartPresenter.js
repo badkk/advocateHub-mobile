@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
-import Menu from './commons/Menu'
-import {AppBar, SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
+import Menu, {menuHeight} from './commons/Menu'
+import {SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
 import "../styles/AzureInfo.css"
 import get from '../restful/Get'
+import HomeBar, {homeBarHeight} from './commons/HomeBar'
 /**
  * Created by t-zikfan on 2017/7/3.
  * The Azure Information Page
  */
 /*Height Compatible Infos*/
-const appMaxHeight = window.screen.height * 0.08;
-const contentMaxHeight = window.screen.height * 0.84;
+const contentMinHeight = window.screen.height - homeBarHeight - menuHeight;
 
 class AzureContent extends Component {
     constructor(props) {
@@ -97,25 +97,26 @@ export default class QuickStartPresenter extends Component {
         );
         return (
             <div>
-                <AppBar
-                    title="Learn about Azure"
-                    titleStyle={{fontSize:'18px'}}
+                {/*<AppBar
+                    title="Quick Start on Azure"
+                    titleStyle={{fontSize:'16px'}}
                     iconElementLeft={<LogoIcon/>}
                     className="app-header"
                     onLeftIconButtonTouchTap={this.handleAppBarTouched}
                     onTitleTouchTap={this.handleAppBarTouched}
                     style={{maxHeight: appMaxHeight}}
-                />
+                />*/}
+                <HomeBar history={this.props.history}/>
                 <Paper className="app-header">
                     <RaisedButton
-                        label="Try free account"
+                        label="Try Azure free account"
                         primary={true}
                         className="free-account-button"
-                        style={{height: appMaxHeight}}
+                        style={{height: homeBarHeight}}
                         onTouchTap={this.handleTryButtonTouched}
                     />
                 </Paper>
-                <div style={{minHeight: contentMaxHeight}}>
+                <div style={{minHeight: contentMinHeight}}>
                     <CircularProgress
                         thickness={3}
                         style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}

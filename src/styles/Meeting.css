@@ -9,6 +9,7 @@ hr {
 }
 .meeting-speaker-panel {
     align-items: center;
+    padding-top: 10px!important;
 }
 .meeting-speaker-panel > div > div > img {
     top: 8px!important;
