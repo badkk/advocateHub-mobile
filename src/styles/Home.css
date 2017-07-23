@@ -61,7 +61,7 @@
     overflow-x: scroll!important;
 }
 .home-mainheader {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     color: grey;
     padding: 10px;
@@ -90,6 +90,18 @@
 }
 .meeting-local-panel {
     background-color: white;
-    height: 150px;
     margin-top: 10px;
+}
+.meeting-mainheader-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.meeting-cards-panel {
+    display: flex;
+    overflow-x: scroll;
+}
+.meeting-mainheader-panel > button > div > span {
+    font-size: 12px!important;
+    text-transform: capitalize!important;
 }
