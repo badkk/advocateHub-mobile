@@ -20,7 +20,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
             this.setState({
                 lists: res['data']
             })
-        })
+        });
         this.state.topAdvocates = [
             <BtmTextAvatar key={0} title="Paul O’Shannessy11" src="face10.jpeg"/>,
             <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png"/>,
@@ -126,15 +126,18 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                 <Subheader inset={true}>Javascript</Subheader>
                                 <FlatButton label="more" primary={true}/>
                             </div>
-                            {_.map(this.state.lists, (list, index) => (
-                                <ListItem
-                                    rightIcon={<SocialWhatshot color={red500} />}
-                                    leftAvatar={<Avatar src="face7.jpeg" />}
-                                    primaryText={list.username}
-                                    secondaryText="JS, React"
-                                    key={index}
-                                />
-                            ))}
+                            {_.map(this.state.lists, (list, index) => {
+                                console.log(list);
+                                return (
+                                    <ListItem
+                                        rightIcon={<SocialWhatshot color={red500}/>}
+                                        leftAvatar={<Avatar src="face7.jpeg"/>}
+                                        primaryText={list.username}
+                                        secondaryText={list.aspect}
+                                        key={index}
+                                    />
+                                );
+                            })}
                         </List>
                     </div>
                     {/*
