@@ -9,12 +9,12 @@ import '../../styles/AboutContent.css'
 function handleLearnAzureClick() {
     window.location = "https://azure.microsoft.com/en-us/"
 }
-export default function AboutContent() {
+export default function ResourcesContent() {
 
     //resize the video screen to 16:9
     const height = window.screen.width * 9 / 16;
     return (
-        <Card>
+        <Card zDepth={0}>
             <CardHeader
                 title="Talk Video"
                 subtitle="Uploaded at 14:23 Thu 7/6/2017"

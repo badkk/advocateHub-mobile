@@ -16,10 +16,9 @@ import {
 import SwipeableViews from 'react-swipeable-views';
 
 import IntroduceContent from './meetingdetail/IntroduceContent'
-import AboutContent from './meetingdetail/AboutContent'
-import NotesContent from './meetingdetail/NotesContent'
+import ResourcesContent from './meetingdetail/ResourcesContent'
+import RecommendContent from './meetingdetail/RecommendContent'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
-import Menu, {menuHeight} from './commons/Menu'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import '../styles/Meeting.css'
 
@@ -28,7 +27,7 @@ import '../styles/Meeting.css'
  * Meeting information page
  */
 const meetingInfoMaxHeight = 66;
-const containerMinHeight = window.screen.height - menuHeight - homeBarHeight - meetingInfoMaxHeight * 2 - tabMenuHeight;
+const containerHeight = window.screen.height - homeBarHeight - meetingInfoMaxHeight - tabMenuHeight
 class MeetingInfoPage extends Component {
     constructor(props) {
         super(props);
@@ -47,7 +46,7 @@ class MeetingInfoPage extends Component {
         const infoButton = <NavigationChevronRight/>;
         return (
             <div>
-                <ListItem
+                {/*<ListItem
                     primaryText="Quick start"
                     secondaryText="More on Microsoft Azure"
                     leftAvatar={<Avatar
@@ -58,13 +57,13 @@ class MeetingInfoPage extends Component {
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
                     onTouchTap={this.handleAzureTouchTap}
                 />
-                <hr style={{ width:'90%', margin: 0}}/>
+                <hr style={{ width:'90%', margin: 0}}/>*/}
                 <ListItem
                     primaryText="Speaker : John Papa"
                     secondaryText="Subject : Deploying Angular to Azure"
                     leftAvatar={<Avatar src="../johnpapa.png"/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
-                    innerDivStyle={{paddingTop: '8px'}}
+                     /*innerDivStyle={{paddingTop: '8px'}}*/
                     rightIcon={infoButton}
                     className="meeting-speaker-panel"
                     onTouchTap={this.handleAdvocateTouchTap}/>
@@ -89,14 +88,14 @@ class MeetingContent extends Component {
     }
     render() {
         const tabs = [
-            <Tab label='Introduce' value={0} />,
-            <Tab label='Notes' value={1} />,
-            <Tab label='About' value={2} />
+            <Tab label='Introduce' value={0} key={0} />,
+            <Tab label='Resources' value={1} key={0} />,
+            <Tab label='Recommend' value={2} key={0} />,
         ];
         const contents = [
             <IntroduceContent/>,
-            <NotesContent/>,
-            <AboutContent/>
+            <ResourcesContent/>,
+            <RecommendContent/>
         ];
         return (
             <div>
@@ -109,8 +108,8 @@ class MeetingContent extends Component {
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
-                    containerStyle={{minHeight: containerMinHeight}}
                     animateHeight={true}
+                    containerStyle={{minHeight: containerHeight}}
                 >
                     { contents }
                 </SwipeableViews>
@@ -165,7 +164,7 @@ export default class MeetingDetailPresenter extends Component {
                 <HomeBar history={this.props.history} ref="home-app-header"/>
                 <MeetingInfoPage history={this.state.history}/>
                 <MeetingContent/>
-                <Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />
+                {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
                 {sharedBottomSheet}
             </div>
         );

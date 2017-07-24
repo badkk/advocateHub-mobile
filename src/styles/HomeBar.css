@@ -10,13 +10,18 @@
 .bar-paper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 55px!important;
+    justify-content: space-between;
 }
 .logo-panel {
     display: flex;
     align-items: center;
+    margin-left: -50px;
+}
+.logo-panel > span {
     font-size: 18px;
     font-weight: 500;
-    margin: 20px;
+}
+.logo-panel > button {
+    padding: 0!important;
 }

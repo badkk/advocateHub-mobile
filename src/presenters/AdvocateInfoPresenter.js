@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Menu, {menuHeight} from './commons/Menu'
 import {
     Paper,
     IconButton,
@@ -27,7 +26,7 @@ import "../styles/AdvocateInfo.css"
  * Advocate Info Presenter
  */
 const appBarHeight = 70;
-const iFramePanelHeight = window.screen.height - menuHeight - homeBarHeight - appBarHeight - tabMenuHeight;
+let iFramePanelHeight = window.screen.height - homeBarHeight - appBarHeight - tabMenuHeight;
 class InfoBar extends Component {
     render() {
         const {handleBtmSheetOpen} = this.props;
@@ -141,7 +140,7 @@ class SocialMediaBtmSheet extends Component {
         );
     }
 }
-function MeetingListItem({meetingTitle, meetingTags, isComplete}) {
+function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() => {}}) {
     const leftAvatar = isComplete ?
         <ActionDone color={green500} />:
         <ActionCached color={yellow500} />;
@@ -154,6 +153,7 @@ function MeetingListItem({meetingTitle, meetingTags, isComplete}) {
             primaryText={meetingTitle}
             secondaryText={meetingTags}
             rightIconButton={rightButton}
+            onTouchTap={touchEvent}
         >
 
         </ListItem>
@@ -173,13 +173,13 @@ class PersonalPage extends Component {
         });
     }
     render() {
-        const {homePageUrl} = this.props;
+        const {homePageUrl, history} = this.props;
         const tabs = [
             <Tab label='HomePage' value={0} />,
             <Tab label='Meetings' value={1} />
         ];
         const meetingsList = [
-            <MeetingListItem meetingTitle="Angular on Azure" meetingTags="Angular, Azure" isComplete={true}/>,
+            <MeetingListItem meetingTitle="Angular on Azure" meetingTags="Angular, Azure" isComplete={true} touchEvent={() => {history.push('/meeting/johnpapa_123')}}/>,
             <MeetingListItem meetingTitle="Cosmo DB on Azure" meetingTags="Cosmo, Azure" isComplete={false}/>,
             <MeetingListItem meetingTitle="Thinking in .NET" meetingTags=".NET, C#" isComplete={true}/>
         ];
@@ -207,7 +207,6 @@ class PersonalPage extends Component {
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
-                    containerStyle={{minHeight: iFramePanelHeight}}
                     animateHeight={true}
                 >
                     { contents }
@@ -221,14 +220,27 @@ export default class AdvocateInfoPresenter extends Component {
         this.props.initial();
     }
     render() {
+        /*const { fromHome } = this.props.match.params.id;
+        console.log(fromHome);
+        iFramePanelHeight = fromHome ?
+            window.screen.height - homeBarHeight - appBarHeight - tabMenuHeight
+            :
+            window.screen.height - menuHeight - homeBarHeight - appBarHeight - tabMenuHeight;
+        const menuDisplay = fromHome ? 'none' : 'flex';*/
         return (
             <div>
                 <HomeBar history={this.props.history}/>
                 <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage
                     homePageUrl = "https://johnpapa.net/"
+                    history={this.props.history}
                 />
-                <Menu history={this.props.history} state={2} meetingId="johnpapa_123" userId="johnpapa" />
+                {/*<Menu
+                    history={this.props.history}
+                    state={2}
+                    meetingId="johnpapa_123"
+                    userId="johnpapa"
+                />*/}
                 <SocialMediaBtmSheet
                     isOpen={this.props.isOpen}
                     handleBtmSheetClose={this.props.handleBtmSheetClose}

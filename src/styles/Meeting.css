@@ -7,7 +7,7 @@ hr {
     height: 20px!important;
     font-size: 10px!important;
 }
-.meeting-speaker-panel {
+/*.meeting-speaker-panel {
     align-items: center;
     padding-top: 10px!important;
 }
@@ -21,7 +21,7 @@ hr {
 .meeting-speaker-panel > div > div > svg {
     top: 0!important;
 
-}
+}*/
 .meeting-app-bar {
     align-items: center;
     padding-right: 30px!important;

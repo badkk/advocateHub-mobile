@@ -19,7 +19,7 @@ run `yarn start` to run project on port 3000
 
 
 ## Problem Solve
-1. Project shows `cannt find 'react''` after `yarn install`
+1. Project shows `cannt find 'react'` after `yarn install`
 
     > running `yarn add global react` or `npm install -g react`;
     

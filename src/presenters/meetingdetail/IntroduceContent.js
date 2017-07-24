@@ -30,7 +30,7 @@ export default function IntroduceContent() {
     );
     /*  */
     return (
-        <Card>
+        <Card style={{height: 'auto'}} zDepth={0}>
             <CardHeader
                 title="Deploying Angular to Azure"
                 subtitle="10:30 Wed 7/5/2017 by John Papa"

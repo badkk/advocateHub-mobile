@@ -1,16 +1,16 @@
 import React, {Component} from 'react'
-import Menu, {menuHeight} from './commons/Menu'
+import Menu, {menuHeight} from '../commons/Menu'
 import {SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
-import "../styles/AzureInfo.css"
-import get from '../restful/Get'
-import HomeBar, {homeBarHeight} from './commons/HomeBar'
+import "../../styles/AzureInfo.css"
+import get from '../../restful/Get'
+import HomeBar, {homeBarHeight} from '../commons/HomeBar'
 /**
  * Created by t-zikfan on 2017/7/3.
  * The Azure Information Page
  */
 /*Height Compatible Infos*/
-const contentMinHeight = window.screen.height - homeBarHeight - menuHeight;
+//const contentMinHeight = window.screen.height - homeBarHeight - menuHeight;
 
 class AzureContent extends Component {
     constructor(props) {
@@ -52,11 +52,10 @@ class AzureContent extends Component {
         );
     }
 }
-export default class QuickStartPresenter extends Component {
+export default class RecommendContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            history: this.props.history,
             data: [],
             loadRuning: true
         };
@@ -82,7 +81,7 @@ export default class QuickStartPresenter extends Component {
         window.location = "https://azure.microsoft.com/en-us/free/?v=17.15";
     }
     render() {
-        //ms logo
+        /*//ms logo
         const LogoIcon =  (props) => (
             <SvgIcon
                 {...props}
@@ -94,19 +93,10 @@ export default class QuickStartPresenter extends Component {
                 <path className="st2" d="M34 34h30v30H34z"/>
                 <path className="st3" d="M0 34h30v30H0z"/>
             </SvgIcon>
-        );
+        );*/
         return (
             <div>
-                {/*<AppBar
-                    title="Quick Start on Azure"
-                    titleStyle={{fontSize:'16px'}}
-                    iconElementLeft={<LogoIcon/>}
-                    className="app-header"
-                    onLeftIconButtonTouchTap={this.handleAppBarTouched}
-                    onTitleTouchTap={this.handleAppBarTouched}
-                    style={{maxHeight: appMaxHeight}}
-                />*/}
-                <HomeBar history={this.props.history}/>
+                {/*<HomeBar history={this.props.history}/>*/}
                 <Paper className="app-header">
                     <RaisedButton
                         label="Try Azure free account"
@@ -116,14 +106,14 @@ export default class QuickStartPresenter extends Component {
                         onTouchTap={this.handleTryButtonTouched}
                     />
                 </Paper>
-                <div style={{minHeight: contentMinHeight}}>
+                <div>
                     <CircularProgress
                         thickness={3}
                         style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
                     />
                     <AzureContent data={this.state.data}/>
                 </div>
-                <Menu history={ this.state.history } state={1} meetingId="johnpapa_123" userId="johnpapa" />
+                {/*<Menu history={ this.state.history } state={1} meetingId="johnpapa_123" userId="johnpapa" />*/}
             </div>
         );
     }
