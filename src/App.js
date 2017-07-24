@@ -15,6 +15,7 @@ import MeetingDetailPresenter from './presenters/MeetingDetailPresenter'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
 import HomePresenter from './presenters/HomePresenter'
 import AdvocateTwitterLogin from './presenters/admin/AdvocateTwitterLogin'
+import AdvocateInfoChecker from './presenters/admin/AdvocateInfoChecker'
 
 // Phone touch action
 injectTapEventPlugin();
@@ -36,6 +37,7 @@ export default function App() {
                     {/*<Route path="/article" component={Article}/>*/}
                     <Route path="/test" component={TestContainer}/>
                     <Route path="/admin/login" component={AdvocateTwitterLogin}/>
+                    <Route path="/admin/:userId" component={AdvocateInfoChecker}/>
                 </Switch>
             </Router>
         </Provider>

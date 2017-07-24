@@ -9,6 +9,7 @@
     "material-ui": "^0.18.5",
     "material-ui-bottom-sheet": "^0.4.0",
     "material-ui-search-bar": "^0.2.4",
+    "oauthio-web": "^0.6.1",
     "passport": "^0.3.2",
     "passport-twitter": "^1.0.4",
     "react": "^15.6.1",

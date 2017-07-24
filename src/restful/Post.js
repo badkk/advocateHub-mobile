@@ -6,10 +6,13 @@ import Strings from '../res/values/string'
  * Post request
  */
 
-export default function (baseUrl=Strings.serverAddr, url, config={}, data) {
-    const conf = Object.assign({}, config, {
+export default function (url, data) {
+    /*const conf = Object.assign({}, config, {
+        method: "POST",
+        body: data
+    });*/
+    return Get(url, {
         method: "POST",
         body: data
     });
-    return Get(baseUrl, url, conf);
 }

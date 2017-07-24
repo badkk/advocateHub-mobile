@@ -4621,6 +4621,10 @@ oauth@0.9.x:
   version "0.9.15"
   resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
 
+oauthio-web@^0.6.1:
+  version "0.6.1"
+  resolved "http://registry.npm.taobao.org/oauthio-web/download/oauthio-web-0.6.1.tgz#5135da9f29b32048d8c0bb0b25ff86b56ecffc6d"
+
 object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
