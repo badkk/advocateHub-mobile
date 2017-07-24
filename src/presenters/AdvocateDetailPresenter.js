@@ -1,10 +1,23 @@
 import React, {Component} from 'react'
 import Menu, {menuHeight} from './commons/Menu'
-import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider, Tab} from 'material-ui'
+import {
+    Paper,
+    IconButton,
+    FontIcon,
+    CircularProgress,
+    FlatButton,
+    Avatar,
+    ListItem,
+    FloatingActionButton,
+    RaisedButton,
+    List,
+    Divider,
+    Tab,
+} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import SwipeableViews from 'react-swipeable-views';
-import { SocialPersonAdd, ActionCheckCircle } from 'material-ui/svg-icons'
-import {grey500, green500} from 'material-ui/styles/colors'
+import { SocialPersonAdd, ActionCheckCircle, ActionCached, ActionDone } from 'material-ui/svg-icons'
+import {grey500, green500, white, yellow500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
@@ -128,6 +141,24 @@ class SocialMediaBtmSheet extends Component {
         );
     }
 }
+function MeetingListItem({meetingTitle, meetingTags, isComplete}) {
+    const leftAvatar = isComplete ?
+        <ActionDone color={green500} />:
+        <ActionCached color={yellow500} />;
+    const rightButton = isComplete ?
+        <FlatButton label="Completed" primary={true}/> :
+        <FlatButton label="Upcoming"/>;
+    return (
+        <ListItem
+            leftIcon={leftAvatar}
+            primaryText={meetingTitle}
+            secondaryText={meetingTags}
+            rightIconButton={rightButton}
+        >
+
+        </ListItem>
+    );
+}
 class PersonalPage extends Component {
     constructor(props) {
         super(props);
@@ -147,6 +178,11 @@ class PersonalPage extends Component {
             <Tab label='HomePage' value={0} />,
             <Tab label='Meetings' value={1} />
         ];
+        const meetingsList = [
+            <MeetingListItem meetingTitle="Angular on Azure" meetingTags="Angular, Azure" isComplete={true}/>,
+            <MeetingListItem meetingTitle="Cosmo DB on Azure" meetingTags="Cosmo, Azure" isComplete={false}/>,
+            <MeetingListItem meetingTitle="Thinking in .NET" meetingTags=".NET, C#" isComplete={true}/>
+        ];
         const contents = [
             <iframe src={homePageUrl}
                     title={homePageUrl}
@@ -154,7 +190,11 @@ class PersonalPage extends Component {
                     width='100%'
                     frameBorder="0"
             />,
-            <div/>
+            <div>
+                <List>
+                    {meetingsList}
+                </List>
+            </div>
         ];
         return (
             <div>
