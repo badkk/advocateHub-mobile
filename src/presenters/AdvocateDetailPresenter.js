@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Menu, {menuHeight} from './commons/Menu'
-import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider, AppBar} from 'material-ui'
+import {Paper, IconButton, FontIcon, CircularProgress, Avatar, ListItem, FloatingActionButton, RaisedButton, List, Divider, Tab} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
+import SwipeableViews from 'react-swipeable-views';
 import { SocialPersonAdd, ActionCheckCircle } from 'material-ui/svg-icons'
 import {grey500, green500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
-
+import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
 
 /**
@@ -13,7 +14,7 @@ import "../styles/AdvocateInfo.css"
  * Advocate Info Presenter
  */
 const appBarHeight = 70;
-const iFramePanelHeight = window.screen.height - menuHeight - homeBarHeight - appBarHeight;
+const iFramePanelHeight = window.screen.height - menuHeight - homeBarHeight - appBarHeight - tabMenuHeight;
 class InfoBar extends Component {
     render() {
         const {handleBtmSheetOpen} = this.props;
@@ -128,21 +129,49 @@ class SocialMediaBtmSheet extends Component {
     }
 }
 class PersonalPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            slideIdx: 0
+        };
+        this.handleTabClick = this.handleTabClick.bind(this);
+    }
+    handleTabClick(value) {
+        this.setState({
+            slideIdx: value
+        });
+    }
     render() {
-        const {loading, handlePageLoaded} = this.props;
+        const {homePageUrl} = this.props;
+        const tabs = [
+            <Tab label='HomePage' value={0} />,
+            <Tab label='Meetings' value={1} />
+        ];
+        const contents = [
+            <iframe src={homePageUrl}
+                    title={homePageUrl}
+                    height={iFramePanelHeight}
+                    width='100%'
+                    frameBorder="0"
+            />,
+            <div/>
+        ];
         return (
             <div>
-                <CircularProgress
-                    thickness={3}
-                    style={{position: 'absolute', padding:'45%', display: loading ? "inline-block" : "none"}}
+                <AHTab
+                    tabs={tabs}
+                    tabChangeHandler={this.handleTabClick}
+                    slideIdx={this.state.slideIdx}
+                    stickyHeight={homeBarHeight}
                 />
-                <iframe src="https://johnpapa.net/"
-                        title="John papa's homepage"
-                        height={iFramePanelHeight}
-                        width='100%'
-                        frameBorder="0"
-                        onLoad={handlePageLoaded}
-                />
+                <SwipeableViews
+                    index={this.state.slideIdx}
+                    onChangeIndex={this.handleTabClick}
+                    containerStyle={{minHeight: iFramePanelHeight}}
+                    animateHeight={true}
+                >
+                    { contents }
+                </SwipeableViews>
             </div>
         );
     }
@@ -156,7 +185,9 @@ export default class AdvocateInfoPresenter extends Component {
             <div>
                 <HomeBar history={this.props.history}/>
                 <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
-                <PersonalPage />
+                <PersonalPage
+                    homePageUrl = "https://johnpapa.net/"
+                />
                 <Menu history={this.props.history} state={2} meetingId="johnpapa_123" userId="johnpapa" />
                 <SocialMediaBtmSheet
                     isOpen={this.props.isOpen}

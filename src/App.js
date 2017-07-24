@@ -7,7 +7,7 @@ import {
 import './App.css';
 import QuickStartPresenter from './presenters/QuickStartPresenter'
 import MeetingDetailPresenter from './presenters/MeetingDetailPresenter'
-import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
+import AdvocateDetailContainer from './containers/AdvocateDetailContainer'
 import HomePresenter from './presenters/HomePresenter'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux'
@@ -33,7 +33,7 @@ export default function App() {
                     <Route exact path="/:tag" component={HomePresenter}/>
                     {/* detail page */}
                     <Route path="/meeting/:id" component={MeetingDetailPresenter}/>
-                    <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
+                    <Route path="/advocate/:id" component={AdvocateDetailContainer}/>
                     <Route path="/product/:id" component={QuickStartPresenter}/>
                     {/*<Route path="/article" component={Article}/>*/}
                     <Route path="/test" component={TestContainer}/>

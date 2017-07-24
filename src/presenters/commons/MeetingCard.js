@@ -13,8 +13,8 @@ export default function MeetingCard({
     buttonTxt,
     buttonStyle='primary',
     buttonEvent}){
-    const primary = buttonStyle === 'primary' ? true : false;
-    const secondary = buttonStyle === 'secondary' ? true : false;
+    const primary = buttonStyle === 'primary';
+    const secondary = buttonStyle === 'secondary';
     const avatarClassName = avatarStyle === 'live' ? "card-avatar-live" : "card-avatar"
     return (
         <div className="card-panel">
