@@ -8,8 +8,8 @@ run `yarn install`
 run `npm install`
 
 ## Develop
-
-run `yarn start` or `npm start` to run project on port 3000
+run `yarn add global react`
+run `yarn start` to run project on port 3000
 
 ## Deploy
 
