@@ -29,9 +29,9 @@ class AzureContent extends Component {
         window.location = linkAddr;
     }
     render() {
-        const cardContent = _.map(this.state.data, (data) => {
+        const cardContent = _.map(this.state.data, (data, index) => {
             return (
-            <Card className="azure-content-card-style">
+            <Card className="azure-content-card-style" key={index}>
                 <CardHeader
                     title={data['title']}
                     subtitle={data['subtitle']}

@@ -18,9 +18,9 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
         autoplay: true,
     };
     const content = [
-        <div className="home-activity-shows" style={{backgroundColor: '#EC407A'}}>Azure Info1</div>,
-        <div className="home-activity-shows" style={{backgroundColor: '#3F51B5'}}>Azure Info2</div>,
-        <div className="home-activity-shows" style={{backgroundColor: '#8BC34A'}}>Azure Info3</div>
+        <div className="home-activity-shows" style={{backgroundColor: '#EC407A'}} key={0}>Azure Info1</div>,
+        <div className="home-activity-shows" style={{backgroundColor: '#3F51B5'}} key={1}>Azure Info2</div>,
+        <div className="home-activity-shows" style={{backgroundColor: '#8BC34A'}} key={2}>Azure Info3</div>
     ];
     const carouselContent = (
         <div>
@@ -30,12 +30,12 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
         </div>
     );
     const topAdvocates = [
-        <BtmTextAvatar title="Paul O’Shannessy" src="face10.jpeg"/>,
-        <BtmTextAvatar title="John Papa" src="johnpapa.png" touchFunc={() => {history.push('/advocate/johnpapa')}}/>,
-        <BtmTextAvatar title="Dimitrios Zorbas" src="face1.jpeg"/>,
-        <BtmTextAvatar title="Gabriele Petronella" src="face2.jpeg"/>,
-        <BtmTextAvatar title="Mark Lacey" src="face3.jpeg"/>,
-        <BtmTextAvatar title="David Lavieri" src="face4.jpeg"/>
+        <BtmTextAvatar key={0} title="Paul O’Shannessy" src="face10.jpeg"/>,
+        <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png" touchFunc={() => {history.push('/advocate/johnpapa')}}/>,
+        <BtmTextAvatar key={2} title="Dimitrios Zorbas" src="face1.jpeg"/>,
+        <BtmTextAvatar key={3} title="Gabriele Petronella" src="face2.jpeg"/>,
+        <BtmTextAvatar key={4} title="Mark Lacey" src="face3.jpeg"/>,
+        <BtmTextAvatar key={5} title="David Lavieri" src="face4.jpeg"/>
     ];
     const lists = [
         <List>
@@ -125,9 +125,9 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
             <div className="home-advocates-list">
                 <p className="home-mainheader">Aspects Advocates</p>
                 <Divider />
-                {_.map(lists, (list) => {
+                {_.map(lists, (list, index) => {
                     return (
-                        <div>
+                        <div key={index}>
                             {list}
                             <Divider inset={true}/>
                         </div>

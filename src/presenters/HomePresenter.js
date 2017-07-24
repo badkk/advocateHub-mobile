@@ -30,8 +30,8 @@ class TabContent extends Component {
     render() {
         const { contents } = this.props;
         const tabs = [
-            <Tab label='Advocates' value={0} />,
-            <Tab label='Meetings' value={1} />,
+            <Tab label='Advocates' value={0} key={0} />,
+            <Tab label='Meetings' value={1} key={1} />,
         ];
         return (
         <div>
