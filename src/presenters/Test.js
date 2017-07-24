@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {FlatButton} from 'material-ui'
-const Codebird = require("codebird");
 /**
  * Created by t-zikfan on 2017/7/12.
  * test react redux
@@ -70,18 +69,6 @@ class Test extends Component {
                 }
             });*/
 
-        let cb = new Codebird();
-        cb.setConsumerKey("rUSunMlRwYz5pqNtDpFMpyGiD", "KjRuDPBqZQyu9ojO9tMrjclGDZrx8XJIRyffvxPgOZ4u6w1VgF");
-        cb.setToken("1284688014-ltPL0wlZHMQTGPDaokYGV2GfhjtqRYtdz4Beckb", "LTQq1J3hStlkx6CJEEsDaaBNrbAdeGLLJTTVH5fqaKs6L");
-        cb.__call(
-            "friendships/lookup",
-            {
-                "screen_name" : "noradio"
-            },
-            function (reply) {
-                console.log(reply);
-            }
-        );
     };
     myFacebookDelete = () => {
         FB.api(this.state.postId, 'delete', function(response) {

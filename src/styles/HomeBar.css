@@ -25,3 +25,14 @@
 .logo-panel > button {
     padding: 0!important;
 }
+.admin-bar-paper {
+    justify-content: center;
+}
+.admin-dark-bar {
+    color: white!important;
+    background-color: black!important;
+}
+.admin-white-bar {
+    color: black!important;
+    background-color: white!important;
+}

@@ -20,21 +20,22 @@ function parseJSON(response) {
     console.log(response);
     return response.json()
 }
-export default function (url, config) {
-    console.log("Fetch from " + Strings.serverAddr + url);
+export default function (baseUrl=Strings.serverAddr, url, config) {
+    console.log("Fetch from " + baseUrl + url);
     /**
      * @param config other configs
      */
     _.defaults(config, {
         noCache: false,
         raw: false,
+        mode: 'no-cors',
         credentials: 'include',
         headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': '*',
+            'mode': 'no-cors'
         }
     });
-    return fetch(Strings.serverAddr + url, config)
+    return fetch(baseUrl + url, config)
         .then(checkStatus)
         .then(parseJSON)
         .then(function(response) {

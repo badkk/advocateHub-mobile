@@ -5,9 +5,9 @@ import {SvgIcon, IconButton} from 'material-ui'
  * Date: 11:02 2017/7/21
  */
 export default function MSLogo(props) {
-    const history = props.history;
+    const { logoEvent } = props;
     return (
-        <IconButton onTouchTap={() => {history.push('/')}}>
+        <IconButton onTouchTap={logoEvent}>
             <SvgIcon
                 {...props}
                 viewBox="0 0 64 64"
