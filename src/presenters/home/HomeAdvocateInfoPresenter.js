@@ -1,43 +1,36 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {List, Subheader, FlatButton, ListItem, Avatar, Paper, Divider} from 'material-ui'
 import { SocialWhatshot, } from 'material-ui/svg-icons'
 import Slider from 'react-slick'
 import { red500 } from 'material-ui/styles/colors'
+import get from '../../restful/Get'
 import * as _ from "underscore";
 import BtmTextAvatar from '../commons/BtmTextAvatar'
 
-export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
-    /* Carousel */
-    const settings = {
-        dots: false,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-    };
-    const content = [
-        <div className="home-activity-shows" style={{backgroundColor: '#EC407A'}} key={0}>Azure Info1</div>,
-        <div className="home-activity-shows" style={{backgroundColor: '#3F51B5'}} key={1}>Azure Info2</div>,
-        <div className="home-activity-shows" style={{backgroundColor: '#8BC34A'}} key={2}>Azure Info3</div>
-    ];
-    const carouselContent = (
-        <div>
-            <Slider {...settings}>
-                {content}
-            </Slider>
-        </div>
-    );
-    const topAdvocates = [
-        <BtmTextAvatar key={0} title="Paul O’Shannessy" src="face10.jpeg"/>,
-        <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png" touchFunc={() => {history.push('/advocate/johnpapa')}}/>,
-        <BtmTextAvatar key={2} title="Dimitrios Zorbas" src="face1.jpeg"/>,
-        <BtmTextAvatar key={3} title="Gabriele Petronella" src="face2.jpeg"/>,
-        <BtmTextAvatar key={4} title="Mark Lacey" src="face3.jpeg"/>,
-        <BtmTextAvatar key={5} title="David Lavieri" src="face4.jpeg"/>
-    ];
-    const lists = [
+export default class HomeAdvocateInfoPresenter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            topAdvocates: [],
+            lists: []
+        };
+    }
+    componentDidMount() {
+        get('/advocators').then(res => {
+            this.setState({
+                lists: res['data']
+            })
+        })
+        this.state.topAdvocates = [
+            <BtmTextAvatar key={0} title="Paul O’Shannessy11" src="face10.jpeg"/>,
+            <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png"/>,
+            <BtmTextAvatar key={2} title="Dimitrios Zorbas" src="face1.jpeg"/>,
+            <BtmTextAvatar key={3} title="Gabriele Petronella" src="face2.jpeg"/>,
+            <BtmTextAvatar key={4} title="Mark Lacey" src="face3.jpeg"/>,
+            <BtmTextAvatar key={5} title="David Lavieri" src="face4.jpeg"/>
+        ];
+        /*
+        this.state.lists = [
         <List>
             <div className="home-subheader">
                 <Subheader inset={true}>Javascript</Subheader>
@@ -112,28 +105,49 @@ export default function HomeAdvocateInfoPresenter({bodyHeight, history}) {
             />
         </List>
     ];
-    return (
-        <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
-            <div> {carouselContent} </div>
-            <Paper zDepth={0}>
-                <p className="home-mainheader">Top Advocates</p>
-                <Divider/>
-                <div className="top-advocates-panel">
-                    {topAdvocates}
+    */
+    }
+    render() {
+        return (
+            <div style={{overflowY: 'scroll', overflowX: 'hidden'}}>
+                <Paper zDepth={0}>
+                    <p className="home-mainheader">Top Advocates</p>
+                    <Divider/>
+                    <div className="top-advocates-panel">
+                        {this.state.topAdvocates}
+                    </div>
+                </Paper>
+                <div className="home-advocates-list">
+                    <p className="home-mainheader">Aspects Advocates</p>
+                    <Divider />
+                    <div>
+                        <List>
+                            <div className="home-subheader">
+                                <Subheader inset={true}>Javascript</Subheader>
+                                <FlatButton label="more" primary={true}/>
+                            </div>
+                            {_.map(this.state.lists, (list, index) => (
+                                <ListItem
+                                    rightIcon={<SocialWhatshot color={red500} />}
+                                    leftAvatar={<Avatar src="face7.jpeg" />}
+                                    primaryText={list.username}
+                                    secondaryText="JS, React"
+                                    key={index}
+                                />
+                            ))}
+                        </List>
+                    </div>
+                    {/*
+                    {_.map(this.state.lists, (list, index) => {
+                        return (
+                            <div key={index}>
+                                {list}
+                                <Divider inset={true}/>
+                            </div>
+                        );
+                    })}*/}
                 </div>
-            </Paper>
-            <div className="home-advocates-list">
-                <p className="home-mainheader">Aspects Advocates</p>
-                <Divider />
-                {_.map(lists, (list, index) => {
-                    return (
-                        <div key={index}>
-                            {list}
-                            <Divider inset={true}/>
-                        </div>
-                    );
-                })}
             </div>
-        </div>
-    );
+        );
+    }
 }
