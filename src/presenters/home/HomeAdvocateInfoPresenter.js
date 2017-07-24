@@ -21,6 +21,14 @@ export default class HomeAdvocateInfoPresenter extends Component {
                 lists: res['data']
             })
         });
+
+        get('/advocators').then(res => {
+            this.setState({
+                topAdvocates: res['data']
+            })
+        });
+        
+        /*
         this.state.topAdvocates = [
             <BtmTextAvatar key={0} title="Paul O’Shannessy11" src="face10.jpeg"/>,
             <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png"/>,
@@ -29,6 +37,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
             <BtmTextAvatar key={4} title="Mark Lacey" src="face3.jpeg"/>,
             <BtmTextAvatar key={5} title="David Lavieri" src="face4.jpeg"/>
         ];
+        */
         /*
         this.state.lists = [
         <List>
@@ -114,7 +123,9 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     <p className="home-mainheader">Top Advocates</p>
                     <Divider/>
                     <div className="top-advocates-panel">
-                        {this.state.topAdvocates}
+                        {_.map(this.state.topAdvocates, (topAdvocate, index) => (
+                            <BtmTextAvatar key={index} title={topAdvocate.username} src="face1.jpeg"/>
+                        ))}
                     </div>
                 </Paper>
                 <div className="home-advocates-list">
@@ -126,8 +137,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                 <Subheader inset={true}>Javascript</Subheader>
                                 <FlatButton label="more" primary={true}/>
                             </div>
-                            {_.map(this.state.lists, (list, index) => {
-                                return (
+                            {_.map(this.state.lists, (list, index) => (
                                     <ListItem
                                         rightIcon={<SocialWhatshot color={red500}/>}
                                         leftAvatar={<Avatar src="face1.jpeg"/>}
@@ -135,19 +145,11 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                         secondaryText={list.aspect}
                                         key={index}
                                     />
-                                );
-                            })}
+                                )
+                            )}
                         </List>
+                        <Divider inset={true}/>
                     </div>
-                    {/*
-                    {_.map(this.state.lists, (list, index) => {
-                        return (
-                            <div key={index}>
-                                {list}
-                                <Divider inset={true}/>
-                            </div>
-                        );
-                    })}*/}
                 </div>
             </div>
         );
