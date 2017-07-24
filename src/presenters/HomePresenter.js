@@ -44,7 +44,6 @@ class TabContent extends Component {
                 index={this.state.slideIdx}
                 onChangeIndex={this.handleTabClick}
                 disabled={true}
-                animateHeight={true}
             >
                 { contents }
             </SwipeableViews>

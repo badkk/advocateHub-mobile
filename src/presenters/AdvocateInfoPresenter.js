@@ -207,7 +207,6 @@ class PersonalPage extends Component {
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
-                    animateHeight={true}
                 >
                     { contents }
                 </SwipeableViews>

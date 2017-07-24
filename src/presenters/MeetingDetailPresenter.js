@@ -108,7 +108,6 @@ class MeetingContent extends Component {
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
-                    animateHeight={true}
                     containerStyle={{minHeight: containerHeight}}
                 >
                     { contents }

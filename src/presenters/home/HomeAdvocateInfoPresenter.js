@@ -127,11 +127,10 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                 <FlatButton label="more" primary={true}/>
                             </div>
                             {_.map(this.state.lists, (list, index) => {
-                                console.log(list);
                                 return (
                                     <ListItem
                                         rightIcon={<SocialWhatshot color={red500}/>}
-                                        leftAvatar={<Avatar src="face7.jpeg"/>}
+                                        leftAvatar={<Avatar src="face1.jpeg"/>}
                                         primaryText={list.username}
                                         secondaryText={list.aspect}
                                         key={index}
