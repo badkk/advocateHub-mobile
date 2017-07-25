@@ -11,25 +11,25 @@ export default class HomeAdvocateInfoPresenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topAdvocates: [],
-            lists: []
+            topAdvocators: [],
+            advocators: []
         };
     }
     componentDidMount() {
         get('/advocators').then(res => {
             this.setState({
-                lists: res['data']
+                advocators: res['data']
             })
         });
 
         get('/advocators').then(res => {
             this.setState({
-                topAdvocates: res['data']
+                topAdvocators: res['data']
             })
         });
         
         /*
-        this.state.topAdvocates = [
+        this.state.topAdvocators = [
             <BtmTextAvatar key={0} title="Paul O’Shannessy11" src="face10.jpeg"/>,
             <BtmTextAvatar key={1} title="John Papa" src="johnpapa.png"/>,
             <BtmTextAvatar key={2} title="Dimitrios Zorbas" src="face1.jpeg"/>,
@@ -39,7 +39,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
         ];
         */
         /*
-        this.state.lists = [
+        this.state.advocators = [
         <List>
             <div className="home-subheader">
                 <Subheader inset={true}>Javascript</Subheader>
@@ -123,8 +123,8 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     <p className="home-mainheader">Top Advocates</p>
                     <Divider/>
                     <div className="top-advocates-panel">
-                        {_.map(this.state.topAdvocates, (topAdvocate, index) => (
-                            <BtmTextAvatar key={index} title={topAdvocate.username} src="face1.jpeg"/>
+                        {_.map(this.state.topAdvocators, (topAdvocator, index) => (
+                            <BtmTextAvatar key={index} title={topAdvocator.username} src="face1.jpeg"/>
                         ))}
                     </div>
                 </Paper>
@@ -133,22 +133,17 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     <Divider />
                     <div>
                         <List>
-                            <div className="home-subheader">
-                                <Subheader inset={true}>Javascript</Subheader>
-                                <FlatButton label="more" primary={true}/>
-                            </div>
-                            {_.map(this.state.lists, (list, index) => (
+                            {_.map(this.state.advocators, (advocator, index) => (
                                     <ListItem
                                         rightIcon={<SocialWhatshot color={red500}/>}
                                         leftAvatar={<Avatar src="face1.jpeg"/>}
-                                        primaryText={list.username}
-                                        secondaryText={list.aspect}
+                                        primaryText={advocator.username}
+                                        secondaryText={advocator.aspect}
                                         key={index}
                                     />
                                 )
                             )}
                         </List>
-                        <Divider inset={true}/>
                     </div>
                 </div>
             </div>

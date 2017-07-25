@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Subheader, IconButton, Divider, Paper, FlatButton, List, ListItem, Avatar } from 'material-ui'
 import { CommunicationLocationOn } from 'material-ui/svg-icons'
 import { cyan500 } from 'material-ui/styles/colors'
@@ -8,19 +8,27 @@ import * as _ from "underscore";
  * Created by t-zikunfan 7/21/2017
  * Home Meeting tag page
  * */
-export default function HomeMeetingInfoPresenter({bodyHeight, history}) {
-    const cards = [
+export default class HomeMeetingInfoPresenter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cards: [],
+            meetings: []
+        };
+    }
+
+    componentDidMount() {
+    this.state.cards = [
         <MeetingCard imgSrc="../johnpapa.png"
                      title="Angular on Azure"
                      subtitle="Learn how to deploy angular to Azure"
                      buttonTxt="Local&Online"
-                     buttonEvent={() => {history.push('/meeting/johnpapa_123')}}
+                     buttonEvent={() => {}}
         />,
         <MeetingCard imgSrc="../face2.jpeg"
                      title="GPU-based Programming"
                      subtitle="How to using GPU programming on Python"
-                     avatarStyle="live"
-                     buttonTxt="Living..."
+                     buttonTxt="Live"
                      buttonStyle="secondary"
                      buttonEvent={() => {}}
         />,
@@ -55,7 +63,7 @@ export default function HomeMeetingInfoPresenter({bodyHeight, history}) {
                      buttonEvent={() => {}}
         />,
     ];
-    const lists = [
+    this.state.meetings = [
         <List>
             <div className="home-subheader">
                 <Subheader inset={true}>Javascript</Subheader>
@@ -120,34 +128,36 @@ export default function HomeMeetingInfoPresenter({bodyHeight, history}) {
             />
         </List>
     ];
-    return (
-        <div style={{height: bodyHeight, overflowY: 'scroll', overflowX: 'hidden'}}>
-            <div className="meetings-location-panel">
-                <Subheader className="meetings-location-panel-title">Minhang Area Shanghai, China</Subheader>
-                <IconButton><CommunicationLocationOn color={cyan500} style={{marginRight: '16px'}}/></IconButton>
-            </div>
-            <div className="meeting-local-panel">
-                <div className="meeting-mainheader-panel">
-                    <p className="home-mainheader">Upcoming Meetings</p>
-                    <FlatButton label="more" primary={true}/>
+    }
+    render() {
+        return (
+            <div style={{overflowY: 'scroll', overflowX: 'hidden'}}>
+                <div className="meetings-location-panel">
+                    <Subheader className="meetings-location-panel-title">Minhang Area Shanghai, China</Subheader>
+                    <IconButton><CommunicationLocationOn color={cyan500} style={{marginRight: '16px'}}/></IconButton>
                 </div>
-                <div className="meeting-cards-panel">
-                    {cards}
+                <div className="meeting-local-panel">
+                    <div className="meeting-mainheader-panel">
+                        <p className="home-mainheader">Upcoming Meetings</p>
+                        <FlatButton label="more" primary={true}/>
+                    </div>
+                    <div className="meeting-cards-panel">
+                        {this.state.cards}
+                    </div>
+                </div>
+                <div className="home-advocates-list">
+                    <p className="home-mainheader">Aspects Meetings</p>
+                    <Divider />
+                    {_.map(this.state.meetings, (meeting) => {
+                        return (
+                            <div>
+                                {meeting}
+                                <Divider inset={true}/>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
-            <div className="home-advocates-list">
-                <p className="home-mainheader">Aspects Meetings</p>
-                <Divider />
-                {_.map(lists, (list) => {
-                    return (
-                        <div>
-                            {list}
-                            <Divider inset={true}/>
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
-
+        );
+    }
 }
