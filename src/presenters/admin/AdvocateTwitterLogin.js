@@ -4,6 +4,8 @@ import AdminAppBar from "../commons/AdminAppBar";
 import get from '../../restful/Get';
 import post from '../../restful/Post';
 import * as _ from 'oauthio-web'
+import '../../styles/AdvocateTwitterLogin.css'
+
 /**
  * Created by t-zikunfan
  * Date: 15:33 2017/7/24
@@ -23,15 +25,17 @@ export default class AdvocateTwitterLogin extends Component {
     componentDidMount() {
     }
     handleTwitterOAuth() {
+        const history = this.state.history;
         _.OAuth.initialize(oauth_publicKey);
         _.OAuth.popup('twitter', {cache: true}).done(function(oauthResult) {
             //make API calls with `twitter`
             console.log('oAuth success!');
             oauthResult.me().done(function(data) {
+                const id = data['id'];
                 console.log(data);
                 post('/user/login', JSON.stringify(data)).then(res => {
-                    if (res['data'] == true) {
-                        this.state.history.push('/admin')
+                    if (res['data'] === true) {
+                        history.push('/admin/'+id);
                     }
                 });
             });
@@ -43,7 +47,7 @@ export default class AdvocateTwitterLogin extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login-panel">
                 <AdminAppBar history={this.props.history} dark={true}/>
                 <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true}/>
             </div>
