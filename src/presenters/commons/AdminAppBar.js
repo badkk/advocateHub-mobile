@@ -16,7 +16,7 @@ export default function AdminAppBar({history, dark}) {
     const barStyle = dark ? "bar-paper admin-bar-paper admin-dark-bar" : "bar-paper admin-bar-paper admin-white-bar";
     const logoIcon = (
         <div className="logo-panel">
-            <MSLogo size="25" logoEvent={() => {history.push('/')}}/>
+            <MSLogo size="25" logoEvent={() => {history.push('/admin')}}/>
             <span>Advocate Hub</span>
         </div>
     );

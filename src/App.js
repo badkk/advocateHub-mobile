@@ -36,8 +36,9 @@ export default function App() {
                     <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
                     {/*<Route path="/article" component={Article}/>*/}
                     <Route path="/test" component={TestContainer}/>
-                    <Route path="/admin/login" component={AdvocateTwitterLogin}/>
                     <Route path="/admin/:userId" component={AdvocateInfoChecker}/>
+                    <Route path="/admin/login" component={AdvocateTwitterLogin}/>
+                    <Route path="/admin" component={AdvocateTwitterLogin}/>
                 </Switch>
             </Router>
         </Provider>
