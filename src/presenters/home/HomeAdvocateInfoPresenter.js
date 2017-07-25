@@ -135,7 +135,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                         <List>
                             {_.map(this.state.advocators, (advocator, index) => (
                                     <ListItem
-                                        rightIcon={<SocialWhatshot color={red500}/>}
+                                        rightIcon={(advocator.popularity > 80 )?(<SocialWhatshot color={red500}/>):null}
                                         leftAvatar={<Avatar src="face1.jpeg"/>}
                                         primaryText={advocator.username}
                                         secondaryText={advocator.aspect}
