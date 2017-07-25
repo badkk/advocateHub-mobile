@@ -126,4 +126,3 @@ export default class AdvocateInfoChecker extends Component {
         );
     }
 }
-
