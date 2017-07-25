@@ -12,7 +12,6 @@ import MSLogo from './commons/MSLogo'
  * The Home page.
  */
 const appBarHeight = 140;
-const bodyHeight = window.screen.height * 0.8;
 class TabContent extends Component {
     constructor(props) {
         super(props);
@@ -55,8 +54,8 @@ export default class HomePresenter extends Component{
     render() {
         //ms logo
         const contents = [
-            <HomeAdvocateInfoPresenter key={0} bodyHeight={bodyHeight} history={this.props.history}/>,
-            <HomeMeetingInfoPresenter  key={1} bodyHeight={bodyHeight} history={this.props.history}/>
+            <HomeAdvocateInfoPresenter key={0} history={this.props.history}/>,
+            <HomeMeetingInfoPresenter  key={1} history={this.props.history}/>
         ];
         //url dealings
         console.log(this.props.match.params);
