@@ -10,11 +10,14 @@ const initialStates = {
     isOpen: false,
     followedFb: false,
     followedGh: false,
-    facebookHomePage: 'https://www.facebook.com/papajohns/',
-    twitterName: 'John_Papa',
+    facebookHomePage: '',
+    twitterName: '',
     followedTt: false,
-    githubName: 'https://github.com/johnpapa'
-
+    githubName: '',
+    homePage: "",
+    avatar: '',
+    meetings: [],
+    tags: []
 };
 
 export default (state=initialStates, action) => {
@@ -24,7 +27,13 @@ export default (state=initialStates, action) => {
     switch(action.type) {
         case INITIAL:
             return Object.assign({}, state, {
-               followedTt: action.followedTt,
+                homePage: action.homePage,
+                facebookHomePage: action.facebookHomePage,
+                twitterName: action.twitterName,
+                githubName: action.githubHomePage,
+                avatar: action.avatar,
+                meetings: action.meetings,
+                tags: action.tags,
             });
         case OPEN_BS:
             return Object.assign({}, state, {isOpen: true});

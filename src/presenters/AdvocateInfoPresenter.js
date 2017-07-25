@@ -29,14 +29,19 @@ const appBarHeight = 70;
 let iFramePanelHeight = window.screen.height - homeBarHeight - appBarHeight - tabMenuHeight;
 class InfoBar extends Component {
     render() {
-        const {handleBtmSheetOpen} = this.props;
+        const {
+            handleBtmSheetOpen,
+            twitterName,
+            avatar,
+            tags
+        } = this.props;
         const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
         return (
             <Paper style={{height: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
-                    primaryText="John Papa"
-                    secondaryText="Node.js, .NET, React"
-                    leftAvatar={<Avatar src="../johnpapa.png" />}
+                    primaryText={twitterName}
+                    secondaryText={tags.toString()}
+                    leftAvatar={<Avatar src={avatar} />}
                     rightIconButton={followedIconButton}
                     style={{width:"100%"}}
                 />
@@ -215,8 +220,8 @@ class PersonalPage extends Component {
     }
 }
 export default class AdvocateInfoPresenter extends Component {
-    componentWillUpdate() {
-        this.props.initial();
+    componentWillMount() {
+        this.props.initial(this.props.match.params.id);
     }
     render() {
         /*const { fromHome } = this.props.match.params.id;
@@ -229,9 +234,13 @@ export default class AdvocateInfoPresenter extends Component {
         return (
             <div>
                 <HomeBar history={this.props.history}/>
-                <InfoBar handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
+                <InfoBar
+                    avatar={this.props.avatar}
+                    tags={this.props.tags}
+                    twitterName={this.props.twitterName}
+                    handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage
-                    homePageUrl = "https://johnpapa.net/"
+                    homePageUrl={this.props.homePage}
                     history={this.props.history}
                 />
                 {/*<Menu

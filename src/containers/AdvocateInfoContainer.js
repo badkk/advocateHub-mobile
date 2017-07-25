@@ -15,9 +15,13 @@ function mapStateToProps(state) {
         followedFb: state.advocateInfoReducer.followedFb,
         followedTt: state.advocateInfoReducer.followedTt,
         followedGh: state.advocateInfoReducer.followedGh,
+        homePage: state.advocateInfoReducer.homePage,
         facebookHomePage: state.advocateInfoReducer.facebookHomePage,
         twitterName: state.advocateInfoReducer.twitterName,
-        githubName: state.advocateInfoReducer.githubName
+        githubName: state.advocateInfoReducer.githubName,
+        avatar: state.advocateInfoReducer.avatar,
+        meetings: state.advocateInfoReducer.meetings,
+        tags: state.advocateInfoReducer.tags
     }
 }
 

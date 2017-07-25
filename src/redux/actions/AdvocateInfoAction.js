@@ -1,3 +1,4 @@
+import get from '../../restful/Get'
 /**
  * Created by t-zikfan on 2017/7/13.
  */
@@ -20,28 +21,16 @@ export const closeBSAction = {
 export const followFbAction = {
     type: FOLLOW_FB
 };
+export const followGhAction = {
+    type: FOLLOW_GH
+};
 export function followTtActionCreator(followStatus, twitterName) {
     console.log(followStatus, twitterName);
     return dispatch => {
     }
 }
-export const followGhAction = {
-    type: FOLLOW_GH
-};
-export function initialActionCreator() {
-    return dispatch => {
-        initPage(dispatch);
-    }
-}
-function handleTwitterFollowed(res) {
-    console.log(res);
-    return ({
-        type: INITIAL,
-        followedTt: true
-    });
-}
-function initPage(dispatch) {
-    //init twitter js
+export function initialActionCreator(userId, dispatch) {
+    //init twitter
     window.twttr = (function(d, s, id) {
         let js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
@@ -58,9 +47,6 @@ function initPage(dispatch) {
 
         return t;
     }(document, "script", "twitter-wjs"));
-    window.twttr.ready(function (twttr) {
-        twttr.events.bind("follow", (res) => dispatch(handleTwitterFollowed(res)))
-    });
     //init github js
     const script = document.createElement("script");
 
@@ -68,4 +54,23 @@ function initPage(dispatch) {
     script.async = true;
 
     document.body.appendChild(script);
+
+    return dispatch => {
+        get('/user/login?userId=' + userId).then(res => {
+            console.log("from advacation redux action", res);
+            dispatch(initState(res['data']))
+        });
+    }
+}
+function initState(data) {
+    return {
+        type: INITIAL,
+        avatar: data['avatar'],
+        homePage: data['homePage'],
+        facebookHomePage: data['facebookAccount'],
+        twitterName: data['alias'],
+        githubHomePage: data['githubAccount'],
+        meetings: data['meetings'],
+        tags: data['tags']
+    }
 }
