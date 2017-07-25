@@ -124,7 +124,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     <Divider/>
                     <div className="top-advocates-panel">
                         {_.map(this.state.topAdvocators, (topAdvocator, index) => (
-                            <BtmTextAvatar key={index} title={topAdvocator.username} src="face1.jpeg"/>
+                            <BtmTextAvatar key={index} title={topAdvocator.username} src="face1.jpeg" touchFunc={() => {this.props.history.push('/advocate/johnpapa')}}/>
                         ))}
                     </div>
                 </Paper>
@@ -139,6 +139,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                         leftAvatar={<Avatar src="face1.jpeg"/>}
                                         primaryText={advocator.username}
                                         secondaryText={advocator.aspect}
+                                        onTouchTap={() => {this.props.history.push('/advocate/johnpapa')}}
                                         key={index}
                                     />
                                 )

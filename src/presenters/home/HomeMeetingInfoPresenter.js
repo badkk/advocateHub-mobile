@@ -23,7 +23,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                      title="Angular on Azure"
                      subtitle="Learn how to deploy angular to Azure"
                      buttonTxt="Local&Online"
-                     buttonEvent={() => {}}
+                     buttonEvent={() => {this.props.history.push('/meeting/johnpapa_123')}}
         />,
         <MeetingCard imgSrc="../face2.jpeg"
                      title="GPU-based Programming"

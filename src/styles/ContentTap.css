@@ -2,7 +2,6 @@
  }
 .content-taps > div {
     background-color: white!important;
-    position: sticky!important;
 }
 .content-taps > div > button {
     font-size: 12px!important;
