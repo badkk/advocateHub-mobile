@@ -77,7 +77,8 @@ class MeetingContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            slideIdx: 0
+            slideIdx: 0,
+            isRecommendClicked: false
         };
         this.handleTabClick = this.handleTabClick.bind(this);
     }
@@ -90,7 +91,7 @@ class MeetingContent extends Component {
         const tabs = [
             <Tab label='Introduce' value={0} key={0} />,
             <Tab label='Resources' value={1} key={0} />,
-            <Tab label='Recommend' value={2} key={0} />,
+            <Tab label={(!this.state.isRecommendClicked ? 'Recommend *' : 'Recommend')} value={2} key={0} onActive={() => {this.state.isRecommendClicked = true} }/>,
         ];
         const contents = [
             <IntroduceContent/>,
