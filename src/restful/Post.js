@@ -13,6 +13,6 @@ export default function (url, data) {
     });*/
     return Get(url, {
         method: "POST",
-        body: data
+        body: JSON.stringify(data)
     });
 }

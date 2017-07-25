@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import {CircularProgress, Stepper, Step, StepLabel, RaisedButton, Paper, Avatar, TextField} from 'material-ui'
-import get from '../../restful/Get'
+import {CircularProgress, RaisedButton, Paper, Avatar, TextField} from 'material-ui'
+import post from '../../restful/Post'
 import ChipInput from 'material-ui-chip-input'
 import login from '../../utils/loginUtils'
 import * as _ from "underscore";
@@ -20,12 +20,18 @@ export default class AdvocateInfoChecker extends Component {
             userId: this.props.match.params.userId,
             userInfo: {},
         };
-        this.SubmitUserinfo = this.SubmitUserinfo.bind(this);
+        this.SubmitUserInfo = this.SubmitUserInfo.bind(this);
     }
 
-    SubmitUserinfo() {
+    SubmitUserInfo() {
         //submit info to server
+        const history = this.state.history;
         console.log(userGlobalInfo);
+        post('/user/login', userGlobalInfo).then(res => {
+            if (!_.isEmpty(res) && res['data'] === true) {
+                history.push('/admin/' + userGlobalInfo['id']);
+            }
+        });
     }
     componentDidMount() {
         login(
@@ -44,17 +50,19 @@ export default class AdvocateInfoChecker extends Component {
         console.log(this.state.userInfo);
         const {stepperIdx} = this.state;
         console.log(stepperIdx);
-        const {userName, alias, avatar} = this.state.userInfo;
+        const {name, alias, avatar} = this.state.userInfo;
+
         const form = (
             <div className="twitter-form-panel">
+                <h2>Initialize you account</h2>
                 <Avatar
-                    src="https://pbs.twimg.com/profile_images/885757113246531585/TMAt-8Nz_normal.jpg"
+                    src={avatar}
                     size={50}
                     style={{margin: '10px'}}
                 />
                 <TextField
                     id="twitter_name"
-                    defaultValue={userName}
+                    defaultValue={name}
                     floatingLabelText="TwitterName"
                     onChange={(event) => { userGlobalInfo['userName']=event.target.value }}
                 />
@@ -81,7 +89,7 @@ export default class AdvocateInfoChecker extends Component {
                 />
                 <ChipInput
                     floatingLabelText="Tech Aspects"
-
+                    onChange={(chips) => { userGlobalInfo['tags'] = chips }}
                 />
             </div>
         );
@@ -93,7 +101,7 @@ export default class AdvocateInfoChecker extends Component {
                         label='Finish'
                         primary={true}
                         fullWidth={true}
-                        onTouchTap={this.SubmitUserinfo}
+                        onTouchTap={this.SubmitUserInfo}
                         style={{marginTop: '30px'}}
                     />
                 </Paper>
