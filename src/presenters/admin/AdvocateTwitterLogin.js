@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { RaisedButton } from 'material-ui'
 import AdminAppBar from "../commons/AdminAppBar";
 import get from '../../restful/Get';
-import post from '../../restful/Post';
+import login from '../../utils/loginUtils'
 import * as _ from 'oauthio-web'
 import '../../styles/AdvocateTwitterLogin.css'
 
@@ -33,11 +33,11 @@ export default class AdvocateTwitterLogin extends Component {
             oauthResult.me().done(function(data) {
                 const id = data['id'];
                 console.log(data);
-                post('/user/login', JSON.stringify(data)).then(res => {
-                    if (res['data'] === true) {
-                        history.push('/admin/'+id);
-                    }
-                });
+                login(
+                    id,
+                    (res) => history.push('/admin/'+id),
+                    (res) => history.push('/admin/' + id + '/infocheck')
+                );
             });
         }).fail(function(err) {
             //todo when the OAuth flow failed

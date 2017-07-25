@@ -8,7 +8,10 @@ import * as _ from "underscore";
 
 function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
-        return response
+        return response;
+    } else if (response.status === 404) {
+        //not exist from server
+        return response;
     } else {
         let error = new Error(response.statusText);
         error.response = response;
