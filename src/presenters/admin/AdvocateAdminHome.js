@@ -5,7 +5,9 @@ import AdvocateMeetingInfo from './AdvocateMeetingInfo'
 import get from '../../restful/Get'
 import post from '../../restful/Post'
 import { MeetingListItem } from '../AdvocateInfoPresenter.js'
+import Strings from '../../res/values/string'
 import * as _ from "underscore"
+import '../../styles/AdvocateAdminHome.css'
 
 /**
  * Created by t-zikunfan
@@ -19,6 +21,7 @@ export default class AdvocateAdminHome extends Component {
             advocatorId: this.props.match.params.userId,
             meethingInfo: { "advocatorId" : this.props.match.params.userId },
             meetings: {},
+            qrcodeLink: ''
         };
         this.createMeeting = this.createMeeting.bind(this);
         this.cancelMeeting = this.cancelMeeting.bind(this);
@@ -30,48 +33,18 @@ export default class AdvocateAdminHome extends Component {
     componentDidMount(){
         this.getMeetings();
     }
-
-    render() {
-        var component;
-        const buttonLabel = this.state.showForm ? "Cancel" : "Create meeting";
-        const buttonEvent = this.state.showForm ? this.cancelMeeting : this.createMeeting;
-        
-        if(this.state.showForm){
-            component = <div>
-                <AdvocateMeetingInfo handleChange={this.handleChange}/>
-                <div style={{margintTop: '5%', width: '100%'}}>
-                    <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} style={{width:'50%'}} />
-                    <RaisedButton label="Create" onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
-                </div>
-            </div>;
-        } else {
-            component = <div>
-                <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} primary={true} fullWidth={true}/>;
-                <Subheader>Meetings</Subheader>
-                {
-                    _.map(this.state.meetings, (meeting) =>
-                    <MeetingListItem
-                        id={meeting['_id']}
-                        meetingTitle={meeting['name']}
-                        meetingTags={meeting['description']}
-                    />)
-                }
-            </div>
-        }
-        return (
-            <div>
-                <AdminAppBar history={this.props.history} dark={false}/>
-                {component}
-            </div>
-        );
-    }
-
     createMeeting() {
-        this.setState({showForm: true});
+        this.setState({
+            showForm: true,
+            qrcodeLink: ''
+        });
     }
 
     cancelMeeting() {
-        this.setState({showForm: false});
+        this.setState({
+            showForm: false,
+            qrcodeLink: ''
+        });
     }
 
     handleChange(key, value) {
@@ -82,15 +55,18 @@ export default class AdvocateAdminHome extends Component {
 
     postMeeting(){
         post('/meeting/create', this.state.meethingInfo).then(res => {
-            if (!_.isEmpty(res) && res['data'] === true) {
-                this.setState({showForm: false});
+            if (!_.isEmpty(res) && !_.isEmpty(res['data'])) {
+                this.setState({
+                    showForm: false,
+                    qrcodeLink: Strings.serverAddr + '/qrcode/' + res['data']
+                });
             }
         });
     }
 
     getMeetings(){
         get('/advocator/' + this.state.advocatorId).then(res => {
-            let data = res['data']
+            let data = res['data'];
             if ('meetings' in data) {
                 console.log("s");
                 this.setState({
@@ -98,5 +74,52 @@ export default class AdvocateAdminHome extends Component {
                 });
             }
         });
+    }
+    render() {
+        let component;
+        const buttonLabel = this.state.showForm ? "Cancel" : "Create meeting";
+        const buttonEvent = this.state.showForm ? this.cancelMeeting : this.createMeeting;
+        const componentInnerStyle = {width: '100%'};
+        if(this.state.showForm){
+            component =
+                <div style={componentInnerStyle}>
+                    <AdvocateMeetingInfo handleChange={this.handleChange}/>
+                    <div style={{margintTop: '5%', width: '100%'}}>
+                        <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} style={{width:'50%'}} />
+                        <RaisedButton label="Create" onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
+                    </div>
+                </div>;
+        } else {
+            component =
+                <div style={componentInnerStyle}>
+                    <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} primary={true} fullWidth={true}/>
+                    <Subheader>Meetings</Subheader>
+                    {
+                        _.map(this.state.meetings, (meeting) =>
+                        <MeetingListItem
+                            id={meeting['_id']}
+                            meetingTitle={meeting['name']}
+                            meetingTags={meeting['description']}
+                        />)
+                    }
+                </div>
+        }
+        const qrcodeImg = _.isEmpty(this.state.qrcodeLink) ?
+            <div/> :
+            <div style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection:'column'}}>
+                <h3>Your Meeting({this.state.meethingInfo['name']}) QRCode</h3>
+                <img src={this.state.qrcodeLink}/>
+            </div>;
+        return (
+            <div className="admin-home-panel">
+                <AdminAppBar history={this.props.history} dark={false}/>
+                {qrcodeImg}
+                {component}
+            </div>
+        );
     }
 }
