@@ -150,7 +150,7 @@ class SocialMediaBtmSheet extends Component {
         );
     }
 }
-function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() => {}}) {
+export function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() => {}}) {
     const leftAvatar = isComplete ?
         <ActionDone color={green500} />:
         <ActionCached color={yellow500} />;
