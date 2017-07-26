@@ -27,7 +27,7 @@ export default class AdvocateInfoChecker extends Component {
         //submit info to server
         const history = this.state.history;
         console.log(userGlobalInfo);
-        post('/user/login', userGlobalInfo).then(res => {
+        post('/advocator/login', userGlobalInfo).then(res => {
             if (!_.isEmpty(res) && res['data'] === true) {
                 history.push('/admin/' + userGlobalInfo['id']);
             }
@@ -51,7 +51,9 @@ export default class AdvocateInfoChecker extends Component {
         const {stepperIdx} = this.state;
         console.log(stepperIdx);
         const {name, alias, avatar} = this.state.userInfo;
-
+        const infoChange = (name, value) => {
+            userGlobalInfo[name] = value;
+        };
         const form = (
             <div className="twitter-form-panel">
                 <h2>Initialize you account</h2>
@@ -64,32 +66,32 @@ export default class AdvocateInfoChecker extends Component {
                     id="twitter_name"
                     defaultValue={name}
                     floatingLabelText="TwitterName"
-                    onChange={(event) => { userGlobalInfo['userName']=event.target.value }}
+                    onChange={(event) => infoChange('userName', event.target.value)}
                 />
                 <TextField
                     id="twitter_alias"
                     defaultValue={alias}
                     floatingLabelText="Twitter HomePage"
-                    onChange={(event) => { userGlobalInfo['alias']=event.target.value }}
+                    onChange={(event) => infoChange('alias', event.target.value)}
                 />
                 <TextField
                     id="home_page"
                     floatingLabelText="Your Own HomePage"
-                    onChange={(event) => { userGlobalInfo['homePage']=event.target.value }}
+                    onChange={(event) => infoChange('homePage', event.target.value)}
                 />
                 <TextField
                     id="facebook_page"
                     floatingLabelText="Facebook PublicPage"
-                    onChange={(event) => { userGlobalInfo['facebookAccount']=event.target.value }}
+                    onChange={(event) => infoChange('facebookAccount', event.target.value)}
                 />
                 <TextField
                     id="github_page"
                     floatingLabelText="Github HomePage"
-                    onChange={(event) => { userGlobalInfo['githubAccount']=event.target.value }}
+                    onChange={(event) => infoChange('githubAccount', event.target.value)}
                 />
                 <ChipInput
                     floatingLabelText="Tech Aspects"
-                    onChange={(chips) => { userGlobalInfo['tags'] = chips }}
+                    onChange={(value) => infoChange('tags', value)}
                 />
             </div>
         );

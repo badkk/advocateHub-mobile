@@ -37,7 +37,7 @@ export default class AdvocateTwitterLogin extends Component {
                     id,
                     (res) => history.push('/admin/'+id),
                     (res) => {
-                        post('/user/login', data).then(res => {
+                        post('/advocator/login', data).then(res => {
                             if(res['data'] === true)
                                 history.push('/admin/' + id + '/infocheck')
                         });
