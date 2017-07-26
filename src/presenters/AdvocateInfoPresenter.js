@@ -106,6 +106,32 @@ class SocialMediaBtmSheet extends Component {
                         width="100%"
                         height="30"/>
             </div>;
+        /*const facebookListItem = _.isEmpty(facebookHomePage) ?*/
+        const facebookListItem = <ListItem primaryText="Facebook"
+                                           leftIcon={FacebookIcon}
+                                           rightIconButton={
+                                               <IconButton
+                                                   onTouchTap={handleFbFollow}
+                                                   className="advocate-follow-button"
+                                               >{followFbIcon}</IconButton>}/>;
+        const twitterListItem = <ListItem primaryText="Twitter"
+                                          leftIcon={TwitterIcon}
+                                          rightIconButton={
+                                              <IconButton
+                                                  onTouchTap={handleTtFollow}
+                                                  className="advocate-follow-button"
+                                              >{followTtIcon}</IconButton>}/>;
+        const githubListItem = <ListItem primaryText="Github"
+                                         leftIcon={GithubIcon}
+                                         rightIconButton={
+                                             <IconButton
+                                                 className="advocate-follow-button"
+                                                 onTouchTap={handleGhFollow}
+                                             >{followGhIcon}</IconButton>}/>;
+        let listContent = [];
+        if (!_.isEmpty(facebookHomePage)) listContent.push(facebookListItem);
+        if (!_.isEmpty(twitterName)) listContent.push(twitterListItem);
+        if (!_.isEmpty(githubName)) listContent.push(githubListItem);
         return (
             <BottomSheet
                 action={
@@ -118,27 +144,7 @@ class SocialMediaBtmSheet extends Component {
                 <h4 style={{color: grey500, marginLeft: '25px'}}>Follow me on these channel</h4>
                 <Divider inset/>
                 <List>
-                    <ListItem primaryText="Facebook"
-                              leftIcon={FacebookIcon}
-                              rightIconButton={
-                                  <IconButton
-                                      onTouchTap={handleFbFollow}
-                                      className="advocate-follow-button"
-                                  >{followFbIcon}</IconButton>}/>
-                    <ListItem primaryText="Twitter"
-                              leftIcon={TwitterIcon}
-                              rightIconButton={
-                                  <IconButton
-                                      onTouchTap={handleTtFollow}
-                                      className="advocate-follow-button"
-                                  >{followTtIcon}</IconButton>}/>
-                    <ListItem primaryText="Github"
-                              leftIcon={GithubIcon}
-                              rightIconButton={
-                                  <IconButton
-                                      className="advocate-follow-button"
-                                      onTouchTap={handleGhFollow}
-                                  >{followGhIcon}</IconButton>}/>
+                    {listContent}
                 </List>
             </BottomSheet>
         );
