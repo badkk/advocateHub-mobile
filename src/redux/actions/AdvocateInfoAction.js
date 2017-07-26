@@ -68,7 +68,7 @@ function initState(data) {
         avatar: data['avatar'],
         homePage: data['homePage'],
         facebookHomePage: data['facebookAccount'],
-        twitterName: data['alias'],
+        twitterName: data['name'],
         githubHomePage: data['githubAccount'],
         meetings: data['meetings'],
         tags: data['tags'].join(',')
