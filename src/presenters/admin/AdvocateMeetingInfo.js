@@ -5,7 +5,7 @@ export default class AdvocateMeetingInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            typeValue: 1
+            typeValue: "online"
         }
     }
 
@@ -42,8 +42,8 @@ export default class AdvocateMeetingInfo extends Component {
                         this.setState({typeValue: value});
                         handleChange("type", value)}
                     }>
-                    <MenuItem value={1} primaryText="online" />
-                    <MenuItem value={2} primaryText="offline" />
+                    <MenuItem value="online" primaryText="online" />
+                    <MenuItem value="offline" primaryText="offline" />
                 </SelectField>  
             </div>);
 
