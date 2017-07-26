@@ -20,6 +20,7 @@ import ResourcesContent from './meetingdetail/ResourcesContent'
 import RecommendContent from './meetingdetail/RecommendContent'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
+import get from '../restful/Get'
 import '../styles/Meeting.css'
 
 /**
@@ -125,11 +126,23 @@ export default class MeetingDetailPresenter extends Component {
             isOpen: false,
             title: 'Test title',
             advocateName: 'Simon Wu',
-            description: 'test descripotion'
+            description: 'test descripotion',
+            meeting: {
+                advocator: {}
+            }
         };
         this.handleShareButtonClick = this.handleShareButtonClick.bind(this);
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     }
+
+    componentDidMount() {
+        get('/meeting/' + this.props.match.params.id).then(res => {
+            this.setState({
+                meeting: res['data']
+            });
+        });
+    }
+
     handleShareButtonClick(e) {
         this.setState({
             isOpen: true
@@ -165,8 +178,8 @@ export default class MeetingDetailPresenter extends Component {
         return (
             <div style={{scroll: 'hidden'}}>
                 <HomeBar history={this.props.history} ref="home-app-header"/>
-                <MeetingInfoPage history={this.state.history} advocateName={this.state.advocateName} description={this.state.description}/>
-                <MeetingContent title={this.state.title} advocateName={this.state.advocateName} description={this.state.description}/>
+                <MeetingInfoPage history={this.state.history} advocateName={this.state.meeting.advocator.name} description={this.state.meeting.description}/>
+                <MeetingContent title={this.state.meeting.name} advocateName={this.state.meeting.advocator.name} description={this.state.meeting.description}/>
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
                 {sharedBottomSheet}
             </div>
