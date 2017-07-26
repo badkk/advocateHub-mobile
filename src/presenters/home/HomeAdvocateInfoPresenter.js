@@ -17,15 +17,13 @@ export default class HomeAdvocateInfoPresenter extends Component {
     }
     componentDidMount() {
         get('/advocators').then(res => {
+            var advocators = res['data'];
             this.setState({
-                advocators: res['data']
-            })
-        });
-
-        get('/advocators').then(res => {
+                advocators: advocators
+            });
             this.setState({
-                topAdvocators: res['data']
-            })
+                topAdvocators: _.first(_.sortBy(advocators, (x) => x.popularity * -1), 4)
+            });
         });
         
         /*
