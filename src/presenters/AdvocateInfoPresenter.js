@@ -40,7 +40,7 @@ class InfoBar extends Component {
             <Paper style={{height: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
                     primaryText={twitterName}
-                    secondaryText={tags.toString()}
+                    secondaryText={tags}
                     leftAvatar={<Avatar src={avatar} />}
                     rightIconButton={followedIconButton}
                     style={{width:"100%"}}
@@ -72,6 +72,7 @@ class SocialMediaBtmSheet extends Component {
         const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
         //twitterHref
         const twitterHref = "https://platform.twitter.com/widgets/follow_button.html?screen_name=" + twitterName + "&show_screen_name=false&show_count=false&size=l";
+        const githubHref = "http://ghbtns.com/github-btn.html?user=" + githubName + "&count=true&type=follow";
         //followedButton
         const followFbIcon = <iframe src={facebookHref}
                                      title="Follow me"
@@ -95,14 +96,13 @@ class SocialMediaBtmSheet extends Component {
         );
         const displayGithubCheck = followedGh ? "block" : "none";
         const followGhIcon =
-            <div className="github-follow-button-div" onTouchTap={handleGhFollow}>
-                <a className="github-button"
-                   href={githubName}
-                   onClick={handleGhFollow}
-                   data-size="large"
-                   data-show-count="true"
-                   aria-label="Follow on GitHub">Follow</a>
-                <ActionCheckCircle color={green500} style={{display: displayGithubCheck}}/>
+            <div className="github-follow-button-div">
+                <iframe src={githubHref}
+                        allowTransparency="true"
+                        frameBorder="0"
+                        scrolling="no"
+                        width="100%"
+                        height="30"/>
             </div>;
         return (
             <BottomSheet
@@ -117,7 +117,6 @@ class SocialMediaBtmSheet extends Component {
                 <Divider inset/>
                 <List>
                     <ListItem primaryText="Facebook"
-                              secondaryText="Followers: 29,1552"
                               leftIcon={FacebookIcon}
                               rightIconButton={
                                   <IconButton
@@ -125,7 +124,6 @@ class SocialMediaBtmSheet extends Component {
                                       className="advocate-follow-button"
                                   >{followFbIcon}</IconButton>}/>
                     <ListItem primaryText="Twitter"
-                              secondaryText="Followers: 59,8578"
                               leftIcon={TwitterIcon}
                               rightIconButton={
                                   <IconButton
@@ -133,7 +131,6 @@ class SocialMediaBtmSheet extends Component {
                                       className="advocate-follow-button"
                                   >{followTtIcon}</IconButton>}/>
                     <ListItem primaryText="Github"
-                              secondaryText="Followers: 7,258"
                               leftIcon={GithubIcon}
                               rightIconButton={
                                   <IconButton
@@ -220,7 +217,8 @@ class PersonalPage extends Component {
     }
 }
 export default class AdvocateInfoPresenter extends Component {
-    componentWillMount() {
+    componentDidMount() {
+        console.log(this.props.match.params.id);
         this.props.initial(this.props.match.params.id);
     }
     render() {
