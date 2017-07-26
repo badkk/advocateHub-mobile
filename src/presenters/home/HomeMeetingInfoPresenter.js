@@ -19,82 +19,57 @@ export default class HomeMeetingInfoPresenter extends Component {
     }
 
     componentDidMount() {
-    this.state.cards = [
-        <MeetingCard imgSrc="../johnpapa.png"
-                     title="Angular on Azure"
-                     subtitle="Learn how to deploy angular to Azure"
-                     buttonTxt="Local&Online"
-                     buttonEvent={() => {this.props.history.push('/meeting/johnpapa_123')}}
-        />,
-        <MeetingCard imgSrc="../face2.jpeg"
-                     title="GPU-based Programming"
-                     subtitle="How to using GPU programming on Python"
-                     buttonTxt="Live"
-                     buttonStyle="secondary"
-                     buttonEvent={() => {}}
-        />,
-        <MeetingCard imgSrc="../face10.jpeg"
-                     title="Dataflow in React"
-                     subtitle="Explain the one-way dataflow in React"
-                     buttonTxt="Local"
-                     buttonEvent={() => {}}
-        />,
-        <MeetingCard imgSrc="../face11.jpeg"
-                     title="React Virtual DOM"
-                     subtitle="Learn the principle of Virtual DOM of React"
-                     buttonTxt="Online"
-                     buttonEvent={() => {}}
-        />,
-        <MeetingCard imgSrc="../face5.jpeg"
-                     title="Tensorflow General Introduction"
-                     subtitle="Learn the based structure of Tensorflow"
-                     buttonTxt="Local&Online"
-                     buttonEvent={() => {}}
-        />,
-        <MeetingCard imgSrc="../face1.jpeg"
-                     title="Flask on Azure"
-                     subtitle="Learn how to deploy Flask to Azure"
-                     buttonTxt="Online"
-                     buttonEvent={() => {}}
-        />,
-        <MeetingCard imgSrc="../face3.jpeg"
-                     title="Introduce of CNTK"
-                     subtitle="Learn about CNTK - A Deep learning tool"
-                     buttonTxt="Online"
-                     buttonEvent={() => {}}
-        />,
-    ];
-    get('/meetings').then(res => {
-        var meetings = res['data'];
-        this.setState({
-            meetings: meetings
+        this.state.cards = [
+            <MeetingCard imgSrc="../johnpapa.png"
+                        title="Angular on Azure"
+                        subtitle="Learn how to deploy angular to Azure"
+                        buttonTxt="Local&Online"
+                        buttonEvent={() => {this.props.history.push('/meeting/johnpapa_123')}}
+            />,
+            <MeetingCard imgSrc="../face2.jpeg"
+                        title="GPU-based Programming"
+                        subtitle="How to using GPU programming on Python"
+                        buttonTxt="Live"
+                        buttonStyle="secondary"
+                        buttonEvent={() => {}}
+            />,
+            <MeetingCard imgSrc="../face10.jpeg"
+                        title="Dataflow in React"
+                        subtitle="Explain the one-way dataflow in React"
+                        buttonTxt="Local"
+                        buttonEvent={() => {}}
+            />,
+            <MeetingCard imgSrc="../face11.jpeg"
+                        title="React Virtual DOM"
+                        subtitle="Learn the principle of Virtual DOM of React"
+                        buttonTxt="Online"
+                        buttonEvent={() => {}}
+            />,
+            <MeetingCard imgSrc="../face5.jpeg"
+                        title="Tensorflow General Introduction"
+                        subtitle="Learn the based structure of Tensorflow"
+                        buttonTxt="Local&Online"
+                        buttonEvent={() => {}}
+            />,
+            <MeetingCard imgSrc="../face1.jpeg"
+                        title="Flask on Azure"
+                        subtitle="Learn how to deploy Flask to Azure"
+                        buttonTxt="Online"
+                        buttonEvent={() => {}}
+            />,
+            <MeetingCard imgSrc="../face3.jpeg"
+                        title="Introduce of CNTK"
+                        subtitle="Learn about CNTK - A Deep learning tool"
+                        buttonTxt="Online"
+                        buttonEvent={() => {}}
+            />,
+        ];
+        get('/meetings').then(res => {
+            var meetings = res['data'];
+            this.setState({
+                meetings: meetings
+            });
         });
-    });
-    /*
-    this.state.meetings = [
-        <List>
-            <ListItem
-                leftAvatar={<Avatar src="face10.jpeg" />}
-                primaryText="Dataflow in React"
-                secondaryText="Explain the one-way dataflow in React"
-            />
-            <ListItem
-                leftAvatar={<Avatar src="face11.jpeg" />}
-                primaryText="React Virtual DOM"
-                secondaryText="Learn the principle of Virtual DOM of React"
-            />
-
-            <ListItem 
-                leftAvatar={<Avatar src="johnpapa.png" />}
-                primaryText="Angular on Azure"
-                secondaryText="Learn how to deploy angular to Azure"
-            />
-                leftAvatar={<Avatar src="face12.jpeg" />}
-                primaryText="Next version of React Native"
-                secondaryText="Learn the updated news of React Native"
-            />
-        </List>
-    ];*/
     }
     render() {
         return (
@@ -122,6 +97,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                                     leftAvatar={<Avatar src={meeting.advocator ? meeting.advocator.avatar : null} />}
                                     primaryText={meeting.name}
                                     secondaryText={meeting.description}
+                                    onTouchTap={() => {this.props.history.push('/meeting/' + meeting._id)}}
                                 />                              
                             );
                         })}
