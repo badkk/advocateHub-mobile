@@ -20,6 +20,7 @@ import {grey500, green500, white, yellow500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
+import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
 
 /**
@@ -197,13 +198,20 @@ class PersonalPage extends Component {
                 touchEvent={() => {history.push('/meeting/'+meeting['_id'])}}
             />
         );
-        const contents = [
+        const homePageDiv = isUrl(homePageUrl) ?
             <iframe src={homePageUrl}
                     title={homePageUrl}
                     height={iFramePanelHeight}
                     width='100%'
                     frameBorder="0"
-            />,
+            />:
+            <div
+                style={{height: iFramePanelHeight}}
+            >
+                User Did Not Set HomePage
+            </div>;
+        const contents = [
+            homePageDiv,
             <div>
                 <List>
                     {meetingsList}

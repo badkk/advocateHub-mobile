@@ -14,7 +14,7 @@ const initialStates = {
     twitterName: '',
     followedTt: false,
     githubName: '',
-    homePage: "",
+    homePage: '',
     avatar: '',
     meetings: [],
     tags: []
