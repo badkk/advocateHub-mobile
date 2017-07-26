@@ -137,7 +137,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                         leftAvatar={<Avatar src={advocator.avatar}/>}
                                         primaryText={advocator.username}
                                         secondaryText={advocator.tags.join(", ")}
-                                        onTouchTap={() => {this.props.history.push('/advocate/johnpapa')}}
+                                        onTouchTap={() => {this.props.history.push('/advocate/' + advocator.id)}}
                                         key={index}
                                     />
                                 )
