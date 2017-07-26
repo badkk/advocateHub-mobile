@@ -127,7 +127,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     </div>
                 </Paper>
                 <div className="home-advocates-list">
-                    <p className="home-mainheader">Aspects Advocates</p>
+                    <p className="home-mainheader">Advocates</p>
                     <Divider />
                     <div>
                         <List>

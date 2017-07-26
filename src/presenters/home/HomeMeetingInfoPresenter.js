@@ -3,6 +3,7 @@ import { Subheader, IconButton, Divider, Paper, FlatButton, List, ListItem, Avat
 import { CommunicationLocationOn } from 'material-ui/svg-icons'
 import { cyan500 } from 'material-ui/styles/colors'
 import MeetingCard from '../commons/MeetingCard'
+import get from '../../restful/Get'
 import * as _ from "underscore";
 /**
  * Created by t-zikunfan 7/21/2017
@@ -63,12 +64,15 @@ export default class HomeMeetingInfoPresenter extends Component {
                      buttonEvent={() => {}}
         />,
     ];
+    get('/meetings').then(res => {
+        var meetings = res['data'];
+        this.setState({
+            meetings: meetings
+        });
+    });
+    /*
     this.state.meetings = [
         <List>
-            <div className="home-subheader">
-                <Subheader inset={true}>Javascript</Subheader>
-                <FlatButton label="more" primary={true}/>
-            </div>
             <ListItem
                 leftAvatar={<Avatar src="face10.jpeg" />}
                 primaryText="Dataflow in React"
@@ -79,55 +83,18 @@ export default class HomeMeetingInfoPresenter extends Component {
                 primaryText="React Virtual DOM"
                 secondaryText="Learn the principle of Virtual DOM of React"
             />
-            <ListItem
+
+            <ListItem 
                 leftAvatar={<Avatar src="johnpapa.png" />}
                 primaryText="Angular on Azure"
                 secondaryText="Learn how to deploy angular to Azure"
             />
-            <ListItem
                 leftAvatar={<Avatar src="face12.jpeg" />}
                 primaryText="Next version of React Native"
                 secondaryText="Learn the updated news of React Native"
             />
-        </List>,
-        <List>
-            <div className="home-subheader">
-                <Subheader inset={true}>Python</Subheader>
-                <FlatButton label="more" primary={true}/>
-            </div>
-            <ListItem
-                leftAvatar={<Avatar src="face1.jpeg" />}
-                primaryText="Flask on Azure"
-                secondaryText="Learn how to deploy Flask to Azure"
-            />
-            <ListItem
-                leftAvatar={<Avatar src="face5.jpeg" />}
-                primaryText="Tensorflow General Introduction"
-                secondaryText="Learn the based structure of Tensorflow"
-            />
-        </List>,
-        <List>
-            <div className="home-subheader">
-                <Subheader inset={true}>.NET</Subheader>
-                <FlatButton label="more" primary={true}/>
-            </div>
-            <ListItem
-                leftAvatar={<Avatar src="face7.png" />}
-                primaryText="DotNET Introduction"
-                secondaryText="Learn about basic Structure of DotNET"
-            />
-            <ListItem
-                leftAvatar={<Avatar src="face8.jpeg" />}
-                primaryText="Learn about DotNET JSON"
-                secondaryText="Introduce about DotNET deploy & usage"
-            />
-            <ListItem
-                leftAvatar={<Avatar src="face9.jpeg" />}
-                primaryText="DotNET JSON Structures"
-                secondaryText="learn the deep structure about .NET JSON"
-            />
         </List>
-    ];
+    ];*/
     }
     render() {
         return (
@@ -146,16 +113,19 @@ export default class HomeMeetingInfoPresenter extends Component {
                     </div>
                 </div>
                 <div className="home-advocates-list">
-                    <p className="home-mainheader">Aspects Meetings</p>
+                    <p className="home-mainheader">Meetings</p>
                     <Divider />
-                    {_.map(this.state.meetings, (meeting) => {
-                        return (
-                            <div>
-                                {meeting}
-                                <Divider inset={true}/>
-                            </div>
-                        );
-                    })}
+                    <List>
+                        {_.map(this.state.meetings, (meeting) => {
+                            return (
+                                <ListItem
+                                    leftAvatar={<Avatar src={meeting.advocator ? meeting.advocator.avatar : null} />}
+                                    primaryText={meeting.name}
+                                    secondaryText={meeting.description}
+                                />                              
+                            );
+                        })}
+                    </List>
                 </div>
             </div>
         );
