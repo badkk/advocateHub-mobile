@@ -71,6 +71,6 @@ function initState(data) {
         twitterName: data['alias'],
         githubHomePage: data['githubAccount'],
         meetings: data['meetings'],
-        tags: data['tags']
+        tags: data['tags'].join(',')
     }
 }
