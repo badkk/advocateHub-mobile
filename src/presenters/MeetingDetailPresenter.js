@@ -59,8 +59,8 @@ class MeetingInfoPage extends Component {
                 />
                 <hr style={{ width:'90%', margin: 0}}/>*/}
                 <ListItem
-                    primaryText="Speaker : John Papa"
-                    secondaryText="Subject : Deploying Angular to Azure"
+                    primaryText={"Speaker : " + this.props.advocateName}
+                    secondaryText={"Subject : " + this.props.description}
                     leftAvatar={<Avatar src="../johnpapa.png"/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
                      /*innerDivStyle={{paddingTop: '8px'}}*/
@@ -89,12 +89,12 @@ class MeetingContent extends Component {
     }
     render() {
         const tabs = [
-            <Tab label='Introduce' value={0} key={0} />,
+            <Tab label='Introduction' value={0} key={0} />,
             <Tab label='Resources' value={1} key={0} />,
             <Tab label={(!this.state.isRecommendClicked ? 'Recommend *' : 'Recommend')} value={2} key={0} onActive={() => {this.state.isRecommendClicked = true} }/>,
         ];
         const contents = [
-            <IntroduceContent/>,
+            <IntroduceContent title={this.props.title} advocate={this.props.advocateName} description={this.props.description}/>,
             <ResourcesContent/>,
             <RecommendContent/>
         ];
@@ -123,6 +123,9 @@ export default class MeetingDetailPresenter extends Component {
         this.state = {
             history: this.props.history,
             isOpen: false,
+            title: 'Test title',
+            advocateName: 'Simon Wu',
+            description: 'test descripotion'
         };
         this.handleShareButtonClick = this.handleShareButtonClick.bind(this);
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
@@ -162,8 +165,8 @@ export default class MeetingDetailPresenter extends Component {
         return (
             <div style={{scroll: 'hidden'}}>
                 <HomeBar history={this.props.history} ref="home-app-header"/>
-                <MeetingInfoPage history={this.state.history}/>
-                <MeetingContent/>
+                <MeetingInfoPage history={this.state.history} advocateName={this.state.advocateName} description={this.state.description}/>
+                <MeetingContent title={this.state.title} advocateName={this.state.advocateName} description={this.state.description}/>
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
                 {sharedBottomSheet}
             </div>

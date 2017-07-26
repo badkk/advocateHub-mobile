@@ -10,7 +10,7 @@ import {Card, CardHeader, CardMedia, CardTitle, CardActions, FlatButton} from 'm
 function handleLearnMoreClick() {
     window.location = "https://johnpapa.net/azure-and-angular-on-dotnetrocks/";
 }
-export default function IntroduceContent() {
+export default function IntroduceContent({title, advocate, description}) {
     /* Carousel */
     const settings = {
         dots: false,
@@ -32,8 +32,8 @@ export default function IntroduceContent() {
     return (
         <Card style={{height: 'auto'}} zDepth={0}>
             <CardHeader
-                title="Deploying Angular to Azure"
-                subtitle="10:30 Wed 7/5/2017 by John Papa"
+                title={title}
+                subtitle={"10:30 Wed 7/5/2017 by " + advocate}
                 titleStyle={{fontSize:'20px', marginBottom:'10px'}}
                 className="card-header"
             />
@@ -41,7 +41,7 @@ export default function IntroduceContent() {
                 <img src='../poster1.jpg'/>
             </CardMedia>
             <CardTitle
-                subtitle="The Angular CLI makes it easy to build a production ready Angular app. The next step is getting that app up and in the cloud."/>
+                subtitle={description}/>
             <CardActions>
                 <FlatButton
                     primary={true}
