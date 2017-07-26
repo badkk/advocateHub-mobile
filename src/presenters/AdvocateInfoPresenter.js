@@ -74,7 +74,7 @@ class SocialMediaBtmSheet extends Component {
         const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
         //twitterHref
         const twitterHref = "https://platform.twitter.com/widgets/follow_button.html?screen_name=" + twitterName + "&show_screen_name=false&show_count=false&size=l";
-        const githubHref = "http://ghbtns.com/github-btn.html?user=" + githubName + "&count=true&type=follow";
+        const githubHref = "http://ghbtns.com/github-btn.html?user=" + githubName + "&type=follow";
         //followedButton
         const followFbIcon = <iframe src={facebookHref}
                                      title="Follow me"
