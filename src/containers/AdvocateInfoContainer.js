@@ -21,7 +21,8 @@ function mapStateToProps(state) {
         githubName: state.advocateInfoReducer.githubName,
         avatar: state.advocateInfoReducer.avatar,
         meetings: state.advocateInfoReducer.meetings,
-        tags: state.advocateInfoReducer.tags
+        tags: state.advocateInfoReducer.tags,
+        name: state.advocateInfoReducer.name
     }
 }
 

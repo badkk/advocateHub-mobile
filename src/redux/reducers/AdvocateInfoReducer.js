@@ -17,7 +17,8 @@ const initialStates = {
     homePage: '',
     avatar: '',
     meetings: [],
-    tags: []
+    tags: [],
+    name: ''
 };
 
 export default (state=initialStates, action) => {
@@ -34,6 +35,7 @@ export default (state=initialStates, action) => {
                 avatar: action.avatar,
                 meetings: action.meetings,
                 tags: action.tags,
+                name: action.name
             });
         case OPEN_BS:
             return Object.assign({}, state, {isOpen: true});

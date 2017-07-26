@@ -33,7 +33,7 @@ class InfoBar extends Component {
     render() {
         const {
             handleBtmSheetOpen,
-            twitterName,
+            name,
             avatar,
             tags
         } = this.props;
@@ -41,7 +41,7 @@ class InfoBar extends Component {
         return (
             <Paper style={{height: appBarHeight}} className="advocate-info-app-bar">
                 <ListItem
-                    primaryText={twitterName}
+                    primaryText={name}
                     secondaryText={tags}
                     leftAvatar={<Avatar src={avatar} />}
                     rightIconButton={followedIconButton}
@@ -261,7 +261,7 @@ export default class AdvocateInfoPresenter extends Component {
                 <InfoBar
                     avatar={this.props.avatar}
                     tags={this.props.tags}
-                    twitterName={this.props.twitterName}
+                    name={this.props.name}
                     handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
                 <PersonalPage
                     homePageUrl={this.props.homePage}
