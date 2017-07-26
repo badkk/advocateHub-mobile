@@ -20,6 +20,7 @@ import {grey500, green500, white, yellow500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
+import * as _ from 'underscore'
 
 /**
  * Created by lucas on 2017/7/4.
@@ -157,7 +158,6 @@ function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() =
             rightIconButton={rightButton}
             onTouchTap={touchEvent}
         >
-
         </ListItem>
     );
 }
@@ -175,16 +175,28 @@ class PersonalPage extends Component {
         });
     }
     render() {
-        const {homePageUrl, history} = this.props;
+        const {homePageUrl, history, meetings} = this.props;
         const tabs = [
             <Tab label='HomePage' value={0} />,
             <Tab label='Meetings' value={1} />
         ];
-        const meetingsList = [
-            <MeetingListItem meetingTitle="Angular on Azure" meetingTags="Angular, Azure" isComplete={true} touchEvent={() => {history.push('/meeting/johnpapa_123')}}/>,
-            <MeetingListItem meetingTitle="Cosmo DB on Azure" meetingTags="Cosmo, Azure" isComplete={false}/>,
-            <MeetingListItem meetingTitle="Thinking in .NET" meetingTags=".NET, C#" isComplete={true}/>
-        ];
+        const time = new Date();
+        const utcTime = new Date(
+            time.getUTCFullYear(),
+            time.getUTCMonth(),
+            time.getUTCDate(),
+            time.getUTCHours(),
+            time.getUTCMinutes(),
+            time.getUTCSeconds()).getTime();
+        const meetingsList = _.map(meetings, (meeting) =>
+            <MeetingListItem
+                id={meeting['_id']}
+                meetingTitle={meeting['name']}
+                meetingTags={meeting['description']}
+                isComplete={(utcTime - meeting['date']) < 0}
+                touchEvent={() => {history.push('/meeting/'+meeting['_id'])}}
+            />
+        );
         const contents = [
             <iframe src={homePageUrl}
                     title={homePageUrl}
@@ -240,6 +252,7 @@ export default class AdvocateInfoPresenter extends Component {
                 <PersonalPage
                     homePageUrl={this.props.homePage}
                     history={this.props.history}
+                    meetings={this.props.meetings}
                 />
                 {/*<Menu
                     history={this.props.history}

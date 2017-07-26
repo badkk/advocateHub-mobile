@@ -56,7 +56,7 @@ export function initialActionCreator(userId, dispatch) {
     document.body.appendChild(script);
 
     return dispatch => {
-        get('/advocator/login/' + userId).then(res => {
+        get('/advocator/' + userId).then(res => {
             console.log("from advacation redux action", res);
             dispatch(initState(res['data']))
         });
