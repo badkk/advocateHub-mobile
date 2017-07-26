@@ -83,8 +83,7 @@ export default class AdvocateAdminHome extends Component {
     postMeeting(){
         post('/meeting/create', this.state.meethingInfo).then(res => {
             if (!_.isEmpty(res) && res['data'] === true) {
-                // TODO: redirection?
-                console.log("success!");
+                this.setState({showForm: false});
             }
         });
     }
