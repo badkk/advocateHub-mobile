@@ -81,7 +81,7 @@ class MeetingContent extends Component {
             <Tab label={(!this.state.isRecommendClicked ? 'Recommend *' : 'Recommend')} value={2} key={0} onActive={() => {this.state.isRecommendClicked = true} }/>,
         ];
         const contents = [
-            <IntroduceContent key={0} title={this.props.title} advocate={this.props.advocateName} description={this.props.description}/>,
+            <IntroduceContent key={0} meeting={this.props.meeting}/>,
             <ResourcesContent key={1} />,
             <RecommendContent key={2} />
         ];
@@ -165,7 +165,7 @@ export default class MeetingDetailPresenter extends Component {
             <div style={{scroll: 'hidden'}}>
                 <HomeBar history={this.props.history} ref="home-app-header"/>
                 <MeetingInfoPage history={this.state.history} meeting={this.state.meeting} />
-                <MeetingContent title={this.state.meeting.name} advocateName={this.state.meeting.advocator.name} description={this.state.meeting.description}/>
+                <MeetingContent meeting={this.state.meeting} />
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
                 {sharedBottomSheet}
             </div>
