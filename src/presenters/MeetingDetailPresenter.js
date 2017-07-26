@@ -39,35 +39,21 @@ class MeetingInfoPage extends Component {
     handleAzureTouchTap = () => {
       this.state.history.push('/product/azure')
     };
-    handleAdvocateTouchTap = () => {
-        this.state.history.push('/advocate/johnpapa')
+    handleAdvocateTouchTap = (advocator_id) => {
+        this.state.history.push('/advocate/' + advocator_id)
     };
     render() {
-
-        const infoButton = <NavigationChevronRight/>;
         return (
             <div>
-                {/*<ListItem
-                    primaryText="Quick start"
-                    secondaryText="More on Microsoft Azure"
-                    leftAvatar={<Avatar
-                        backgroundColor={blue500}
-                        icon={<FontIcon ><FileCloud color={white}/></FontIcon>}
-                    />}
-                    rightIcon={infoButton}
-                    style={{width:"100%", minHeight: meetingInfoMaxHeight}}
-                    onTouchTap={this.handleAzureTouchTap}
-                />
-                <hr style={{ width:'90%', margin: 0}}/>*/}
                 <ListItem
-                    primaryText={"Speaker : " + this.props.advocateName}
-                    secondaryText={"Subject : " + this.props.description}
-                    leftAvatar={<Avatar src="../johnpapa.png"/>}
+                    primaryText={"Speaker : " + this.props.meeting.advocator.name}
+                    secondaryText={"Subject : " + this.props.meeting.description}
+                    leftAvatar={<Avatar src={this.props.meeting.advocator.avatar}/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
-                     /*innerDivStyle={{paddingTop: '8px'}}*/
-                    rightIcon={infoButton}
+                    rightIcon={<NavigationChevronRight/>}
                     className="meeting-speaker-panel"
-                    onTouchTap={this.handleAdvocateTouchTap}/>
+                    onTouchTap={() => {this.handleAdvocateTouchTap(this.props.meeting.advocator.id)}}
+                />
             </div>
         );
 
@@ -95,9 +81,9 @@ class MeetingContent extends Component {
             <Tab label={(!this.state.isRecommendClicked ? 'Recommend *' : 'Recommend')} value={2} key={0} onActive={() => {this.state.isRecommendClicked = true} }/>,
         ];
         const contents = [
-            <IntroduceContent title={this.props.title} advocate={this.props.advocateName} description={this.props.description}/>,
-            <ResourcesContent/>,
-            <RecommendContent/>
+            <IntroduceContent key={0} title={this.props.title} advocate={this.props.advocateName} description={this.props.description}/>,
+            <ResourcesContent key={1} />,
+            <RecommendContent key={2} />
         ];
         return (
             <div>
@@ -178,7 +164,7 @@ export default class MeetingDetailPresenter extends Component {
         return (
             <div style={{scroll: 'hidden'}}>
                 <HomeBar history={this.props.history} ref="home-app-header"/>
-                <MeetingInfoPage history={this.state.history} advocateName={this.state.meeting.advocator.name} description={this.state.meeting.description}/>
+                <MeetingInfoPage history={this.state.history} meeting={this.state.meeting} />
                 <MeetingContent title={this.state.meeting.name} advocateName={this.state.meeting.advocator.name} description={this.state.meeting.description}/>
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
                 {sharedBottomSheet}
