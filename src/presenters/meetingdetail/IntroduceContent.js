@@ -10,7 +10,7 @@ import {Card, CardHeader, CardMedia, CardTitle, CardActions, FlatButton} from 'm
 function handleLearnMoreClick() {
     window.location = "https://johnpapa.net/azure-and-angular-on-dotnetrocks/";
 }
-export default function IntroduceContent({title, advocate, description}) {
+export default function IntroduceContent({meeting}) {
     /* Carousel */
     const settings = {
         dots: false,
@@ -21,19 +21,12 @@ export default function IntroduceContent({title, advocate, description}) {
         slidesToScroll: 1,
         autoplay: true,
     };
-    const imgs = ['../poster1.jpg', '../poster2.jpg', '../poster3.jpg'];
-    const content = _.map(imgs, (img) => <img src={img}/>);
-    const carouselContent = (
-        <Slider {...settings}>
-            {content}
-        </Slider>
-    );
     /*  */
     return (
         <Card style={{height: 'auto'}} zDepth={0}>
             <CardHeader
-                title={title}
-                subtitle={"10:30 Wed 7/5/2017 by " + advocate}
+                title={meeting.name}
+                subtitle={new Date(meeting.date).toString().substring(0, 10) + " by " + meeting.advocator.name}
                 titleStyle={{fontSize:'20px', marginBottom:'10px'}}
                 className="card-header"
             />
@@ -41,7 +34,7 @@ export default function IntroduceContent({title, advocate, description}) {
                 <img src='../poster1.jpg'/>
             </CardMedia>
             <CardTitle
-                subtitle={description}/>
+                subtitle={meeting.description}/>
             <CardActions>
                 <FlatButton
                     primary={true}
