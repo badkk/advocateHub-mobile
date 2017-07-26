@@ -20,8 +20,3 @@
     width: 100%;
     align-items: center;
 }
-.avatar-panel {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
