@@ -8,7 +8,7 @@ import { MeetingListItem } from '../AdvocateInfoPresenter.js'
 import Strings from '../../res/values/string'
 import * as _ from "underscore"
 import '../../styles/AdvocateAdminHome.css'
-import {utcToLocal, combineDates} from '../../utils/time'
+import {isDateCompleted, utcToLocal, combineDates} from '../../utils/time'
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -107,6 +107,7 @@ export default class AdvocateAdminHome extends Component {
                             id={meeting['_id']}
                             meetingTitle={meeting['name']}
                             meetingTags={utcToLocal(meeting['date'])}
+                            isComplete={isDateCompleted(meeting['date'])}
                         />)
                     }
                 </div>

@@ -22,6 +22,7 @@ import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
 import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
+import {isDateCompleted} from '../utils/time'
 
 /**
  * Created by lucas on 2017/7/4.
@@ -188,19 +189,12 @@ class PersonalPage extends Component {
             <Tab label='Meetings' value={1} />
         ];
         const time = new Date();
-        const utcTime = new Date(
-            time.getUTCFullYear(),
-            time.getUTCMonth(),
-            time.getUTCDate(),
-            time.getUTCHours(),
-            time.getUTCMinutes(),
-            time.getUTCSeconds()).getTime();
         const meetingsList = _.map(meetings, (meeting) =>
             <MeetingListItem
                 id={meeting['_id']}
                 meetingTitle={meeting['name']}
                 meetingTags={meeting['description']}
-                isComplete={(utcTime - meeting['date']) < 0}
+                isComplete={isDateCompleted(meeting['date'])}
                 touchEvent={() => {history.push('/meeting/'+meeting['_id'])}}
             />
         );
