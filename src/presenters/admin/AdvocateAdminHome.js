@@ -8,7 +8,7 @@ import { MeetingListItem } from '../AdvocateInfoPresenter.js'
 import Strings from '../../res/values/string'
 import * as _ from "underscore"
 import '../../styles/AdvocateAdminHome.css'
-import {utcToLocal} from '../../utils/time'
+import {utcToLocal, combineDates} from '../../utils/time'
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -55,7 +55,12 @@ export default class AdvocateAdminHome extends Component {
 
     postMeeting(){
         const that = this;
-        post('/meeting/create', this.state.meethingInfo).then(res => {
+        const meetingInfo = this.state.meethingInfo;
+        meetingInfo['date'] = combineDates(meetingInfo['date1'], meetingInfo['date2']);
+        console.log(meetingInfo['date']);
+        delete meetingInfo['date1'];
+        delete meetingInfo['date2'];
+        post('/meeting/create', meetingInfo).then(res => {
             if (!_.isEmpty(res) && !_.isEmpty(res['data'])) {
                 this.setState({
                     showForm: false,
