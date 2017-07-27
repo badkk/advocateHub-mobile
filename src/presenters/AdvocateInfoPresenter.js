@@ -27,8 +27,8 @@ import * as _ from 'underscore'
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
-const appBarHeight = 70;
-let iFramePanelHeight = window.screen.height - homeBarHeight - appBarHeight - tabMenuHeight;
+const infoBarHeight = 70;
+let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
 class InfoBar extends Component {
     render() {
         const {
@@ -39,7 +39,7 @@ class InfoBar extends Component {
         } = this.props;
         const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
         return (
-            <Paper style={{height: appBarHeight}} className="advocate-info-app-bar">
+            <Paper zDepth={0} style={{height: infoBarHeight, top: homeBarHeight}} className="advocate-info-app-bar">
                 <ListItem
                     primaryText={name}
                     secondaryText={tags}
@@ -230,7 +230,7 @@ class PersonalPage extends Component {
                     tabs={tabs}
                     tabChangeHandler={this.handleTabClick}
                     slideIdx={this.state.slideIdx}
-                    stickyHeight={homeBarHeight}
+                    stickyHeight={homeBarHeight+infoBarHeight}
                 />
                 <SwipeableViews
                     index={this.state.slideIdx}
