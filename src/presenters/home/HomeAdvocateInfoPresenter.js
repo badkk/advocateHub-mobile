@@ -48,7 +48,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
                                         rightIcon={(advocator.popularity > 80 )?(<SocialWhatshot color={red500}/>):null}
                                         leftAvatar={<Avatar src={advocator.avatar}/>}
                                         primaryText={advocator.name}
-                                        secondaryText={advocator.tags.join(", ")}
+                                        secondaryText={advocator.tags ? advocator.tags.join(", ") : ""}
                                         onTouchTap={() => {this.props.history.push('/advocate/' + advocator.id)}}
                                         key={index}
                                     />
