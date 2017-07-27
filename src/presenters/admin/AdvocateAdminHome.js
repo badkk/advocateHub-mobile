@@ -8,7 +8,7 @@ import { MeetingListItem } from '../AdvocateInfoPresenter.js'
 import Strings from '../../res/values/string'
 import * as _ from "underscore"
 import '../../styles/AdvocateAdminHome.css'
-
+import {utcToLocal} from '../../utils/time'
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -54,12 +54,14 @@ export default class AdvocateAdminHome extends Component {
     }
 
     postMeeting(){
+        const that = this;
         post('/meeting/create', this.state.meethingInfo).then(res => {
             if (!_.isEmpty(res) && !_.isEmpty(res['data'])) {
                 this.setState({
                     showForm: false,
                     qrcodeLink: Strings.serverAddr + '/qrcode/' + res['data']
                 });
+                that.getMeetings();
             }
         });
     }
@@ -99,7 +101,7 @@ export default class AdvocateAdminHome extends Component {
                         <MeetingListItem
                             id={meeting['_id']}
                             meetingTitle={meeting['name']}
-                            meetingTags={meeting['description']}
+                            meetingTags={utcToLocal(meeting['date'])}
                         />)
                     }
                 </div>
