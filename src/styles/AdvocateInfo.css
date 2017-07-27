@@ -1,5 +1,6 @@
 .advocate-info-app-bar {
     position: sticky!important;
+    z-index: 300;
 }
 .advocate-follow-button {
     display: flex!important;
