@@ -72,6 +72,6 @@ function initState(data) {
         name: data['name'],
         githubHomePage: data['githubAccount'],
         meetings: data['meetings'],
-        tags: data['tags'].join(',')
+        tags: data['tags'] ? data['tags'].join(',') : ''
     }
 }
