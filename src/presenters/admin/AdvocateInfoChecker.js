@@ -66,7 +66,7 @@ export default class AdvocateInfoChecker extends Component {
                     id="twitter_name"
                     defaultValue={name}
                     floatingLabelText="TwitterName"
-                    onChange={(event) => infoChange('userName', event.target.value)}
+                    onChange={(event) => infoChange('name', event.target.value)}
                 />
                 <TextField
                     id="twitter_alias"
