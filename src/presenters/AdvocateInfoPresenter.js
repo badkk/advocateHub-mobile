@@ -206,6 +206,7 @@ class PersonalPage extends Component {
                     frameBorder="0"
             />:
             <div
+                className="homePage-did-not-set"
                 style={{height: iFramePanelHeight}}
             >
                 User Did Not Set HomePage
