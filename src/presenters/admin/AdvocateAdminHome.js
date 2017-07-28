@@ -95,22 +95,20 @@ export default class AdvocateAdminHome extends Component {
     }
     render() {
         let component;
-        const buttonLabel = this.state.showForm ? "Cancel" : "Create meeting";
-        const buttonEvent = this.state.showForm ? this.cancelMeeting : this.createMeeting;
         const componentInnerStyle = {width: '100%'};
         if(this.state.showForm){
             component =
                 <div style={componentInnerStyle}>
                     <AdvocateMeetingInfo handleChange={this.handleChange}/>
-                    <div style={{margintTop: '5%', width: '100%'}}>
-                        <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} style={{width:'50%'}} />
+                    <div style={{marginTop: '20px', width: '100%'}}>
+                        <RaisedButton label="Cancel" onTouchTap={this.cancelMeeting} style={{width:'50%'}} />
                         <RaisedButton label="Create" onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
                     </div>
                 </div>;
         } else {
             component =
                 <div style={componentInnerStyle}>
-                    <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} primary={true} fullWidth={true}/>
+                    <RaisedButton label="Create meeting" onTouchTap={ this.createMeeting} primary={true} fullWidth={true}/>
                     <Subheader>Your Meetings</Subheader>
                     {
                         _.map(this.state.meetings, (meeting) =>

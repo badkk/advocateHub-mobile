@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {DatePicker, TimePicker, TextField, SelectField, MenuItem} from 'material-ui'
+import {DatePicker, TimePicker, TextField, SelectField, MenuItem, Paper} from 'material-ui'
 
 export default class AdvocateMeetingInfo extends Component {
     constructor(props) {
@@ -12,7 +12,8 @@ export default class AdvocateMeetingInfo extends Component {
     render() {
         const {handleChange}= this.props;
         const form = (
-            <div className="meeting-info-form">
+            <Paper zDepth={1} className="meeting-info-form">
+                <h3>Publish a New Meeting</h3>
                 <TextField
                     id="meeting_title"
                     floatingLabelText="Title"
@@ -47,11 +48,11 @@ export default class AdvocateMeetingInfo extends Component {
                     <MenuItem value="online" primaryText="online" />
                     <MenuItem value="offline" primaryText="offline" />
                 </SelectField>  
-            </div>);
+            </Paper>);
 
         return (
             <div className="meeting-info">
-                <div style={{marginLeft: '10%', marginRight: '10%', width: '100%'}}>
+                <div >
                     {form}
                 </div>
             </div>
