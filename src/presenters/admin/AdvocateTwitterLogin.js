@@ -53,7 +53,7 @@ export default class AdvocateTwitterLogin extends Component {
     render() {
         return (
             <div className="login-panel">
-                <AdminAppBar history={this.props.history} dark={true}/>
+                <AdminAppBar history={this.props.history}/>
                 <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true}/>
             </div>
         );

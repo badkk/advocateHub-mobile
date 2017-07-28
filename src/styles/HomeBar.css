@@ -3,7 +3,7 @@
     top: 0;
     z-index: 400;
     background-color: white;
-    width: 100%!important;
+    width:100%;
 }
 .bar-panel > hr {
     margin: 0!important;
@@ -27,13 +27,17 @@
     padding: 0!important;
 }
 .admin-bar-paper {
-    justify-content: center;
+    justify-content: space-between;
 }
 .admin-dark-bar {
     color: white!important;
     background-color: black!important;
 }
-.admin-white-bar {
-    color: black!important;
-    background-color: white!important;
+.admin-bar-avatar {
+    display: flex;
+    align-items: center;
+    min-width: 55px;
+}
+.admin-logo-panel-with-avatar {
+    margin-left: 20px!important;
 }
