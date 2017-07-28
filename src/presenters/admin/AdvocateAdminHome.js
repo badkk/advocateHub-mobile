@@ -9,6 +9,7 @@ import Strings from '../../res/values/string'
 import * as _ from "underscore"
 import '../../styles/AdvocateAdminHome.css'
 import {isDateCompleted, utcToLocal, combineDates} from '../../utils/time'
+import login from '../../utils/loginUtils'
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -21,7 +22,8 @@ export default class AdvocateAdminHome extends Component {
             advocatorId: this.props.match.params.userId,
             meethingInfo: { "advocatorId" : this.props.match.params.userId },
             meetings: {},
-            qrcodeLink: ''
+            qrcodeLink: '',
+            advocateInfo: {}
         };
         this.createMeeting = this.createMeeting.bind(this);
         this.cancelMeeting = this.cancelMeeting.bind(this);
@@ -31,7 +33,16 @@ export default class AdvocateAdminHome extends Component {
     }
 
     componentDidMount(){
-        this.getMeetings();
+        login(
+            this.state.advocatorId,
+            (res) => {
+                this.setState({
+                    advocateInfo: res['data']
+                });
+                this.getMeetings();
+            },
+            (res) => this.state.history.push('/admin/login')
+        );
     }
     createMeeting() {
         this.setState({
@@ -100,7 +111,7 @@ export default class AdvocateAdminHome extends Component {
             component =
                 <div style={componentInnerStyle}>
                     <RaisedButton label={buttonLabel} onTouchTap={buttonEvent} primary={true} fullWidth={true}/>
-                    <Subheader>Meetings</Subheader>
+                    <Subheader>Your Meetings</Subheader>
                     {
                         _.map(this.state.meetings, (meeting) =>
                         <MeetingListItem
@@ -122,9 +133,10 @@ export default class AdvocateAdminHome extends Component {
                 <h3>Your Meeting({this.state.meethingInfo['name']}) QRCode</h3>
                 <img src={this.state.qrcodeLink}/>
             </div>;
+        const avatarUrl = 'avatar' in this.state.advocateInfo ? this.state.advocateInfo['avatar'] : null;
         return (
             <div className="admin-home-panel">
-                <AdminAppBar history={this.props.history} dark={false}/>
+                <AdminAppBar history={this.props.history} dark={true} avatarUrl={avatarUrl}/>
                 {qrcodeImg}
                 {component}
             </div>
