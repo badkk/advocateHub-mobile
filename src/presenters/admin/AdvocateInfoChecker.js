@@ -50,7 +50,7 @@ export default class AdvocateInfoChecker extends Component {
         console.log(this.state.userInfo);
         const {stepperIdx} = this.state;
         console.log(stepperIdx);
-        const {name, alias, avatar} = this.state.userInfo;
+        const {name, alias, avatar, facebookAccount, githubAccount, homePage, tags} = this.state.userInfo;
         const infoChange = (name, value) => {
             userGlobalInfo[name] = value;
         };
@@ -71,26 +71,30 @@ export default class AdvocateInfoChecker extends Component {
                 <TextField
                     id="twitter_alias"
                     defaultValue={alias}
-                    floatingLabelText="Twitter HomePage"
+                    floatingLabelText="Twitter Alias"
                     onChange={(event) => infoChange('alias', event.target.value)}
                 />
                 <TextField
                     id="home_page"
+                    defaultValue={homePage}
                     floatingLabelText="Your Own HomePage"
                     onChange={(event) => infoChange('homePage', event.target.value)}
                 />
                 <TextField
                     id="facebook_page"
+                    defaultValue={facebookAccount}
                     floatingLabelText="Facebook PublicPage"
                     onChange={(event) => infoChange('facebookAccount', event.target.value)}
                 />
                 <TextField
                     id="github_page"
-                    floatingLabelText="Github HomePage"
+                    defaultValue={githubAccount}
+                    floatingLabelText="Github Alias"
                     onChange={(event) => infoChange('githubAccount', event.target.value)}
                 />
                 <ChipInput
                     floatingLabelText="Tech Aspects"
+                    defaultValue={tags}
                     onChange={(value) => infoChange('tags', value)}
                 />
             </div>
@@ -120,7 +124,7 @@ export default class AdvocateInfoChecker extends Component {
         }
         return (
             <div className="info-checker-panel">
-                <AdminAppBar history={this.props.history} dark={true}/>
+                <AdminAppBar history={this.props.history}/>
                 <div className="info-checker-content">
                     {content}
                 </div>
