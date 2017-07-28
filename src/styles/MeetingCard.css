@@ -1,12 +1,12 @@
 .card-panel {
-    min-width: 120px;
+    width: 120px;
     height: 180px;
     display: flex;
     flex-direction: column;
     border-radius: 3px;
     align-items: center;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
     padding: 10px;
     margin: 10px;
 }
@@ -37,8 +37,8 @@
     color: dimgray;
     font-weight: 100;
     padding-top: 5px;
-    line-height: 18px;        /* fallback */
-    max-height: 36px;       /* fallback */
+    line-height: 22px;        /* fallback */
+    max-height: 44px;       /* fallback */
 }
 .card-button {
     margin-top: 15px;

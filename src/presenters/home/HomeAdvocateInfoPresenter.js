@@ -17,7 +17,7 @@ export default class HomeAdvocateInfoPresenter extends Component {
     }
     componentDidMount() {
         get('/advocators').then(res => {
-            var advocators = res['data'];
+            let advocators = res['data'];
             this.setState({
                 advocators: advocators
             });

@@ -59,6 +59,7 @@
     align-items: flex-start;
     padding: 10px;
     overflow-x: scroll!important;
+    max-height: 85px;
 }
 .home-mainheader {
     font-size: 14px;
