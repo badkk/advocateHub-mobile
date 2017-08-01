@@ -66,15 +66,15 @@
     overflow-x: hidden;
 }
 .home-sub-upper-panel {
-
+    padding-top: 5px;
 }
 .top-advocates-panel {
     display: flex;
     align-items: flex-start;
-    padding: 10px;
+    padding: 20px 10px 0 10px;
     overflow-x: scroll!important;
     overflow-y: hidden!important;
-    max-height: 85px;
+    max-height: 110px;
 }
 .home-mainheader {
     font-size: 14px;
@@ -83,7 +83,6 @@
     padding: 10px;
 }
 .home-advocates-list {
-    margin-top: 10px;
     background-color: white;
 }
 .home-subheader {
@@ -111,6 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 5px;
 }
 .meeting-cards-panel {
     display: flex;

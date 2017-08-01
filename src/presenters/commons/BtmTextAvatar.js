@@ -8,7 +8,7 @@ import '../../styles/CustomAvatar.css'
 export default function BtmTextAvatar({src="MSLogo.jpg", title, touchFunc}) {
     return (
         <div className="avatar-panel" >
-            <Avatar src={src} onTouchTap={touchFunc}/>
+            <Avatar src={src} onTouchTap={touchFunc} size={50} className="btm-avatar"/>
             <p>{title}</p>
         </div>
     );

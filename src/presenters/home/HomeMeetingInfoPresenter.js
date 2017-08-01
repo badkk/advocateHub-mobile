@@ -37,6 +37,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                 <div className="meeting-local-panel">
                     <div className="meeting-mainheader-panel">
                         <p className="home-mainheader">Upcoming Meetings</p>
+                       {/* <FlatButton label="more" primary={true}/>*/}
                     </div>
                     <div className="meeting-cards-panel">
                         {

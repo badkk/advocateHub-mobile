@@ -7,9 +7,14 @@
     font-size: 12px;
     text-align: center;
     color: grey;
-    min-width: 80px;
+    min-width: 90px;
+}
+.btm-avatar {
+    cursor: pointer;
 }
 .avatar-panel > p {
     margin: 0;
     padding-top: 5px;
+    line-height: 22px;
+    max-height: 44px;
 }
