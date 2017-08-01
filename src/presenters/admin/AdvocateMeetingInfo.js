@@ -25,7 +25,6 @@ export default class AdvocateMeetingInfo extends Component {
                 />
                 <TimePicker
                     hintText="Time"
-                    format="24hr"
                     onChange={(event, date) => handleChange("date2", date)}
                 />
                 <TextField

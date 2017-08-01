@@ -100,7 +100,7 @@ export default class AdvocateAdminHome extends Component {
             component =
                 <div style={componentInnerStyle}>
                     <AdvocateMeetingInfo handleChange={this.handleChange}/>
-                    <div style={{marginTop: '20px', width: '100%'}}>
+                    <div style={{width: '90%', paddingLeft: '5%'}}>
                         <RaisedButton label="Cancel" onTouchTap={this.cancelMeeting} style={{width:'50%'}} />
                         <RaisedButton label="Create" onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
                     </div>
