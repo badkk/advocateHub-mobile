@@ -1,4 +1,5 @@
 .card-panel {
+    min-width: 120px;
     width: 120px;
     height: 180px;
     display: flex;

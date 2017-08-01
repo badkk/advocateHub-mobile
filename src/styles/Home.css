@@ -54,6 +54,19 @@
     color: white;
     line-height: 170px;
 }
+.home-sub-panel {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.home-sub-upper-panel {
+
+}
+@media only screen and (min-width: 600px) {
+    .home-sub-upper-panel { padding: 0 8% 0 8%; }
+    .home-advocates-list { padding: 0 8% 0 8%; }
+    .meeting-local-panel { padding: 0 8% 0 8%; }
+    .meetings-location-panel { padding: 0 8% 0 8%; }
+}
 .top-advocates-panel {
     display: flex;
     align-items: flex-start;

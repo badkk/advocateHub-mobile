@@ -28,8 +28,8 @@ export default class HomeAdvocateInfoPresenter extends Component {
     }
     render() {
         return (
-            <div style={{overflowY: 'scroll', overflowX: 'hidden'}}>
-                <Paper zDepth={0}>
+            <div className="home-sub-panel">
+                <Paper zDepth={0} className="home-sub-upper-panel">
                     <p className="home-mainheader">Top Advocates</p>
                     <Divider/>
                     <div className="top-advocates-panel">

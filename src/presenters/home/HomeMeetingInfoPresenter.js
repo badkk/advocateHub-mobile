@@ -20,7 +20,7 @@ export default class HomeMeetingInfoPresenter extends Component {
 
     componentDidMount() {
         get('/meetings').then(res => {
-            var meetings = res['data'];
+            let meetings = res['data'];
             this.setState({
                 meetings: meetings,
                 upcomings: _.sortBy(_.filter(meetings, x => x.date > Date.now()), x => x.date)
@@ -29,7 +29,7 @@ export default class HomeMeetingInfoPresenter extends Component {
     }
     render() {
         return (
-            <div style={{overflowY: 'scroll', overflowX: 'hidden'}}>
+            <div className="home-sub-panel">
                 <div className="meetings-location-panel">
                     <Subheader className="meetings-location-panel-title">Minhang Area Shanghai, China</Subheader>
                     <IconButton><CommunicationLocationOn color={cyan500} style={{marginRight: '16px'}}/></IconButton>
