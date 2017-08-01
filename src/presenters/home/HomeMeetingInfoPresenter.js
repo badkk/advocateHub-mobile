@@ -30,14 +30,13 @@ export default class HomeMeetingInfoPresenter extends Component {
     render() {
         return (
             <div className="home-sub-panel">
-                <div className="meetings-location-panel">
+                {/*<div className="meetings-location-panel">
                     <Subheader className="meetings-location-panel-title">Minhang Area Shanghai, China</Subheader>
                     <IconButton><CommunicationLocationOn color={cyan500} style={{marginRight: '16px'}}/></IconButton>
-                </div>
+                </div>*/}
                 <div className="meeting-local-panel">
                     <div className="meeting-mainheader-panel">
                         <p className="home-mainheader">Upcoming Meetings</p>
-                        <FlatButton label="more" primary={true}/>
                     </div>
                     <div className="meeting-cards-panel">
                         {

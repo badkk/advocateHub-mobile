@@ -31,7 +31,6 @@ export default class HomeAdvocateInfoPresenter extends Component {
             <div className="home-sub-panel">
                 <Paper zDepth={0} className="home-sub-upper-panel">
                     <p className="home-mainheader">Top Advocates</p>
-                    <Divider/>
                     <div className="top-advocates-panel">
                         {_.map(this.state.topAdvocators, (topAdvocator, index) => (
                             <BtmTextAvatar key={index} title={topAdvocator.name} src={topAdvocator.avatar} touchFunc={() => {this.props.history.push('/advocate/' + topAdvocator.id)}}/>
