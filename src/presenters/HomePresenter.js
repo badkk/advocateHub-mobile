@@ -38,6 +38,7 @@ class TabContent extends Component {
                    tabChangeHandler={this.handleTabClick}
                    slideIdx={this.state.slideIdx}
                    stickyHeight={appBarHeight}
+                   homeTab={true}
             />
             <SwipeableViews
                 index={this.state.slideIdx}

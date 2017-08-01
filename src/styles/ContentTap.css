@@ -1,3 +1,23 @@
+@media only screen and (min-width: 600px) {
+    .tab-panel-home {
+        padding: 0 5% 0 5%;
+        background-color: white;
+
+    }
+    .tab-panel-home > div > div > button {
+        width: 15%!important;
+    }
+    .tab-panel-home > div > div:nth-child(2) {
+        width: 30%!important;
+    }
+
+}
+.tab-panel-home {
+
+}
+.tab-panel {
+
+}
 .content-taps {
  }
 .content-taps > div {

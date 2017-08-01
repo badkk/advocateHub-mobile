@@ -1,5 +1,12 @@
+@media only screen and (min-width: 600px) {
+    .home-background-div { padding: 0 8% 0 8%; }
+    .home-sub-upper-panel { padding: 0 5% 0 5%; }
+    .home-advocates-list { padding: 0 5% 0 5%; }
+    .meeting-local-panel { padding: 0 5% 0 5%; }
+    .meetings-location-panel { padding: 0 5% 0 5%; }
+}
 .home-background-div {
-    background-color: #F5F5F5;
+    background-color: #e9e9e9;
 }
 .home-app-header {
     display: flex;
@@ -60,12 +67,6 @@
 }
 .home-sub-upper-panel {
 
-}
-@media only screen and (min-width: 600px) {
-    .home-sub-upper-panel { padding: 0 8% 0 8%; }
-    .home-advocates-list { padding: 0 8% 0 8%; }
-    .meeting-local-panel { padding: 0 8% 0 8%; }
-    .meetings-location-panel { padding: 0 8% 0 8%; }
 }
 .top-advocates-panel {
     display: flex;

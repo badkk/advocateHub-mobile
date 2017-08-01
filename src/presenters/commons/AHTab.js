@@ -8,12 +8,13 @@ import '../../styles/ContentTap.css'
  */
 //Taps menuHeight is 45px
 export const tabMenuHeight = 45;
-export default function AHTab({tabs, tabChangeHandler, slideIdx, stickyHeight}) {
+export default function AHTab({tabs, tabChangeHandler, slideIdx, stickyHeight, homeTab=false}) {
     /*const tabs = _.map(this.state.tabNames, (tabName, idx) => {
         return <Tab label={tabName} value={idx} />
     });*/
+    const tab_style = homeTab ? "tab-panel-home" : "tab-panel";
     return (
-        <div style={{position: 'sticky', top: stickyHeight, zIndex: 100}}>
+        <div className={tab_style} style={{position: 'sticky', top: stickyHeight, zIndex: 100}}>
             <Tabs
                 onChange={tabChangeHandler}
                 value={slideIdx}

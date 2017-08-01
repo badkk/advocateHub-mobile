@@ -47,7 +47,7 @@ class MeetingInfoPage extends Component {
             <div>
                 <ListItem
                     primaryText={"Speaker : " + this.props.meeting.advocator.name}
-                    secondaryText={"Subject : " + this.props.meeting.description}
+                    secondaryText={"Subject : " + this.props.meeting.name}
                     leftAvatar={<Avatar src={this.props.meeting.advocator.avatar}/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
                     rightIcon={<NavigationChevronRight/>}
@@ -82,7 +82,7 @@ class MeetingContent extends Component {
         ];
         const contents = [
             <IntroduceContent key={0} meeting={this.props.meeting}/>,
-            <ResourcesContent key={1} />,
+            <ResourcesContent key={1} meeting={this.props.meeting}/>,
             <RecommendContent key={2} />
         ];
         return (
