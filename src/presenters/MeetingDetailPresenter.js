@@ -36,22 +36,21 @@ class MeetingInfoPage extends Component {
             history: props.history
         }
     }
-    handleAzureTouchTap = () => {
+    /*handleAzureTouchTap = () => {
       this.state.history.push('/product/azure')
-    };
+    };*/
     handleAdvocateTouchTap = (advocator_id) => {
         this.state.history.push('/advocate/' + advocator_id)
     };
     render() {
         return (
-            <div>
+            <div className="meeting-speaker-panel">
                 <ListItem
                     primaryText={"Speaker : " + this.props.meeting.advocator.name}
                     secondaryText={"Subject : " + this.props.meeting.name}
                     leftAvatar={<Avatar src={this.props.meeting.advocator.avatar}/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
                     rightIcon={<NavigationChevronRight/>}
-                    className="meeting-speaker-panel"
                     onTouchTap={() => {this.handleAdvocateTouchTap(this.props.meeting.advocator.id)}}
                 />
             </div>
@@ -97,6 +96,7 @@ class MeetingContent extends Component {
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
                     containerStyle={{minHeight: containerHeight}}
+                    animateHeight={true}
                 >
                     { contents }
                 </SwipeableViews>
@@ -162,7 +162,7 @@ export default class MeetingDetailPresenter extends Component {
             </BottomSheet>
         </div>;
         return (
-            <div style={{scroll: 'hidden'}}>
+            <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
                 <HomeBar history={this.props.history} ref="home-app-header"/>
                 <MeetingInfoPage history={this.state.history} meeting={this.state.meeting} />
                 <MeetingContent meeting={this.state.meeting} />

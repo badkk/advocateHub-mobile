@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Menu, {menuHeight} from '../commons/Menu'
 import {SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
-import "../../styles/AzureInfo.css"
 import get from '../../restful/Get'
 import HomeBar, {homeBarHeight} from '../commons/HomeBar'
 /**
@@ -95,7 +94,7 @@ export default class RecommendContent extends Component {
             </SvgIcon>
         );*/
         return (
-            <div>
+            <div className="recommended-panel">
                 {/*<HomeBar history={this.props.history}/>*/}
                 <Paper className="app-header">
                     <RaisedButton

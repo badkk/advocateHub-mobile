@@ -1,7 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
 import _ from 'underscore'
-import '../../styles/IntroduceContent.css'
 import {Card, CardHeader, CardMedia, CardTitle, CardActions, FlatButton} from 'material-ui'
 /**
  * Created by t-zikfan on 2017/7/5.
@@ -23,7 +22,7 @@ export default function IntroduceContent({meeting}) {
     };
     /*  */
     return (
-        <Card style={{height: 'auto'}} zDepth={0}>
+        <Card style={{height: 'auto'}} zDepth={0} className="introduce-panel">
             <CardHeader
                 title={meeting.name}
                 subtitle={new Date(meeting.date).toString().substring(0, 10) + " by " + meeting.advocator.name}
