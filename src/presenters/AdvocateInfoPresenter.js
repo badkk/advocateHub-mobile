@@ -135,15 +135,11 @@ class SocialMediaBtmSheet extends Component {
         if (!_.isEmpty(githubName)) listContent.push(githubListItem);
         return (
             <BottomSheet
-                action={
-                    <FloatingActionButton>
-                        <SocialPersonAdd/>
-                    </FloatingActionButton>
-                }
                 onRequestClose={handleBtmSheetClose}
-                open={isOpen}>
+                open={isOpen}
+            >
                 <h4 style={{color: grey500, marginLeft: '25px'}}>Follow me on these channel</h4>
-                <Divider inset/>
+                <Divider/>
                 <List>
                     {listContent}
                 </List>
@@ -204,6 +200,7 @@ class PersonalPage extends Component {
                     height={iFramePanelHeight}
                     width='100%'
                     frameBorder="0"
+                    className="homePage-did-set"
             />:
             <div
                 className="homePage-did-not-set"
@@ -213,7 +210,7 @@ class PersonalPage extends Component {
             </div>;
         const contents = [
             homePageDiv,
-            <div>
+            <div className="meetings-panel">
                 <List>
                     {meetingsList}
                 </List>
@@ -251,7 +248,7 @@ export default class AdvocateInfoPresenter extends Component {
             window.screen.height - menuHeight - homeBarHeight - appBarHeight - tabMenuHeight;
         const menuDisplay = fromHome ? 'none' : 'flex';*/
         return (
-            <div>
+            <div className="advocate-detail-root-panel">
                 <HomeBar history={this.props.history}/>
                 <InfoBar
                     avatar={this.props.avatar}
