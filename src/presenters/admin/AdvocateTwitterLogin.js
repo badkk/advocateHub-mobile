@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { RaisedButton } from 'material-ui'
+import { RaisedButton, CircularProgress } from 'material-ui'
 import AdminAppBar from "../commons/AdminAppBar";
 import post from '../../restful/Post';
 import login from '../../utils/loginUtils'
@@ -19,13 +19,18 @@ export default class AdvocateTwitterLogin extends Component {
         super(props);
         this.handleTwitterOAuth = this.handleTwitterOAuth.bind(this);
         this.state = {
-            history: this.props.history
+            history: this.props.history,
+            loadRuning: false
         }
     }
     componentDidMount() {
     }
     handleTwitterOAuth() {
         const history = this.state.history;
+        const that = this;
+        that.setState({
+           loadRuning: true
+        });
         _.OAuth.initialize(oauth_publicKey);
         _.OAuth.popup('twitter', {cache: true}).done(function(oauthResult) {
             //make API calls with `twitter`
@@ -43,6 +48,9 @@ export default class AdvocateTwitterLogin extends Component {
                         });
                     }
                 );
+                that.setState({
+                    loadRuning: false
+                });
             });
         }).fail(function(err) {
             //todo when the OAuth flow failed
@@ -55,6 +63,11 @@ export default class AdvocateTwitterLogin extends Component {
             <div className="login-panel">
                 <AdminAppBar history={this.props.history}/>
                 <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true}/>
+                <CircularProgress
+                    size={65}
+                    thickness={5}
+                    style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
+                />
             </div>
         );
     }
