@@ -150,15 +150,11 @@ export function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEve
     const leftAvatar = isComplete ?
         <ActionDone color={green500} />:
         <ActionCached color={yellow500} />;
-    const rightButton = isComplete ?
-        <FlatButton label="Completed" primary={true}/> :
-        <FlatButton label="Upcoming"/>;
     return (
         <ListItem
             leftIcon={leftAvatar}
             primaryText={meetingTitle}
             secondaryText={meetingTags}
-            rightIconButton={rightButton}
             onTouchTap={touchEvent}
         >
         </ListItem>
