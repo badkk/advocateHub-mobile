@@ -68,6 +68,18 @@ hr {
     width: calc(100% - 32px)!important;
     padding: 0 16px 0 16px;
 }
+.meeting-introduction-icon-panel {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    font-size: 14px;
+}
+.meeting-introduction-icon-panel > svg {
+    margin-right: 5px;
+}
+.meeting-introduction-icon-panel {
+    margin-bottom: 10px;
+}
 .card-header {
 
 }
