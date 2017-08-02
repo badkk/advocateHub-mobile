@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import Menu, {menuHeight} from '../commons/Menu'
-import {SvgIcon, Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
+import {Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
 import get from '../../restful/Get'
-import HomeBar, {homeBarHeight} from '../commons/HomeBar'
+import {homeBarHeight} from '../commons/HomeBar'
 /**
  * Created by t-zikfan on 2017/7/3.
  * The Azure Information Page

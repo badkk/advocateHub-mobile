@@ -1,7 +1,7 @@
 @media only screen and (min-width: 600px) {
     .meeting-detail-root-panel { padding: 0 8% 0 8%; }
     .resource-panel, .introduce-panel, .recommended-panel {
-        padding: 20px 5% 20px 5%!important;
+        padding: 0 5% 20px 5%!important;
     }
     .meeting-speaker-panel {
         padding: 0 5% 0 5%!important;

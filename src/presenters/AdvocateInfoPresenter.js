@@ -97,7 +97,6 @@ class SocialMediaBtmSheet extends Component {
                 <ActionCheckCircle color={green500} style={{display: displayTwitterCheck}}/>
             </div>
         );
-        const displayGithubCheck = followedGh ? "block" : "none";
         const followGhIcon =
             <div className="github-follow-button-div">
                 <iframe src={githubHref}
@@ -184,7 +183,6 @@ class PersonalPage extends Component {
             <Tab label='HomePage' value={0} />,
             <Tab label='Meetings' value={1} />
         ];
-        const time = new Date();
         const meetingsList = _.map(meetings, (meeting) =>
             <MeetingListItem
                 id={meeting['_id']}
