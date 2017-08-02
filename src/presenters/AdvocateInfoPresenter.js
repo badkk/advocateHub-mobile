@@ -164,14 +164,21 @@ class PersonalPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            slideIdx: 0
+            slideIdx: 0,
+            showProgress: true,
         };
         this.handleTabClick = this.handleTabClick.bind(this);
+        this.progressLoaded = this.progressLoaded.bind(this);
     }
     handleTabClick(value) {
         this.setState({
             slideIdx: value
         });
+    }
+    progressLoaded() {
+       this.setState({
+           showProgress: false
+       });
     }
     render() {
         const {homePageUrl, history, meetings} = this.props;
@@ -189,13 +196,18 @@ class PersonalPage extends Component {
             />
         );
         const homePageDiv = isUrl(homePageUrl) ?
-            <iframe src={homePageUrl}
-                    title={homePageUrl}
-                    height={iFramePanelHeight}
-                    width='100%'
-                    frameBorder="0"
-                    className="homePage-did-set"
-            />:
+            <div>
+                <iframe src={homePageUrl}
+                        title={homePageUrl}
+                        height={iFramePanelHeight}
+                        width='100%'
+                        frameBorder="0"
+                        className="homePage-did-set"
+                        onLoad={this.progressLoaded}
+                />
+                <CircularProgress style={{position: 'absolute', padding:'30% 50% 30% 50%', top: 0, left: '0', display: this.state.showProgress ? "inline-block" : "none"}}/>
+            </div>
+            :
             <div
                 className="homePage-did-not-set"
                 style={{height: iFramePanelHeight}}

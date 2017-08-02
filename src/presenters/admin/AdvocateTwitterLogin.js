@@ -66,7 +66,15 @@ export default class AdvocateTwitterLogin extends Component {
                 <CircularProgress
                     size={65}
                     thickness={5}
-                    style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
+                    style={{
+                        position: 'absolute',
+                        padding:'20% 48% 20% 48%',
+                        background: 'rgba(47, 47, 47, 0.4)',
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 200,
+                        display: this.state.loadRuning ? "inline-block" : "none"
+                    }}
                 />
             </div>
         );
