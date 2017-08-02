@@ -18,6 +18,7 @@ export default class AdvocateAdminHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            history: this.props.history,
             showForm: false,
             advocatorId: this.props.match.params.userId,
             meethingInfo: { "advocatorId" : this.props.match.params.userId },

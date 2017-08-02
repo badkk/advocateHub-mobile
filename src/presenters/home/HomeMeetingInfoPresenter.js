@@ -64,7 +64,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                                     key={idx}
                                     leftAvatar={<Avatar src={meeting.advocator ? meeting.advocator.avatar : null} />}
                                     primaryText={meeting.name}
-                                    secondaryText={meeting.description}
+                                    secondaryText={"Created on " + new Date(meeting.date).toString().substring(0, 10)}
                                     onTouchTap={() => {this.props.history.push('/meeting/' + meeting._id)}}
                                 />                              
                             );

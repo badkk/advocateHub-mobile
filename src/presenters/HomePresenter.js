@@ -3,7 +3,7 @@ import SearchBar from 'material-ui-search-bar'
 import { Paper, SvgIcon,  Tab} from 'material-ui'
 import SwipeableViews from 'react-swipeable-views';
 import '../styles/Home.css'
-import AHTab from "./commons/AHTab";
+import AHTab, {tabMenuHeight} from "./commons/AHTab";
 import HomeAdvocateInfoPresenter from './home/HomeAdvocateInfoPresenter'
 import HomeMeetingInfoPresenter from './home/HomeMeetingInfoPresenter'
 import MSLogo from './commons/MSLogo'
@@ -12,6 +12,7 @@ import MSLogo from './commons/MSLogo'
  * The Home page.
  */
 const appBarHeight = 140;
+const panelHeight = window.screen.height - appBarHeight - tabMenuHeight
 class TabContent extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +45,7 @@ class TabContent extends Component {
                 index={this.state.slideIdx}
                 onChangeIndex={this.handleTabClick}
                 disabled={true}
+                style={{minHeight: panelHeight, backgroundColor: 'white'}}
             >
                 { contents }
             </SwipeableViews>
@@ -72,8 +74,9 @@ export default class HomePresenter extends Component{
             default:
                 //using advocate
         }
+        const height = window.screen.height;
         return (
-            <div className="home-background-div">
+            <div className="home-background-div" style={{minHeight: height}}>
                 <div style={{height: appBarHeight}} className="home-app-header">
                     <div className="home-logo-div">
                         <MSLogo size="35"/>
