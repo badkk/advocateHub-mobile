@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import AdminAppBar from "../commons/AdminAppBar"
-import { RaisedButton, Subheader } from 'material-ui'
+import { RaisedButton, Subheader, Snackbar } from 'material-ui'
 import AdvocateMeetingInfo from './AdvocateMeetingInfo'
 import get from '../../restful/Get'
 import post from '../../restful/Post'
@@ -23,13 +23,17 @@ export default class AdvocateAdminHome extends Component {
             meethingInfo: { "advocatorId" : this.props.match.params.userId },
             meetings: {},
             qrcodeLink: '',
-            advocateInfo: {}
+            advocateInfo: {},
+            open: false,
+            meetingFormButtonTxt: 'Create'
         };
         this.createMeeting = this.createMeeting.bind(this);
+        this.updateMeeting = this.updateMeeting.bind(this);
         this.cancelMeeting = this.cancelMeeting.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.postMeeting = this.postMeeting.bind(this);
         this.getMeetings = this.getMeetings.bind(this);
+        this.handleSnackbarClose = this.handleSnackbarClose.bind(this);
     }
 
     componentDidMount(){
@@ -47,14 +51,24 @@ export default class AdvocateAdminHome extends Component {
     createMeeting() {
         this.setState({
             showForm: true,
-            qrcodeLink: ''
+            qrcodeLink: '',
+            meetingFormButtonTxt: 'Create',
+            meethingInfo: { "advocatorId" : this.props.match.params.userId },
         });
     }
-
+    updateMeeting(meeting) {
+        console.log(meeting);
+        this.setState({
+            showForm: true,
+            qrcodeLink: '',
+            meetingFormButtonTxt: 'Update',
+            meethingInfo: meeting
+        });
+    }
     cancelMeeting() {
         this.setState({
             showForm: false,
-            qrcodeLink: ''
+            qrcodeLink: '',
         });
     }
 
@@ -64,22 +78,41 @@ export default class AdvocateAdminHome extends Component {
         this.setState({meethingInfo: old})
     }
 
+    handleSnackbarClose() {
+        this.setState({
+            open: false
+        });
+    }
+
     postMeeting(){
         const that = this;
         const meetingInfo = this.state.meethingInfo;
-        meetingInfo['date'] = combineDates(meetingInfo['date1'], meetingInfo['date2']);
-        console.log(meetingInfo['date']);
-        delete meetingInfo['date1'];
-        delete meetingInfo['date2'];
-        post('/meeting/create', meetingInfo).then(res => {
-            if (!_.isEmpty(res) && !_.isEmpty(res['data'])) {
-                this.setState({
-                    showForm: false,
-                    qrcodeLink: Strings.serverAddr + '/qrcode/' + res['data']
-                });
-                that.getMeetings();
+        if (('date' in meetingInfo || ('date1' in meetingInfo && 'date2' in meetingInfo)) && 'name' in meetingInfo) {
+            if (!('date1' in meetingInfo)) {
+               meetingInfo['date1'] = new Date(meetingInfo['date']);
             }
-        });
+            if (!('date2' in meetingInfo)) {
+                meetingInfo['date2'] = new Date(meetingInfo['date']);
+            }
+            meetingInfo['date'] = combineDates(meetingInfo['date1'], meetingInfo['date2']);
+            delete meetingInfo['date1'];
+            delete meetingInfo['date2'];
+            post('/meeting/create', meetingInfo).then(res => {
+                if (!_.isEmpty(res)) {
+                    //create
+                    let qrcodeLink = !_.isBoolean(res['data']) ? Strings.serverAddr + '/qrcode/' + res['data'] : '';
+                    this.setState({
+                        showForm: false,
+                        qrcodeLink: qrcodeLink
+                    });
+                    that.getMeetings();
+                }
+            });
+        } else {
+            this.setState({
+                open: true
+            });
+        }
     }
 
     getMeetings(){
@@ -99,10 +132,14 @@ export default class AdvocateAdminHome extends Component {
         if(this.state.showForm){
             component =
                 <div style={componentInnerStyle}>
-                    <AdvocateMeetingInfo handleChange={this.handleChange}/>
+                    <AdvocateMeetingInfo
+                        handleChange={this.handleChange}
+                        meeting={this.state.meethingInfo}
+                        meetingFormButtonTxt={this.state.meetingFormButtonTxt}
+                    />
                     <div style={{width: '90%', paddingLeft: '5%'}}>
                         <RaisedButton label="Cancel" onTouchTap={this.cancelMeeting} style={{width:'50%'}} />
-                        <RaisedButton label="Create" onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
+                        <RaisedButton label={this.state.meetingFormButtonTxt} onTouchTap={this.postMeeting} primary={true} style={{width:'50%'}}/>
                     </div>
                 </div>;
         } else {
@@ -111,12 +148,14 @@ export default class AdvocateAdminHome extends Component {
                     <RaisedButton label="Create meeting" onTouchTap={ this.createMeeting} primary={true} fullWidth={true}/>
                     <Subheader>Your Meetings</Subheader>
                     {
-                        _.map(this.state.meetings, (meeting) =>
+                        _.map(this.state.meetings, (meeting, idx) =>
                         <MeetingListItem
+                            key={idx}
                             id={meeting['_id']}
                             meetingTitle={meeting['name']}
                             meetingTags={utcToLocal(meeting['date'])}
                             isComplete={isDateCompleted(meeting['date'])}
+                            touchEvent={() => this.updateMeeting(meeting)}
                         />)
                     }
                 </div>
@@ -137,6 +176,12 @@ export default class AdvocateAdminHome extends Component {
                 <AdminAppBar history={this.props.history} dark={true} avatarUrl={avatarUrl}/>
                 {qrcodeImg}
                 {component}
+                <Snackbar
+                    open={this.state.open}
+                    message="Please complete Title, Date and Time"
+                    autoHideDuration={3000}
+                    onRequestClose={this.handleSnackbarClose}
+                />
             </div>
         );
     }
