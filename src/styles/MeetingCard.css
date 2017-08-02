@@ -30,14 +30,16 @@
     font-size: 13px;
     color: #00bcd4;
     font-weight: bold;
-    padding-top: 10px;
     white-space:nowrap;
+    min-height: 22px;
+    line-height: 22px;        /* fallback */
+    text-align: center;
 }
 .card-subtitle {
     font-size: 9px;
     color: dimgray;
     font-weight: 100;
-    padding-top: 5px;
+    margin-top: 5px!important;
     line-height: 22px;        /* fallback */
     max-height: 44px;       /* fallback */
     min-height: 44px;
