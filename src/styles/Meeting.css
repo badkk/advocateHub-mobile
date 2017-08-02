@@ -6,6 +6,15 @@
     .meeting-speaker-panel {
         padding: 0 5% 0 5%!important;
     }
+    .azure-content {
+        display: flex!important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .azure-content-card-style {
+        width: 65%;
+    }
 }
 .meeting-speaker-panel {
     background-color: white;
