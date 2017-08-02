@@ -96,7 +96,6 @@ class MeetingContent extends Component {
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
                     containerStyle={{minHeight: containerHeight}}
-                    animateHeight={true}
                 >
                     { contents }
                 </SwipeableViews>
@@ -163,7 +162,7 @@ export default class MeetingDetailPresenter extends Component {
         </div>;
         return (
             <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
-                <HomeBar history={this.props.history} ref="home-app-header"/>
+                <HomeBar history={this.props.history} />
                 <MeetingInfoPage history={this.state.history} meeting={this.state.meeting} />
                 <MeetingContent meeting={this.state.meeting} />
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}

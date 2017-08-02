@@ -41,8 +41,10 @@ export default class HomeMeetingInfoPresenter extends Component {
                     </div>
                     <div className="meeting-cards-panel">
                         {
-                            _.map(this.state.upcomings, (meeting) => (
-                                <MeetingCard imgSrc={meeting.advocator.avatar}
+                            _.map(this.state.upcomings, (meeting, idx) => (
+                                <MeetingCard
+                                    key={idx}
+                                    imgSrc={meeting.advocator.avatar}
                                     title={meeting.name}
                                     subtitle={meeting.description}
                                     buttonTxt={new Date(meeting.date).toString().substring(0, 10)}
@@ -56,9 +58,10 @@ export default class HomeMeetingInfoPresenter extends Component {
                     <p className="home-mainheader">Meetings</p>
                     <Divider />
                     <List>
-                        {_.map(this.state.meetings, (meeting) => {
+                        {_.map(this.state.meetings, (meeting, idx) => {
                             return (
                                 <ListItem
+                                    key={idx}
                                     leftAvatar={<Avatar src={meeting.advocator ? meeting.advocator.avatar : null} />}
                                     primaryText={meeting.name}
                                     secondaryText={meeting.description}

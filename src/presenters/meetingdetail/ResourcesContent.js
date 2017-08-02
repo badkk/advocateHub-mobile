@@ -6,41 +6,57 @@ import { AvVideoLibrary, ActionSpeakerNotes } from 'material-ui/svg-icons'
  * Created by t-zikfan on 2017/7/6.
  * About Content of Meeting page
  */
-function handleLearnAzureClick() {
-    window.location = "https://azure.microsoft.com/en-us/"
-}
 export default function ResourcesContent({meeting}) {
 
     //resize the video screen to 16:9
-    const height = window.screen.width * 9 / 16;
-    const uploadDate = "Uploaded at " + new Date(meeting.date).toString().substring(0, 10);
+    const height = window.screen.width * 0.9 * 9 / 16;
+    const {videoLink, pptLink, date} = meeting;
+
+    let videoUploadDate, pptUploadDate, videoItem, pptItem;
+
+    if (typeof videoLink === 'undefined') {
+        videoItem = null;
+        videoUploadDate = "User did not upload video yet"
+    } else {
+        videoItem = <iframe
+            src={videoLink}
+            style={{width: '90%', height: height, paddingLeft: '5%'}}
+            frameBorder={0}
+        />;
+        videoUploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
+    }
+    if (typeof pptLink === 'undefined') {
+        pptItem = null;
+        pptUploadDate = "User did not upload ppt yet"
+    } else {
+        pptItem = <iframe
+            src={pptLink}
+            style={{width: '90%', height: height, paddingLeft: '5%'}}
+            frameBorder={0}
+        />;
+        pptUploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
+    }
     return (
-        <List zDepth={0} style={{backgroundColor: 'white'}} className="resource-panel">
+        <List style={{backgroundColor: 'white'}} className="resource-panel">
             <ListItem
                 primaryText="Video"
-                secondaryText={uploadDate}
+                secondaryText={videoUploadDate}
                 initiallyOpen={false}
                 leftIcon={<AvVideoLibrary/>}
                 primaryTogglesNestedList={true}
-                nestedItems={ [
-                    <iframe src="https://www.youtube.com/embed/rjkCjPhznvc" width='100%' height={height} frameBorder={0}/>
-                    ]
-                }
+                nestedItems={[
+                    videoItem
+                ]}
             />
             <ListItem
                 primaryText="PowerPoint"
-                secondaryText={uploadDate}
+                secondaryText={pptUploadDate}
                 initiallyOpen={false}
                 leftIcon={<ActionSpeakerNotes/>}
                 primaryTogglesNestedList={true}
-                nestedItems={ [
-                    <iframe
-                        src='https://microsoft-my.sharepoint.com/personal/t-zikfan_microsoft_com/_layouts/15/WopiFrame.aspx?sourcedoc={c83dc785-18f0-49de-8856-acf070090c9c}&action=embedview&wdAr=1.7777777777777777'
-                        width='100%'
-                        height={height}
-                        frameBorder='0'/>
-                    ]
-                }
+                nestedItems={[
+                    pptItem
+                ]}
             />
             {/*<CardHeader
                 title="Video Resource"
