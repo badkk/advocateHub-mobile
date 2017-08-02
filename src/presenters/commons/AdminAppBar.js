@@ -7,7 +7,7 @@ import MSLogo from './MSLogo'
  * Date: 15:43 2017/7/24
  */
 export const homeBarHeight = 55;
-export default function AdminAppBar({history, avatarUrl=null}) {
+export default function AdminAppBar({history, avatarUrl=null, avatarTapEvent=() => {}}) {
     /*const homeIcon = (
         <IconButton onTouchTap={() => {history.push('/')}}>
             <FontIcon ><ActionHome color={grey700}/></FontIcon>
@@ -15,7 +15,7 @@ export default function AdminAppBar({history, avatarUrl=null}) {
     );*/
     const avatar = avatarUrl ?
         <div className="admin-bar-avatar">
-            <Avatar src={avatarUrl}/>
+            <Avatar src={avatarUrl} onTouchTap={avatarTapEvent} style={{cursor: 'pointer'}}/>
         </div> :
         <div/>;
     const logoClassName= avatarUrl ? "logo-panel admin-logo-panel-with-avatar" : "logo-panel";

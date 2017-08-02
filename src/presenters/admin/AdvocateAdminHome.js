@@ -174,7 +174,12 @@ export default class AdvocateAdminHome extends Component {
         const avatarUrl = 'avatar' in this.state.advocateInfo ? this.state.advocateInfo['avatar'] : null;
         return (
             <div className="admin-home-panel">
-                <AdminAppBar history={this.props.history} dark={true} avatarUrl={avatarUrl}/>
+                <AdminAppBar
+                    history={this.props.history}
+                    dark={true}
+                    avatarUrl={avatarUrl}
+                    avatarTapEvent={() => {this.state.history.push(this.state.advocatorId + '/infocheck')}}
+                />
                 {qrcodeImg}
                 {component}
                 <Snackbar
