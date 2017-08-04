@@ -36,7 +36,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                 </div>*/}
                 <div className="meeting-local-panel">
                     <div className="meeting-mainheader-panel">
-                        <p className="home-mainheader">Upcoming Meetings</p>
+                        <p className="home-mainheader">Upcoming Talks</p>
                        {/* <FlatButton label="more" primary={true}/>*/}
                     </div>
                     <div className="meeting-cards-panel">
@@ -48,14 +48,14 @@ export default class HomeMeetingInfoPresenter extends Component {
                                     title={meeting.name}
                                     subtitle={meeting.description}
                                     buttonTxt={new Date(meeting.date).toString().substring(0, 10)}
-                                    buttonEvent={() => {this.props.history.push('/meeting/' + meeting._id)}}
+                                    buttonEvent={() => {this.props.history.push('/talk/' + meeting._id)}}
                                 />
                             ))
                         }
                     </div>
                 </div>
                 <div className="home-advocates-list">
-                    <p className="home-mainheader">Meetings</p>
+                    <p className="home-mainheader">Talks</p>
                     <Divider />
                     <List>
                         {_.map(this.state.meetings, (meeting, idx) => {
@@ -65,7 +65,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                                     leftAvatar={<Avatar src={meeting.advocator ? meeting.advocator.avatar : null} />}
                                     primaryText={meeting.name}
                                     secondaryText={"Created on " + new Date(meeting.date).toString().substring(0, 10)}
-                                    onTouchTap={() => {this.props.history.push('/meeting/' + meeting._id)}}
+                                    onTouchTap={() => {this.props.history.push('/talk/' + meeting._id)}}
                                 />                              
                             );
                         })}

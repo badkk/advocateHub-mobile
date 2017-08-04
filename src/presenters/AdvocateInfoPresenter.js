@@ -192,7 +192,7 @@ class PersonalPage extends Component {
                 meetingTitle={meeting['name']}
                 meetingTags={meeting['description']}
                 isComplete={isDateCompleted(meeting['date'])}
-                touchEvent={() => {history.push('/meeting/'+meeting['_id'])}}
+                touchEvent={() => {history.push('/talk/'+meeting['_id'])}}
             />
         );
         const homePageDiv = isUrl(homePageUrl) ?

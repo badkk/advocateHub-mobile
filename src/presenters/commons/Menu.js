@@ -29,7 +29,7 @@ export default class Menu extends Component {
         let path = '/';
         switch (idx) {
             case 0 :
-                path = '/meeting/' + this.state.meetingId;
+                path = '/talk/' + this.state.meetingId;
                 break;
             case 1:
                 path = '/product/' + this.state.meetingId;

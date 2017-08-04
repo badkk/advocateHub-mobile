@@ -31,7 +31,7 @@ class TabContent extends Component {
         const { contents } = this.props;
         const tabs = [
             <Tab label='Advocates' value={0} key={0} />,
-            <Tab label='Meetings' value={1} key={1} />,
+            <Tab label='Talks' value={1} key={1} />,
         ];
         return (
         <div>
@@ -86,7 +86,7 @@ export default class HomePresenter extends Component{
                         </div>
                     </div>
                     <SearchBar
-                        hintText="Search advocate or meeting"
+                        hintText="Search advocate or talks"
                         onChange={() => console.log('onChange')}
                         onRequestSearch={() => console.log('onRequestSearch')}
                     />

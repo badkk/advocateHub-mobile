@@ -33,7 +33,7 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={HomePresenter}/>
                     {/* detail page */}
-                    <Route path="/meeting/:id" component={MeetingDetailPresenter}/>
+                    <Route path="/talk/:id" component={MeetingDetailPresenter}/>
                     <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
                     {/*<Route path="/article" component={Article}/>*/}
                     <Route path="/test" component={TestContainer}/>
