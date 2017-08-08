@@ -48,8 +48,6 @@ export default class AdvocateInfoChecker extends Component {
     }
     render() {
         console.log(this.state.userInfo);
-        const {stepperIdx} = this.state;
-        console.log(stepperIdx);
         const {name, alias, avatar, facebookAccount, githubAccount, homePage, tags} = this.state.userInfo;
         const infoChange = (name, value) => {
             userGlobalInfo[name] = value;

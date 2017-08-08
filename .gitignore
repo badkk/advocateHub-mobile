@@ -21,6 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .yarnclean
+yarn.lock
 .idea/advocateHub-Mobile.iml
 .idea/jsLibraryMappings.xml
 .idea/*
