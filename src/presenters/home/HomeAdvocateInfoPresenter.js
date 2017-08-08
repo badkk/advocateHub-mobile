@@ -27,6 +27,26 @@ export default class HomeAdvocateInfoPresenter extends Component {
         });
     }
     render() {
+        let advocatorsWithTags = {};
+        const pushTagFunc = (tag, item) => {
+            if(tag in advocatorsWithTags) {
+                advocatorsWithTags[tag].push(item);
+            } else {
+                advocatorsWithTags[tag] = [];
+                advocatorsWithTags[tag].push(item);
+            }
+        };
+        let advocatorWithoutTags = [];
+        _.each(this.state.advocators, (advocator) => {
+            if ('tags' in advocator) {
+                _.each(advocator.tags, (tag) => {
+                    pushTagFunc(tag, advocator);
+                })
+            } else {
+                advocatorWithoutTags.push(advocator);
+            }
+        });
+        advocatorsWithTags['Others'] = advocatorWithoutTags;
         return (
             <div className="home-sub-panel">
                 <Paper zDepth={0} className="home-sub-upper-panel">
@@ -43,17 +63,29 @@ export default class HomeAdvocateInfoPresenter extends Component {
                     <Divider />
                     <div>
                         <List>
-                            {_.map(this.state.advocators, (advocator, index) => (
-                                    <ListItem
-                                        rightIcon={(advocator.popularity > 80 )?(<SocialWhatshot color={red500}/>):null}
-                                        leftAvatar={<Avatar src={advocator.avatar}/>}
-                                        primaryText={advocator.name}
-                                        secondaryText={advocator.tags ? advocator.tags.join(", ") : ""}
-                                        onTouchTap={() => {this.props.history.push('/advocate/' + advocator.id)}}
-                                        key={index}
-                                    />
-                                )
-                            )}
+                            {
+                                _.map(_.keys(advocatorsWithTags), (tag, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <Subheader inset={true}>{tag}</Subheader>
+                                            {
+                                                _.map(advocatorsWithTags[tag], (advocator, index) => (
+                                                    <ListItem
+                                                        rightIcon={(advocator.popularity > 80 ) ? (<SocialWhatshot color={red500}/>) : null}
+                                                        leftAvatar={<Avatar src={advocator.avatar}/>}
+                                                        primaryText={advocator.name}
+                                                        secondaryText={advocator.tags ? advocator.tags.join(", ") : ""}
+                                                        onTouchTap={() => {
+                                                            this.props.history.push('/advocate/' + advocator.id)
+                                                        }}
+                                                        key={index}
+                                                    />
+                                                ))
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
                         </List>
                     </div>
                 </div>
