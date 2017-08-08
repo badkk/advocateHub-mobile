@@ -3,17 +3,12 @@ import { RaisedButton, CircularProgress } from 'material-ui'
 import AdminAppBar from "../commons/AdminAppBar";
 import post from '../../restful/Post';
 import login from '../../utils/loginUtils'
-import * as _ from 'oauthio-web'
 import '../../styles/AdvocateTwitterLogin.css'
-
+import {oAuthInit, oAuthLogin} from '../../utils/twitter'
 /**
  * Created by t-zikunfan
  * Date: 15:33 2017/7/24
  */
-const oauth_publicKey = "UoZcf38FRDbJvk5lz7fSNXUE51Q";
-const consumer_key = "BDOZCyUcJF2uL4dASNiEnsrs2";
-const consumer_secret = "GKE8IQVGCOveOQsZxS3dse4dm0wqY7l4ui05OPczMPHD3hO3zC";
-const callback_url = "https://127.0.0.1:3000/admin/login";
 export default class AdvocateTwitterLogin extends Component {
     constructor(props) {
         super(props);
@@ -23,16 +18,47 @@ export default class AdvocateTwitterLogin extends Component {
             loadRuning: false
         }
     }
-    componentDidMount() {
+    componentWillMount() {
+        oAuthInit();
     }
     handleTwitterOAuth() {
         const history = this.state.history;
-        const that = this;
-        that.setState({
+        const success = (data) => {
+            const id = data['id'];
+            console.log("personalInfo", data);
+            login(
+                id,
+                (res) => history.push('/admin/'+id),
+                (res) => {
+                    post('/advocator/login', data).then(res => {
+                        if(res['data'] === true)
+                            history.push('/admin/' + id + '/infocheck')
+                    });
+                }
+            );
+            this.setState({
+                loadRuning: false
+            });
+        };
+        const failed = () => {
+            console.log("login failed");
+        };
+        /*that.setState({
            loadRuning: true
         });
+        const oauth = OAuth({
+            consumer: {
+                key: consumer_key,
+                secret: consumer_secret
+            },
+            signature_method: 'HMAC-SHA1',
+            hash_function: function(base_string, key) {
+                return crypto.createHmac('sha1', key).update(base_string).digest('base64');
+            }
+        });
         _.OAuth.initialize(oauth_publicKey);
-        _.OAuth.popup('twitter', {cache: true}).done(function(oauthResult) {
+        _.OAuth.popup('twitter', {cache: true})
+            .done(function(oauthResult) {
             //make API calls with `twitter`
             console.log('oAuth success!');
             oauthResult.me().done(function(data) {
@@ -55,7 +81,8 @@ export default class AdvocateTwitterLogin extends Component {
         }).fail(function(err) {
             //todo when the OAuth flow failed
             console.log(err)
-        })
+        })*/
+        oAuthLogin(success, failed);
     }
 
     render() {

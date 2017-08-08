@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, ListItem } from 'material-ui'
-import { AvVideoLibrary, ActionSpeakerNotes } from 'material-ui/svg-icons'
+import { AvVideoLibrary, ActionSpeakerNotes, ActionCode } from 'material-ui/svg-icons'
 import { isUrl } from '../../utils/strings'
 /**
  * Created by t-zikfan on 2017/7/6.
@@ -36,6 +36,10 @@ export default function ResourcesContent({meeting}) {
         pptItem = null;
         pptUploadDate = "User did not upload ppt yet"
     }
+    const codeSampleItem = <div>
+        <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
+        </iframe>
+    </div>;
     return (
         <List style={{backgroundColor: 'white'}} className="resource-panel">
             <ListItem
@@ -56,6 +60,16 @@ export default function ResourcesContent({meeting}) {
                 primaryTogglesNestedList={true}
                 nestedItems={[
                     pptItem
+                ]}
+            />
+            <ListItem
+                primaryText="Code Sample"
+                secondaryText={pptUploadDate}
+                initiallyOpen={false}
+                leftIcon={<ActionCode/>}
+                primaryTogglesNestedList={true}
+                nestedItems={[
+                    codeSampleItem
                 ]}
             />
         </List>

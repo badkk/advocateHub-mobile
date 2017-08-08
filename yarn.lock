@@ -1935,6 +1935,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
+deepmerge@^1.3.2:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.0.tgz#00bc5b88fd23b8130f9f5049071c3420e07a5465"
+
 default-require-extensions@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
@@ -2936,6 +2940,13 @@ glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+global-cache@^1.2.0:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/global-cache/-/global-cache-1.2.1.tgz#39ca020d3dd7b3f0934c52b75363f8d53312c16d"
+  dependencies:
+    define-properties "^1.1.2"
+    is-symbol "^1.0.1"
+
 global-modules@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/global-modules/-/global-modules-0.2.3.tgz#ea5a3bed42c6d6ce995a4f8a1269b5dae223828d"
@@ -3096,6 +3107,10 @@ hawk@~3.1.3:
 he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+hellojs@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/hellojs/-/hellojs-1.15.1.tgz#73ea7a501854ab548cd370c006df6884d5153580"
 
 history@^4.5.1, history@^4.6.0:
   version "4.6.3"
@@ -4623,6 +4638,10 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
+oauth@^0.9.15:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
+
 oauthio-web@^0.6.1:
   version "0.6.1"
   resolved "http://registry.npm.taobao.org/oauthio-web/download/oauthio-web-0.6.1.tgz#5135da9f29b32048d8c0bb0b25ff86b56ecffc6d"
@@ -5574,6 +5593,15 @@ react-transition-group@^1.1.2:
     loose-envify "^1.3.1"
     prop-types "^15.5.6"
     warning "^3.0.0"
+
+react-with-styles@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-with-styles/-/react-with-styles-1.4.0.tgz#a05b311e82b49b1e69b787af82d0a29c6e2b0731"
+  dependencies:
+    deepmerge "^1.3.2"
+    global-cache "^1.2.0"
+    hoist-non-react-statics "^1.2.0"
+    prop-types "^15.5.8"
 
 react@^15.6.1:
   version "15.6.1"

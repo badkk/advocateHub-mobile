@@ -23,6 +23,7 @@ import "../styles/AdvocateInfo.css"
 import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
+import {withStyles} from "react-with-styles";
 
 /**
  * Created by lucas on 2017/7/4.
