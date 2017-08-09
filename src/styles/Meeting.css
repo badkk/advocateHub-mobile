@@ -15,12 +15,34 @@
         width: 65%;
     }
 }
+hr {
+    border-top: #595959;
+    width: 100%;
+}
+h1, h2, h3, a, span {
+    color: #484848;
+}
+blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #00BCD4;
+    margin: 1.5em 10px 1.5em 0;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+    color: grey;
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 2em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
 .meeting-speaker-panel {
     background-color: white;
-}
-hr {
-    border-top: #9e9e9e;
-    width: 100%;
 }
 .meeting-detail-root-panel {
     background-color: white;
@@ -67,6 +89,16 @@ hr {
     width: calc(100% - 32px)!important;
     padding: 0 16px 0 16px;
 }
+.meeting-introduction-title-panel,
+.meeting-introduction-conf-panel,
+.meeting-introduction-des-panel,
+.meeting-introduction-twitter-panel {
+    width: 50%;
+    padding: 0 12px 0 12px;
+}
+.meeting-introduction-title-panel > h1 {
+    margin: 20px 0 10px 0;
+}
 .meeting-introduction-icon-panel {
     display: flex;
     margin-left: 10px;
@@ -78,6 +110,20 @@ hr {
 }
 .meeting-introduction-icon-panel {
     margin-bottom: 10px;
+}
+.meeting-introduction-title-subpanel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.meeting-introduction-title-liks-panel {
+    display: flex;
+    align-items: center;
+}
+.meeting-introduction-conf-title-panel {
+    display: flex;
+    align-items: center;
+    min-height: 35px;
 }
 .card-header {
 
