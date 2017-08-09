@@ -1,10 +1,9 @@
 @media only screen and (min-width: 600px) {
-    .meeting-detail-root-panel { padding: 0 8% 0 8%; }
     .resource-panel, .introduce-panel, .recommended-panel {
-        padding: 0 5% 20px 5%!important;
+        padding: 0 8% 20px 8%!important;
     }
     .meeting-speaker-panel {
-        padding: 0 5% 0 5%!important;
+        padding: 0 8% 0 8%!important;
     }
     .azure-content {
         display: flex!important;
@@ -24,7 +23,7 @@ hr {
     width: 100%;
 }
 .meeting-detail-root-panel {
-    background-color: #fafafa;
+    background-color: white;
 }
 .meeting-content-panel {
     margin-top: 5px;

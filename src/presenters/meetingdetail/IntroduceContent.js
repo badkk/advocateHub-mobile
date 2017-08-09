@@ -7,7 +7,7 @@ import {CommunicationLocationOn, ActionAlarm} from 'material-ui/svg-icons'
  */
 export default function IntroduceContent({meeting}) {
     return (
-        <Card style={{height: 'auto'}} zDepth={0} className="introduce-panel">
+        <div style={{height: 'auto'}} className="introduce-panel">
             <CardHeader
                 title={meeting.name}
                 titleStyle={{fontSize:'20px', marginBottom:'10px'}}
@@ -25,7 +25,7 @@ export default function IntroduceContent({meeting}) {
             <hr />
             <CardTitle
                 subtitle={meeting.description}/>
-        </Card>
+        </div>
     );
 
 }

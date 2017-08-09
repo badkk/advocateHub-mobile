@@ -1,20 +1,17 @@
 import React, {Component} from 'react'
 
-import {ListItem, Avatar,
-    FloatingActionButton, FontIcon, Divider, List, Tab} from 'material-ui'
+import {ListItem, Avatar, FloatingActionButton, FontIcon, Divider, List, Tab, IconButton, Dialog, FlatButton} from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
-    white,
     grey500,
-    blue500
+    cyan500
 } from 'material-ui/styles/colors';
 import {
     SocialShare,
-    NavigationChevronRight,
-    FileCloud
+    NavigationChevronRight
 } from 'material-ui/svg-icons';
 import SwipeableViews from 'react-swipeable-views';
-
+import * as _ from 'underscore';
 import IntroduceContent from './meetingdetail/IntroduceContent'
 import ResourcesContent from './meetingdetail/ResourcesContent'
 import RecommendContent from './meetingdetail/RecommendContent'
@@ -28,30 +25,37 @@ import '../styles/Meeting.css'
  * Meeting information page
  */
 const meetingInfoMaxHeight = 66;
-const containerHeight = window.screen.height - homeBarHeight - meetingInfoMaxHeight - tabMenuHeight
-class MeetingInfoPage extends Component {
+const containerHeight = window.screen.height - homeBarHeight - meetingInfoMaxHeight - tabMenuHeight;
+class AdvocatorInfoPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             history: props.history
         }
     }
-    /*handleAzureTouchTap = () => {
-      this.state.history.push('/product/azure')
-    };*/
     handleAdvocateTouchTap = (advocator_id) => {
         this.state.history.push('/advocate/' + advocator_id)
     };
+    handleSharedEvent = () => {
+        this.props.handleClick();
+        console.log("Sharedbutton clicked");
+    };
     render() {
+        const {name, tags, avatar, id} = this.props.advocator;
+        const shareButton = (
+            <IconButton onTouchTap={this.handleSharedEvent}>
+                <SocialShare color={cyan500}/>
+            </IconButton>
+        );
         return (
             <div className="meeting-speaker-panel">
                 <ListItem
-                    primaryText={"Speaker : " + this.props.meeting.advocator.name}
-                    secondaryText={"Subject : " + this.props.meeting.name}
-                    leftAvatar={<Avatar src={this.props.meeting.advocator.avatar}/>}
+                    primaryText={"Speaker : " + name}
+                    secondaryText={"Techs: " + (!_.isUndefined(tags) ? tags.join(', ') : 'Others')}
+                    leftAvatar={<Avatar src={avatar}/>}
                     style={{width:"100%", minHeight: meetingInfoMaxHeight}}
-                    rightIcon={<NavigationChevronRight/>}
-                    onTouchTap={() => {this.handleAdvocateTouchTap(this.props.meeting.advocator.id)}}
+                    rightIconButton={shareButton}
+                    onTouchTap={() => {this.handleAdvocateTouchTap(id)}}
                 />
             </div>
         );
@@ -109,14 +113,15 @@ export default class MeetingDetailPresenter extends Component {
         this.state = {
             history: this.props.history,
             isOpen: false,
-            title: 'Test title',
-            advocateName: 'Simon Wu',
-            description: 'test descripotion',
+            title: '',
+            advocateName: '',
+            description: '',
             meeting: {
                 advocator: {}
             }
         };
         this.handleShareButtonClick = this.handleShareButtonClick.bind(this);
+        this.handleShareButtonCancel = this.handleShareButtonCancel.bind(this);
         this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     }
 
@@ -133,40 +138,67 @@ export default class MeetingDetailPresenter extends Component {
             isOpen: true
         })
     };
+    handleShareButtonCancel(e) {
+        this.setState({
+            isOpen: false
+        })
+    };
     handleBackButtonClick() {
         this.state.history.push('/meetings')
     }
     render() {
-        const facebookIcon = <FontIcon className="fa fa-facebook-official"/>;
-        const twitterIcon = <FontIcon className="fa fa-twitter"/>;
-        const googlePlusIcon = <FontIcon className="fa fa-google-plus"/>;
+        const facebookIcon =<FontIcon className="fa fa-facebook-official" color="#4267b2"/>;
+        const twitterIcon = <FontIcon className="fa fa-twitter" color="#1da1f2"/>;
+        const googlePlusIcon = <FontIcon className="fa fa-google-plus" color="#db4437"/>;
+        const socialMediaBlock = (
+            <List>
+                <ListItem primaryText="Facebook" leftIcon={facebookIcon}/>
+                <ListItem primaryText="Twitter" leftIcon={twitterIcon}/>
+                <ListItem primaryText="Google+" leftIcon={googlePlusIcon}/>
+            </List>
+
+    );
         /* Bottom shared sheet */
-        const sharedBottomSheet = <div>
+        const sharedBottomSheet = (
             <BottomSheet
-                action={
-                    <FloatingActionButton>
-                        <SocialShare/>
-                    </FloatingActionButton>
-                }
-                onRequestClose={() => this.setState({isOpen: false})}
+                onRequestClose={this.handleShareButtonCancel}
                 open={this.state.isOpen}
             >
-                <h4 style={{color: grey500, marginLeft: '25px'}}>Share this meeting</h4>
-                <Divider inset/>
-                <List>
-                    <ListItem primaryText="Facebook" leftIcon={facebookIcon}/>
-                    <ListItem primaryText="Twitter" leftIcon={twitterIcon}/>
-                    <ListItem primaryText="Google+" leftIcon={googlePlusIcon}/>
-                </List>
+                <h4 style={{color: grey500, marginLeft: '12px'}}>Share this talk</h4>
+                <Divider/>
+                {socialMediaBlock}
             </BottomSheet>
-        </div>;
+        );
+        /* Shared Dialog */
+        const action = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onTouchTap={this.handleShareButtonCancel}
+                fullWidth={true}
+            />,
+        ];
+        const sharedPopup = (
+            <Dialog
+                title="Share this talk"
+                actions={action}
+                modal={true}
+                open={this.state.isOpen}
+            >
+                {socialMediaBlock}
+            </Dialog>
+        );
         return (
             <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
                 <HomeBar history={this.props.history} />
-                <MeetingInfoPage history={this.state.history} meeting={this.state.meeting} />
+                <AdvocatorInfoPage
+                    history={this.state.history}
+                    advocator={this.state.meeting.advocator}
+                    handleClick={this.handleShareButtonClick}
+                />
                 <MeetingContent meeting={this.state.meeting} />
                 {/*<Menu history={ this.state.history } state={0} meetingId="johnpapa_123" userId="johnpapa" />*/}
-                {sharedBottomSheet}
+                {window.screen.width < 600 ? sharedBottomSheet : sharedPopup}
             </div>
         );
     }
