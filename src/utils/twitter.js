@@ -1,3 +1,5 @@
+import get from '../restful/Get'
+import React from "react";
 let hello = require('hellojs/dist/hello.all.js');
 
 /**

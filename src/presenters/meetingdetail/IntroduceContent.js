@@ -3,6 +3,7 @@ import {IconButton} from 'material-ui'
 import { ActionFavoriteBorder, ActionFavorite, ActionEvent, ImageTimer, CommunicationLocationOn } from 'material-ui/svg-icons'
 import { grey500, pink500, cyan500 } from 'material-ui/styles/colors'
 import Map from '../../utils/googleMap'
+import {Tweet} from 'react-twitter-widgets'
 /**
  * Created by t-zikfan on 2017/7/5.
  * Meeting page Introduction Content Page
@@ -50,9 +51,11 @@ function OrgPanel({meeting, clickLiked, liked}) {
             <hr/>
         </div>
     );
+    const tweetId = meeting.tweetId ? meeting.tweetId : '884842746342764545';
     const twitterCommentPanel = (
         <div className="meeting-introduction-twitter-panel">
             <h3 style={subTitleStyle}>Comments on twitter</h3>
+            <Tweet tweetId={tweetId}/>
         </div>
     );
     /* map container */
@@ -117,7 +120,7 @@ export default class IntroduceContent extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            liked: false
+            liked: false,
         };
         this.clickLiked = this.clickLiked.bind(this);
     }
@@ -130,9 +133,12 @@ export default class IntroduceContent extends Component{
     render() {
         return (
             <div style={{height: 'auto'}} className="introduce-panel">
-                <OrgPanel meeting={this.props.meeting} clickLiked={this.clickLiked} liked={this.state.liked}/>
+                <OrgPanel
+                    meeting={this.props.meeting}
+                    clickLiked={this.clickLiked}
+                    liked={this.state.liked}
+                />
             </div>
         );
     }
-
 }

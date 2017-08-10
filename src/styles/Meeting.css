@@ -14,7 +14,9 @@
     .azure-content-card-style {
         width: 65%;
     }
-
+    .introduce-inner-panel > div {
+        width: 50%!important;
+    }
 }
 hr {
     border: 0;
@@ -24,7 +26,7 @@ hr {
 h1, h2, h3, a, span {
     color: #484848;
 }
-blockquote {
+.meeting-introduction-des-panel > blockquote {
     background: #f9f9f9;
     border-left: 10px solid #00BCD4;
     margin: 1.5em 10px 1.5em 0;
@@ -32,7 +34,7 @@ blockquote {
     quotes: "\201C""\201D""\2018""\2019";
     color: grey;
 }
-blockquote:before {
+.meeting-introduction-des-panel > blockquote:before {
     color: #ccc;
     content: open-quote;
     font-size: 2em;
@@ -40,7 +42,7 @@ blockquote:before {
     margin-right: 0.25em;
     vertical-align: -0.4em;
 }
-blockquote p {
+.meeting-introduction-des-panel > blockquote p {
     display: inline;
 }
 .meeting-speaker-panel {
