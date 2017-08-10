@@ -109,7 +109,7 @@ blockquote p {
 .meeting-introduction-des-panel,
 .meeting-introduction-twitter-panel,
 .meeting-introduction-map-panel {
-    width: 95%;
+    width: auto;
     padding: 0 12px 0 12px;
 }
 
