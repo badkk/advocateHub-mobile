@@ -14,10 +14,12 @@
     .azure-content-card-style {
         width: 65%;
     }
+
 }
 hr {
-    border-top: #595959;
-    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #efefef;
 }
 h1, h2, h3, a, span {
     color: #484848;
@@ -89,13 +91,28 @@ blockquote p {
     width: calc(100% - 32px)!important;
     padding: 0 16px 0 16px;
 }
+.introduce-inner-panel {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.introduce-inner-panel-mobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.introduce-inner-panel > div {
+    width: 100%;
+}
 .meeting-introduction-title-panel,
 .meeting-introduction-conf-panel,
 .meeting-introduction-des-panel,
-.meeting-introduction-twitter-panel {
-    width: 50%;
+.meeting-introduction-twitter-panel,
+.meeting-introduction-map-panel {
+    width: 95%;
     padding: 0 12px 0 12px;
 }
+
 .meeting-introduction-title-panel > h1 {
     margin: 20px 0 10px 0;
 }

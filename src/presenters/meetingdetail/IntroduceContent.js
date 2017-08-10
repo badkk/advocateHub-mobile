@@ -1,19 +1,13 @@
 import React, {Component} from 'react'
 import {IconButton} from 'material-ui'
-import { ActionFavoriteBorder, ActionFavorite, ActionEvent} from 'material-ui/svg-icons'
+import { ActionFavoriteBorder, ActionFavorite, ActionEvent, ImageTimer, CommunicationLocationOn } from 'material-ui/svg-icons'
 import { grey500, pink500, cyan500 } from 'material-ui/styles/colors'
 import Map from '../../utils/googleMap'
-import {
-    GoogleMap,
-    Marker,
-} from "react-google-maps";
 /**
  * Created by t-zikfan on 2017/7/5.
  * Meeting page Introduction Content Page
  */
-const googleMapURL = "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyAAo8Kywz_wD6ptjSEAGbdEltqxWpXUBSc";
-
-function Web({meeting, clickLiked, liked}) {
+function OrgPanel({meeting, clickLiked, liked}) {
     const subTitleStyle = {
         fontWeight: 500
     };
@@ -59,33 +53,64 @@ function Web({meeting, clickLiked, liked}) {
     const twitterCommentPanel = (
         <div className="meeting-introduction-twitter-panel">
             <h3 style={subTitleStyle}>Comments on twitter</h3>
+        </div>
+    );
+    /* map container */
+    const lat = 'lat' in meeting ? meeting.lat : 31.2304;
+    const lng = 'lng' in meeting ? meeting.lng : 121.4737;
+    const pos = {
+        lat: lat,
+        lng: lng
+    };
+    const marker = {
+        position: pos,
+        key: meeting.location,
+        defaultAnimation: 2,
+    };
 
-        </div>
-    );
     const mapPanel = (
-        <div className="meeting-introduction-des-panel">
-            <GoogleMap
-                defaultZoom={3}
-                defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
-                // Pass the map reference here as props
-                googleMapURL={googleMapURL}
-            >
-            </GoogleMap>
+        <div className="meeting-introduction-map-panel">
+            <h3 style={subTitleStyle}>Location & Time</h3>
+            <Map pos={pos} marker={marker}/>
+            <div className="meeting-introduction-conf-title-panel">
+                <CommunicationLocationOn color={cyan500}/>
+                <span style={confTitleStyle}>
+                    {meeting.location}
+                </span>
+            </div>
+            <div className="meeting-introduction-conf-title-panel">
+                <ImageTimer color={cyan500}/>
+                <span style={confTitleStyle}>
+                    {new Date(meeting.date).toLocaleString()}
+                </span>
+            </div>
         </div>
     );
-    return (
-        <div>
+    const webPanel = (
+        <div className="introduce-inner-panel">
             <div>
                 {titlePanel}
+                {conferencePanel}
+                {desPanel}
+                {twitterCommentPanel}
+            </div>
+            <div>
                 {mapPanel}
             </div>
+        </div>
+    );
+    const mobilePanel = (
+        <div className="introduce-inner-panel-mobile">
+            {titlePanel}
+            {mapPanel}
+            <hr style={{width: '95%'}}/>
             {conferencePanel}
             {desPanel}
             {twitterCommentPanel}
         </div>
+
     );
-}
-function Mobile({meeting}) {
+    return window.screen.width > 600 ? webPanel: mobilePanel;
 
 }
 export default class IntroduceContent extends Component{
@@ -103,10 +128,9 @@ export default class IntroduceContent extends Component{
         });
     }
     render() {
-        const {meeting} = this.props;
         return (
             <div style={{height: 'auto'}} className="introduce-panel">
-                <Web meeting={this.props.meeting} clickLiked={this.clickLiked} liked={this.state.liked}/>
+                <OrgPanel meeting={this.props.meeting} clickLiked={this.clickLiked} liked={this.state.liked}/>
             </div>
         );
     }

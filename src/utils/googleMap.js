@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    withGoogleMap,
     GoogleMap,
     Marker,
 } from "react-google-maps";
@@ -7,15 +8,31 @@ import {
  * Created by t-zikunfan
  * Date: 18:05 2017/8/9
  */
-const googleMapURL = "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyAAo8Kywz_wD6ptjSEAGbdEltqxWpXUBSc";
-export default function ({}) {
-   return (
-       <GoogleMap
-           defaultZoom={3}
-           defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
-           // Pass the map reference here as props
-           googleMapURL={googleMapURL}
-       >
-       </GoogleMap>
-   );
+const googleMapURL = "https://maps.googleapis.com/maps/api/js?v=3.27&libraries=places,geometry&key=AIzaSyCmrNlszXxi8c2b6WJGyoudeaYqmRKr434";
+
+export default function(props) {
+
+    const MeetingMap = withGoogleMap(props => (
+            <GoogleMap
+                defaultZoom={15}
+                defaultCenter={props.pos}
+                // Pass the map reference here as props
+                googleMapURL={googleMapURL}
+                disableDefaultUI={true}
+            >
+                <Marker {...props.marker}/>
+            </GoogleMap>)
+        );
+    return (
+        <MeetingMap
+            containerElement={
+                <div style={{ height: `300px` }} />
+            }
+            mapElement={
+                <div style={{ height: `100%` }} />
+            }
+            pos={props.pos}
+            marker={props.marker}
+        />
+    );
 }

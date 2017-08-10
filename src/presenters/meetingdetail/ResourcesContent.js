@@ -43,6 +43,7 @@ export default function ResourcesContent({meeting}) {
     return (
         <List style={{backgroundColor: 'white'}} className="resource-panel">
             <ListItem
+                key="resource_video"
                 primaryText="Video"
                 secondaryText={videoUploadDate}
                 initiallyOpen={false}
@@ -53,6 +54,7 @@ export default function ResourcesContent({meeting}) {
                 ]}
             />
             <ListItem
+                key="resource_ppt"
                 primaryText="PowerPoint"
                 secondaryText={pptUploadDate}
                 initiallyOpen={false}
@@ -63,6 +65,7 @@ export default function ResourcesContent({meeting}) {
                 ]}
             />
             <ListItem
+                key="resource_codeSam"
                 primaryText="Code Sample"
                 secondaryText={pptUploadDate}
                 initiallyOpen={false}
