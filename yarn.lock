@@ -5408,6 +5408,13 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-css-transition-replace@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-css-transition-replace/-/react-css-transition-replace-2.2.1.tgz#e74eb2d1f4beaff31bf260767333e60ff3fe0d32"
+  dependencies:
+    prop-types "^15.5.6"
+    react-transition-group "^1.1.1"
+
 react-custom-scrollbars@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/react-custom-scrollbars/-/react-custom-scrollbars-4.1.2.tgz#0e60c4a46c4a61f9e4994a7663e2b9cbbc5187a3"
@@ -5625,7 +5632,7 @@ react-tap-event-plugin@^2.0.1:
   dependencies:
     fbjs "^0.8.6"
 
-react-transition-group@^1.1.2:
+react-transition-group@^1.1.1, react-transition-group@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.0.tgz#b51fc921b0c3835a7ef7c571c79fc82c73e9204f"
   dependencies:

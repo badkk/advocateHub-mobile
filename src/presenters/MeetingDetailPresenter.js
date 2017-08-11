@@ -1,17 +1,18 @@
 import React, {Component} from 'react'
 
-import {ListItem, Avatar, FloatingActionButton, FontIcon, Divider, List, Tab, IconButton, Dialog, FlatButton} from 'material-ui'
+import { ListItem, Avatar, Divider, Tab, IconButton, Dialog, FlatButton } from 'material-ui'
 import { BottomSheet } from 'material-ui-bottom-sheet';
 import {
     grey500,
     cyan500
 } from 'material-ui/styles/colors';
 import {
-    SocialShare,
-    NavigationChevronRight
+    SocialShare
 } from 'material-ui/svg-icons';
 import SwipeableViews from 'react-swipeable-views';
 import * as _ from 'underscore';
+import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
+import SocialMediaDialog from './commons/SocialMediaDialog'
 import IntroduceContent from './meetingdetail/IntroduceContent'
 import ResourcesContent from './meetingdetail/ResourcesContent'
 import RecommendContent from './meetingdetail/RecommendContent'
@@ -138,36 +139,20 @@ export default class MeetingDetailPresenter extends Component {
             isOpen: true
         })
     };
+
     handleShareButtonCancel(e) {
         this.setState({
             isOpen: false
         })
     };
+
     handleBackButtonClick() {
         this.state.history.push('/meetings')
     }
     render() {
-        const facebookIcon =<FontIcon className="fa fa-facebook-official" color="#4267b2"/>;
-        const twitterIcon = <FontIcon className="fa fa-twitter" color="#1da1f2"/>;
-        const googlePlusIcon = <FontIcon className="fa fa-google-plus" color="#db4437"/>;
-        const socialMediaBlock = (
-            <List>
-                <ListItem primaryText="Facebook" leftIcon={facebookIcon}/>
-                <ListItem primaryText="Twitter" leftIcon={twitterIcon}/>
-                <ListItem primaryText="Google+" leftIcon={googlePlusIcon}/>
-            </List>
-
-    );
         /* Bottom shared sheet */
         const sharedBottomSheet = (
-            <BottomSheet
-                onRequestClose={this.handleShareButtonCancel}
-                open={this.state.isOpen}
-            >
-                <h4 style={{color: grey500, marginLeft: '12px'}}>Share this talk</h4>
-                <Divider/>
-                {socialMediaBlock}
-            </BottomSheet>
+            <SocialMediaBtmSheet title="Share this talk" isOpen={this.state.isOpen} handleCancel={this.handleShareButtonCancel}/>
         );
         /* Shared Dialog */
         const action = [
@@ -179,14 +164,7 @@ export default class MeetingDetailPresenter extends Component {
             />,
         ];
         const sharedPopup = (
-            <Dialog
-                title="Share this talk"
-                actions={action}
-                modal={true}
-                open={this.state.isOpen}
-            >
-                {socialMediaBlock}
-            </Dialog>
+            <SocialMediaDialog title="Share this talk" isOpen={this.state.isOpen} handleCancel={this.handleShareButtonCancel}/>
         );
         return (
             <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">

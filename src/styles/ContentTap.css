@@ -2,7 +2,9 @@
     .tab-panel-home, .tab-panel {
         padding: 0 8% 0 8%;
         background-color: white;
-
+    }
+    .tab-panel-home {
+        width: 90%!important;
     }
     .tab-panel-home > div > div > button {
         width: 15%!important;
@@ -14,15 +16,20 @@
 
 }
 .tab-panel-home {
-
+    width: 100%;
+    background: content-box;
+}
+.tab-panel-home > div > div:nth-child(2) > div {
+    background-color: white!important;
 }
 .tab-panel {
-
+    background-color: white;
 }
 .content-taps {
  }
 .content-taps > div {
-    background-color: white!important;
+    background: content-box;
+    background-color: inherit!important;
 }
 .content-taps > div > button {
     font-size: 40%!important;

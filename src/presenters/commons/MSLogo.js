@@ -7,7 +7,7 @@ import {SvgIcon, IconButton} from 'material-ui'
 export default function MSLogo({size, logoEvent}) {
 
     return (
-        <IconButton onTouchTap={logoEvent}>
+        <IconButton onTouchTap={logoEvent} style={{padding: 0}}>
             <SvgIcon
                 viewBox="0 0 64 64"
                 className="icon"

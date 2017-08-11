@@ -13,6 +13,7 @@
     "material-ui-search-bar": "^0.2.4",
     "oauth": "^0.9.15",
     "react": "^15.6.1",
+    "react-css-transition-replace": "^2.2.1",
     "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^15.6.1",
     "react-google-maps": "next",

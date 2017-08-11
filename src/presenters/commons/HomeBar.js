@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Paper, FontIcon, IconButton} from 'material-ui'
 import {ActionHome, HardwareKeyboardArrowLeft} from 'material-ui/svg-icons'
 import {grey700} from 'material-ui/styles/colors'
