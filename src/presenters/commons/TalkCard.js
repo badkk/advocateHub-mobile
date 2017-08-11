@@ -5,7 +5,7 @@ import { RaisedButton, Avatar} from 'material-ui'
  * Created by t-zikunfan
  * Date: 17:27 2017/7/21
  */
-export default function MeetingCard({
+export default function TalkCard({
     imgSrc="MSLogo.jpg",
     title,
     subtitle,

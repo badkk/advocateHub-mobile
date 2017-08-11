@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Subheader, IconButton, Divider, Paper, FlatButton, List, ListItem, Avatar } from 'material-ui'
 import { CommunicationLocationOn } from 'material-ui/svg-icons'
 import { cyan500 } from 'material-ui/styles/colors'
-import MeetingCard from '../commons/MeetingCard'
+import TalkCard from '../commons/TalkCard'
 import get from '../../restful/Get'
 import * as _ from "underscore";
 /**
@@ -42,7 +42,7 @@ export default class HomeMeetingInfoPresenter extends Component {
                     <div className="meeting-cards-panel">
                         {
                             _.map(this.state.upcomings, (meeting, idx) => (
-                                <MeetingCard
+                                <TalkCard
                                     key={idx}
                                     imgSrc={meeting.advocator.avatar}
                                     title={meeting.name}
