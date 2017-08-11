@@ -113,10 +113,11 @@ function OrgPanel({meeting, clickLiked, liked}) {
         </div>
 
     );
+    //TODO Stringfy the 600
     return window.screen.width > 600 ? webPanel: mobilePanel;
-
 }
-export default class IntroduceContent extends Component{
+
+export default class IntroduceContent extends Component {
     constructor(props) {
         super(props);
         this.state = {

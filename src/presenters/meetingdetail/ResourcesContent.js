@@ -6,6 +6,7 @@ import { isUrl } from '../../utils/strings'
  * Created by t-zikfan on 2017/7/6.
  * About Content of Meeting page
  */
+//TODO Re-org the UI pattern
 export default function ResourcesContent({meeting}) {
 
     //resize the video screen to 16:9
