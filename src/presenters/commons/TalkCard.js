@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../styles/MeetingCard.css'
-import { RaisedButton, Avatar} from 'material-ui'
+import { Card, Avatar, FlatButton, CardTitle, CardActions, CardMedia, CardHeader} from 'material-ui'
+import { ActionFavorite } from 'material-ui/svg-icons'
+import { pink500 } from 'material-ui/styles/colors'
 /**
  * Created by t-zikunfan
  * Date: 17:27 2017/7/21
@@ -9,34 +11,54 @@ export default function TalkCard({
     imgSrc="MSLogo.jpg",
     title,
     subtitle,
-    avatarStyle='normal',
-    buttonTxt,
-    buttonStyle='primary',
+    date,
+    likes,
     buttonEvent}){
-    const primary = buttonStyle === 'primary';
-    const secondary = buttonStyle === 'secondary';
-    const avatarClassName = avatarStyle === 'live' ? "card-avatar-live" : "card-avatar"
     return (
-        <div className="card-panel">
-            <Avatar size={65} src={imgSrc} className={avatarClassName}/>
-            <p className="card-title">{title}</p>
-            <p className="card-subtitle">{subtitle}</p>
-            <RaisedButton
-                label={buttonTxt}
-                primary={primary}
-                secondary={secondary}
-                fullWidth={true}
-                onTouchTap={buttonEvent}
-                className="card-button"
-                buttonStyle={{
-                    fontSize: '12px',
-                    height: '30px',
-                    lineHeight: '30px'
-                }}
-                labelStyle={{
-                    fontSize: '12px'
+        <Card className="card-panel">
+            <CardHeader
+                title={date}
+                subtitle={
+                    <div style={{display: 'flex', alignItems: 'center'}}>
+                        <ActionFavorite color={pink500}/>
+                        {likes}
+                    </div>
+                }
+                avatar={imgSrc}
+                titleColor="white"
+                subtitleColor="white"
+                style={{
+                    animation: 'Home-bar-transition infinite 120s linear',
+                    borderRadius: '3px 3px 0 0'
                 }}
             />
-        </div>
+            <CardTitle
+                title={title}
+                subtitle={subtitle}
+                titleStyle={{
+                    fontSize: '18px',
+                    lineHeight: '30px',
+                    maxHeight: '60px',
+                    overflow: 'hidden'
+                }}
+                subtitleStyle={{
+                    fontSize: '14px'
+                }}
+                style={{
+                    height: '80px'
+                }}
+            />
+            <CardActions>
+                <FlatButton
+                    label='Learn more'
+                    primary={true}
+                    onTouchTap={buttonEvent}
+                    labelStyle={{
+                        fontSize: '12px',
+                    }}
+                />
+            </CardActions>
+
+        </Card>
     );
 }

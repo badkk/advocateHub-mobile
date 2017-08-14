@@ -46,8 +46,9 @@ export default class HomeMeetingInfoPresenter extends Component {
                                     key={idx}
                                     imgSrc={meeting.advocator.avatar}
                                     title={meeting.name}
-                                    subtitle={meeting.description}
-                                    buttonTxt={new Date(meeting.date).toString().substring(0, 10)}
+                                    subtitle={'#' + (meeting.tags ? meeting.tags.join(', ') : 'Others')}
+                                    date={new Date(meeting.date).toString().substring(0, 10)}
+                                    likes={meeting.likedNum ? meeting.likedNum : '0'}
                                     buttonEvent={() => {this.props.history.push('/talk/' + meeting._id)}}
                                 />
                             ))

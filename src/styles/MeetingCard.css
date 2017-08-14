@@ -1,15 +1,6 @@
 .card-panel {
-    min-width: 120px;
-    width: 120px;
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 3px;
-    align-items: center;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-    padding: 10px;
     margin: 10px;
+    max-width: 220px;
 }
 .card-panel > p {
     margin: 0;
@@ -26,23 +17,25 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+.card-title-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 3px;
+    background-color: #616161;
+}
 .card-title {
-    font-size: 13px;
-    color: #00bcd4;
+    color: white;
     font-weight: bold;
     white-space:nowrap;
-    min-height: 22px;
-    line-height: 22px;        /* fallback */
-    text-align: center;
+    margin: 0;
 }
 .card-subtitle {
-    font-size: 9px;
-    color: dimgray;
+    font-size: 14px;
+    color: white;
     font-weight: 100;
     margin-top: 5px!important;
-    line-height: 22px;        /* fallback */
-    max-height: 44px;       /* fallback */
-    min-height: 44px;
+    white-space:nowrap;
 }
 .card-button {
     margin-top: 15px;
