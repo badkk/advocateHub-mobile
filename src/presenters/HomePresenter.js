@@ -76,7 +76,14 @@ export default class HomePresenter extends Component{
             </div>
         );
         const sharedBtmSheet = (
-            <SocialMediaBtmSheet title="Share us !" isOpen={this.state.isOpen} handleCancel={this.handleSharedCancel}/>
+            <SocialMediaBtmSheet
+                title="Share us !"
+                isOpen={this.state.isOpen}
+                handleCancel={this.handleSharedCancel}
+                facebookEvent={() => {}}
+                twitterEvent={() => {}}
+                googlePlusEvent={() => {}}
+            />
         );
         //tabs
         const tabs = [

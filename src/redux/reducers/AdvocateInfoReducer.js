@@ -30,12 +30,16 @@ export default (state=initialStates, action) => {
             return Object.assign({}, state, {
                 homePage: action.homePage,
                 facebookHomePage: action.facebookHomePage,
-                twitterName: action.twitterName,
-                githubName: action.githubHomePage,
+                twitterAccount: action.twitterAccount,
+                githubAccount: action.githubAccount,
                 avatar: action.avatar,
                 meetings: action.meetings,
                 tags: action.tags,
-                name: action.name
+                name: action.name,
+                likedNum: action.likedNum,
+                popularity: action.popularity,
+                linkedin: action.linkedin,
+                followersCount: action.followersCount
             });
         case OPEN_BS:
             return Object.assign({}, state, {isOpen: true});

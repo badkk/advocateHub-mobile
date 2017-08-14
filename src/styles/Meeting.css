@@ -1,9 +1,9 @@
 @media only screen and (min-width: 600px) {
     .resource-panel, .introduce-panel, .recommended-panel {
-        padding: 0 8% 20px 8%!important;
+        padding: 0 10% 20px 10%!important;
     }
     .meeting-speaker-panel {
-        padding: 0 8% 0 8%!important;
+        padding: 0 10% 0 10%!important;
     }
     .azure-content {
         display: flex!important;

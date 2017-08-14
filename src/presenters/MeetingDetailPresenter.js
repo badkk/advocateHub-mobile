@@ -152,7 +152,14 @@ export default class MeetingDetailPresenter extends Component {
     render() {
         /* Bottom shared sheet */
         const sharedBottomSheet = (
-            <SocialMediaBtmSheet title="Share this talk" isOpen={this.state.isOpen} handleCancel={this.handleShareButtonCancel}/>
+            <SocialMediaBtmSheet
+                title="Share this talk"
+                isOpen={this.state.isOpen}
+                handleCancel={this.handleShareButtonCancel}
+                facebookEvent={() => {}}
+                twitterEvent={() => {}}
+                googlePlusEvent={() => {}}
+            />
         );
         /* Shared Dialog */
         const action = [
@@ -164,7 +171,14 @@ export default class MeetingDetailPresenter extends Component {
             />,
         ];
         const sharedPopup = (
-            <SocialMediaDialog title="Share this talk" isOpen={this.state.isOpen} handleCancel={this.handleShareButtonCancel}/>
+            <SocialMediaDialog
+                title="Share this talk"
+                isOpen={this.state.isOpen}
+                handleCancel={this.handleShareButtonCancel}
+                facebookEvent={() => {}}
+                twitterEvent={() => {}}
+                googlePlusEvent={() => {}}
+            />
         );
         return (
             <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">

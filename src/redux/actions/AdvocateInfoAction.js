@@ -68,10 +68,14 @@ function initState(data) {
         avatar: data['avatar'],
         homePage: data['homePage'],
         facebookHomePage: data['facebookAccount'],
-        twitterName: data['alias'],
+        twitterAccount: data['twitterAccount'],
         name: data['name'],
-        githubHomePage: data['githubAccount'],
+        githubAccount: data['githubAccount'],
         meetings: data['meetings'],
-        tags: data['tags'] ? data['tags'].join(',') : ''
+        tags: data['tags'] ? data['tags'].join(',') : '',
+        likedNum: data['likedNum'],
+        popularity: 'popularity' in data ? data['popularity'] : 0,
+        linkedin: 'linkedin' in data ? data['linkedin'] : {},
+        followersCount: 'followersCount' in data ? data['followersCount'] : 0,
     }
 }

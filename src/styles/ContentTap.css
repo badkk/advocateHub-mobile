@@ -1,9 +1,9 @@
 @media only screen and (min-width: 600px) {
     .tab-panel-home, .tab-panel {
-        padding: 0 8% 0 8%;
+        padding: 0 10% 0 10%;
         background-color: white;
     }
-    .tab-panel {
+    .tab-panel-home {
         width: 90%!important;
     }
     .tab-panel > div > div {

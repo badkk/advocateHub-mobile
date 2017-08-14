@@ -187,8 +187,9 @@ class PersonalPage extends Component {
             <Tab label='HomePage' value={0} key={0}/>,
             <Tab label='Meetings' value={1} key={1}/>
         ];
-        const meetingsList = _.map(meetings, (meeting) =>
+        const meetingsList = _.map(meetings, (meeting, idx) =>
             <MeetingListItem
+                key={idx}
                 id={meeting['_id']}
                 meetingTitle={meeting['name']}
                 meetingTags={meeting['description']}
@@ -284,8 +285,8 @@ export default class AdvocateInfoPresenter extends Component {
                     handleTtFollow={this.props.handleTtFollow}
                     handleGhFollow={this.props.handleGhFollow}
                     facebookHomePage={this.props.facebookHomePage}
-                    twitterName={this.props.twitterName}
-                    githubName={this.props.githubName}
+                    twitterName={this.props.twitterAccount}
+                    githubName={this.props.githubAccount}
                 />
             </div>
         );
