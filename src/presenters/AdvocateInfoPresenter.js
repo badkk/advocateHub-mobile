@@ -184,8 +184,8 @@ class PersonalPage extends Component {
     render() {
         const {homePageUrl, history, meetings} = this.props;
         const tabs = [
-            <Tab label='HomePage' value={0} />,
-            <Tab label='Meetings' value={1} />
+            <Tab label='HomePage' value={0} key={0}/>,
+            <Tab label='Meetings' value={1} key={1}/>
         ];
         const meetingsList = _.map(meetings, (meeting) =>
             <MeetingListItem
@@ -197,7 +197,7 @@ class PersonalPage extends Component {
             />
         );
         const homePageDiv = isUrl(homePageUrl) ?
-            <div>
+            <div key="advocate_homepage">
                 <iframe src={homePageUrl}
                         title={homePageUrl}
                         height={iFramePanelHeight}
@@ -210,6 +210,7 @@ class PersonalPage extends Component {
             </div>
             :
             <div
+                key="advocate_homepage_not_set"
                 className="homePage-did-not-set"
                 style={{height: iFramePanelHeight}}
             >
@@ -217,7 +218,7 @@ class PersonalPage extends Component {
             </div>;
         const contents = [
             homePageDiv,
-            <div className="meetings-panel">
+            <div className="meetings-panel" key="advocate_meeting_details">
                 <List>
                     {meetingsList}
                 </List>

@@ -1,4 +1,5 @@
-.login-panel{
+
+.twitter-login-panel{
     display: flex;
     flex-direction: column;
 }

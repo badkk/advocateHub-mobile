@@ -4,7 +4,7 @@ import AdminAppBar from "../commons/AdminAppBar";
 import post from '../../restful/Post';
 import login from '../../utils/loginUtils'
 import '../../styles/AdvocateTwitterLogin.css'
-import {oAuthInit, oAuthLogin} from '../../utils/twitter'
+import {oAuthTwitterInit, twitterLogin} from '../../utils/socialMedUtils'
 /**
  * Created by t-zikunfan
  * Date: 15:33 2017/7/24
@@ -19,7 +19,7 @@ export default class AdvocateTwitterLogin extends Component {
         }
     }
     componentWillMount() {
-        oAuthInit();
+        oAuthTwitterInit();
     }
     handleTwitterOAuth() {
         const history = this.state.history;
@@ -82,12 +82,12 @@ export default class AdvocateTwitterLogin extends Component {
             //todo when the OAuth flow failed
             console.log(err)
         })*/
-        oAuthLogin(success, failed);
+        twitterLogin(success, failed);
     }
 
     render() {
         return (
-            <div className="login-panel">
+            <div className="twitter-login-panel">
                 <AdminAppBar history={this.props.history}/>
                 <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true}/>
                 <CircularProgress

@@ -23,8 +23,8 @@ function parseJSON(response) {
     console.log(response);
     return response.json()
 }
-export default function (url, baseURL=Strings.serverAddr, config) {
-    console.log("Fetch from " + baseURL + url);
+export default function (url, config) {
+    console.log("Fetch from " + Strings.serverAddr + url);
     /**
      * @param config other configs
      */
@@ -35,7 +35,7 @@ export default function (url, baseURL=Strings.serverAddr, config) {
             'Content-Type': 'application/json',
         }
     });
-    return fetch(baseURL + url, config)
+    return fetch(Strings.serverAddr + url, config)
         .then(checkStatus)
         .then(parseJSON)
         .then(function(response) {

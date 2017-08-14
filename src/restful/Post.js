@@ -1,5 +1,4 @@
 import Get from './Get';
-import Strings from '../res/values/string'
 
 /**
  * Created by t-zikfan on 2017/6/30.

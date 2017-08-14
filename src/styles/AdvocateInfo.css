@@ -1,5 +1,4 @@
 @media only screen and (min-width: 600px) {
-    .advocate-detail-root-panel { padding: 0 8% 0 8%!important; }
     .advocate-info-app-bar,
     .homePage-did-not-set,
     .homePage-did-set,
@@ -12,7 +11,7 @@
 
 }
 .advocate-detail-root-panel {
-    background: #fafafa;
+    background: white;
 }
 .advocate-info-app-bar {
     position: sticky!important;

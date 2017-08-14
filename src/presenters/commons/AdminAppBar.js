@@ -22,7 +22,7 @@ export default function AdminAppBar({history, avatarUrl=null, avatarTapEvent=() 
     const logoIcon = (
         <div className={logoClassName}>
             <MSLogo size="25" logoEvent={() => {history.push('/admin')}}/>
-            <span>Advocate Hub</span>
+            <span style={{color: 'white'}}>Advocate Hub</span>
         </div>
     );
     return (

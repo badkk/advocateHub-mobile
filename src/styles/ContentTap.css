@@ -3,21 +3,19 @@
         padding: 0 8% 0 8%;
         background-color: white;
     }
-    .tab-panel-home {
+    .tab-panel {
         width: 90%!important;
     }
-    .tab-panel-home > div > div > button {
-        width: 15%!important;
-    }
-    .tab-panel-home > div > div:nth-child(2) {
+    .tab-panel > div > div {
         width: 30%!important;
     }
-
-
+    .tab-panel > div > div:nth-child(2) {
+        width: 30%!important;
+    }
 }
 .tab-panel-home {
     width: 100%;
-    background: content-box;
+    background: content-box!important;
 }
 .tab-panel-home > div > div:nth-child(2) > div {
     background-color: white!important;

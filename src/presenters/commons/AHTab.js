@@ -12,7 +12,7 @@ export default function AHTab({tabs, tabChangeHandler, slideIdx, stickyHeight, h
     /*const tabs = _.map(this.state.tabNames, (tabName, idx) => {
         return <Tab label={tabName} value={idx} />
     });*/
-    const tab_style = homeTab ? "tab-panel-home" : "tab-panel";
+    const tab_style = homeTab ? "tab-panel tab-panel-home" : "tab-panel";
     const line = !homeTab ? <hr style={{margin:0, width:'100%'}}/> : null;
     return (
         <div className={tab_style} style={{position: 'sticky', top: stickyHeight, zIndex: 100}}>
