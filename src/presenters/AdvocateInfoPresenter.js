@@ -23,127 +23,33 @@ import "../styles/AdvocateInfo.css"
 import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
-import {withStyles} from "react-with-styles";
+import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
 
 /**
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
 const infoBarHeight = 70;
-let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
-class InfoBar extends Component {
-    render() {
-        const {
-            handleBtmSheetOpen,
-            name,
-            avatar,
-            tags
-        } = this.props;
-        const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
-        return (
-            <Paper zDepth={0} style={{height: infoBarHeight, top: homeBarHeight}} className="advocate-info-app-bar">
+                let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
+                class InfoBar extends Component {
+                render() {
+                const {
+                handleBtmSheetOpen,
+                name,
+                avatar,
+                tags
+            } = this.props;
+                const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
+                return (
+                <Paper zDepth={0} style={{height: infoBarHeight, top: homeBarHeight}} className="advocate-info-app-bar">
                 <ListItem
-                    primaryText={name}
-                    secondaryText={tags}
-                    leftAvatar={<Avatar src={avatar} />}
-                    rightIconButton={followedIconButton}
-                    style={{width:"100%"}}
+                primaryText={name}
+                secondaryText={tags}
+                leftAvatar={<Avatar src={avatar} />}
+                rightIconButton={followedIconButton}
+                style={{width:"100%"}}
                 />
             </Paper>
-        );
-    }
-}
-class SocialMediaBtmSheet extends Component {
-    render() {
-        const {
-            isOpen,
-            followedTt,
-            followedGh,
-            twitterName,
-            handleFbFollow,
-            handleGhFollow,
-            handleTtFollow,
-            handleBtmSheetClose,
-            facebookHomePage,
-            githubName
-        } = this.props;
-        /* Bottom shared sheet */
-        //icons
-        const GithubIcon = <FontIcon className="fa fa-github"/>;
-        const TwitterIcon = <FontIcon className="fa fa-twitter"/>;
-        const FacebookIcon = <FontIcon className="fa fa-facebook-square"/>;
-        //facebookHref
-        const facebookHref = "https://www.facebook.com/plugins/follow.php?href=" + facebookHomePage +"&layout=button_count&size=large&appId=689977874520550";
-        //twitterHref
-        const twitterHref = "https://platform.twitter.com/widgets/follow_button.html?screen_name=" + twitterName + "&show_screen_name=false&show_count=false&size=l";
-        const githubHref = "http://ghbtns.com/github-btn.html?user=" + githubName + "&count=none&type=follow";
-        //followedButton
-        const followFbIcon = <iframe src={facebookHref}
-                                     title="Follow me"
-                                     width="100%"
-                                     height="30"
-                                     scrolling="no"
-                                     frameBorder="0"
-                                     allowTransparency="true"/>;
-        const displayTwitterCheck = followedTt ? "block" : "none";
-        const followTtIcon = (
-            <div className="twitter-follow-button-div">
-                <iframe src={twitterHref}
-                     title="Twitter Following Button"
-                     width="80%"
-                     height="30"
-                     scrolling="no"
-                     frameBorder="0"
-                     allowTransparency="true"/>
-                <ActionCheckCircle color={green500} style={{display: displayTwitterCheck}}/>
-            </div>
-        );
-        const followGhIcon =
-            <div className="github-follow-button-div">
-                <iframe src={githubHref}
-                        allowTransparency="true"
-                        frameBorder="0"
-                        scrolling="no"
-                        width="100%"
-                        height="30"/>
-            </div>;
-        /*const facebookListItem = _.isEmpty(facebookHomePage) ?*/
-        const facebookListItem = <ListItem primaryText="Facebook"
-                                           leftIcon={FacebookIcon}
-                                           rightIconButton={
-                                               <IconButton
-                                                   onTouchTap={handleFbFollow}
-                                                   className="advocate-follow-button"
-                                               >{followFbIcon}</IconButton>}/>;
-        const twitterListItem = <ListItem primaryText="Twitter"
-                                          leftIcon={TwitterIcon}
-                                          rightIconButton={
-                                              <IconButton
-                                                  onTouchTap={handleTtFollow}
-                                                  className="advocate-follow-button"
-                                              >{followTtIcon}</IconButton>}/>;
-        const githubListItem = <ListItem primaryText="Github"
-                                         leftIcon={GithubIcon}
-                                         rightIconButton={
-                                             <IconButton
-                                                 className="advocate-follow-button"
-                                                 onTouchTap={handleGhFollow}
-                                             >{followGhIcon}</IconButton>}/>;
-        let listContent = [];
-        if (!_.isEmpty(facebookHomePage)) listContent.push(facebookListItem);
-        if (!_.isEmpty(twitterName)) listContent.push(twitterListItem);
-        if (!_.isEmpty(githubName)) listContent.push(githubListItem);
-        return (
-            <BottomSheet
-                onRequestClose={handleBtmSheetClose}
-                open={isOpen}
-            >
-                <h4 style={{color: grey500, marginLeft: '25px'}}>Follow me on these channel</h4>
-                <Divider/>
-                <List>
-                    {listContent}
-                </List>
-            </BottomSheet>
         );
     }
 }
@@ -184,8 +90,8 @@ class PersonalPage extends Component {
     render() {
         const {homePageUrl, history, meetings} = this.props;
         const tabs = [
-            <Tab label='HomePage' value={0} key={0}/>,
-            <Tab label='Meetings' value={1} key={1}/>
+            <Tab label='Bio' value={0} key={0}/>,
+            <Tab label='Talks' value={1} key={1}/>
         ];
         const meetingsList = _.map(meetings, (meeting, idx) =>
             <MeetingListItem
@@ -244,30 +150,66 @@ class PersonalPage extends Component {
     }
 }
 export default class AdvocateInfoPresenter extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            isOpen: false,
+            isLoading: true
+        };
+    }
     componentDidMount() {
         console.log(this.props.match.params.id);
         this.props.initial(this.props.match.params.id);
     }
+    handleBtmSheetOpen = () => {
+        this.setState({
+            isOpen: true
+        });
+    };
+    handleBtmSheetClose = () => {
+        this.setState({
+            isOpen: false
+        });
+    };
+    socialMediaEvent = (url) => {
+        if(url) {
+            return () => window.location = url;
+        } else {
+            return null;
+        }
+    };
     render() {
-        /*const { fromHome } = this.props.match.params.id;
-        console.log(fromHome);
-        iFramePanelHeight = fromHome ?
-            window.screen.height - homeBarHeight - appBarHeight - tabMenuHeight
-            :
-            window.screen.height - menuHeight - homeBarHeight - appBarHeight - tabMenuHeight;
-        const menuDisplay = fromHome ? 'none' : 'flex';*/
+        console.log(this.props);
+        const {
+            avatar,
+            name,
+            homePage,
+            tags,
+            history,
+            meetings,
+            facebookHomePage,
+            twitterAccount,
+            githubAccount,
+            likedNum,
+            popularity,
+            linkedin,
+            followersCount
+        } = this.props;
         return (
             <div className="advocate-detail-root-panel">
-                <HomeBar history={this.props.history}/>
+                <HomeBar history={history}/>
                 <InfoBar
-                    avatar={this.props.avatar}
-                    tags={this.props.tags}
-                    name={this.props.name}
-                    handleBtmSheetOpen={this.props.handleBtmSheetOpen}/>
+                    avatar={avatar}
+                    tags={tags}
+                    name={name}
+                    facebookEvent={() => this.socialMediaEvent(facebookHomePage)}
+                    twitterEvent={() => this.socialMediaEvent("http://twitter.com/"+twitterAccount)}
+                    githubEvent={() => this.socialMediaEvent("http://github.com/" + githubAccount)}
+                    handleBtmSheetOpen={this.handleBtmSheetOpen}/>
                 <PersonalPage
-                    homePageUrl={this.props.homePage}
-                    history={this.props.history}
-                    meetings={this.props.meetings}
+                    homePageUrl={homePage}
+                    history={history}
+                    meetings={meetings}
                 />
                 {/*<Menu
                     history={this.props.history}
@@ -276,17 +218,12 @@ export default class AdvocateInfoPresenter extends Component {
                     userId="johnpapa"
                 />*/}
                 <SocialMediaBtmSheet
-                    isOpen={this.props.isOpen}
-                    handleBtmSheetClose={this.props.handleBtmSheetClose}
-                    followedFb={this.props.followedFb}
-                    followedTt={this.props.followedTt}
-                    followedGh={this.props.followedGh}
-                    handleFbFollow={this.props.handleFbFollow}
-                    handleTtFollow={this.props.handleTtFollow}
-                    handleGhFollow={this.props.handleGhFollow}
-                    facebookHomePage={this.props.facebookHomePage}
-                    twitterName={this.props.twitterAccount}
-                    githubName={this.props.githubAccount}
+                    title={"Follow " + name + " on these channels"}
+                    isOpen={this.state.isOpen}
+                    handleCancel={this.handleBtmSheetClose}
+                    facebookEvent={this.socialMediaEvent(facebookHomePage)}
+                    twitterEvent={this.socialMediaEvent("http://twitter.com/"+twitterAccount)}
+                    githubEvent={this.socialMediaEvent("http://github.com/" + githubAccount)}
                 />
             </div>
         );

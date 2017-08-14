@@ -3,58 +3,9 @@ import get from '../../restful/Get'
  * Created by t-zikfan on 2017/7/13.
  */
 //define action types
-export const OPEN_BS = 'OPEN_BS';
-export const CLOSE_BS = 'CLOSE_BS';
-export const FOLLOW_FB = 'FOLLOW_FB';
-export const FOLLOW_TT = 'FOLLOW_TT';
-export const UNFOLLOW_TT = 'UNFOLLOW_TT';
-export const FOLLOW_GH = 'FOLLOW_GH';
 export const INITIAL = 'INITIAL';
 
-//actions
-export const openBSAction = {
-    type: OPEN_BS,
-};
-export const closeBSAction = {
-    type: CLOSE_BS
-};
-export const followFbAction = {
-    type: FOLLOW_FB
-};
-export const followGhAction = {
-    type: FOLLOW_GH
-};
-export function followTtActionCreator(followStatus, twitterName) {
-    console.log(followStatus, twitterName);
-    return dispatch => {
-    }
-}
 export function initialActionCreator(userId, dispatch) {
-    //init twitter
-    window.twttr = (function(d, s, id) {
-        let js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-
-        t._e = [];
-        t.ready = function(f) {
-            t._e.push(f);
-        };
-
-        return t;
-    }(document, "script", "twitter-wjs"));
-    //init github js
-    const script = document.createElement("script");
-
-    script.src = "https://buttons.github.io/buttons.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-
     return dispatch => {
         get('/advocator/' + userId).then(res => {
             console.log("from advacation redux action", res);
@@ -63,7 +14,7 @@ export function initialActionCreator(userId, dispatch) {
     }
 }
 function initState(data) {
-    return {
+    let res = {
         type: INITIAL,
         avatar: data['avatar'],
         homePage: data['homePage'],
@@ -75,7 +26,15 @@ function initState(data) {
         tags: data['tags'] ? data['tags'].join(',') : '',
         likedNum: data['likedNum'],
         popularity: 'popularity' in data ? data['popularity'] : 0,
-        linkedin: 'linkedin' in data ? data['linkedin'] : {},
         followersCount: 'followersCount' in data ? data['followersCount'] : 0,
+    };
+    if ('linkedin' in data) {
+        const linkedin = data.linkedin;
+        res.location = linkedin.location.name;
+        res.positions = linkedin.positions.values;
+        res.summary = linkedin.summary;
+        res.linkedinAccount = linkedin.publicProfileUrl;
+        res.jobtitle=linkedin.headline;
     }
+    return res;
 }

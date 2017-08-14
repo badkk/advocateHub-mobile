@@ -44,7 +44,7 @@ export function linkedinAccess(successCallback, failedCallback) {
     linkedin.login().then(res => {
         console.log(res);
         return linkedin.api(
-            'people/~:(picture-url,first-name,last-name,id,formatted-name,email-address,industry,summary,positions,public-profile-url,specialties,location)'
+            'people/~:(picture-url,first-name,last-name,id,formatted-name,email-address,industry,summary,positions,public-profile-url,specialties,location,headline)'
         );
     }, failedCallback).then(res => {
         successCallback(res);
