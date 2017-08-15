@@ -12,6 +12,7 @@
     .tab-panel > div > div:nth-child(2) {
         width: 30%!important;
     }
+
 }
 .tab-panel-home {
     width: 100%;
@@ -30,7 +31,7 @@
     background-color: inherit!important;
 }
 .content-taps > div > button {
-    font-size: 40%!important;
+    font-size: 14px!important;
     max-height: 45px!important;
     color: #00bcd4!important;
     font-weight: 600!important;

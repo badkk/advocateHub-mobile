@@ -1,7 +1,6 @@
 @media only screen and (min-width: 600px) {
     .home-sub-panel { padding: 0 10% 0 10%; }
     .home-logo-panel { width:90%!important; }
-    .home-title { font-size: 22px!important; }
 }
 .home-background-div {
     background-color: white;
@@ -38,7 +37,7 @@
     padding: 10px 0 10px 0;
 }
 .home-title {
-    font-size: 18px;
+    font-size: 22px;
     color: white!important;
     margin: 0;
 }
