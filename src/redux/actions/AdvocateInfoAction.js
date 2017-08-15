@@ -23,7 +23,7 @@ function initState(data) {
         name: data['name'],
         githubAccount: data['githubAccount'],
         meetings: data['meetings'],
-        tags: data['tags'] ? data['tags'].join(',') : '',
+        tags: data['tags'] ? data['tags'].join(', ') : '',
         likedNum: data['likedNum'],
         popularity: 'popularity' in data ? data['popularity'] : 0,
         followersCount: 'followersCount' in data ? data['followersCount'] : 0,

@@ -1,5 +1,5 @@
 @media only screen and (min-width: 600px) {
-    .advocate-info-app-bar,
+    .advocate-info-root-panel,
     .homePage-did-not-set,
     .homePage-did-set,
     .meetings-panel {
@@ -8,15 +8,22 @@
     .homePage-did-set {
         width: 90%!important;
     }
+    .advocate-info-avatar-panel {
+        flex-direction: row!important;
+    }
+    .advocate-info-root-panel {
+        flex-direction: row!important;
+        height: 80px!important;
+    }
+    .advocate-info-title-panel {
+        align-items: flex-start!important;
+    }
 
 }
 .advocate-detail-root-panel {
     background: white;
 }
-.advocate-info-app-bar {
-    position: sticky!important;
-    z-index: 300;
-}
+
 .advocate-follow-button {
     display: flex!important;
     width: 160px!important;
@@ -65,4 +72,34 @@
 }
 .meetings-panel {
     background-color: white;
+}
+/* Info Panel Styles */
+.advocate-info-root-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 200px;
+}
+.advocate-info-likes-panel {
+    display: flex;
+    align-items: center;
+}
+.advocate-info-avatar-panel {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.advocate-info-avatar-panel > img {
+    margin: 16px;
+}
+.advocate-info-sm-panel {
+    display: flex;
+}
+.advocate-info-title-panel {
+    display: flex;
+    margin-left: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

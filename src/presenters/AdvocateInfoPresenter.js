@@ -24,35 +24,13 @@ import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
 import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
-
+import InfoPanel from './advocatedetail/InfoPanel'
 /**
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
 const infoBarHeight = 70;
-                let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
-                class InfoBar extends Component {
-                render() {
-                const {
-                handleBtmSheetOpen,
-                name,
-                avatar,
-                tags
-            } = this.props;
-                const followedIconButton = (<RaisedButton primary={true} className="follow-button" label="Follow" onTouchTap={handleBtmSheetOpen}/>);
-                return (
-                <Paper zDepth={0} style={{height: infoBarHeight, top: homeBarHeight}} className="advocate-info-app-bar">
-                <ListItem
-                primaryText={name}
-                secondaryText={tags}
-                leftAvatar={<Avatar src={avatar} />}
-                rightIconButton={followedIconButton}
-                style={{width:"100%"}}
-                />
-            </Paper>
-        );
-    }
-}
+let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
 export function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() => {}}) {
     const leftAvatar = isComplete ?
         <ActionDone color={green500} />:
@@ -137,7 +115,6 @@ class PersonalPage extends Component {
                     tabs={tabs}
                     tabChangeHandler={this.handleTabClick}
                     slideIdx={this.state.slideIdx}
-                    stickyHeight={homeBarHeight+infoBarHeight}
                 />
                 <SwipeableViews
                     index={this.state.slideIdx}
@@ -154,7 +131,7 @@ export default class AdvocateInfoPresenter extends Component {
         super(props);
         this.state={
             isOpen: false,
-            isLoading: true
+            liked: false
         };
     }
     componentDidMount() {
@@ -169,6 +146,12 @@ export default class AdvocateInfoPresenter extends Component {
     handleBtmSheetClose = () => {
         this.setState({
             isOpen: false
+        });
+    };
+    handleLikedClick = () => {
+        const liked = this.state.liked;
+        this.setState({
+            liked: !liked
         });
     };
     socialMediaEvent = (url) => {
@@ -198,14 +181,18 @@ export default class AdvocateInfoPresenter extends Component {
         return (
             <div className="advocate-detail-root-panel">
                 <HomeBar history={history}/>
-                <InfoBar
+                <InfoPanel
                     avatar={avatar}
                     tags={tags}
                     name={name}
-                    facebookEvent={() => this.socialMediaEvent(facebookHomePage)}
-                    twitterEvent={() => this.socialMediaEvent("http://twitter.com/"+twitterAccount)}
-                    githubEvent={() => this.socialMediaEvent("http://github.com/" + githubAccount)}
-                    handleBtmSheetOpen={this.handleBtmSheetOpen}/>
+                    facebookEvent={this.socialMediaEvent(facebookHomePage)}
+                    twitterEvent={this.socialMediaEvent(twitterAccount ? "http://twitter.com/" + twitterAccount : null)}
+                    githubEvent={this.socialMediaEvent(githubAccount ? "http://github.com/" + githubAccount : null)}
+                    handleBtmSheetOpen={this.handleBtmSheetOpen}
+                    likedNum={likedNum}
+                    clickLiked={this.handleLikedClick}
+                    liked={this.state.liked}
+                />
                 <PersonalPage
                     homePageUrl={homePage}
                     history={history}
