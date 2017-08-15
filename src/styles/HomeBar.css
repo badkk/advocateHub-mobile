@@ -16,7 +16,9 @@
 .bar-panel > hr {
     margin: 0!important;
 }
-.bar-paper {
+.bar-paper,
+.admin-bar-paper
+{
     display: flex;
     align-items: center;
     height: 55px!important;

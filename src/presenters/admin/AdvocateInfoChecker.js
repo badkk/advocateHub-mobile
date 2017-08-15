@@ -124,7 +124,9 @@ export default class AdvocateInfoChecker extends Component {
                     primary={true}
                     buttonStyle={{
                         backgroundColor: linkedinBtnColor,
-                        width: '250px',
+                        width: '250px'
+                    }}
+                    style={{
                         marginTop: '10px'
                     }}
                     onTouchTap={this.getLinkedinProfile}

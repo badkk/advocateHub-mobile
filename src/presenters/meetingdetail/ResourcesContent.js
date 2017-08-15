@@ -6,69 +6,47 @@ import { isUrl } from '../../utils/strings'
  * Created by t-zikfan on 2017/7/6.
  * About Content of Meeting page
  */
-//TODO Re-org the UI pattern
-export default function ResourcesContent({meeting}) {
-
+function itemGenerator(key, title, subtitle, icon, iframeLink) {
     //resize the video screen to 16:9
     const height = window.screen.width * 0.9 * 9 / 16;
-    const {videoLink, pptLink, date} = meeting;
+    return (
+        <ListItem
+            key={key}
+            primaryText={title}
+            secondaryText={subtitle}
+            initiallyOpen={true}
+            leftIcon={icon}
+            primaryTogglesNestedList={true}
+            nestedItems={[
+                <iframe
+                    src={iframeLink}
+                    style={{width: '90%', height: height, paddingLeft: '5%'}}
+                    frameBorder={0}
+                />
+            ]}
+        />
+    );
+}
+export default function ResourcesContent({meeting}) {
 
-    let videoUploadDate, pptUploadDate, videoItem, pptItem;
+    const {videoLink, pptLink, date, codeSample} = meeting;
 
-    if (typeof videoLink !== 'undefined' && isUrl(videoLink)) {
-        videoItem = <iframe
-            src={videoLink}
-            style={{width: '90%', height: height, paddingLeft: '5%'}}
-            frameBorder={0}
-        />;
-        videoUploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
-    } else {
-        videoItem = null;
-        videoUploadDate = "User did not upload video yet"
-    }
-    if (typeof pptLink !== 'undefined' && isUrl(pptLink)) {
-        pptItem = <iframe
-            src={pptLink}
-            style={{width: '90%', height: height, paddingLeft: '5%'}}
-            frameBorder={0}
-        />;
-        pptUploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
-    } else {
-        pptItem = null;
-        pptUploadDate = "User did not upload ppt yet"
-    }
+    const uploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
+
+    const videoItem = (videoLink && isUrl(videoLink)) ? itemGenerator("video-item", 'Video', uploadDate, <AvVideoLibrary/>, videoLink) : null;
+    const pptItem = (pptLink && isUrl(pptLink)) ? itemGenerator("video-item", 'PowerPoint', uploadDate, <ActionSpeakerNotes/>, pptLink) : null;
     const codeSampleItem = <div>
         <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
         </iframe>
     </div>;
     return (
         <List style={{backgroundColor: 'white'}} className="resource-panel">
-            <ListItem
-                key="resource_video"
-                primaryText="Video"
-                secondaryText={videoUploadDate}
-                initiallyOpen={false}
-                leftIcon={<AvVideoLibrary/>}
-                primaryTogglesNestedList={true}
-                nestedItems={[
-                    videoItem
-                ]}
-            />
-            <ListItem
-                key="resource_ppt"
-                primaryText="PowerPoint"
-                secondaryText={pptUploadDate}
-                initiallyOpen={false}
-                leftIcon={<ActionSpeakerNotes/>}
-                primaryTogglesNestedList={true}
-                nestedItems={[
-                    pptItem
-                ]}
-            />
+            {videoItem}
+            {pptItem}
             <ListItem
                 key="resource_codeSam"
                 primaryText="Code Sample"
-                secondaryText={pptUploadDate}
+                secondaryText={uploadDate}
                 initiallyOpen={false}
                 leftIcon={<ActionCode/>}
                 primaryTogglesNestedList={true}

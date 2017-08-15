@@ -12,12 +12,14 @@ export function oAuthTwitterInit() {
     hello.init({
         twitter: twitter_consumer_key
     }, {
-        redirect_uri: null
+        redirect_uri: '/admin/callback'
     });
 }
 export function oAuthLinkedinInit() {
     hello.init({
         linkedin: linkedin_consumer_key
+    }, {
+        redirect_uri: '/admin/callback'
     });
 }
 export function twitterLogin(successCallback, failedCallback) {

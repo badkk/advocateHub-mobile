@@ -27,7 +27,7 @@ export default function AdminAppBar({history, avatarUrl=null, avatarTapEvent=() 
     );
     return (
         <div className="bar-panel">
-            <Paper zDepth={0} className="bar-paper admin-bar-paper admin-dark-bar" style={{maxHeight: homeBarHeight}}>
+            <Paper zDepth={0} className="admin-bar-paper admin-dark-bar" style={{maxHeight: homeBarHeight}}>
                 <div/>
                 {logoIcon}
                 {avatar}
