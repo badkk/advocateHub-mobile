@@ -26,7 +26,7 @@ hr {
 h1, h2, h3, a, span {
     color: #484848;
 }
-.meeting-introduction-des-panel > blockquote {
+ blockquote {
     background: #f9f9f9;
     border-left: 10px solid #00BCD4;
     margin: 1.5em 10px 1.5em 0;
@@ -34,7 +34,7 @@ h1, h2, h3, a, span {
     quotes: "\201C""\201D""\2018""\2019";
     color: grey;
 }
-.meeting-introduction-des-panel > blockquote:before {
+ blockquote:before {
     color: #ccc;
     content: open-quote;
     font-size: 2em;
@@ -42,7 +42,7 @@ h1, h2, h3, a, span {
     margin-right: 0.25em;
     vertical-align: -0.4em;
 }
-.meeting-introduction-des-panel > blockquote p {
+ blockquote p {
     display: inline;
 }
 .meeting-speaker-panel {

@@ -13,18 +13,17 @@ import {
     Divider,
     Tab,
 } from 'material-ui'
-import { BottomSheet } from 'material-ui-bottom-sheet';
 import SwipeableViews from 'react-swipeable-views';
-import { SocialPersonAdd, ActionCheckCircle, ActionCached, ActionDone } from 'material-ui/svg-icons'
+import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
 import {grey500, green500, white, yellow500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
-import {isUrl} from "../utils/strings"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
 import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
 import InfoPanel from './advocatedetail/InfoPanel'
+import BioPanel from './advocatedetail/BioPanel'
 /**
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
@@ -66,7 +65,9 @@ class PersonalPage extends Component {
        });
     }
     render() {
-        const {homePageUrl, history, meetings} = this.props;
+        const {homePage, history, meetings,
+            jobtitle, linkedinAccount, location,
+            positions, summary } = this.props;
         const tabs = [
             <Tab label='Bio' value={0} key={0}/>,
             <Tab label='Talks' value={1} key={1}/>
@@ -81,26 +82,12 @@ class PersonalPage extends Component {
                 touchEvent={() => {history.push('/talk/'+meeting['_id'])}}
             />
         );
-        const homePageDiv = isUrl(homePageUrl) ?
-            <div key="advocate_homepage">
-                <iframe src={homePageUrl}
-                        title={homePageUrl}
-                        height={iFramePanelHeight}
-                        width='100%'
-                        frameBorder="0"
-                        className="homePage-did-set"
-                        onLoad={this.progressLoaded}
-                />
-                <CircularProgress style={{position: 'absolute', padding:'30% 50% 30% 50%', top: 0, left: '0', display: this.state.showProgress ? "inline-block" : "none"}}/>
-            </div>
-            :
-            <div
-                key="advocate_homepage_not_set"
-                className="homePage-did-not-set"
-                style={{height: iFramePanelHeight}}
-            >
-                User Did Not Set HomePage
-            </div>;
+        const homePageDiv = <BioPanel homePage={homePage}
+                                      jobtitle={jobtitle}
+                                      linkedinAccount={linkedinAccount}
+                                      location={location}
+                                      positions={positions}
+                                      summary={summary} />;
         const contents = [
             homePageDiv,
             <div className="meetings-panel" key="advocate_meeting_details">
@@ -135,7 +122,7 @@ export default class AdvocateInfoPresenter extends Component {
         };
     }
     componentDidMount() {
-        console.log(this.props.match.params.id);
+        //console.log(this.props.match.params.id);
         this.props.initial(this.props.match.params.id);
     }
     handleBtmSheetOpen = () => {
@@ -162,7 +149,6 @@ export default class AdvocateInfoPresenter extends Component {
         }
     };
     render() {
-        console.log(this.props);
         const {
             avatar,
             name,
@@ -174,9 +160,11 @@ export default class AdvocateInfoPresenter extends Component {
             twitterAccount,
             githubAccount,
             likedNum,
-            popularity,
-            linkedin,
-            followersCount
+            linkedinAccount,
+            jobtitle,
+            positions,
+            location,
+            summary
         } = this.props;
         return (
             <div className="advocate-detail-root-panel">
@@ -194,9 +182,14 @@ export default class AdvocateInfoPresenter extends Component {
                     liked={this.state.liked}
                 />
                 <PersonalPage
-                    homePageUrl={homePage}
+                    homePage={homePage}
                     history={history}
                     meetings={meetings}
+                    jobtitle={jobtitle}
+                    positions={positions}
+                    summary={summary}
+                    location={location}
+                    linkedinAccount={linkedinAccount}
                 />
                 {/*<Menu
                     history={this.props.history}

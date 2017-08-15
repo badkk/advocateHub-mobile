@@ -57,7 +57,7 @@ export default class AdvocateInfoChecker extends Component {
                 //jump to homepage
                 this.setState({
                     userInfo: res['data'],
-                    bindingLinkedin: 'linkedinAccount' in res
+                    bindingLinkedin: 'linkedin' in res['data']
                 });
                 userGlobalInfo = res['data'];
             },

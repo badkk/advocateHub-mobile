@@ -20,7 +20,7 @@ export default function SocialMediaBtmSheet({
     const facebookIcon = <FontIcon className="fa fa-facebook-official" color="#4267b2"/>;
     const twitterIcon = <FontIcon className="fa fa-twitter" color="#1da1f2"/>;
     const googlePlusIcon = <FontIcon className="fa fa-google-plus" color="#db4437"/>;
-    const linkedinIcon = <FontIcon className="fa fa-linkedin-square" color="#1e9f75"/>;
+    const linkedinIcon = <FontIcon className="fa fa-linkedin-square" color="#0073b1"/>;
     const githubIcon = <FontIcon className="fa fa-github" color="black"/>;
 
     const facebookItem = facebookEvent ? <ListItem key='facebook-item' onTouchTap={facebookEvent} primaryText="Facebook" leftIcon={facebookIcon}/> : null;
