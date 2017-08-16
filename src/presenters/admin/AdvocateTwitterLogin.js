@@ -4,7 +4,7 @@ import AdminAppBar from "../commons/AdminAppBar";
 import post from '../../restful/Post';
 import login from '../../utils/loginUtils'
 import '../../styles/AdvocateTwitterLogin.css'
-import {oAuthTwitterInit, twitterLogin} from '../../utils/socialMedUtils'
+import {oAuthTwitterInit, twitterLogin, tweet} from '../../utils/socialMedUtils'
 /**
  * Created by t-zikunfan
  * Date: 15:33 2017/7/24
@@ -12,7 +12,7 @@ import {oAuthTwitterInit, twitterLogin} from '../../utils/socialMedUtils'
 export default class AdvocateTwitterLogin extends Component {
     constructor(props) {
         super(props);
-        this.handleTwitterTweet = this.handleTwitterTweet.bind(this);
+        this.handleTwitterOAuth = this.handleTwitterOAuth.bind(this);
         this.state = {
             history: this.props.history,
             loadRuning: false
@@ -45,7 +45,6 @@ export default class AdvocateTwitterLogin extends Component {
         };
         twitterLogin(success, failed);
     }
-
     render() {
         return (
             <div className="twitter-login-panel">
