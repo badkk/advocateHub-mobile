@@ -97,6 +97,7 @@
 }
 .advocate-info-sm-panel {
     display: flex;
+    align-items: center;
 }
 .advocate-info-title-panel {
     display: flex;

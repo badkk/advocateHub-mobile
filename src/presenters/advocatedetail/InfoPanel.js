@@ -29,6 +29,11 @@ export default function InfoPanel({handleBtmSheetOpen, name, avatar, tags,
     const facebookIcon = socialMediaBtn(facebookEvent, "fa fa-facebook-official", "#4267b2");
     const twitterIcon = socialMediaBtn(twitterEvent, "fa fa-twitter", "#1da1f2");
     const githubIcon = socialMediaBtn(githubEvent, "fa fa-github", "black");
+    const preText = (
+        <p style={{fontWeight: 'bold'}}>
+          Follow me at
+        </p>
+    );
     const socialMediaPanel = (
         <div>
             {facebookIcon}
@@ -36,20 +41,12 @@ export default function InfoPanel({handleBtmSheetOpen, name, avatar, tags,
             {githubIcon}
         </div>
     );
-    const likedNumPanel = (
-        <div className="advocate-info-likes-panel">
-            <IconButton onTouchTap={clickLiked}>
-                { liked ? <ActionFavorite color={pink500}/> : <ActionFavoriteBorder color={grey500}/> }
-            </IconButton>
-            <a>{(likedNum ? likedNum : 0) + ' likes'}</a>
-        </div>
-    );
     return (
         <div className="advocate-info-root-panel">
             {avatarPanel}
             <div className="advocate-info-sm-panel">
+                {preText}
                 {socialMediaPanel}
-                {likedNumPanel}
             </div>
         </div>
     );
