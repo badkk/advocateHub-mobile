@@ -121,16 +121,16 @@ export default class AdvocateAdminHome extends Component {
                     console.log(res['data']);
                     let qrcodeLink = '';
                     let twitterLink = '';
-                    if ('qrcode' in res['data']) {
+                    if (!_.isBoolean(res['data'])) {
                         qrcodeLink = Strings.serverAddr + '/qrcode/' + res.data.qrcode;
                         twitterLink = res.data.link;
+                        const meetingId = getFileName(res.data.qrcode);
+                        that.handleTwitterTweet(meetingId, twitterLink);
                     }
                     this.setState({
                         showForm: false,
                         qrcodeLink: qrcodeLink
                     });
-                    const meetingId = getFileName(res.data.qrcode);
-                    that.handleTwitterTweet(meetingId, twitterLink);
                     that.getMeetings();
                 }
             });
@@ -145,7 +145,6 @@ export default class AdvocateAdminHome extends Component {
         get('/advocator/' + this.state.advocatorId).then(res => {
             let data = res['data'];
             if ('meetings' in data) {
-                console.log("s");
                 this.setState({
                     meetings: data["meetings"]
                 });
