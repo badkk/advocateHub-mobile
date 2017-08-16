@@ -26,3 +26,7 @@ yarn.lock
 .idea/jsLibraryMappings.xml
 .idea/*
 build/*
+
+# server ip
+
+src/res/values/string.js
