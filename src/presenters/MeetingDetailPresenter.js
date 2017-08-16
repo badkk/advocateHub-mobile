@@ -87,7 +87,7 @@ class MeetingContent extends Component {
         const contents = [
             <IntroduceContent key={0} meeting={this.props.meeting}/>,
             <ResourcesContent key={1} meeting={this.props.meeting}/>,
-            <RecommendContent key={2} />
+            <RecommendContent key={2} meeting={this.props.meeting}/>
         ];
         return (
             <div>

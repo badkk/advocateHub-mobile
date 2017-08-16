@@ -5,17 +5,14 @@
     .meeting-speaker-panel {
         padding: 0 10% 0 10%!important;
     }
-    .azure-content {
-        display: flex!important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .azure-content-card-style {
-        width: 65%;
-    }
     .introduce-inner-panel > div {
         width: 50%!important;
+    }
+    .recommended-content-panel {
+        flex-direction: row!important;
+    }
+    .recommended-content-panel > div {
+        width: 33.33%!important;
     }
 }
 hr {
@@ -155,6 +152,17 @@ h1, h2, h3, a, span {
 .recommended-panel {
     background-color: white;
 }
+.recommended-content-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.recommended-content-panel > div {
+    width: 100%;
+    display: flex!important;
+    flex-direction: column;
+    align-items: center;
+}
 .st0{fill:#F05125;}
 .st1{fill:#7FBB42;}
 .st2{fill:#FDB813;}
@@ -172,13 +180,13 @@ h1, h2, h3, a, span {
     margin-right: 10px;
 }
 .azure-content {
-    padding: 10px;
     display: block;
     overflow: auto;
 }
 .azure-content-card-style {
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 90%;
 }
 .free-account-button {
     width: 100%!important;
