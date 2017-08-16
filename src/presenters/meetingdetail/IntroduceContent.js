@@ -51,11 +51,11 @@ function OrgPanel({meeting, clickLiked, liked}) {
             <hr/>
         </div>
     );
-    const tweetId = meeting.tweetId ? meeting.tweetId : '884842746342764545';
+    const tweetContent = meeting.tweetId ? <Tweet tweetId={meeting.tweetId}/> : null;
     const twitterCommentPanel = (
         <div className="meeting-introduction-twitter-panel">
             <h3 style={subTitleStyle}>Comments on twitter</h3>
-            <Tweet tweetId={tweetId}/>
+            {tweetContent}
         </div>
     );
     /* map container */
