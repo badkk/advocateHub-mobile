@@ -1,27 +1,17 @@
 import React, {Component} from 'react'
 import {
-    Paper,
-    IconButton,
-    FontIcon,
-    CircularProgress,
-    FlatButton,
-    Avatar,
     ListItem,
-    FloatingActionButton,
-    RaisedButton,
     List,
-    Divider,
     Tab,
 } from 'material-ui'
 import SwipeableViews from 'react-swipeable-views';
 import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
-import {grey500, green500, white, yellow500} from 'material-ui/styles/colors'
+import { green500, yellow500} from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
-import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
 import InfoPanel from './advocatedetail/InfoPanel'
 import BioPanel from './advocatedetail/BioPanel'
 /**
@@ -190,20 +180,6 @@ export default class AdvocateInfoPresenter extends Component {
                     summary={summary}
                     location={location}
                     linkedinAccount={linkedinAccount}
-                />
-                {/*<Menu
-                    history={this.props.history}
-                    state={2}
-                    meetingId="johnpapa_123"
-                    userId="johnpapa"
-                />*/}
-                <SocialMediaBtmSheet
-                    title={"Follow " + name + " on these channels"}
-                    isOpen={this.state.isOpen}
-                    handleCancel={this.handleBtmSheetClose}
-                    facebookEvent={this.socialMediaEvent(facebookHomePage)}
-                    twitterEvent={this.socialMediaEvent("http://twitter.com/"+twitterAccount)}
-                    githubEvent={this.socialMediaEvent("http://github.com/" + githubAccount)}
                 />
             </div>
         );

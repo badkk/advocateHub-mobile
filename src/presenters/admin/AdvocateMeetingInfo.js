@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {DatePicker, TimePicker, TextField, SelectField, MenuItem, Paper} from 'material-ui'
-
+import { SearchMap } from '../../utils/googleMap'
 export default class AdvocateMeetingInfo extends Component {
     constructor(props) {
         super(props);
@@ -31,11 +31,10 @@ export default class AdvocateMeetingInfo extends Component {
                     defaultTime={'date' in meeting ? new Date(meeting['date']) : null}
                     onChange={(event, date) => handleChange("date2", date)}
                 />
-                <TextField
-                    id="meeting_location"
-                    defaultValue={meeting['location']}
-                    floatingLabelText="Location"
-                    onChange={event => handleChange("location", event.target.value)}
+                <SearchMap
+                    updateAdd={(val) => handleChange("location", val)}
+                    updateLat={(val) => handleChange("lat", val)}
+                    updateLng={(val) => handleChange("lng", val)}
                 />
                 <TextField
                     id="meeting_video_link"

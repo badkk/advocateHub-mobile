@@ -143,6 +143,7 @@ h1, h2, h3, a, span {
     display: flex;
     align-items: center;
     min-height: 35px;
+    margin-top: 15px;
 }
 .card-header {
 

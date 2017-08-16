@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {IconButton} from 'material-ui'
 import { ActionFavoriteBorder, ActionFavorite, ActionEvent, ImageTimer, CommunicationLocationOn } from 'material-ui/svg-icons'
 import { grey500, pink500, cyan500 } from 'material-ui/styles/colors'
-import Map from '../../utils/googleMap'
+import {StaticMap} from '../../utils/googleMap'
 import {Tweet} from 'react-twitter-widgets'
 /**
  * Created by t-zikfan on 2017/7/5.
@@ -74,7 +74,7 @@ function OrgPanel({meeting, clickLiked, liked}) {
     const mapPanel = (
         <div className="meeting-introduction-map-panel">
             <h3 style={subTitleStyle}>Location & Time</h3>
-            <Map pos={pos} marker={marker}/>
+            <StaticMap pos={pos} marker={marker}/>
             <div className="meeting-introduction-conf-title-panel">
                 <CommunicationLocationOn color={cyan500}/>
                 <span style={confTitleStyle}>
