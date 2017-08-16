@@ -41,10 +41,11 @@ export function twitterLogin(successCallback, failedCallback) {
         successCallback(newRes);
     }, failedCallback);
 }
-export function tweet(url, successCallback, failedCallback) {
+export function tweet(text, url, successCallback, failedCallback) {
     const twitter = hello('twitter');
+    const title = '#AdvocateHub I\'v just publish a talk - ' + text + ' !';
     twitter.api('me/share', 'POST', {
-        message: 'This is test from #AdvocateHub',
+        message: title,
         link: url,
     }).then(res => {
         console.log(res);

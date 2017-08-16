@@ -11,6 +11,7 @@ import '../../styles/AdvocateAdminHome.css'
 import {isDateCompleted, utcToLocal, combineDates} from '../../utils/time'
 import login from '../../utils/loginUtils'
 import {tweet} from "../../utils/socialMedUtils"
+import {getFileName} from "../../utils/strings"
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -87,15 +88,20 @@ export default class AdvocateAdminHome extends Component {
             open: false
         });
     }
-    handleTwitterTweet(link) {
+    handleTwitterTweet(id, link) {
+        let meetingInfo = this.state.meethingInfo;
         const successCallback = (res) => {
             console.log(res);
-            console.log(res);
+            meetingInfo['_id'] = id;
+            meetingInfo['tweetId'] = res.id_str;
+            post('/meeting/create', meetingInfo).then(res => {
+                console.log(res);
+            });
         };
         const failedCallback = (res) => {
             console.log("failed", res);
         };
-        tweet(link, successCallback, failedCallback);
+        tweet(meetingInfo.name, link, successCallback, failedCallback);
     }
     postMeeting(){
         const that = this;
@@ -123,7 +129,8 @@ export default class AdvocateAdminHome extends Component {
                         showForm: false,
                         qrcodeLink: qrcodeLink
                     });
-                    that.handleTwitterTweet(twitterLink);
+                    const meetingId = getFileName(res.data.qrcode);
+                    that.handleTwitterTweet(meetingId, twitterLink);
                     that.getMeetings();
                 }
             });
