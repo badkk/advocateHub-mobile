@@ -12,7 +12,7 @@ import {oAuthTwitterInit, twitterLogin} from '../../utils/socialMedUtils'
 export default class AdvocateTwitterLogin extends Component {
     constructor(props) {
         super(props);
-        this.handleTwitterOAuth = this.handleTwitterOAuth.bind(this);
+        this.handleTwitterTweet = this.handleTwitterTweet.bind(this);
         this.state = {
             history: this.props.history,
             loadRuning: false
@@ -43,45 +43,6 @@ export default class AdvocateTwitterLogin extends Component {
         const failed = () => {
             console.log("login failed");
         };
-        /*that.setState({
-           loadRuning: true
-        });
-        const oauth = OAuth({
-            consumer: {
-                key: consumer_key,
-                secret: consumer_secret
-            },
-            signature_method: 'HMAC-SHA1',
-            hash_function: function(base_string, key) {
-                return crypto.createHmac('sha1', key).update(base_string).digest('base64');
-            }
-        });
-        _.OAuth.initialize(oauth_publicKey);
-        _.OAuth.popup('twitter', {cache: true})
-            .done(function(oauthResult) {
-            //make API calls with `twitter`
-            console.log('oAuth success!');
-            oauthResult.me().done(function(data) {
-                const id = data['id'];
-                console.log(data);
-                login(
-                    id,
-                    (res) => history.push('/admin/'+id),
-                    (res) => {
-                        post('/advocator/login', data).then(res => {
-                            if(res['data'] === true)
-                                history.push('/admin/' + id + '/infocheck')
-                        });
-                    }
-                );
-                that.setState({
-                    loadRuning: false
-                });
-            });
-        }).fail(function(err) {
-            //todo when the OAuth flow failed
-            console.log(err)
-        })*/
         twitterLogin(success, failed);
     }
 

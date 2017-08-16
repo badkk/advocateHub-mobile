@@ -34,9 +34,9 @@ export default function ResourcesContent({meeting}) {
     const uploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
 
     const videoItem = (videoLink && isUrl(videoLink)) ? itemGenerator("video-item", 'Video', uploadDate, <AvVideoLibrary/>, videoLink) : null;
-    const pptItem = (pptLink && isUrl(pptLink)) ? itemGenerator("video-item", 'PowerPoint', uploadDate, <ActionSpeakerNotes/>, pptLink) : null;
+    const pptItem = (pptLink && isUrl(pptLink)) ? itemGenerator("ppt-item", 'PowerPoint', uploadDate, <ActionSpeakerNotes/>, pptLink) : null;
     const codeSampleItem =
-        <div style={{width: '90%', marginLeft: '5%'}}>
+        <div style={{width: '90%', marginLeft: '5%'}} key="code-sample-div">
             <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
             </iframe>
         </div>;

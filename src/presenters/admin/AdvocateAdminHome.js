@@ -10,6 +10,7 @@ import * as _ from "underscore"
 import '../../styles/AdvocateAdminHome.css'
 import {isDateCompleted, utcToLocal, combineDates} from '../../utils/time'
 import login from '../../utils/loginUtils'
+import {tweet} from "../../utils/socialMedUtils"
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -26,7 +27,7 @@ export default class AdvocateAdminHome extends Component {
             qrcodeLink: '',
             advocateInfo: {},
             open: false,
-            meetingFormButtonTxt: 'Create'
+            meetingFormButtonTxt: 'Create&Tweet'
         };
         this.createMeeting = this.createMeeting.bind(this);
         this.updateMeeting = this.updateMeeting.bind(this);
@@ -35,6 +36,8 @@ export default class AdvocateAdminHome extends Component {
         this.postMeeting = this.postMeeting.bind(this);
         this.getMeetings = this.getMeetings.bind(this);
         this.handleSnackbarClose = this.handleSnackbarClose.bind(this);
+        this.handleTwitterTweet = this.handleTwitterTweet.bind(this);
+
     }
 
     componentDidMount(){
@@ -53,7 +56,7 @@ export default class AdvocateAdminHome extends Component {
         this.setState({
             showForm: true,
             qrcodeLink: '',
-            meetingFormButtonTxt: 'Create',
+            meetingFormButtonTxt: 'Create&Tweet',
             meethingInfo: { "advocatorId" : this.props.match.params.userId },
         });
     }
@@ -84,7 +87,15 @@ export default class AdvocateAdminHome extends Component {
             open: false
         });
     }
-
+    handleTwitterTweet(link) {
+        const successCallback = (res) => {
+            console.log(res);
+        };
+        const failedCallback = (res) => {
+            console.log("failed", res);
+        };
+        tweet(link, successCallback, failedCallback);
+    }
     postMeeting(){
         const that = this;
         const meetingInfo = this.state.meethingInfo;
@@ -100,12 +111,18 @@ export default class AdvocateAdminHome extends Component {
             delete meetingInfo['date2'];
             post('/meeting/create', meetingInfo).then(res => {
                 if (!_.isEmpty(res)) {
-                    //create
-                    let qrcodeLink = !_.isBoolean(res['data']) ? Strings.serverAddr + '/qrcode/' + res['data'] : '';
+                    console.log(res['data']);
+                    let qrcodeLink = '';
+                    let twitterLink = '';
+                    if ('qrcode' in res['data']) {
+                        qrcodeLink = Strings.serverAddr + '/qrcode/' + res.data.qrcode;
+                        twitterLink = res.data.link;
+                    }
                     this.setState({
                         showForm: false,
                         qrcodeLink: qrcodeLink
                     });
+                    that.handleTwitterTweet(twitterLink);
                     that.getMeetings();
                 }
             });

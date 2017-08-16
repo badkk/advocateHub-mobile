@@ -41,6 +41,16 @@ export function twitterLogin(successCallback, failedCallback) {
         successCallback(newRes);
     }, failedCallback);
 }
+export function tweet(url, successCallback, failedCallback) {
+    const twitter = hello('twitter');
+    twitter.api('me/share', 'POST', {
+        message: 'This is test from #AdvocateHub',
+        link: url,
+    }).then(res => {
+        console.log(res);
+        successCallback(res);
+    }, failedCallback)
+}
 export function linkedinAccess(successCallback, failedCallback) {
     const linkedin = hello('linkedin');
     linkedin.login().then(res => {

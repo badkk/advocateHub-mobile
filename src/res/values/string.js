@@ -10,5 +10,4 @@ export default {
     /*Server Info*/
     //serverAddr: "http://localhost:13888",
     serverAddr: "http://40.83.217.162:13888",
-
 }
