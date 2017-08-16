@@ -6,7 +6,7 @@
         padding: 0 10% 0 10%!important;
     }
     .homePage-did-set {
-        width: 90%!important;
+        width: 80%!important;
     }
     .advocate-info-avatar-panel {
         flex-direction: row!important;
@@ -70,6 +70,7 @@
 }
 .homePage-did-set {
     background-color: white;
+    width: 100%;
 }
 .meetings-panel {
     background-color: white;

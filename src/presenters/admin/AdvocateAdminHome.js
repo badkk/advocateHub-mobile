@@ -90,6 +90,7 @@ export default class AdvocateAdminHome extends Component {
     handleTwitterTweet(link) {
         const successCallback = (res) => {
             console.log(res);
+            console.log(res);
         };
         const failedCallback = (res) => {
             console.log("failed", res);

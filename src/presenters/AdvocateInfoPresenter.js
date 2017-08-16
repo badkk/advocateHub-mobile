@@ -3,6 +3,7 @@ import {
     ListItem,
     List,
     Tab,
+    CircularProgress
 } from 'material-ui'
 import SwipeableViews from 'react-swipeable-views';
 import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
@@ -14,6 +15,8 @@ import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
 import InfoPanel from './advocatedetail/InfoPanel'
 import BioPanel from './advocatedetail/BioPanel'
+import {isUrl} from "../utils/strings"
+
 /**
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
@@ -60,7 +63,9 @@ class PersonalPage extends Component {
             positions, summary } = this.props;
         const tabs = [
             <Tab label='Bio' value={0} key={0}/>,
-            <Tab label='Talks' value={1} key={1}/>
+            <Tab label='Home' value={1} key={1}/>,
+            <Tab label='Talks' value={2} key={2}/>
+
         ];
         const meetingsList = _.map(meetings, (meeting, idx) =>
             <MeetingListItem
@@ -72,13 +77,34 @@ class PersonalPage extends Component {
                 touchEvent={() => {history.push('/talk/'+meeting['_id'])}}
             />
         );
-        const homePageDiv = <BioPanel homePage={homePage}
+        const linkedinInfoDiv = <BioPanel homePage={homePage}
                                       jobtitle={jobtitle}
                                       linkedinAccount={linkedinAccount}
                                       location={location}
                                       positions={positions}
                                       summary={summary} />;
+        const homePageDiv = isUrl(homePage) ?
+            <div key="advocate_homepage" className="homePage-did-set">
+                <iframe src={homePage}
+                        title={homePage}
+                        height={iFramePanelHeight}
+                        width='100%'
+                        frameBorder="0"
+                        onLoad={this.progressLoaded}
+                />
+                <CircularProgress style={{padding:'30% 50% 30% 50%', top: 0, display: this.state.showProgress ? "flex" : "none"}}/>
+            </div>
+            :
+            <div
+                key="advocate_homepage_not_set"
+                className="homePage-did-not-set"
+                style={{height: iFramePanelHeight}}
+            >
+                User Did Not Set HomePage
+            </div>;
+
         const contents = [
+            linkedinInfoDiv,
             homePageDiv,
             <div className="meetings-panel" key="advocate_meeting_details">
                 <List>
