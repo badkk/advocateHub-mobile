@@ -14,7 +14,7 @@ function itemGenerator(key, title, subtitle, icon, iframeLink) {
             key={key}
             primaryText={title}
             secondaryText={subtitle}
-            initiallyOpen={true}
+            initiallyOpen={false}
             leftIcon={icon}
             primaryTogglesNestedList={true}
             nestedItems={[
@@ -35,10 +35,11 @@ export default function ResourcesContent({meeting}) {
 
     const videoItem = (videoLink && isUrl(videoLink)) ? itemGenerator("video-item", 'Video', uploadDate, <AvVideoLibrary/>, videoLink) : null;
     const pptItem = (pptLink && isUrl(pptLink)) ? itemGenerator("video-item", 'PowerPoint', uploadDate, <ActionSpeakerNotes/>, pptLink) : null;
-    const codeSampleItem = <div>
-        <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
-        </iframe>
-    </div>;
+    const codeSampleItem =
+        <div style={{width: '90%', marginLeft: '5%'}}>
+            <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
+            </iframe>
+        </div>;
     return (
         <List style={{backgroundColor: 'white'}} className="resource-panel">
             {videoItem}

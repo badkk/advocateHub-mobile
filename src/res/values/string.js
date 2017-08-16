@@ -9,10 +9,6 @@ export default {
 
     /*Server Info*/
     //serverAddr: "http://localhost:13888",
-    serverAddr: "http://40.83.190.18:13888",
-    
-    /*Home Page*/
-    menuItem1: "Speaker",
-    menuItem2: "QuickStart",
-    menuItem3: "Meeting",
+    serverAddr: "http://40.83.217.162:13888",
+
 }

@@ -76,8 +76,7 @@ export default class AdvocateAdminHome extends Component {
     handleChange(key, value) {
         let old = this.state.meethingInfo;
         old[key] = value;
-        this.setState({meethingInfo: old})
-        console.log(old);
+        this.setState({meethingInfo: old});
     }
 
     handleSnackbarClose() {

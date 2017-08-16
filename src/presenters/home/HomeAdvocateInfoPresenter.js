@@ -46,7 +46,8 @@ export default class HomeAdvocateInfoPresenter extends Component {
                 advocatorWithoutTags.push(advocator);
             }
         });
-        advocatorsWithTags['Others'] = advocatorWithoutTags;
+        //if not empty
+        if (!_.isEmpty(advocatorWithoutTags)) advocatorsWithTags['Others'] = advocatorWithoutTags;
         return (
             <div className="home-sub-panel">
                 <Paper zDepth={0} className="home-sub-upper-panel">
