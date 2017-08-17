@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {DatePicker, TimePicker, TextField, SelectField, MenuItem, Paper} from 'material-ui'
 import { SearchMap } from '../../utils/googleMap'
+import { youtubeLinkToEmbedLink } from "../../utils/strings"
 export default class AdvocateMeetingInfo extends Component {
     constructor(props) {
         super(props);
@@ -40,7 +41,11 @@ export default class AdvocateMeetingInfo extends Component {
                     id="meeting_video_link"
                     defaultValue={meeting['videoLink']}
                     floatingLabelText="Youtube Link"
-                    onChange={event => handleChange("videoLink", event.target.value)}
+                    onChange={event =>
+                    {
+                        const link = youtubeLinkToEmbedLink(event.target.value);
+                        handleChange("videoLink", link);
+                    }}
                 />
                 <div>
                     <TextField

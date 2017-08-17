@@ -9,3 +9,6 @@ export function isUrl(str) {
 export function getFileName(str) {
     return str.split('.')[0];
 }
+export function youtubeLinkToEmbedLink(str) {
+    return str.replace('watch?v=', 'embed/');
+}
