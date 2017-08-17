@@ -10,9 +10,9 @@ import { getFileName } from '../../utils/strings'
  */
 /*Height Compatible Infos*/
 //const contentMinHeight = window.screen.height - homeBarHeight - menuHeight;
-function StandardCards({idx, title, subtitle, imgLink, url}) {
+function StandardCards({title, subtitle, imgLink, url}) {
     return (
-        <Card className="azure-content-card-style" key={idx}>
+        <Card className="azure-content-card-style">
             <CardHeader
                 title={title}
                 subtitle={subtitle}
@@ -59,10 +59,9 @@ class AzureContent extends Component {
                 }
             });
         }
-        console.log(sortedData);
         const authCards = authLink ? (
             <StandardCards
-                idx='auth-card'
+                key='auth-card'
                 title={authLink.title}
                 subtitle={authLink.subtitle}
                 imgLink={authLink.imgUrl}
@@ -72,7 +71,7 @@ class AzureContent extends Component {
         const relatedCards = _.map(sortedData, (data, index) => {
             return (
                 <StandardCards
-                    idx={index}
+                    key={index}
                     title={data['title']}
                     subtitle={data['subtitle']}
                     imgLink={"../" + data['imgurl']}
@@ -82,7 +81,7 @@ class AzureContent extends Component {
         });
         const speakerCard = (
             <StandardCards
-                idx='azure-card'
+                key='azure-card'
                 title="Azure Infos"
                 subtitle="Speakers Related Docs"
                 imgLink={"../azure.jpg"}
