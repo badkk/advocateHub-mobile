@@ -1,4 +1,4 @@
-import {FACEBOOKEVENT, TWITTEREVENT, GITHUBEVENT, INITIAL} from '../actions/AdvocateInfoAction'
+import {INITIAL} from '../actions/AdvocateInfoAction'
 /**
  * Created by t-zikfan on 2017/7/13.
  * Reducers of AdvocateHub

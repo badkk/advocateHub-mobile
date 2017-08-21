@@ -5,10 +5,9 @@ import get from '../../restful/Get'
 //define action types
 export const INITIAL = 'INITIAL';
 
-export function initialActionCreator(userId, dispatch) {
+export function initialActionCreator(userId) {
     return dispatch => {
         get('/advocator/' + userId).then(res => {
-            console.log("from advacation redux action", res);
             dispatch(initState(res['data']))
         });
     }

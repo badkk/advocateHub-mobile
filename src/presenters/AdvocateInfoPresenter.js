@@ -7,7 +7,7 @@ import {
 } from 'material-ui'
 import SwipeableViews from 'react-swipeable-views';
 import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
-import { green500, yellow500} from 'material-ui/styles/colors'
+import { green500, yellow500 } from 'material-ui/styles/colors'
 import HomeBar, {homeBarHeight} from './commons/HomeBar'
 import AHTab, {tabMenuHeight} from './commons/AHTab'
 import "../styles/AdvocateInfo.css"
@@ -144,11 +144,6 @@ export default class AdvocateInfoPresenter extends Component {
     handleBtmSheetOpen = () => {
         this.setState({
             isOpen: true
-        });
-    };
-    handleBtmSheetClose = () => {
-        this.setState({
-            isOpen: false
         });
     };
     handleLikedClick = () => {
