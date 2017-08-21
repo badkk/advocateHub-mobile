@@ -13,7 +13,7 @@ import rootReducer from './redux/reducers/RootReducer'
 import './App.css';
 import MeetingDetailPresenter from './presenters/MeetingDetailPresenter'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
-import HomePresenter from './presenters/HomePresenter'
+import HomeContainer from './containers/HomeContainer'
 import AdvocateTwitterLogin from './presenters/admin/AdvocateTwitterLogin'
 import AdvocateInfoChecker from './presenters/admin/AdvocateInfoChecker'
 import AdvocateAdminHome from './presenters/admin/AdvocateAdminHome'
@@ -32,7 +32,7 @@ export default function App() {
         <Provider store={store}>
             <Router>
                 <Switch>
-                    <Route exact path="/" component={HomePresenter}/>
+                    <Route exact path="/" component={HomeContainer}/>
                     {/* detail page */}
                     <Route path="/talk/:id" component={MeetingDetailPresenter}/>
                     <Route path="/advocate/:id" component={AdvocateInfoContainer}/>

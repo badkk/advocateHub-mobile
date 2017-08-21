@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../styles/MeetingCard.css'
-import { Card, Avatar, FlatButton, CardTitle, CardActions, CardMedia, CardHeader} from 'material-ui'
+import { Card, FlatButton, CardTitle, CardActions, CardHeader} from 'material-ui'
 import { ActionFavorite } from 'material-ui/svg-icons'
 import { pink500 } from 'material-ui/styles/colors'
 /**

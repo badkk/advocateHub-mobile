@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 import AdvocateInfoReducer from './AdvocateInfoReducer'
+import HomeReducer from './HomeReducer'
 import {CounterReducer} from '../../presenters/Test'
 /**
  * Created by t-zikfan on 2017/7/13.
@@ -8,6 +9,7 @@ import {CounterReducer} from '../../presenters/Test'
 
 const rootReducer = combineReducers({
     advocateInfoReducer: AdvocateInfoReducer,
+    homeReduce: HomeReducer,
     counterReducer: CounterReducer
 });
 
