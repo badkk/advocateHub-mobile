@@ -3,21 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "commitizen": "^2.9.6",
     "github-markdown-css": "^2.8.0",
-    "global": "^4.3.2",
     "hellojs": "^1.15.1",
     "material-ui": "^0.18.5",
     "material-ui-bottom-sheet": "^0.4.0",
     "material-ui-chip-input": "^0.15.3",
     "material-ui-search-bar": "^0.2.4",
-    "oauth": "^0.9.15",
     "react": "^15.6.1",
     "react-css-transition-replace": "^2.2.1",
     "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^15.6.1",
     "react-google-maps": "next",
-    "react-markdown": "^2.5.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-slick": "^0.14.11",
@@ -33,7 +29,6 @@
   },
   "devDependencies": {
     "babel-preset-stage-1": "^6.24.1",
-    "cz-conventional-changelog": "^2.0.0",
     "eslint-config-react-app": "^1.0.5",
     "react-scripts": "1.0.10"
   },
@@ -42,10 +37,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
