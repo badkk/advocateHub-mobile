@@ -77,12 +77,13 @@ class PersonalPage extends Component {
                 touchEvent={() => {history.push('/talk/'+meeting['_id'])}}
             />
         );
-        const linkedinInfoDiv = <BioPanel homePage={homePage}
-                                      jobtitle={jobtitle}
-                                      linkedinAccount={linkedinAccount}
-                                      location={location}
-                                      positions={positions}
-                                      summary={summary} />;
+        const linkedinInfoDiv = <BioPanel key="bio-panel"
+                                          homePage={homePage}
+                                          jobtitle={jobtitle}
+                                          linkedinAccount={linkedinAccount}
+                                          location={location}
+                                          positions={positions}
+                                          summary={summary} />;
         const homePageDiv = isUrl(homePage) ?
             <div key="advocate_homepage" className="homePage-did-set">
                 <iframe src={homePage}
