@@ -10,18 +10,18 @@ import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {TestContainer} from './presenters/Test'
 import rootReducer from './redux/reducers/RootReducer'
-import './App.css';
-import MeetingDetailPresenter from './presenters/MeetingDetailPresenter'
+import TalkDetailContainer from './containers/TalkDetailContainer'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
 import HomeContainer from './containers/HomeContainer'
 import AdvocateTwitterLogin from './presenters/admin/AdvocateTwitterLogin'
 import AdvocateInfoChecker from './presenters/admin/AdvocateInfoChecker'
 import AdvocateAdminHome from './presenters/admin/AdvocateAdminHome'
 import AdvocateAuthCallback from './presenters/admin/AdvocateAuthCallback'
+import './App.css';
 
-// Phone touch action
+// phone touch tap action
 injectTapEventPlugin();
-//reduce global store
+// reducer global store
 const store = createStore(
     rootReducer,
     applyMiddleware(thunk)
@@ -34,7 +34,7 @@ export default function App() {
                 <Switch>
                     <Route exact path="/" component={HomeContainer}/>
                     {/* detail page */}
-                    <Route path="/talk/:id" component={MeetingDetailPresenter}/>
+                    <Route path="/talk/:id" component={TalkDetailContainer}/>
                     <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
                     {/*<Route path="/article" component={Article}/>*/}
                     <Route path="/test" component={TestContainer}/>

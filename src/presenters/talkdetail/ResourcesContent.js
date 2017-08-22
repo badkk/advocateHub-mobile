@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, ListItem } from 'material-ui'
-import { AvVideoLibrary, ActionSpeakerNotes, ActionCode } from 'material-ui/svg-icons'
+import { AvVideoLibrary, ActionSpeakerNotes } from 'material-ui/svg-icons'
 import { isUrl } from '../../utils/strings'
 /**
  * Created by t-zikfan on 2017/7/6.
@@ -20,6 +20,7 @@ function itemGenerator(key, title, subtitle, icon, iframeLink) {
             nestedItems={[
                 <iframe
                     src={iframeLink}
+                    key={key+'iframe'}
                     style={{width: '90%', height: height, paddingLeft: '5%'}}
                     frameBorder={0}
                 />
@@ -27,34 +28,18 @@ function itemGenerator(key, title, subtitle, icon, iframeLink) {
         />
     );
 }
-export default function ResourcesContent({meeting}) {
+export default function ResourcesContent({talk}) {
 
-    const {videoLink, pptLink, date, codeSample} = meeting;
+    const {videoLink, pptLink, date, codeSample} = talk;
 
     const uploadDate = "Uploaded at " + new Date(date).toString().substring(0, 10);
 
     const videoItem = (videoLink && isUrl(videoLink)) ? itemGenerator("video-item", 'Video', uploadDate, <AvVideoLibrary/>, videoLink) : null;
     const pptItem = (pptLink && isUrl(pptLink)) ? itemGenerator("ppt-item", 'PowerPoint', uploadDate, <ActionSpeakerNotes/>, pptLink) : null;
-    /*const codeSampleItem =
-        <div style={{width: '90%', marginLeft: '5%'}} key="code-sample-div">
-            <iframe height='325' scrolling='no' title='testSample' src='//codepen.io/lcsdev/embed/preview/qXRLWe/?height=300&theme-id=30811&default-tab=css,result&embed-version=2' frameBorder='no' allowTransparency='true' allowFullScreen='true' style={{width: '100%'}}>See the Pen <a href='https://codepen.io/lcsdev/pen/NvdEZv/'>testSample</a> by lucas_f. (<a href='https://codepen.io/lcsdev'>@lcsdev</a>) on <a href='https://codepen.io'>CodePen</a>.
-            </iframe>
-        </div>;*/
     return (
         <List style={{backgroundColor: 'white'}} className="resource-panel">
             {videoItem}
             {pptItem}
-            {/*<ListItem
-                key="resource_codeSam"
-                primaryText="Code Sample"
-                secondaryText={uploadDate}
-                initiallyOpen={false}
-                leftIcon={<ActionCode/>}
-                primaryTogglesNestedList={true}
-                nestedItems={[
-                    codeSampleItem
-                ]}
-            />*/}
         </List>
     );
 

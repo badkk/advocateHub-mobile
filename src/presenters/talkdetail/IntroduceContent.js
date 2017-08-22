@@ -8,7 +8,7 @@ import {Tweet} from 'react-twitter-widgets'
  * Created by t-zikfan on 2017/7/5.
  * Meeting page Introduction Content Page
  */
-function OrgPanel({meeting, clickLiked, liked}) {
+function OrgPanel({talk, clickLiked, liked}) {
     const subTitleStyle = {
         fontWeight: 500
     };
@@ -17,14 +17,14 @@ function OrgPanel({meeting, clickLiked, liked}) {
     };
     const titlePanel = (
         <div className="meeting-introduction-title-panel">
-            <h1>{meeting.name}</h1>
+            <h1>{talk.name}</h1>
             <div className="meeting-introduction-title-subpanel">
-                <a href="/"># {meeting.tags ? meeting.tags.join(', ') : 'Others'}</a>
+                <a href="/"># {talk.tags ? talk.tags.join(', ') : 'Others'}</a>
                 <div className="meeting-introduction-title-liks-panel">
                     <IconButton onTouchTap={clickLiked}>
                         { liked ? <ActionFavorite color={pink500}/> : <ActionFavoriteBorder color={grey500}/> }
                     </IconButton>
-                    <a>{(!('likedNum' in meeting) ? 0 : meeting['likedNum']) + ' likes'}</a>
+                    <a>{(!('likedNum' in talk) ? 0 : talk['likedNum']) + ' likes'}</a>
                 </div>
             </div>
             <hr/>
@@ -36,7 +36,7 @@ function OrgPanel({meeting, clickLiked, liked}) {
             <div className="meeting-introduction-conf-title-panel">
                 <ActionEvent color={cyan500}/>
                 <span style={confTitleStyle}>
-                    {new Date(meeting.date).toLocaleString()} : <a href={meeting.confLink ? meeting.confLink : '/'}>{meeting.cofName ? meeting.confName : 'Others'}</a>
+                    {new Date(talk.date).toLocaleString()} : <a href={talk.confLink ? talk.confLink : '/'}>{talk.cofName ? talk.confName : 'Others'}</a>
                 </span>
             </div>
             <hr/>
@@ -46,12 +46,12 @@ function OrgPanel({meeting, clickLiked, liked}) {
         <div className="meeting-introduction-des-panel">
             <h3 style={subTitleStyle}>Description</h3>
             <blockquote>
-                {meeting.description}
+                {talk.description}
             </blockquote>
             <hr/>
         </div>
     );
-    const tweetContent = meeting.tweetId ? <Tweet tweetId={meeting.tweetId}/> : null;
+    const tweetContent = talk.tweetId ? <Tweet tweetId={talk.tweetId}/> : null;
     const twitterCommentPanel = (
         <div className="meeting-introduction-twitter-panel">
             <h3 style={subTitleStyle}>Comments on twitter</h3>
@@ -59,15 +59,15 @@ function OrgPanel({meeting, clickLiked, liked}) {
         </div>
     );
     /* map container */
-    const lat = 'lat' in meeting ? meeting.lat : 31.2304;
-    const lng = 'lng' in meeting ? meeting.lng : 121.4737;
+    const lat = 'lat' in talk ? talk.lat : 31.2304;
+    const lng = 'lng' in talk ? talk.lng : 121.4737;
     const pos = {
         lat: lat,
         lng: lng
     };
     const marker = {
         position: pos,
-        key: meeting.location,
+        key: talk.location,
         defaultAnimation: 2,
     };
 
@@ -78,13 +78,13 @@ function OrgPanel({meeting, clickLiked, liked}) {
             <div className="meeting-introduction-conf-title-panel">
                 <CommunicationLocationOn color={cyan500}/>
                 <span style={confTitleStyle}>
-                    {meeting.location}
+                    {talk.location}
                 </span>
             </div>
             <div className="meeting-introduction-conf-title-panel">
                 <ImageTimer color={cyan500}/>
                 <span style={confTitleStyle}>
-                    {new Date(meeting.date).toLocaleString()}
+                    {new Date(talk.date).toLocaleString()}
                 </span>
             </div>
         </div>
@@ -135,7 +135,7 @@ export default class IntroduceContent extends Component{
         return (
             <div style={{height: 'auto'}} className="introduce-panel">
                 <OrgPanel
-                    meeting={this.props.meeting}
+                    talk={this.props.talk}
                     clickLiked={this.clickLiked}
                     liked={this.state.liked}
                 />
