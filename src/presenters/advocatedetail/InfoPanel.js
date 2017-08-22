@@ -13,8 +13,7 @@ function socialMediaBtn(event, clsName, style) {
         return null;
     }
 }
-export default function InfoPanel({handleBtmSheetOpen, name, avatar, tags,
-                                      facebookEvent, twitterEvent, githubEvent, likedNum, clickLiked, liked}) {
+export default function InfoPanel({name, avatar, tags, facebookEvent, twitterEvent, githubEvent}) {
 
     const avatarPanel = (
         <div className="advocate-info-avatar-panel">

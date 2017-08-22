@@ -7,8 +7,8 @@ import * as _ from 'underscore'
  * Created by t-zikunfan
  * Date: 11:39 2017/8/15
  */
-export default function BioPanel({jobtitle, homePage, linkedinAccount, location, positions, summary}) {
-    console.log(linkedinAccount, jobtitle, homePage, location, positions, summary);
+export default function BioPanel({jobtitle, linkedinAccount, location, positions, summary}) {
+    //console.log(linkedinAccount, jobtitle, homePage, location, positions, summary);
     const emptyPanel = (
         <div
             key="advocate_homepage_not_set"
