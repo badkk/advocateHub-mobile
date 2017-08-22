@@ -8,7 +8,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux'
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
-import {TestContainer} from './presenters/Test'
 import rootReducer from './redux/reducers/RootReducer'
 import TalkDetailContainer from './containers/TalkDetailContainer'
 import AdvocateInfoContainer from './containers/AdvocateInfoContainer'
@@ -36,8 +35,6 @@ export default function App() {
                     {/* detail page */}
                     <Route path="/talk/:id" component={TalkDetailContainer}/>
                     <Route path="/advocate/:id" component={AdvocateInfoContainer}/>
-                    {/*<Route path="/article" component={Article}/>*/}
-                    <Route path="/test" component={TestContainer}/>
                     <Route path="/admin/callback" component={AdvocateAuthCallback}/>
                     <Route path="/admin/:userId/infocheck" component={AdvocateInfoChecker}/>
                     <Route path="/admin/login" component={AdvocateTwitterLogin}/>
