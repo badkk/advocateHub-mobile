@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aphrodite": "^1.2.3",
     "github-markdown-css": "^2.8.0",
     "hellojs": "^1.15.1",
     "material-ui": "^0.18.5",
@@ -20,7 +21,6 @@
     "react-swipeable-views": "^0.12.3",
     "react-tap-event-plugin": "^2.0.1",
     "react-twitter-widgets": "^1.4.0",
-    "react-with-styles": "^1.4.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "slick-carousel": "^1.6.0",
