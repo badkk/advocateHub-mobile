@@ -5,16 +5,15 @@ import { ListItem, List, FontIcon, Dialog, FlatButton } from 'material-ui'
  * Created by t-zikunfan
  * Date: 14:37 2017/8/11
  */
-export default function SocialMediaDialog({
-                                              title,
+export default function SocialMediaDialog({title,
                                               isOpen,
                                               handleCancel,
                                               facebookEvent=null,
                                               twitterEvent=null,
                                               googlePlusEvent=null,
                                               linkedinEvent=null,
-                                              githubEvent=null
-                                          }){
+                                              githubEvent=null }){
+
     const facebookIcon = <FontIcon className="fa fa-facebook-official" color="#4267b2"/>;
     const twitterIcon = <FontIcon className="fa fa-twitter" color="#1da1f2"/>;
     const googlePlusIcon = <FontIcon className="fa fa-google-plus" color="#db4437"/>;
