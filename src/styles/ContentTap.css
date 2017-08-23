@@ -1,9 +1,9 @@
 @media only screen and (min-width: 600px) {
-    .tab-panel-home, .tab-panel {
+   .tab-panel {
         padding: 0 10% 0 10%;
         background-color: white;
     }
-    .tab-panel-home {
+    .tab-home {
         width: 90%!important;
     }
     .tab-panel > div > div {
@@ -14,18 +14,16 @@
     }
 
 }
-.tab-panel-home {
+.tab-home {
     width: 100%;
     background: content-box!important;
 }
-.tab-panel-home > div > div:nth-child(2) > div {
+.tab-home > div > div:nth-child(2) > div {
     background-color: white!important;
 }
 .tab-panel {
     background-color: white;
 }
-.content-taps {
- }
 .content-taps > div {
     background: content-box;
     background-color: inherit!important;
@@ -35,17 +33,4 @@
     max-height: 45px!important;
     color: #00bcd4!important;
     font-weight: 600!important;
-}
-.content-taps > div > button > div > div {
-    height: 45px!important;
-}
-.content-content {
-    font-size: large;
-    font-style: oblique;
-    color: grey;
-    display: flex;
-}
-.slick-dots {
-    position: relative!important;
-    bottom: 0!important;
 }
