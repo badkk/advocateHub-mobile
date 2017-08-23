@@ -1,7 +1,7 @@
 import React from 'react'
-import {Paper, Avatar} from 'material-ui'
-import '../../styles/HomeBar.css'
+import {Avatar} from 'material-ui'
 import MSLogo from './MSLogo'
+import {appBarClasses} from "../../styles/AppBarStyles"
 /**
  * Created by t-zikunfan
  * Date: 15:43 2017/7/24
@@ -13,25 +13,21 @@ export default function AdminAppBar({history, avatarUrl=null, avatarTapEvent=() 
             <FontIcon ><ActionHome color={grey700}/></FontIcon>
         </IconButton>
     );*/
-    const avatar = avatarUrl ?
-        <div className="admin-bar-avatar">
-            <Avatar src={avatarUrl} onTouchTap={avatarTapEvent} style={{cursor: 'pointer'}}/>
-        </div> :
-        <div/>;
-    const logoClassName= avatarUrl ? "logo-panel admin-logo-panel-with-avatar" : "logo-panel";
+    const avatar = avatarUrl ? <Avatar src={avatarUrl} onTouchTap={avatarTapEvent} className={appBarClasses.adminAvatar}/> : <div/>;
+
     const logoIcon = (
-        <div className={logoClassName}>
+        <div className={appBarClasses.logoPanel}>
             <MSLogo size="25" logoEvent={() => {history.push('/admin')}}/>
             <span style={{color: 'white'}}>Advocate Hub</span>
         </div>
     );
     return (
-        <div className="bar-panel">
-            <Paper zDepth={0} className="admin-bar-paper admin-dark-bar" style={{maxHeight: homeBarHeight}}>
+        <div className={appBarClasses.barPanel}>
+            <div className={appBarClasses.adminBarStyle}>
                 <div/>
                 {logoIcon}
                 {avatar}
-            </Paper>
+            </div>
         </div>
     );
 }

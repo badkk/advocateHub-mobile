@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { ListItem, Avatar, Tab, IconButton, FlatButton } from 'material-ui'
+import { ListItem, Avatar, Tab, IconButton } from 'material-ui'
 import {cyan500} from 'material-ui/styles/colors';
 import {SocialShare} from 'material-ui/svg-icons';
 import SwipeableViews from 'react-swipeable-views';
@@ -9,8 +9,8 @@ import SocialMediaDialog from './commons/SocialMediaDialog'
 import IntroduceContent from './talkdetail/IntroduceContent'
 import ResourcesContent from './talkdetail/ResourcesContent'
 import RecommendContent from './talkdetail/RecommendContent'
-import HomeBar, {homeBarHeight} from './commons/HomeBar'
-import AHTab, {tabMenuHeight} from './commons/AHTab'
+import AppBar, {homeBarHeight} from './commons/AppBar'
+import ContentTab, {tabMenuHeight} from './commons/ContentTab'
 import '../styles/Meeting.css'
 
 /**
@@ -82,7 +82,7 @@ class TalkContent extends Component {
         ];
         return (
             <div>
-                <AHTab
+                <ContentTab
                     tabs={tabs}
                     tabChangeHandler={this.handleTabClick}
                     slideIdx={this.state.slideIdx}
@@ -145,7 +145,7 @@ export default class TalkDetailPresenter extends Component {
         );
         return (
             <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
-                <HomeBar history={history} />
+                <AppBar history={history} />
                 <AdvocatorInfoPage
                     history={history}
                     advocate={advocate}

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
 import get from '../../restful/Get'
-import {homeBarHeight} from '../commons/HomeBar'
+import {homeBarHeight} from '../commons/AppBar'
 import { getFileName } from '../../utils/strings'
 /**
  * Created by t-zikfan on 2017/7/3.

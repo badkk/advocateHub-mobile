@@ -8,8 +8,8 @@ import {
 import SwipeableViews from 'react-swipeable-views';
 import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
 import { green500, yellow500 } from 'material-ui/styles/colors'
-import HomeBar, {homeBarHeight} from './commons/HomeBar'
-import AHTab, {tabMenuHeight} from './commons/AHTab'
+import AppBar, {homeBarHeight} from './commons/AppBar'
+import ContentTab, {tabMenuHeight} from './commons/ContentTab'
 import "../styles/AdvocateInfo.css"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
@@ -115,7 +115,7 @@ class PersonalPage extends Component {
         ];
         return (
             <div>
-                <AHTab
+                <ContentTab
                     tabs={tabs}
                     tabChangeHandler={this.handleTabClick}
                     slideIdx={this.state.slideIdx}
@@ -180,7 +180,7 @@ export default class AdvocateInfoPresenter extends Component {
         } = this.props;
         return (
             <div className="advocate-detail-root-panel">
-                <HomeBar history={history}/>
+                <AppBar history={history}/>
                 <InfoPanel
                     avatar={avatar}
                     tags={tags}
