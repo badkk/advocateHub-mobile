@@ -3,8 +3,8 @@ import { RaisedButton, CircularProgress } from 'material-ui'
 import AdminAppBar from "../commons/AdminAppBar";
 import post from '../../restful/Post';
 import login from '../../utils/loginUtils'
-import '../../styles/AdvocateTwitterLogin.css'
-import {oAuthTwitterInit, twitterLogin, tweet} from '../../utils/socialMedUtils'
+import {adminClasses} from "../../styles/AdminStyles"
+import {oAuthTwitterInit, twitterLogin} from '../../utils/socialMedUtils'
 /**
  * Created by t-zikunfan
  * Date: 15:33 2017/7/24
@@ -47,9 +47,9 @@ export default class AdvocateTwitterLogin extends Component {
     }
     render() {
         return (
-            <div className="twitter-login-panel">
+            <div className={adminClasses.twitterLoginPanel}>
                 <AdminAppBar history={this.props.history}/>
-                <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true}/>
+                <RaisedButton label="Sign in with Twitter" onTouchTap={this.handleTwitterOAuth} primary={true} fullWidth={true} />
                 <CircularProgress
                     size={65}
                     thickness={5}

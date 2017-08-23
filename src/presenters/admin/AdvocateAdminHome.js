@@ -7,11 +7,11 @@ import post from '../../restful/Post'
 import { MeetingListItem } from '../AdvocateInfoPresenter.js'
 import Strings from '../../res/values/string'
 import * as _ from "underscore"
-import '../../styles/AdvocateAdminHome.css'
 import {isDateCompleted, utcToLocal, combineDates} from '../../utils/time'
 import login from '../../utils/loginUtils'
 import {tweet} from "../../utils/socialMedUtils"
 import {getFileName} from "../../utils/strings"
+import {adminClasses} from "../../styles/AdminStyles"
 /**
  * Created by t-zikunfan
  * Date: 11:03 2017/7/25
@@ -170,7 +170,7 @@ export default class AdvocateAdminHome extends Component {
         } else {
             component =
                 <div style={componentInnerStyle}>
-                    <RaisedButton label="Create meeting" onTouchTap={ this.createMeeting} primary={true} fullWidth={true}/>
+                    <RaisedButton label="Create talk" onTouchTap={ this.createMeeting} primary={true} fullWidth={true}/>
                     <Subheader>Your Meetings</Subheader>
                     {
                         _.map(this.state.meetings, (meeting, idx) =>
@@ -197,7 +197,7 @@ export default class AdvocateAdminHome extends Component {
             </div>;
         const avatarUrl = 'avatar' in this.state.advocateInfo ? this.state.advocateInfo['avatar'] : null;
         return (
-            <div className="admin-home-panel">
+            <div className={adminClasses.adminHomePanel}>
                 <AdminAppBar
                     history={this.props.history}
                     dark={true}

@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {DatePicker, TimePicker, TextField, SelectField, MenuItem, Paper} from 'material-ui'
 import { SearchMap } from '../../utils/googleMap'
 import { youtubeLinkToEmbedLink } from "../../utils/strings"
+import {adminClasses} from "../../styles/AdminStyles"
+
 export default class AdvocateMeetingInfo extends Component {
     constructor(props) {
         super(props);
@@ -12,9 +14,9 @@ export default class AdvocateMeetingInfo extends Component {
 
     render() {
         const {handleChange, meeting, meetingFormButtonTxt}= this.props;
-        const title = meetingFormButtonTxt + " a New Meeting";
+        const title = meetingFormButtonTxt + " a New Talk";
         const form = (
-            <Paper zDepth={1} className="meeting-info-form">
+            <Paper zDepth={1} className={adminClasses.createTalkPanel}>
                 <h3>{title}</h3>
                 <TextField
                     id="meeting_title"
