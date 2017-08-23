@@ -5,12 +5,13 @@ import { ActionSearch, SocialShare, ContentBackspace } from 'material-ui/svg-ico
 import SwipeableViews from 'react-swipeable-views';
 import ReactCSSTransitionReplace  from 'react-css-transition-replace';
 
-import AHTab, {tabMenuHeight} from "./commons/AHTab";
+import ContentTab, {tabMenuHeight} from "./commons/ContentTab";
 import HomeAdvocateInfoPresenter from './home/HomeAdvocateInfoPresenter'
 import HomeMeetingInfoPresenter from './home/HomeMeetingInfoPresenter'
 import MSLogo from './commons/MSLogo'
 import SocialMediaBtmSheet from './commons/SocialMediaBtmSheet'
 import '../styles/Home.css'
+import { homeClasses } from '../styles/HomeStyles'
 /**
  * Created by lucas on 2017/7/16.
  * The Home page.
@@ -68,14 +69,14 @@ class HomeHeader extends Component{
         const socialMediaButton = <IconButton onTouchTap={handleSharedToggle}><SocialShare color="white"/></IconButton>;
 
         const smBoxWeb = (
-            <div className="home-social-media-box">
+            <div className={homeClasses.socialMediaPanel}>
                 {facebookIcon}
                 {twitterIcon}
                 {googlePlusIcon}
             </div>
         );
         const smBoxMobile = (
-            <div className="home-social-media-box">
+            <div className={homeClasses.socialMediaPanel}>
                 {searchButton}
                 {socialMediaButton}
             </div>
@@ -88,14 +89,14 @@ class HomeHeader extends Component{
         ];
         //common widgets
         const logoDiv = (
-            <div className="home-logo-div">
+            <div className={homeClasses.logoPanel}>
                 <MSLogo size="35"/>
-                <p className="home-title">Advocate Hub</p>
+                <p className={homeClasses.logoTitle}>Advocate Hub</p>
             </div>
         );
         //web bar
         const webHeader = (
-            <div className="home-logo-panel">
+            <div className={homeClasses.appPanel}>
                 { logoDiv }
                 <SearchBar
                     hintText="Search advocate or talks"
@@ -108,7 +109,7 @@ class HomeHeader extends Component{
         );
         //mobile bar
         const mobileHeaderLogoPanel = this.state.isSearchBarShow ?
-            <div className="home-mobile-search-bar" key="search-bar">
+            <div className={homeClasses.searchBar} key="search-bar">
                 <IconButton onTouchTap={this.handleSearchBarToggle} style={{padding: '12px 12px 12px 0'}}>
                     <FontIcon ><ContentBackspace color='white'/></FontIcon>
                 </IconButton>
@@ -120,7 +121,7 @@ class HomeHeader extends Component{
                 />
             </div>
             :
-            <div className="home-logo-panel" key="logo-bar">
+            <div className={homeClasses.appPanel} key="logo-bar">
                 { logoDiv }
                 {smBoxMobile}
             </div>;
@@ -134,12 +135,12 @@ class HomeHeader extends Component{
             </ReactCSSTransitionReplace>
         );
         return (
-            <div className="home-app-header">
+            <div className={homeClasses.appHeader}>
                 { window.screen.width > 800 ? webHeader : mobileHeader }
-                <AHTab tabs={tabs}
-                       tabChangeHandler={handleTabClick}
-                       slideIdx={slideIdx}
-                       homeTab={true}
+                <ContentTab tabs={tabs}
+                            tabChangeHandler={handleTabClick}
+                            slideIdx={slideIdx}
+                            homeTab={true}
                 />
             </div>
         );
@@ -184,7 +185,7 @@ export default class HomePresenter extends Component{
             />
         );
         return (
-            <div className="home-background-div">
+            <div>
                 <HomeHeader slideIdx={this.state.slideIdx} handleTabClick={this.handleTabClick}  handleSharedToggle={this.handleSharedToggle} />
                 <HomeContent
                     slideIdx={this.state.slideIdx}

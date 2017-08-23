@@ -1,11 +1,12 @@
 import React from 'react'
-import {List, Subheader, ListItem, Avatar, Paper, Divider} from 'material-ui'
+import {List, Subheader, ListItem, Avatar, Divider} from 'material-ui'
 import { SocialWhatshot, } from 'material-ui/svg-icons'
 import { red500 } from 'material-ui/styles/colors'
 import * as _ from "underscore";
-import BtmTextAvatar from '../commons/BtmTextAvatar'
+import TextAvatar from '../commons/TextAvatar'
+import { homeClasses } from "../../styles/HomeStyles"
 
-function tagsPresenter(itemWithTags, history) {
+function tagsClassifier(itemWithTags, history) {
     return _.map(_.keys(itemWithTags), (tag, index) => {
         return (
             <div key={index}>
@@ -31,33 +32,33 @@ function tagsPresenter(itemWithTags, history) {
 
 export default function ({history, topAdvocates, advocates, advocatesWithTags}) {
     const topAdvocatesPanel = (
-        <Paper zDepth={0} className="home-sub-upper-panel">
-            <p className="home-mainheader">Top Advocates</p>
+        <div className={homeClasses.upperContentPanel}>
+            <p className={homeClasses.contentTitle}>Top Advocates</p>
             <Divider/>
-            <div className="top-advocates-panel">
+            <div className={homeClasses.topAdvocatesPanel}>
                 {_.map(topAdvocates, (advo, index) => (
-                    <BtmTextAvatar key={index}
-                                   title={advo.name}
-                                   src={advo.avatar}
-                                   touchFunc={() => {history.push('/advocate/' + advo.id)}}
+                    <TextAvatar key={index}
+                                title={advo.name}
+                                src={advo.avatar}
+                                touchFunc={() => {history.push('/advocate/' + advo.id)}}
                     />
                 ))}
             </div>
-        </Paper>
+        </div>
     );
     const contentListPanel = (
-        <div className="home-advocates-list">
-            <p className="home-mainheader">Advocates</p>
+        <div>
+            <p className={homeClasses.contentTitle}>Advocates</p>
             <Divider />
             <div>
                 <List>
-                    {tagsPresenter(advocatesWithTags, history)}
+                    {tagsClassifier(advocatesWithTags, history)}
                 </List>
             </div>
         </div>
     );
     return (
-        <div className="home-sub-panel">
+        <div className={homeClasses.contentPanel}>
             {topAdvocatesPanel}
             {contentListPanel}
         </div>

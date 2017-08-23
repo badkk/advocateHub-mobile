@@ -1,25 +1,24 @@
 import React from 'react'
-import '../../styles/MeetingCard.css'
 import { Card, FlatButton, CardTitle, CardActions, CardHeader} from 'material-ui'
 import { ActionFavorite } from 'material-ui/svg-icons'
 import { pink500 } from 'material-ui/styles/colors'
+import { talkCardClasses } from "../../styles/TalkCardStyles"
 /**
  * Created by t-zikunfan
  * Date: 17:27 2017/7/21
  */
-export default function TalkCard({
-    imgSrc="MSLogo.jpg",
-    title,
-    subtitle,
-    date,
-    likes,
-    buttonEvent}){
+export default function TalkCard({imgSrc="MSLogo.jpg",
+                                     title,
+                                     subtitle,
+                                     date,
+                                     likes,
+                                     buttonEvent}){
     return (
-        <Card className="card-panel">
+        <Card className={talkCardClasses.cardPanel}>
             <CardHeader
                 title={date}
                 subtitle={
-                    <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div className={talkCardClasses.subtitlePanel}>
                         <ActionFavorite color={pink500}/>
                         {likes}
                     </div>
@@ -27,10 +26,7 @@ export default function TalkCard({
                 avatar={imgSrc}
                 titleColor="white"
                 subtitleColor="white"
-                style={{
-                    animation: 'Home-bar-transition infinite 120s linear',
-                    borderRadius: '3px 3px 0 0'
-                }}
+                className={talkCardClasses.cardHeader}
             />
             <CardTitle
                 title={title}
@@ -45,7 +41,7 @@ export default function TalkCard({
                     fontSize: '14px'
                 }}
                 style={{
-                    height: '80px'
+                    minHeight: '80px'
                 }}
             />
             <CardActions>
