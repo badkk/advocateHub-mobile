@@ -20,7 +20,7 @@ function itemGenerator(key, title, subtitle, icon, iframeLink) {
                 <iframe
                     src={iframeLink}
                     key={key+'iframe'}
-                    className={talkDetailClasses.resourceItemPanel}
+                    className={talkDetailClasses.resItemPanel}
                     frameBorder={0}
                 />
             ]}
