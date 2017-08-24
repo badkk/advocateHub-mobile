@@ -1,11 +1,5 @@
 @media only screen and (min-width: 600px) {
-    .resource-panel, .introduce-panel, .recommended-panel {
-        padding: 0 10% 20px 10%!important;
-    }
 
-    .introduce-inner-panel > div {
-        width: 50%!important;
-    }
     .recommended-content-panel {
         flex-direction: row!important;
     }
@@ -14,106 +8,6 @@
     }
 }
 
-.meeting-content-panel {
-    margin-top: 5px;
-    height: 20px!important;
-    font-size: 10px!important;
-}
-/*.meeting-speaker-panel {
-    align-items: center;
-    padding-top: 10px!important;
-}
-.meeting-speaker-panel > div > div > img {
-    top: 8px!important;
-}
-.meeting-speaker-panel > div {
-    display: flex;
-    flex-direction: column;
-}
-.meeting-speaker-panel > div > div > svg {
-    top: 0!important;
-
-}*/
-.meeting-app-bar {
-    align-items: center;
-    padding-right: 30px!important;
-    height: 55px!important;
-    position: sticky!important;
-    top:0;
-}
-.meeting-app-bar > div {
-    margin-top: 5px!important;
-}
-.meeting-app-bar > h1 {
-    font-size: 16px!important;
-    font-weight: normal!important;
-    padding-top: 3px!important;
-}
-/* introduced page */
-.introduce-panel {
-}
-.introduce-carousel-panel {
-    width: calc(100% - 32px)!important;
-    padding: 0 16px 0 16px;
-}
-.introduce-inner-panel {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-.introduce-inner-panel-mobile {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
-.introduce-inner-panel > div {
-    width: 100%;
-}
-.meeting-introduction-title-panel,
-.meeting-introduction-conf-panel,
-.meeting-introduction-des-panel,
-.meeting-introduction-twitter-panel,
-.meeting-introduction-map-panel {
-    width: auto;
-    padding: 0 12px 0 12px;
-}
-
-.meeting-introduction-title-panel > h1 {
-    margin: 20px 0 10px 0;
-}
-.meeting-introduction-icon-panel {
-    display: flex;
-    margin-left: 10px;
-    align-items: center;
-    font-size: 14px;
-}
-.meeting-introduction-icon-panel > svg {
-    margin-right: 5px;
-}
-.meeting-introduction-icon-panel {
-    margin-bottom: 10px;
-}
-.meeting-introduction-title-subpanel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.meeting-introduction-title-liks-panel {
-    display: flex;
-    align-items: center;
-}
-.meeting-introduction-conf-title-panel {
-    display: flex;
-    align-items: center;
-    min-height: 35px;
-    margin-top: 15px;
-}
-.card-header {
-
-}
-.card-header > div {
-    padding-right: 0!important;
-}
 /* recommended page */
 .recommended-panel {
     background-color: white;
@@ -164,12 +58,4 @@
 .free-account-button > button > div > div > span {
     text-transform: inherit!important;
     font-size: 18px!important;
-}
-/* resource page */
-.resource-panel {
-    background-color: white;
-}
-.video-screen {
-    width: calc(100% - 32px)!important;
-    padding: 0 16px 0 16px;
 }

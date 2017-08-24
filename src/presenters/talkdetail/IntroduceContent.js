@@ -4,6 +4,7 @@ import { ActionFavoriteBorder, ActionFavorite, ActionEvent, ImageTimer, Communic
 import { grey500, pink500, cyan500 } from 'material-ui/styles/colors'
 import {StaticMap} from '../../utils/googleMap'
 import {Tweet} from 'react-twitter-widgets'
+import {talkDetailClasses} from "../../styles/TalkDetailStyle"
 /**
  * Created by t-zikfan on 2017/7/5.
  * Meeting page Introduction Content Page
@@ -16,11 +17,11 @@ function OrgPanel({talk, clickLiked, liked}) {
         paddingLeft: '10px'
     };
     const titlePanel = (
-        <div className="meeting-introduction-title-panel">
+        <div className={talkDetailClasses.introSubContentPanel}>
             <h1>{talk.name}</h1>
-            <div className="meeting-introduction-title-subpanel">
+            <div className={talkDetailClasses.introTitlePanel}>
                 <a href="/"># {talk.tags ? talk.tags.join(', ') : 'Others'}</a>
-                <div className="meeting-introduction-title-liks-panel">
+                <div className={talkDetailClasses.introLikesPanel}>
                     <IconButton onTouchTap={clickLiked}>
                         { liked ? <ActionFavorite color={pink500}/> : <ActionFavoriteBorder color={grey500}/> }
                     </IconButton>
@@ -31,9 +32,9 @@ function OrgPanel({talk, clickLiked, liked}) {
         </div>
     );
     const conferencePanel = (
-        <div className="meeting-introduction-conf-panel">
+        <div className={talkDetailClasses.introSubContentPanel}>
             <h3 style={subTitleStyle}>Related Event</h3>
-            <div className="meeting-introduction-conf-title-panel">
+            <div className={talkDetailClasses.introIconTextPanel}>
                 <ActionEvent color={cyan500}/>
                 <span style={confTitleStyle}>
                     {new Date(talk.date).toLocaleString()} : <a href={talk.confLink ? talk.confLink : '/'}>{talk.cofName ? talk.confName : 'Others'}</a>
@@ -43,7 +44,7 @@ function OrgPanel({talk, clickLiked, liked}) {
         </div>
     );
     const desPanel = (
-        <div className="meeting-introduction-des-panel">
+        <div className={talkDetailClasses.introSubContentPanel}>
             <h3 style={subTitleStyle}>Description</h3>
             <blockquote>
                 {talk.description}
@@ -53,7 +54,7 @@ function OrgPanel({talk, clickLiked, liked}) {
     );
     const tweetContent = talk.tweetId ? <Tweet tweetId={talk.tweetId}/> : null;
     const twitterCommentPanel = (
-        <div className="meeting-introduction-twitter-panel">
+        <div className={talkDetailClasses.introSubContentPanel}>
             <h3 style={subTitleStyle}>Comments on twitter</h3>
             {tweetContent}
         </div>
@@ -72,16 +73,16 @@ function OrgPanel({talk, clickLiked, liked}) {
     };
 
     const mapPanel = (
-        <div className="meeting-introduction-map-panel">
+        <div className={talkDetailClasses.introSubContentPanel}>
             <h3 style={subTitleStyle}>Location & Time</h3>
             <StaticMap pos={pos} marker={marker}/>
-            <div className="meeting-introduction-conf-title-panel">
+            <div className={talkDetailClasses.introIconTextPanel}>
                 <CommunicationLocationOn color={cyan500}/>
                 <span style={confTitleStyle}>
                     {talk.location}
                 </span>
             </div>
-            <div className="meeting-introduction-conf-title-panel">
+            <div className={talkDetailClasses.introIconTextPanel}>
                 <ImageTimer color={cyan500}/>
                 <span style={confTitleStyle}>
                     {new Date(talk.date).toLocaleString()}
@@ -89,32 +90,20 @@ function OrgPanel({talk, clickLiked, liked}) {
             </div>
         </div>
     );
-    const webPanel = (
-        <div className="introduce-inner-panel">
-            <div>
+    //TODO
+    return (
+        <div className={talkDetailClasses.introContentPanel}>
+            <div className={talkDetailClasses.introContentInnerPanel}>
                 {titlePanel}
                 {conferencePanel}
                 {desPanel}
                 {twitterCommentPanel}
             </div>
-            <div>
+            <div className={talkDetailClasses.introContentInnerPanel}>
                 {mapPanel}
             </div>
         </div>
     );
-    const mobilePanel = (
-        <div className="introduce-inner-panel-mobile">
-            {titlePanel}
-            {mapPanel}
-            <hr style={{width: '95%'}}/>
-            {conferencePanel}
-            {desPanel}
-            {twitterCommentPanel}
-        </div>
-
-    );
-    //TODO
-    return window.screen.width > 600 ? webPanel: mobilePanel;
 
 }
 export default class IntroduceContent extends Component{
@@ -133,13 +122,11 @@ export default class IntroduceContent extends Component{
     }
     render() {
         return (
-            <div style={{height: 'auto'}} className="introduce-panel">
-                <OrgPanel
-                    talk={this.props.talk}
-                    clickLiked={this.clickLiked}
-                    liked={this.state.liked}
-                />
-            </div>
+            <OrgPanel
+                talk={this.props.talk}
+                clickLiked={this.clickLiked}
+                liked={this.state.liked}
+            />
         );
     }
 }
