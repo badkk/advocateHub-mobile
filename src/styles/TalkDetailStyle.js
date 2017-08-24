@@ -53,21 +53,40 @@ const styles = StyleSheet.create({
 
     },
     /* Resource Page */
-    resourceItemPanelStyle: {
+    resItemPanelStyle: {
         width: '90%',
         padding: paddingSmall,
         height: mediaHeight
     },
-
+    /* Recommend Page */
+    recCardPanelStyle: {
+        margin: '10px 5%',
+    },
+    recContentPanelStyle: {
+        '@media (min-width: 600px)': {
+            flexDirection: 'row',
+            alignItems: 'flex-start'
+        }
+    },
+    recSubContentPanelStyle: {
+        width: '100%',
+    }
 });
+
 export const talkDetailClasses = {
     speakerPanel: css(styles.speakerPanelStyle),
     contentPanel: css(styles.contentPanelStyle),
-    resourceItemPanel: css(styles.resourceItemPanelStyle),
+
+    resItemPanel: css(styles.resItemPanelStyle),
+
     introContentPanel: css(defaultStyles.flexRowCenter, styles.introContentPanelStyle),
     introSubContentPanel: css(styles.introSubContentPanelStyle),
     introContentInnerPanel: css(styles.introContentInnerPanelStyle),
     introIconTextPanel: css(defaultStyles.flexRowStart, styles.iconTextPanelStyle),
     introTitlePanel: css(defaultStyles.flexRowSpaceBetween),
-    introLikesPanel: css(defaultStyles.flexRowCenter)
+    introLikesPanel: css(defaultStyles.flexRowCenter),
+
+    recCardPanel: css(styles.recCardPanelStyle),
+    recContentPanel: css(defaultStyles.flexColStart, styles.recContentPanelStyle),
+    recSubContentPanel: css(defaultStyles.flexColCenter, styles.recSubContentPanelStyle),
 };

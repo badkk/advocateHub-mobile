@@ -1,23 +1,21 @@
 import React, {Component} from 'react'
 import {Card, CardHeader, CardActions, FlatButton, CardMedia, CircularProgress, RaisedButton, Paper} from 'material-ui'
 import _ from 'underscore'
-import get from '../../restful/Get'
-import {homeBarHeight} from '../commons/AppBar'
 import { getFileName } from '../../utils/strings'
+import {talkDetailClasses} from "../../styles/TalkDetailStyle"
+import {theme} from "../../styles/DefaultTheme";
 /**
  * Created by t-zikfan on 2017/7/3.
  * The Azure Information Page
  */
 /*Height Compatible Infos*/
-//const contentMinHeight = window.screen.height - homeBarHeight - menuHeight;
-function StandardCards({title, subtitle, imgLink, url}) {
+function DocCard({title, subtitle, imgLink, url}) {
     return (
-        <Card className="azure-content-card-style">
+        <Card className={talkDetailClasses.recCardPanel}>
             <CardHeader
                 title={title}
                 subtitle={subtitle}
                 actAsExpander={true}
-
             />
             <CardMedia>
                 <img src={imgLink} alt="" />
@@ -44,7 +42,7 @@ function DocsContent({docs, talk}){
         });
     }
     const authCards = authLink ? (
-        <StandardCards
+        <DocCard
             key='auth-card'
             title={authLink.title}
             subtitle={authLink.subtitle}
@@ -54,7 +52,7 @@ function DocsContent({docs, talk}){
     ) : null;
     const relatedCards = _.map(sortedData, (data, index) => {
         return (
-            <StandardCards
+            <DocCard
                 key={index}
                 title={data['title']}
                 subtitle={data['subtitle']}
@@ -64,7 +62,7 @@ function DocsContent({docs, talk}){
         );
     });
     const speakerCard = (
-        <StandardCards
+        <DocCard
             key='azure-card'
             title="Azure Infos"
             subtitle="Speakers Related Docs"
@@ -73,16 +71,16 @@ function DocsContent({docs, talk}){
         />
     );
     return (
-        <div className="recommended-content-panel">
-            <div>
+        <div className={talkDetailClasses.recContentPanel}>
+            <div className={talkDetailClasses.recSubContentPanel}>
                 <h3>Speaker Recommend</h3>
                 {authCards}
             </div>
-            <div className="azure-content">
+            <div className={talkDetailClasses.recSubContentPanel}>
                 <h3>Related Docs</h3>
                 {relatedCards}
             </div>
-            <div>
+            <div className={talkDetailClasses.recSubContentPanel}>
                 <h3>More Docs</h3>
                 {speakerCard}
             </div>
@@ -103,17 +101,21 @@ export default class RecommendContent extends Component {
     render() {
         const {docs, talk} = this.props;
         return (
-            <div className="recommended-panel">
+            <div className={talkDetailClasses.contentPanel}>
                 {/*<HomeBar history={this.props.history}/>*/}
-                <Paper className="app-header">
-                    <RaisedButton
-                        label="Try Azure free account"
-                        primary={true}
-                        className="free-account-button"
-                        style={{height: homeBarHeight}}
-                        onTouchTap={() => {window.location = "https://azure.microsoft.com/en-us/free/?v=17.15";}}
-                    />
-                </Paper>
+                <RaisedButton
+                    label="Try Azure free account"
+                    backgroundColor={theme.color.msGreen}
+                    labelColor="white"
+                    fullWidth={true}
+                    buttonStyle={{
+                        height: theme.height.appBarHeight
+                    }}
+                    labelStyle={{
+                        fontSize: theme.fontSize.mediumX
+                    }}
+                    onTouchTap={() => {window.location = "https://azure.microsoft.com/en-us/free/?v=17.15";}}
+                />
                 <div>
                     <CircularProgress
                         thickness={3}

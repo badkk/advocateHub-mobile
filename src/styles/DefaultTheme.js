@@ -59,6 +59,12 @@ export const defaultStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    flexColStart: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
     flexRowCenter: {
         display: 'flex',
         flexDirection: 'row',

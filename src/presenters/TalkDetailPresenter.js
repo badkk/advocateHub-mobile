@@ -11,7 +11,6 @@ import ResourcesContent from './talkdetail/ResourcesContent'
 import RecommendContent from './talkdetail/RecommendContent'
 import AppBar from './commons/AppBar'
 import ContentTab from './commons/ContentTab'
-import '../styles/Meeting.css'
 import {talkDetailClasses} from "../styles/TalkDetailStyle"
 import {theme} from "../styles/DefaultTheme"
 
