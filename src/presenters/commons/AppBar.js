@@ -8,7 +8,6 @@ import { appBarClasses } from "../../styles/AppBarStyles"
  * Created by t-zikunfan
  * Date: 10:08 2017/7/21
  */
-export const homeBarHeight = 55;
 export default function AppBar({history}) {
     const backIcon = (
         <IconButton
@@ -24,11 +23,6 @@ export default function AppBar({history}) {
             <FontIcon ><HardwareKeyboardArrowLeft color={grey700}/></FontIcon>
         </IconButton>
     );
-    /*const homeIcon = (
-        <IconButton onTouchTap={() => {history.push('/')}}>
-            <FontIcon ><ActionHome color={grey700}/></FontIcon>
-        </IconButton>
-    );*/
     const logoIcon = (
         <div className={appBarClasses.logoPanel}>
             <MSLogo size="25" logoEvent={() => {history.push('/')}}/>

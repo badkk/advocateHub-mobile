@@ -8,8 +8,8 @@ import {
 import SwipeableViews from 'react-swipeable-views';
 import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
 import { green500, yellow500 } from 'material-ui/styles/colors'
-import AppBar, {homeBarHeight} from './commons/AppBar'
-import ContentTab, {tabMenuHeight} from './commons/ContentTab'
+import AppBar from './commons/AppBar'
+import ContentTab from './commons/ContentTab'
 import "../styles/AdvocateInfo.css"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
@@ -21,8 +21,6 @@ import {isUrl} from "../utils/strings"
  * Created by lucas on 2017/7/4.
  * Advocate Info Presenter
  */
-const infoBarHeight = 70;
-let iFramePanelHeight = window.screen.height - homeBarHeight - infoBarHeight - tabMenuHeight;
 export function MeetingListItem({meetingTitle, meetingTags, isComplete, touchEvent=() => {}}) {
     const leftAvatar = isComplete ?
         <ActionDone color={green500} />:
@@ -88,7 +86,6 @@ class PersonalPage extends Component {
             <div key="advocate_homepage" className="homePage-did-set">
                 <iframe src={homePage}
                         title={homePage}
-                        height={iFramePanelHeight}
                         width='100%'
                         frameBorder="0"
                         onLoad={this.progressLoaded}
@@ -99,7 +96,6 @@ class PersonalPage extends Component {
             <div
                 key="advocate_homepage_not_set"
                 className="homePage-did-not-set"
-                style={{height: iFramePanelHeight}}
             >
                 User Did Not Set HomePage
             </div>;

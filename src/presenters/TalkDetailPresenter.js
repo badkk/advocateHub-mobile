@@ -9,17 +9,16 @@ import SocialMediaDialog from './commons/SocialMediaDialog'
 import IntroduceContent from './talkdetail/IntroduceContent'
 import ResourcesContent from './talkdetail/ResourcesContent'
 import RecommendContent from './talkdetail/RecommendContent'
-import AppBar, {homeBarHeight} from './commons/AppBar'
-import ContentTab, {tabMenuHeight} from './commons/ContentTab'
+import AppBar from './commons/AppBar'
+import ContentTab from './commons/ContentTab'
 import '../styles/Meeting.css'
 import {talkDetailClasses} from "../styles/TalkDetailStyle"
+import {theme} from "../styles/DefaultTheme"
 
 /**
  * Created by t-zikfan on 2017/7/3.
  * Meeting information page
  */
-const meetingInfoMaxHeight = 66;
-const containerHeight = window.screen.height - homeBarHeight - meetingInfoMaxHeight - tabMenuHeight;
 function AdvocatorInfoPage({history, advocate, handleClick}){
 
     const {name, tags, avatar, id} = advocate;
@@ -45,7 +44,6 @@ function AdvocatorInfoPage({history, advocate, handleClick}){
                 primaryText={"Speaker : " + name}
                 secondaryText={"Techs: " + (!_.isUndefined(tags) ? tags.join(', ') : 'Others')}
                 leftAvatar={<Avatar src={avatar}/>}
-                style={{width:"100%", minHeight: meetingInfoMaxHeight}}
                 rightIconButton={shareButton}
                 onTouchTap={() => {handleAdvocateTouchTap(id)}}
             />
@@ -87,12 +85,11 @@ class TalkContent extends Component {
                     tabs={tabs}
                     tabChangeHandler={this.handleTabClick}
                     slideIdx={this.state.slideIdx}
-                    stickyHeight={homeBarHeight}
+                    stickyHeight={theme.height.appBarHeight}
                 />
                 <SwipeableViews
                     index={this.state.slideIdx}
                     onChangeIndex={this.handleTabClick}
-                    containerStyle={{minHeight: containerHeight}}
                 >
                     { contents }
                 </SwipeableViews>
@@ -145,7 +142,7 @@ export default class TalkDetailPresenter extends Component {
             />
         );
         return (
-            <div>
+            <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
                 <AppBar history={history} />
                 <AdvocatorInfoPage
                     history={history}
