@@ -5,8 +5,8 @@ import ChipInput from 'material-ui-chip-input'
 import login from '../../utils/loginUtils'
 import * as _ from "underscore";
 import AdminAppBar from "../commons/AdminAppBar";
-import '../../styles/AdvocateInfoChecker.css'
 import {oAuthLinkedinInit, linkedinAccess} from "../../utils/socialMedUtils"
+import {adminClasses} from "../../styles/AdminStyles"
 
 /**
  * Created by lucas on 2017/7/24.
@@ -75,8 +75,9 @@ export default class AdvocateInfoChecker extends Component {
         const linkedinBtnIcon = this.state.bindingLinkedin ? <FontIcon className="fa fa-check-square-o"/> : <FontIcon  className="fa fa-linkedin-square"/>;
         const linkedinBtnText = this.state.bindingLinkedin ? "Binding Successful!" : "Linked with Linkedin";
         const linkedinBtnColor = this.state.bindingLinkedin ? '#1e9f75' : '#0077b5';
+
         const form = (
-            <div className="twitter-form-panel">
+            <div className={adminClasses.infoCheckForm}>
                 <h2>Initialize you account</h2>
                 <Avatar
                     src={avatar}
@@ -84,41 +85,43 @@ export default class AdvocateInfoChecker extends Component {
                     style={{margin: '10px'}}
                 />
                 <TextField
-                    id="twitter_name"
+                    key="twitter_name"
                     defaultValue={name}
                     floatingLabelText="TwitterName"
                     onChange={(event) => infoChange('name', event.target.value)}
                 />
                 <TextField
-                    id="twitter_alias"
+                    key="twitter_alias"
                     defaultValue={twitterAccount}
                     floatingLabelText="Twitter Alias"
                     onChange={(event) => infoChange('twitterAccount', event.target.value)}
                 />
                 <TextField
-                    id="home_page"
+                    key="home_page"
                     defaultValue={homePage}
                     floatingLabelText="Your Own HomePage"
                     onChange={(event) => infoChange('homePage', event.target.value)}
                 />
                 <TextField
-                    id="facebook_page"
+                    key="facebook_page"
                     defaultValue={facebookAccount}
                     floatingLabelText="Facebook PublicPage"
                     onChange={(event) => infoChange('facebookAccount', event.target.value)}
                 />
                 <TextField
-                    id="github_page"
+                    key="github_page"
                     defaultValue={githubAccount}
                     floatingLabelText="Github Alias"
                     onChange={(event) => infoChange('githubAccount', event.target.value)}
                 />
                 <ChipInput
+                    key="tech_aspects"
                     floatingLabelText="Tech Aspects"
                     defaultValue={tags}
                     onChange={(value) => infoChange('tags', value)}
                 />
                 <RaisedButton
+                    key="linkedin_button"
                     label={linkedinBtnText}
                     icon={linkedinBtnIcon}
                     primary={true}
@@ -134,17 +137,15 @@ export default class AdvocateInfoChecker extends Component {
             </div>
         );
         const informationForm = (
-            <div style={{width: '100%'}} className="info-checker-inner-content">
-                <Paper zDepth={1}>
-                    {form}
-                    <RaisedButton
-                        label='Save'
-                        primary={true}
-                        fullWidth={true}
-                        onTouchTap={this.submitUserInfo}
-                        style={{marginTop: '30px'}}
-                    />
-                </Paper>
+            <div className={adminClasses.infoCheckContent}>
+                {form}
+                <RaisedButton
+                    label='Save'
+                    primary={true}
+                    fullWidth={true}
+                    onTouchTap={this.submitUserInfo}
+                    style={{marginTop: '30px'}}
+                />
             </div>
         );
         let content = {};
@@ -157,11 +158,9 @@ export default class AdvocateInfoChecker extends Component {
             content = informationForm
         }
         return (
-            <div className="info-checker-panel">
+            <div className={adminClasses.infoCheckPanel}>
                 <AdminAppBar history={this.props.history}/>
-                <div className="info-checker-content">
-                    {content}
-                </div>
+                {content}
             </div>
         );
     }
