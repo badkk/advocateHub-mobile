@@ -175,7 +175,7 @@ export default class AdvocateInfoPresenter extends Component {
             summary
         } = this.props;
         return (
-            <div className="advocate-detail-root-panel">
+            <div>
                 <AppBar history={history}/>
                 <InfoPanel
                     avatar={avatar}

@@ -65,6 +65,12 @@ export const defaultStyles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start'
     },
+    flexColSpaceBetween: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
     flexRowCenter: {
         display: 'flex',
         flexDirection: 'row',

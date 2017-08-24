@@ -1,5 +1,4 @@
 @media only screen and (min-width: 600px) {
-    .advocate-info-root-panel,
     .homePage-did-set,
     .advocate-bio-root-panel,
     .meetings-panel {
@@ -8,57 +7,9 @@
     .homePage-did-set {
         width: 80%!important;
     }
-    .advocate-info-avatar-panel {
-        flex-direction: row!important;
-    }
-    .advocate-info-root-panel {
-        flex-direction: row!important;
-        height: 80px!important;
-    }
-    .advocate-info-title-panel {
-        align-items: flex-start!important;
-    }
 
 }
-.advocate-detail-root-panel {
-    background: white;
-}
 
-.advocate-follow-button {
-    display: flex!important;
-    width: 160px!important;
-    justify-content: flex-start!important;
-    z-index: 9999!important;
-}
-.twitter-follow-button-div {
-    display: flex!important;
-    align-items: center;
-}
-.github-follow-button-div {
-    display: flex!important;
-    align-items: center;
-}
-.github-follow-button-div > iframe {
-    margin-right: 16px!important;
-}
-.follow-btm-panel {
-
-}
-.follow-button {
-    min-width: 50px!important;
-    width: 80px!important;
-    margin-right: 12px!important;
-    margin-top: 12px!important;
-}
-.follow-button > button {
-    height: 25px !important;
-    line-height: 25px !important;
-}
-.follow-button > button > div > div > span {
-    font-size: 10px!important;
-    font-weight: 600!important;
-    padding: 0!important;
-}
 .homePage-did-not-set {
     align-items: center;
     justify-content: center;
@@ -74,37 +25,6 @@
 }
 .meetings-panel {
     background-color: white;
-}
-/* Info Panel Styles */
-.advocate-info-root-panel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 200px;
-}
-.advocate-info-likes-panel {
-    display: flex;
-    align-items: center;
-}
-.advocate-info-avatar-panel {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.advocate-info-avatar-panel > img {
-    margin: 16px;
-}
-.advocate-info-sm-panel {
-    display: flex;
-    align-items: center;
-}
-.advocate-info-title-panel {
-    display: flex;
-    margin-left: 10px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 /* Bio Panel Styles */
 .advocate-bio-root-panel {
