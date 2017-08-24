@@ -3,6 +3,7 @@ import {Stepper, Step, StepLabel, StepContent, IconButton, FontIcon} from 'mater
 import {ActionPermContactCalendar, NavigationMoreHoriz} from 'material-ui/svg-icons'
 import {cyan500} from 'material-ui/styles/colors'
 import * as _ from 'underscore'
+import {advocateInfoClasses} from "../../styles/AdvocateInfoStyles";
 /**
  * Created by t-zikunfan
  * Date: 11:39 2017/8/15
@@ -12,7 +13,7 @@ export default function BioPanel({jobtitle, linkedinAccount, location, positions
     const emptyPanel = (
         <div
             key="advocate_homepage_not_set"
-            className="homePage-did-not-set"
+            className={advocateInfoClasses.emptyContent}
         >
             Oops, this advocate do not bind # <a href="https://www.linkedin.com/">Linkedin</a>
         </div>
@@ -56,9 +57,9 @@ export default function BioPanel({jobtitle, linkedinAccount, location, positions
                                 {startDate + " ~ " + endDate}
                             </StepLabel>
                             <StepContent active={true}>
-                                <p className="advocate-bio-position-content">{company + " @ " + summary}</p>
-                                <p className="advocate-bio-position-content">{title}</p>
-                                <p className="advocate-bio-position-content">{location}</p>
+                                <p className={advocateInfoClasses.bioJobContent}>{company + " @ " + summary}</p>
+                                <p className={advocateInfoClasses.bioJobContent}>{title}</p>
+                                <p className={advocateInfoClasses.bioJobContent}>{location}</p>
                             </StepContent>
                         </Step>
                     );
@@ -73,7 +74,7 @@ export default function BioPanel({jobtitle, linkedinAccount, location, positions
         </div>
     );
     const panel = (
-        <div className="advocate-bio-root-panel">
+        <div className={advocateInfoClasses.bioContentPanel}>
             {jobTitlePanel}
             {summaryPanel}
             {positionsPanel}

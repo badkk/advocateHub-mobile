@@ -10,12 +10,12 @@ import {  ActionCached, ActionDone } from 'material-ui/svg-icons'
 import { green500, yellow500 } from 'material-ui/styles/colors'
 import AppBar from './commons/AppBar'
 import ContentTab from './commons/ContentTab'
-import "../styles/AdvocateInfo.css"
 import * as _ from 'underscore'
 import {isDateCompleted} from '../utils/time'
 import InfoPanel from './advocatedetail/InfoPanel'
 import BioPanel from './advocatedetail/BioPanel'
 import {isUrl} from "../utils/strings"
+import {advocateInfoClasses} from "../styles/AdvocateInfoStyles";
 
 /**
  * Created by lucas on 2017/7/4.
@@ -83,10 +83,11 @@ class PersonalPage extends Component {
                                           positions={positions}
                                           summary={summary} />;
         const homePageDiv = isUrl(homePage) ?
-            <div key="advocate_homepage" className="homePage-did-set">
+            <div key="advocate_homepage" className={advocateInfoClasses.content}>
                 <iframe src={homePage}
                         title={homePage}
                         width='100%'
+                        height='100%'
                         frameBorder="0"
                         onLoad={this.progressLoaded}
                 />
@@ -95,7 +96,7 @@ class PersonalPage extends Component {
             :
             <div
                 key="advocate_homepage_not_set"
-                className="homePage-did-not-set"
+                className={advocateInfoClasses.emptyContent}
             >
                 User Did Not Set HomePage
             </div>;
@@ -103,7 +104,7 @@ class PersonalPage extends Component {
         const contents = [
             linkedinInfoDiv,
             homePageDiv,
-            <div className="meetings-panel" key="advocate_meeting_details">
+            <div className={advocateInfoClasses.talksPanel} key="advocate_meeting_details">
                 <List>
                     {meetingsList}
                 </List>

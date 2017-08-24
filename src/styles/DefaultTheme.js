@@ -26,14 +26,15 @@ export const theme= {
     },
     height: {
         appBarHeight: '55px',
-        fullWindow: window.screen.height
+        fullWindowHeight: window.screen.height
     },
     responsivePadding: '0 10%',
     responsivePaddingS: '0 5%',
+    responsivePaddingMobile: '0 16px',
     fontSize: {
         big: '22px',
         mediumX: '18px',
-        medium: '14px',
+        medium: '15px',
         small: ''
     },
 

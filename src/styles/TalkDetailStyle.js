@@ -8,7 +8,7 @@ import {defaultStyles, theme} from './DefaultTheme'
 const padding = theme.responsivePadding;
 const paddingSmall = theme.responsivePaddingS;
 //resize the media screen to 16:9
-const mediaHeight = theme.height.fullWindow * 0.9 * 9 / 16;
+const mediaHeight = theme.height.fullWindowHeight * 0.9 * 9 / 16;
 
 const styles = StyleSheet.create({
     speakerPanelStyle: {
