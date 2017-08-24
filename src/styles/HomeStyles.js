@@ -6,6 +6,8 @@ import {theme, defaultStyles} from './DefaultTheme'
  */
 const color = theme.color;
 const fontSize = theme.fontSize;
+const padding = theme.responsivePadding;
+
 const styles = StyleSheet.create({
     widthResponsive: {
         '@media (min-width: 600px)': {
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
     },
     paddingResponsive: {
         '@media (min-width: 600px)': {
-            padding: '0 10%'
+            padding: padding
         }
     },
     appPanelStyle: {

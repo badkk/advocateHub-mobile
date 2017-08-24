@@ -2,9 +2,7 @@
     .resource-panel, .introduce-panel, .recommended-panel {
         padding: 0 10% 20px 10%!important;
     }
-    .meeting-speaker-panel {
-        padding: 0 10% 0 10%!important;
-    }
+
     .introduce-inner-panel > div {
         width: 50%!important;
     }
@@ -15,39 +13,7 @@
         width: 33.33%!important;
     }
 }
-hr {
-    border: 0;
-    height: 1px;
-    background: #efefef;
-}
-h1, h2, h3, a, span {
-    color: #484848;
-}
- blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #00BCD4;
-    margin: 1.5em 10px 1.5em 0;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
-    color: grey;
-}
- blockquote:before {
-    color: #ccc;
-    content: open-quote;
-    font-size: 2em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
-}
- blockquote p {
-    display: inline;
-}
-.meeting-speaker-panel {
-    background-color: white;
-}
-.meeting-detail-root-panel {
-    background-color: white;
-}
+
 .meeting-content-panel {
     margin-top: 5px;
     height: 20px!important;

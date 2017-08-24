@@ -12,6 +12,7 @@ import RecommendContent from './talkdetail/RecommendContent'
 import AppBar, {homeBarHeight} from './commons/AppBar'
 import ContentTab, {tabMenuHeight} from './commons/ContentTab'
 import '../styles/Meeting.css'
+import {talkDetailClasses} from "../styles/TalkDetailStyle"
 
 /**
  * Created by t-zikfan on 2017/7/3.
@@ -39,7 +40,7 @@ function AdvocatorInfoPage({history, advocate, handleClick}){
         </IconButton>
     );
     return (
-        <div className="meeting-speaker-panel">
+        <div className={talkDetailClasses.speakerPanel}>
             <ListItem
                 primaryText={"Speaker : " + name}
                 secondaryText={"Techs: " + (!_.isUndefined(tags) ? tags.join(', ') : 'Others')}
@@ -144,7 +145,7 @@ export default class TalkDetailPresenter extends Component {
             />
         );
         return (
-            <div style={{scroll: 'hidden'}} className="meeting-detail-root-panel">
+            <div>
                 <AppBar history={history} />
                 <AdvocatorInfoPage
                     history={history}

@@ -25,10 +25,11 @@ export const theme= {
         mobileMax: '600px'
     },
     height: {
-        appBarHeight: '55px'
+        appBarHeight: '55px',
+        fullWindow: window.screen.height
     },
-    webPadding: '0 8%',
-    phonePadding: '0 16px',
+    responsivePadding: '0 10%',
+    responsivePaddingS: '0 5%',
     fontSize: {
         big: '22px',
         mediumX: '18px',
