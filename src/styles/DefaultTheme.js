@@ -47,6 +47,18 @@ const colorTransKeyframes = {
     '75%': { backgroundColor:  theme.color.msRed },
     '100%': { backgroundColor:  theme.color.msBlue }
 };
+const layout = {
+    flexCol: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    flexRow: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    }
+};
 export const defaultStyles = StyleSheet.create({
     colorTransAnimation: {
         animationName: [colorTransKeyframes],
@@ -55,51 +67,35 @@ export const defaultStyles = StyleSheet.create({
     },
     /* flex layouts */
     flexColCenter: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        ...layout.flexCol,
         justifyContent: 'center'
     },
     flexColStart: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        ...layout.flexCol,
         justifyContent: 'flex-start'
     },
     flexColSpaceBetween: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        ...layout.flexCol,
         justifyContent: 'space-between'
     },
     flexRowCenter: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...layout.flexRow,
         justifyContent: 'center'
     },
     flexRowSpaceAround: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...layout.flexRow,
         justifyContent: 'space-around'
     },
     flexRowSpaceBetween: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...layout.flexRow,
         justifyContent: 'space-between'
     },
     flexRowEnd: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...layout.flexRow,
         justifyContent: 'flex-end'
     },
     flexRowStart: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...layout.flexRow,
         justifyContent: 'flex-start'
     },
     /* positions */
