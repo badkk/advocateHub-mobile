@@ -5,7 +5,7 @@ import { ActionSearch, SocialShare, ContentBackspace } from 'material-ui/svg-ico
 import SwipeableViews from 'react-swipeable-views';
 import ReactCSSTransitionReplace  from 'react-css-transition-replace';
 
-import ContentTab, {tabMenuHeight} from "./commons/ContentTab";
+import ContentTab from "./commons/ContentTab";
 import HomeAdvocateInfoPresenter from './home/HomeAdvocateInfoPresenter'
 import HomeMeetingInfoPresenter from './home/HomeMeetingInfoPresenter'
 import MSLogo from './commons/MSLogo'
