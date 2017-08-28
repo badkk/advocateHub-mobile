@@ -24,7 +24,7 @@ run `yarn start` to run project on port 3000
 
 Basically, this whole project based on 
 
-- **react **
+- **react**
 - data flow manager: [react-redux](https://github.com/reactjs/react-redux), [redux-thunk](https://github.com/gaearon/redux-thunk)
 - router: [react-router](https://github.com/ReactTraining/react-router)
 - component library: [material-ui](http://www.material-ui.com/) with some plugins
