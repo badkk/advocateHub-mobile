@@ -59,7 +59,7 @@ And the testing part, we are using [airbnb enzyme](https://github.com/airbnb/enz
 
 # Project Structure
 
-The whole project consist with 5 parts: **container&redux, presenter, styles, utils and enzyme tests **.
+The whole project consist with 5 parts: **container&redux, presenter, styles, utils and enzyme tests**.
 
 - container&redux part
 
