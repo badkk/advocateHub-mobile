@@ -1,3 +1,11 @@
+# Microsoft Advocate Hub
+
+This is 2017 microsoft hackathon project, it's fully open source ~ 🐶 .
+
+ It is about some business process, however the whole structure is deep-thinking and fully considering logically about **React, CSS in JS, Social Media Integration**, so this may help you to construct a whole easily and scalability frontend framework. 
+
+Hope you enjoy 😊
+
 # Deploying Project
 
 ## install
