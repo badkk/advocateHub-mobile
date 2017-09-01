@@ -27,7 +27,7 @@ function AdvocatorInfoPage({history, advocate, handleClick}){
     };
 
     const handleSharedEvent = () => {
-       handleClick();
+        handleClick();
         console.log("Sharedbutton clicked");
     };
 

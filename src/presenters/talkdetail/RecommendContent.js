@@ -40,16 +40,9 @@ function DocsContent({docs, talk}){
                 sortedData.push(doc);
             }
         });
+    } else {
+        sortedData = docs;
     }
-    const authCards = authLink ? (
-        <DocCard
-            key='auth-card'
-            title={authLink.title}
-            subtitle={authLink.subtitle}
-            imgLink={authLink.imgUrl}
-            url={authLink.url}
-        />
-    ) : null;
     const relatedCards = _.map(sortedData, (data, index) => {
         return (
             <DocCard
@@ -70,6 +63,15 @@ function DocsContent({docs, talk}){
             url="https://docs.microsoft.com/en-us/"
         />
     );
+    const authCards = authLink ? (
+        <DocCard
+            key='auth-card'
+            title={authLink.title}
+            subtitle={authLink.subtitle}
+            imgLink={authLink.imgUrl}
+            url={authLink.url}
+        />
+    ) : speakerCard;
     return (
         <div className={talkDetailClasses.recContentPanel}>
             <div className={talkDetailClasses.recSubContentPanel}>
@@ -98,6 +100,13 @@ export default class RecommendContent extends Component {
     componentDidMount() {
         this.props.getDocs();
     }
+    componentWillReceiveProps(newProps) {
+        if (newProps.docs) {
+            this.setState({
+                loadRuning: false
+            });
+        }
+    }
     render() {
         const {docs, talk} = this.props;
         return (
@@ -119,7 +128,7 @@ export default class RecommendContent extends Component {
                 <div>
                     <CircularProgress
                         thickness={3}
-                        style={{position: 'absolute', padding:'45%', display: this.state.loadRuning ? "inline-block" : "none"}}
+                        style={{position: 'absolute', padding:'38%', display: this.state.loadRuning ? "inline-block" : "none"}}
                     />
                     <DocsContent docs={docs} talk={talk}/>
                 </div>
