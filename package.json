@@ -12,6 +12,7 @@
     "material-ui-search-bar": "^0.2.4",
     "react": "^15.6.1",
     "react-css-transition-replace": "^2.2.1",
+    "react-custom-scrollbars": "^4.1.2",
     "react-dom": "^15.6.1",
     "react-google-maps": "next",
     "react-redux": "^5.0.5",

@@ -7,6 +7,7 @@ import {
 } from "react-google-maps/lib/";
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 import withScriptjs from 'react-google-maps/lib/async/withScriptjs';
+import {googleMapStyles} from "../styles/GoogleMapStyles";
 /**
  * Created by t-zikunfan
  * Date: 18:05 2017/8/9
@@ -39,20 +40,6 @@ export function StaticMap(props) {
         />
     );
 }
-const INPUT_STYLE = {
-    boxSizing: `border-box`,
-    MozBoxSizing: `border-box`,
-    border: `1px solid transparent`,
-    width: `240px`,
-    height: `32px`,
-    marginTop: `10px`,
-    padding: `0 12px`,
-    borderRadius: `3px`,
-    boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-    fontSize: `14px`,
-    outline: `none`,
-    textOverflow: `ellipses`,
-};
 const SearchBoxMap = withScriptjs(withGoogleMap(props => (
     <GoogleMap
         ref={props.onMapMounted}
@@ -67,7 +54,7 @@ const SearchBoxMap = withScriptjs(withGoogleMap(props => (
             controlPosition={google.maps.ControlPosition.TOP}
             onPlacesChanged={props.onPlacesChanged}
             inputPlaceholder="Input your talk location"
-            inputStyle={INPUT_STYLE}
+            inputClassName={googleMapStyles.searchInputClasses}
         />
         {
             props.markers.map((marker, index) => (
@@ -139,7 +126,7 @@ export class SearchMap extends Component {
                     </div>
                 }
                 containerElement={
-                    <div style={{ height: `300px`, width: '500px'}} />
+                    <div style={{ height: `300px`, width: '100%'}} />
                 }
                 mapElement={
                     <div style={{ height: `100%` }} />
